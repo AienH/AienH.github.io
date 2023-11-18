@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 5.4.2">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha256-CTSx/A06dm1B063156EVh15m6Y67pAjZZaQc89LLSrU=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.18.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"mac"},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="使用debootstrap构建制作aarch64&#x2F;arm64 Debian rootfs文件系统1.宿主机软件安装PC端宿主机使用的系统为Ubuntu22.04 amd64，在制作debian10系统之前，需要安装制作系统所需要的一些工具软件。 1root@ubuntu:~# apt-get install apt-transport-https qemu qemu-user-static qem">
+<meta property="og:type" content="article">
+<meta property="og:title" content="制作debian的rootfs">
+<meta property="og:url" content="http://example.com/2023/04/12/%E5%88%B6%E4%BD%9Cdebian%E7%9A%84rootfs/index.html">
+<meta property="og:site_name" content="ienAの博客">
+<meta property="og:description" content="使用debootstrap构建制作aarch64&#x2F;arm64 Debian rootfs文件系统1.宿主机软件安装PC端宿主机使用的系统为Ubuntu22.04 amd64，在制作debian10系统之前，需要安装制作系统所需要的一些工具软件。 1root@ubuntu:~# apt-get install apt-transport-https qemu qemu-user-static qem">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-04-12T12:25:53.000Z">
+<meta property="article:modified_time" content="2023-11-16T18:31:13.580Z">
+<meta property="article:author" content="ienA">
+<meta property="article:tag" content="chroot">
+<meta property="article:tag" content="arm64">
+<meta property="article:tag" content="linux Deploy">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://example.com/2023/04/12/%E5%88%B6%E4%BD%9Cdebian%E7%9A%84rootfs/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2023/04/12/%E5%88%B6%E4%BD%9Cdebian%E7%9A%84rootfs/","path":"2023/04/12/制作debian的rootfs/","title":"制作debian的rootfs"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>制作debian的rootfs | ienAの博客</title>
+  
+
+
+
+
+
+
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/gh/theme-next/theme-next-needmoreshare2@1/needsharebutton.min.css"><style>
+#needsharebutton-postbottom {
+  cursor: pointer;
+  height: 26px;
+  margin-top: 10px;
+  position: relative;
+}
+#needsharebutton-postbottom .btn {
+  border: 1px solid $btn-default-border-color;
+  border-radius: 3px;
+  display: initial;
+  padding: 1px 4px;
+}
+</style><style>
+#needsharebutton-float {
+  bottom: 88px;
+  cursor: pointer;
+  left: -8px;
+  position: fixed;
+  z-index: 9999;
+}
+#needsharebutton-float .btn {
+  border: 1px solid $btn-default-border-color;
+  border-radius: 4px;
+  padding: 0 10px 0 14px;
+}
+</style>
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+    <script src="https://fastly.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://fastly.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css">
+    <script src=" https://cdn.jsdelivr.net/npm/jquery-ui@1.13.2/dist/jquery-ui.min.js "></script>
+    <script rel="preload" src="https://fastly.jsdelivr.net/gh/AienH/blog_plugin@master/APlayer/dist/APlayer.min.js"></script>
+    <script rel="preload" src="https://fastly.jsdelivr.net/gh/AienH/blog_plugin@master/MetingJS/dist/Meting.min.js"></script>
+    <link rel="stylesheet" href="https://fastly.jsdelivr.net/gh/AienH/blog_plugin@master/APlayer/dist/APlayer.min.css">     
+    <link rel="stylesheet" type="text/css" href="https://fastly.jsdelivr.net/gh/AienH/blog_plugin/live2d/assets/waifu.css"/>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">ienAの博客</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8debootstrap%E6%9E%84%E5%BB%BA%E5%88%B6%E4%BD%9Caarch64-arm64-Debian-rootfs%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F"><span class="nav-number">1.</span> <span class="nav-text">使用debootstrap构建制作aarch64&#x2F;arm64 Debian rootfs文件系统</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E5%AE%BF%E4%B8%BB%E6%9C%BA%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85"><span class="nav-number">1.1.</span> <span class="nav-text">1.宿主机软件安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E4%BD%BF%E7%94%A8debootstrap%E5%B7%A5%E5%85%B7%E4%B8%8B%E8%BD%BDdebian%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F"><span class="nav-number">1.2.</span> <span class="nav-text">2.使用debootstrap工具下载debian文件系统</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E5%A4%8D%E5%88%B6qemu-arm-static%E5%88%B0debian%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F-usr-bin-%E7%9B%AE%E5%BD%95"><span class="nav-number">1.3.</span> <span class="nav-text">3.复制qemu-arm-static到debian文件系统&#x2F;usr&#x2F;bin&#x2F;目录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-%E6%89%A7%E8%A1%8C%E7%AC%AC%E4%BA%8C%E9%98%B6%E6%AE%B5%E7%9A%84%E4%B8%8B%E8%BD%BD"><span class="nav-number">1.4.</span> <span class="nav-text">4.执行第二阶段的下载</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-%E6%8D%A2%E6%BA%90"><span class="nav-number">1.5.</span> <span class="nav-text">5.换源</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-%E9%85%8D%E7%BD%AE%E7%BD%91%E7%BB%9C%E4%BF%A1%E6%81%AF"><span class="nav-number">1.6.</span> <span class="nav-text">6.配置网络信息</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-%E9%85%8D%E7%BD%AE%E7%B3%BB%E7%BB%9F%E4%BF%A1%E6%81%AF"><span class="nav-number">1.7.</span> <span class="nav-text">7.配置系统信息</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-%E6%8C%82%E8%BD%BD%E6%9C%AC%E5%9C%B0%E8%AE%BE%E5%A4%87%E6%96%87%E4%BB%B6%E5%88%B0rootfs"><span class="nav-number">1.8.</span> <span class="nav-text">8.挂载本地设备文件到rootfs</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9-%E7%B3%BB%E7%BB%9F%E7%A3%81%E7%9B%98%E6%8C%82%E8%BD%BD%E9%85%8D%E7%BD%AE"><span class="nav-number">1.9.</span> <span class="nav-text">9.系统磁盘挂载配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#10-%E8%BF%9B%E5%85%A5chroot-rootfs-%E5%86%85%E9%85%8D%E7%BD%AE"><span class="nav-number">1.10.</span> <span class="nav-text">10.进入chroot rootfs 内配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#11-%E6%9C%80%E5%90%8E%E7%9A%84%E5%87%86%E5%A4%87"><span class="nav-number">1.11.</span> <span class="nav-text">11.最后的准备</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#12-%E6%89%93%E5%8C%85rootfs"><span class="nav-number">1.12.</span> <span class="nav-text">12.打包rootfs</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="ienA"
+      src="/images/20230401000222.jpg">
+  <p class="site-author-name" itemprop="name">ienA</p>
+  <div class="site-description" itemprop="description">致力于分享自己学习过程笔记的萌新博主૮(˶ᵔ ᵕ ᵔ˶)ა</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">20</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">19</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="/GG" title="GitHub → GG" rel="noopener me"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/%E4%B8%8D%E7%BB%99%E4%BD%A0%EF%BC%81%EF%BC%81%EF%BC%81" title="E-Mail → 不给你！！！" rel="noopener me"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+    <div class="sidebar-inner sidebar-blogroll">
+      <div class="links-of-blogroll animated">
+        <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
+          链接
+        </div>
+        <ul class="links-of-blogroll-list">
+            <li class="links-of-blogroll-item">
+              <a href="https://julintongxue.github.io/" title="https:&#x2F;&#x2F;julintongxue.github.io" rel="noopener" target="_blank">orangeの博客</a>
+            </li>
+            <li class="links-of-blogroll-item">
+              <a href="https://luiyang08.github.io/" title="https:&#x2F;&#x2F;luiyang08.github.io" rel="noopener" target="_blank">LuiYang</a>
+            </li>
+        </ul>
+      </div>
+    </div>
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/04/12/%E5%88%B6%E4%BD%9Cdebian%E7%9A%84rootfs/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/20230401000222.jpg">
+      <meta itemprop="name" content="ienA">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ienAの博客">
+      <meta itemprop="description" content="致力于分享自己学习过程笔记的萌新博主૮(˶ᵔ ᵕ ᵔ˶)ა">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="制作debian的rootfs | ienAの博客">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          制作debian的rootfs
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-04-12 20:25:53" itemprop="dateCreated datePublished" datetime="2023-04-12T20:25:53+08:00">2023-04-12</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2023-11-17 02:31:13" itemprop="dateModified" datetime="2023-11-17T02:31:13+08:00">2023-11-17</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/linux/" itemprop="url" rel="index"><span itemprop="name">linux</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>3.8k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>3 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h2 id="使用debootstrap构建制作aarch64-arm64-Debian-rootfs文件系统"><a href="#使用debootstrap构建制作aarch64-arm64-Debian-rootfs文件系统" class="headerlink" title="使用debootstrap构建制作aarch64/arm64 Debian rootfs文件系统"></a>使用debootstrap构建制作aarch64/arm64 Debian rootfs文件系统</h2><h3 id="1-宿主机软件安装"><a href="#1-宿主机软件安装" class="headerlink" title="1.宿主机软件安装"></a>1.宿主机软件安装</h3><p><strong>PC端宿主机使用的系统为Ubuntu22.04 amd64，在制作debian10系统之前，需要安装制作系统所需要的一些工具软件。</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">root@ubuntu:~<span class="comment"># apt-get install apt-transport-https qemu qemu-user-static qemu-system-arm binfmt-support debootstrap</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<ul>
+<li><p>qemu-system-arm 用于模拟arm架构的设备，在此平台上进行debian系统的运行演示。</p>
+</li>
+<li><p>debootstrap 构建debian基本文件子系统的工具。</p>
+</li>
+<li><p>qemu-user-static 在PC端非arm架构的ubuntu系统上，需要借助于qemu-arm-static工具来模拟arm环境安才可以安装arm架构下所需要的软件。</p>
+</li>
+</ul>
+</blockquote>
+<h3 id="2-使用debootstrap工具下载debian文件系统"><a href="#2-使用debootstrap工具下载debian文件系统" class="headerlink" title="2.使用debootstrap工具下载debian文件系统"></a>2.使用debootstrap工具下载debian文件系统</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">root@ubuntu:~<span class="comment"># debootstrap --arch=arm64 --variant=minbase --include=whiptail,ca-certificates,tzdata --foreign buster rootfs http://mirrors.ustc.edu.cn/debian/</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<ul>
+<li><p>–arch : 指定系统架构</p>
+</li>
+<li><p>–foreign ：指定要下载的系统代号（debian-10 为 buster）</p>
+</li>
+<li><p>rootfs : 指定存放下载内容的目录</p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="http://mirrors.ustc.edu.cn/debian">http://mirrors.ustc.edu.cn/debian</a> ：下载路径（此处使用的是国内中科大源）</p>
+</li>
+<li><p>–variant 说明</p>
+<ul>
+<li><p>minbase: 只包含必要的包和apt；</p>
+</li>
+<li><p>buildd: 包含编译工具包</p>
+</li>
+<li><p>fakechroot: 包含不用root权限的包</p>
+</li>
+<li><p>scratchbox: 包含scratchbox(交叉编译工具链)相关包</p>
+</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+<h3 id="3-复制qemu-arm-static到debian文件系统-usr-bin-目录"><a href="#3-复制qemu-arm-static到debian文件系统-usr-bin-目录" class="headerlink" title="3.复制qemu-arm-static到debian文件系统/usr/bin/目录"></a>3.复制qemu-arm-static到debian文件系统/usr/bin/目录</h3><blockquote>
+<p>因为使用的宿主机是ubuntu18.04 amd64，所以需要使用qemu-arm-static来模拟arm环境，下载安装所需要的软件。</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">root@ubuntu:~<span class="comment"># cp /usr/bin/qemu-arm-static rootfs/usr/bin/</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="4-执行第二阶段的下载"><a href="#4-执行第二阶段的下载" class="headerlink" title="4.执行第二阶段的下载"></a>4.执行第二阶段的下载</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">root@ubuntu:~<span class="comment"># DEBIAN_FRONTEND=noninteractive DEBCONF_NONINTERACTIVE_SEEN=true LC_ALL=C LANG=zh_CN.UTF-8 chroot rootfs/ debootstrap/debootstrap --second-stage</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>设置环境变量，然后切换至文件系统存放目录，使用目录下的debootstrap/debootstrap命令，执行第二阶段的下载。等待几分钟后，命令执行完成，终端输出“I: Base system installed successfully.”即为系统下载完成。</p>
+</blockquote>
+<h3 id="5-换源"><a href="#5-换源" class="headerlink" title="5.换源"></a>5.换源</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">root@ubuntu:~<span class="comment"># sed -i &#x27;s#http://deb.debian.org#http://mirrors.ustc.edu.cn#g&#x27; rootfs/etc/apt/sources.list</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 原始源</span></span><br><span class="line"></span><br><span class="line">root@ubuntu:~<span class="comment"># sed -i &#x27;s#http://ports.ubuntu.com#http://mirrors.ustc.edu.cn#g&#x27; rootfs/etc/apt/sources.list</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="6-配置网络信息"><a href="#6-配置网络信息" class="headerlink" title="6.配置网络信息"></a>6.配置网络信息</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">root@ubuntu:~<span class="comment"># echo &#x27;nameserver 192.168.2.1&#x27; &gt; rootfs/etc/resolv.conf</span></span><br><span class="line"></span><br><span class="line">root@ubuntu:~<span class="comment"># mkdir rootfs/etc/netplan</span></span><br><span class="line"></span><br><span class="line">root@ubuntu:~<span class="comment"># cat &gt; rootfs/etc/netplan/50-cloud-init.yaml &lt;&lt;EOF</span></span><br><span class="line"></span><br><span class="line">network:</span><br><span class="line"></span><br><span class="line">    ethernets:</span><br><span class="line"></span><br><span class="line">        eth0:</span><br><span class="line"></span><br><span class="line">          dhcp4: no</span><br><span class="line"></span><br><span class="line">            addresses: [192.168.168.6/24]</span><br><span class="line"></span><br><span class="line">            gateway4: 192.168.168.1</span><br><span class="line"></span><br><span class="line">            nameservers:</span><br><span class="line"></span><br><span class="line">                addresses: [192.168.168.1]</span><br><span class="line"></span><br><span class="line">    version: 2</span><br><span class="line"></span><br><span class="line">EOF</span><br></pre></td></tr></table></figure>
+
+<p><strong>可选设置网络DHCP</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">cat &gt; /etc/netplan/50-cloud-init.yaml &lt;&lt;EOF</span><br><span class="line">network:</span><br><span class="line">    ethernets:</span><br><span class="line">        eth0:</span><br><span class="line">                dhcp4: yes</span><br><span class="line">    version: 2</span><br><span class="line">EOF</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="7-配置系统信息"><a href="#7-配置系统信息" class="headerlink" title="7.配置系统信息"></a>7.配置系统信息</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">root@ubuntu:~<span class="comment"># echo &#x27;Debian10&#x27; &gt; rootfs/etc/hostname</span></span><br><span class="line">root@ubuntu:~<span class="comment"># echo &quot;127.0.0.1 localhost&quot; &gt; rootfs/etc/hosts</span></span><br><span class="line">root@ubuntu:~<span class="comment"># echo &quot;127.0.0.1 Debian10&quot; &gt;&gt; rootfs/etc/hosts</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="8-挂载本地设备文件到rootfs"><a href="#8-挂载本地设备文件到rootfs" class="headerlink" title="8.挂载本地设备文件到rootfs"></a>8.挂载本地设备文件到rootfs</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">root@ubuntu:~<span class="comment"># mount -t proc /proc  rootfs/proc</span></span><br><span class="line">root@ubuntu:~<span class="comment"># mount -t sysfs /sys  rootfs/sys</span></span><br><span class="line">root@ubuntu:~<span class="comment"># mount -o bind /dev  rootfs/dev</span></span><br><span class="line">root@ubuntu:~<span class="comment"># mount -o bind /dev/pts  rootfs/dev/pts</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="9-系统磁盘挂载配置"><a href="#9-系统磁盘挂载配置" class="headerlink" title="9.系统磁盘挂载配置"></a>9.系统磁盘挂载配置</h3><blockquote>
+<p>系统开机时会主动读取/etc/fstab这个文件中的内容，根据文件里面的配置挂载磁盘</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">root@ubuntu:~<span class="comment"># vim rootfs/etc/fstab</span></span><br><span class="line"><span class="comment">#添加以下内容</span></span><br><span class="line"><span class="comment"># UNCONFIGURED FSTAB FOR BASE SYSTEM</span></span><br><span class="line">proc  /proc proc defaults 0 0</span><br><span class="line">sysfs /sys sysfs defaults 0 0</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h3 id="10-进入chroot-rootfs-内配置"><a href="#10-进入chroot-rootfs-内配置" class="headerlink" title="10.进入chroot rootfs 内配置"></a>10.进入chroot rootfs 内配置</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">root@ubuntu:~<span class="comment"># chroot rootfs</span></span><br><span class="line"></span><br><span class="line">root@ubuntu:/<span class="comment"># cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime</span></span><br><span class="line"></span><br><span class="line">root@ubuntu:/<span class="comment"># apt update &amp;&amp; apt upgrade -y</span></span><br><span class="line"></span><br><span class="line">root@ubuntu:/<span class="comment"># apt install rsyslog udev dbus kmod openssh-server openssh-client netplan.io man vim wget net-tools sysstat tmux less wireless-regdb wireless-tools ethtool crda dosfstools parted sudo git iputils-ping systemd ifupdown iputils-ping htop wpasupplicant -y</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<p>需要工具链的可以执行以下命令</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">root@ubuntu:/<span class="comment"># apt install gcc g++ -y #(或者选择buildd的包)</span></span><br><span class="line">root@ubuntu:/<span class="comment"># echo &#x27;PermitRootLogin yes&#x27; &gt;&gt; /etc/ssh/sshd_config</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p>设置swap分区</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">root@ubuntu:/<span class="comment"># dd if=/dev/zero of=/swapfile bs=1M count=16384 status=progress #创建16G的交换空间 大小根据需要自定</span></span><br><span class="line"></span><br><span class="line">root@ubuntu:/<span class="comment"># chmod 600 /swapfile #设置正确的权限</span></span><br><span class="line"></span><br><span class="line">root@ubuntu:/<span class="comment"># mkswap /swapfile #格式化swap文件</span></span><br><span class="line"></span><br><span class="line">root@ubuntu:/<span class="comment"># swapon /swapfile #启用swap文件</span></span><br><span class="line"></span><br><span class="line">root@ubuntu:/<span class="comment"># echo &#x27;/swapfile none swap defaults 0 0&#x27; &gt;&gt; /etc/fstab #向/etc/fstab 中追加该内容</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>如需要关闭swap和swap文件，则可以输入以下命令</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo swapoff /swapfile</span><br><span class="line">sudo <span class="built_in">rm</span> /swapfile</span><br><span class="line">sudo sed -i <span class="string">&#x27;/\/swapfile none swap defaults 0 0/d&#x27;</span> /etc/fstab</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="11-最后的准备"><a href="#11-最后的准备" class="headerlink" title="11.最后的准备"></a>11.最后的准备</h3><p>如果需要添加用户，使用</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#创建用户debian</span></span><br><span class="line">root@ubuntu:/<span class="comment"># useradd -m debian -g sudo -s /bin/bash -d /home/debian</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p>设置密码，取消挂载，退出chroot</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">root@ubuntu:/<span class="comment"># passwd root</span></span><br><span class="line">root@ubuntu:/<span class="comment"># umount /dev/pts/ /dev/ /proc/ /sys</span></span><br><span class="line">root@ubuntu:/<span class="comment"># exit</span></span><br><span class="line"><span class="comment">#退出后会变回进容器之前的用户</span></span><br><span class="line">root@ubuntu:~<span class="comment">#</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="12-打包rootfs"><a href="#12-打包rootfs" class="headerlink" title="12.打包rootfs"></a>12.打包rootfs</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">root@ubuntu:~<span class="comment"># cd rootfs</span></span><br><span class="line">root@ubuntu:~<span class="comment"># tar -czvf debian_buster_arm64.tgz ./*</span></span><br></pre></td></tr></table></figure>
+
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer"><div class="post-widgets">
+      <div id="needsharebutton-postbottom">
+        <span class="btn">
+          <i class="fa fa-share-alt" aria-hidden="true"></i>
+        </span>
+      </div>
+    </div>
+          <div class="post-tags">
+              <a href="/tags/chroot/" rel="tag"><i class="fa fa-tag"></i> chroot</a>
+              <a href="/tags/arm64/" rel="tag"><i class="fa fa-tag"></i> arm64</a>
+              <a href="/tags/linux-Deploy/" rel="tag"><i class="fa fa-tag"></i> linux Deploy</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2023/04/10/%E5%AE%89%E8%A3%85%E5%92%8C%E5%88%87%E6%8D%A2%E5%A4%9A%E7%89%88%E6%9C%ACjava%20(windows%E7%AF%87)/" rel="prev" title="安装和切换多版本java (windows篇)">
+                  <i class="fa fa-angle-left"></i> 安装和切换多版本java (windows篇)
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2023/04/13/Android%E5%88%A9%E7%94%A8%E5%AE%B9%E5%99%A8%E9%83%A8%E7%BD%B2linux/" rel="next" title="Android利用容器部署linux">
+                  Android利用容器部署linux <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2023</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">ienA</span>
+  </div>
+
+<!--
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+-->
+    </div>
+  </footer>
+
+
+
+  
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script><script src="/js/pjax.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+
+
+  
+
+
+
+
+<div id="needsharebutton-float">
+      <span class="btn">
+        <i class="fa fa-share-alt" aria-hidden="true"></i>
+      </span>
+    </div>
+  <script src="//cdn.jsdelivr.net/gh/theme-next/theme-next-needmoreshare2@1/needsharebutton.min.js"></script>
+  <script>
+      pbOptions = {};
+        pbOptions.iconStyle = "default";
+        pbOptions.boxForm = "horizontal";
+        pbOptions.position = "bottomCenter";
+        pbOptions.networks = "Wechat,QQZone,Weibo,Douban,Twitter,Facebook";
+      new needShareButton('#needsharebutton-postbottom', pbOptions);
+      flOptions = {};
+        flOptions.iconStyle = "default";
+        flOptions.boxForm = "horizontal";
+        flOptions.position = "middleRight";
+        flOptions.networks = "Wechat,QQZone,Weibo,Douban,Twitter,Facebook";
+      new needShareButton('#needsharebutton-float', flOptions);
+  </script>
+
+    <meting-js
+    server="netease" 
+    type="playlist"
+    id="8269382559"
+    autoplay="true"
+    volume="0.7"
+    fixed="true" 
+    order="list"
+    preload="metadata"
+    lrc-type="0">
+    </meting-js>
+    
+
+    <div class="waifu">
+        <div class="waifu-tips"></div>
+        <canvas id="live2d" class="live2d"></canvas>
+        <div class="waifu-tool">
+            <span class="fui-home"></span>
+            <span class="fui-chat"></span>
+            <span class="fui-eye"></span>
+            <span class="fui-user"></span>
+            <span class="fui-photo"></span>
+            <span class="fui-info-circle"></span>
+            <span class="fui-cross"></span>
+        </div>    
+
+    <script src="https://fastly.jsdelivr.net/gh/AienH/blog_plugin/live2d/assets/waifu-tips.js"></script>
+    <script src="https://fastly.jsdelivr.net/gh/AienH/blog_plugin/live2d/assets/live2d.js"></script>
+
+    <script type="text/javascript">
+        live2d_settings['modelId'] = 1;
+        live2d_settings['modelTexturesId'] = 87;
+        initModel("https://fastly.jsdelivr.net/gh/AienH/blog_plugin/live2d/assets/waifu-tips.json")
+    </script>
+    <script src="https://fastly.jsdelivr.net/gh/AienH/blog_plugin/live2d/assets/autoload.js"></script>
+
+</body>
+</html>

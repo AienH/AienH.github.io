@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 5.4.2">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha256-CTSx/A06dm1B063156EVh15m6Y67pAjZZaQc89LLSrU=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.18.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"mac"},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="简介zerotier one是众多内网穿透工具平衡性最好的。方便速度快部署简单的比他贵的多，速度比他快比他便宜的部署麻烦，比他便宜部署容易的使用体验又不好。 不过zerotier one的虚拟网络是由官方控制器控制的，虚拟内网被别人控制总感觉不会不舒服。好在zerotier是开源的，因此zerotier有脱离官方控制器的第三方控制器 ztncui是zerotier one众多开源第三方控制器中的一">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ztncui私有化zerotier来创建moon">
+<meta property="og:url" content="http://example.com/2023/05/04/ztncui%E7%A7%81%E6%9C%89%E5%8C%96zerotier%E6%9D%A5%E5%88%9B%E5%BB%BAmoon/index.html">
+<meta property="og:site_name" content="ienAの博客">
+<meta property="og:description" content="简介zerotier one是众多内网穿透工具平衡性最好的。方便速度快部署简单的比他贵的多，速度比他快比他便宜的部署麻烦，比他便宜部署容易的使用体验又不好。 不过zerotier one的虚拟网络是由官方控制器控制的，虚拟内网被别人控制总感觉不会不舒服。好在zerotier是开源的，因此zerotier有脱离官方控制器的第三方控制器 ztncui是zerotier one众多开源第三方控制器中的一">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/2023/05/04/images/ztncui%E7%A7%81%E6%9C%89%E5%8C%96zerotier%E6%9D%A5%E5%88%9B%E5%BB%BAmoon/image-20230505000328395.png">
+<meta property="og:image" content="http://example.com/2023/05/04/images/ztncui%E7%A7%81%E6%9C%89%E5%8C%96zerotier%E6%9D%A5%E5%88%9B%E5%BB%BAmoon/image-20230505000753998.png">
+<meta property="og:image" content="http://example.com/2023/05/04/images/ztncui%E7%A7%81%E6%9C%89%E5%8C%96zerotier%E6%9D%A5%E5%88%9B%E5%BB%BAmoon/image-20230505011824909.png">
+<meta property="og:image" content="http://example.com/2023/05/04/images/ztncui%E7%A7%81%E6%9C%89%E5%8C%96zerotier%E6%9D%A5%E5%88%9B%E5%BB%BAmoon/image-20230505012139481.png">
+<meta property="og:image" content="http://example.com/2023/05/04/images/ztncui%E7%A7%81%E6%9C%89%E5%8C%96zerotier%E6%9D%A5%E5%88%9B%E5%BB%BAmoon/image-20230505012503870.png">
+<meta property="og:image" content="http://example.com/2023/05/04/images/ztncui%E7%A7%81%E6%9C%89%E5%8C%96zerotier%E6%9D%A5%E5%88%9B%E5%BB%BAmoon/image-20230505015057633.png">
+<meta property="og:image" content="http://example.com/2023/05/04/images/ztncui%E7%A7%81%E6%9C%89%E5%8C%96zerotier%E6%9D%A5%E5%88%9B%E5%BB%BAmoon/image-20230505015941496.png">
+<meta property="og:image" content="http://example.com/2023/05/04/images/ztncui%E7%A7%81%E6%9C%89%E5%8C%96zerotier%E6%9D%A5%E5%88%9B%E5%BB%BAmoon/image-20230520200642469.png">
+<meta property="og:image" content="http://example.com/2023/05/04/images/ztncui%E7%A7%81%E6%9C%89%E5%8C%96zerotier%E6%9D%A5%E5%88%9B%E5%BB%BAmoon/image-20230520204946512.png">
+<meta property="article:published_time" content="2023-05-04T15:33:25.000Z">
+<meta property="article:modified_time" content="2023-11-16T18:28:39.046Z">
+<meta property="article:author" content="ienA">
+<meta property="article:tag" content="zerotier">
+<meta property="article:tag" content="moon">
+<meta property="article:tag" content="内网穿透">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2023/05/04/images/ztncui%E7%A7%81%E6%9C%89%E5%8C%96zerotier%E6%9D%A5%E5%88%9B%E5%BB%BAmoon/image-20230505000328395.png">
+
+
+<link rel="canonical" href="http://example.com/2023/05/04/ztncui%E7%A7%81%E6%9C%89%E5%8C%96zerotier%E6%9D%A5%E5%88%9B%E5%BB%BAmoon/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2023/05/04/ztncui%E7%A7%81%E6%9C%89%E5%8C%96zerotier%E6%9D%A5%E5%88%9B%E5%BB%BAmoon/","path":"2023/05/04/ztncui私有化zerotier来创建moon/","title":"ztncui私有化zerotier来创建moon"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>ztncui私有化zerotier来创建moon | ienAの博客</title>
+  
+
+
+
+
+
+
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/gh/theme-next/theme-next-needmoreshare2@1/needsharebutton.min.css"><style>
+#needsharebutton-postbottom {
+  cursor: pointer;
+  height: 26px;
+  margin-top: 10px;
+  position: relative;
+}
+#needsharebutton-postbottom .btn {
+  border: 1px solid $btn-default-border-color;
+  border-radius: 3px;
+  display: initial;
+  padding: 1px 4px;
+}
+</style><style>
+#needsharebutton-float {
+  bottom: 88px;
+  cursor: pointer;
+  left: -8px;
+  position: fixed;
+  z-index: 9999;
+}
+#needsharebutton-float .btn {
+  border: 1px solid $btn-default-border-color;
+  border-radius: 4px;
+  padding: 0 10px 0 14px;
+}
+</style>
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+    <script src="https://fastly.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://fastly.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css">
+    <script src=" https://cdn.jsdelivr.net/npm/jquery-ui@1.13.2/dist/jquery-ui.min.js "></script>
+    <script rel="preload" src="https://fastly.jsdelivr.net/gh/AienH/blog_plugin@master/APlayer/dist/APlayer.min.js"></script>
+    <script rel="preload" src="https://fastly.jsdelivr.net/gh/AienH/blog_plugin@master/MetingJS/dist/Meting.min.js"></script>
+    <link rel="stylesheet" href="https://fastly.jsdelivr.net/gh/AienH/blog_plugin@master/APlayer/dist/APlayer.min.css">     
+    <link rel="stylesheet" type="text/css" href="https://fastly.jsdelivr.net/gh/AienH/blog_plugin/live2d/assets/waifu.css"/>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">ienAの博客</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%80%E4%BB%8B"><span class="nav-number">1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BC%98%E7%82%B9"><span class="nav-number">2.</span> <span class="nav-text">优点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C"><span class="nav-number">3.</span> <span class="nav-text">准备工作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="nav-number">4.</span> <span class="nav-text">云服务器</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE%E5%AE%89%E5%85%A8%E7%BB%84%EF%BC%88%E6%97%A0SSL%E8%AF%81%E4%B9%A6%EF%BC%89"><span class="nav-number">4.1.</span> <span class="nav-text">配置安全组（无SSL证书）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE%E5%AE%89%E5%85%A8%E7%BB%84%EF%BC%88%E6%9C%89SSL%E8%AF%81%E4%B9%A6%EF%BC%89"><span class="nav-number">4.2.</span> <span class="nav-text">配置安全组（有SSL证书）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Server%E7%AB%AF"><span class="nav-number">5.</span> <span class="nav-text">Server端</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Zerotier%E5%AE%89%E8%A3%85"><span class="nav-number">5.1.</span> <span class="nav-text">Zerotier安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ztncui%E5%AE%89%E8%A3%85"><span class="nav-number">5.2.</span> <span class="nav-text">ztncui安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%85%8D%E7%BD%AEmoon%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="nav-number">5.3.</span> <span class="nav-text">配置moon服务器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%85%8D%E7%BD%AEztncui"><span class="nav-number">5.4.</span> <span class="nav-text">配置ztncui</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%87%E4%BB%BDmoon%E6%96%87%E4%BB%B6"><span class="nav-number">5.5.</span> <span class="nav-text">备份moon文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ztncui%E7%AE%A1%E7%90%86%E7%95%8C%E9%9D%A2%E9%85%8D%E7%BD%AE"><span class="nav-number">5.6.</span> <span class="nav-text">ztncui管理界面配置</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Client%E7%AB%AF"><span class="nav-number">6.</span> <span class="nav-text">Client端</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Linux%E7%9A%84client%E7%AB%AF"><span class="nav-number">6.1.</span> <span class="nav-text">Linux的client端</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%90%8C%E6%A0%B7%E5%AE%89%E8%A3%85Zerotier"><span class="nav-number">6.1.1.</span> <span class="nav-text">同样安装Zerotier</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B0%86%E6%89%93%E5%8C%85%E5%A5%BD%E7%9A%84moon%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%94%BE%E8%BF%9BZerotier%E7%9B%AE%E5%BD%95%E4%B8%8B"><span class="nav-number">6.1.2.</span> <span class="nav-text">将打包好的moon服务器放进Zerotier目录下</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE%E5%AE%8Cmoon%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%90%8E%E9%87%8D%E5%90%AFZerotier"><span class="nav-number">6.1.3.</span> <span class="nav-text">配置完moon服务器后重启Zerotier</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8A%A0%E5%85%A5%E7%BD%91%E7%BB%9C"><span class="nav-number">6.1.4.</span> <span class="nav-text">加入网络</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9C%A8ztncui%E7%AE%A1%E7%90%86%E7%95%8C%E9%9D%A2%E5%85%81%E8%AE%B8%E5%8A%A0%E5%85%A5"><span class="nav-number">6.1.5.</span> <span class="nav-text">在ztncui管理界面允许加入</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%97%E5%87%BA%E7%BD%91%E7%BB%9C"><span class="nav-number">6.1.6.</span> <span class="nav-text">列出网络</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9F%A5%E7%9C%8Bmoon%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="nav-number">6.1.7.</span> <span class="nav-text">查看moon服务器</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Android%E7%9A%84client%E7%AB%AF"><span class="nav-number">6.2.</span> <span class="nav-text">Android的client端</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Windows%E7%9A%84client%E7%AB%AF"><span class="nav-number">6.3.</span> <span class="nav-text">Windows的client端</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8A%A0%E5%85%A5%E7%BD%91%E7%BB%9C-1"><span class="nav-number">6.3.1.</span> <span class="nav-text">加入网络</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%97%E5%87%BA%E7%BD%91%E7%BB%9C-1"><span class="nav-number">6.3.2.</span> <span class="nav-text">列出网络</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%87%8D%E5%90%AF-ZeroTier"><span class="nav-number">6.4.</span> <span class="nav-text">重启 ZeroTier</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9F%A5%E7%9C%8Bmoon%E6%9C%8D%E5%8A%A1%E5%99%A8-1"><span class="nav-number">6.4.1.</span> <span class="nav-text">查看moon服务器</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E5%85%A8%E9%97%AE%E9%A2%98"><span class="nav-number">7.</span> <span class="nav-text">安全问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8A%A0%E5%85%A5%E7%BD%91%E7%BB%9C-2"><span class="nav-number">7.1.</span> <span class="nav-text">加入网络</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8E%88%E6%9D%83%E5%8A%A0%E5%85%A5%E7%BD%91%E7%BB%9C"><span class="nav-number">7.2.</span> <span class="nav-text">授权加入网络</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="ienA"
+      src="/images/20230401000222.jpg">
+  <p class="site-author-name" itemprop="name">ienA</p>
+  <div class="site-description" itemprop="description">致力于分享自己学习过程笔记的萌新博主૮(˶ᵔ ᵕ ᵔ˶)ა</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">20</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">19</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="/GG" title="GitHub → GG" rel="noopener me"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/%E4%B8%8D%E7%BB%99%E4%BD%A0%EF%BC%81%EF%BC%81%EF%BC%81" title="E-Mail → 不给你！！！" rel="noopener me"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+    <div class="sidebar-inner sidebar-blogroll">
+      <div class="links-of-blogroll animated">
+        <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
+          链接
+        </div>
+        <ul class="links-of-blogroll-list">
+            <li class="links-of-blogroll-item">
+              <a href="https://julintongxue.github.io/" title="https:&#x2F;&#x2F;julintongxue.github.io" rel="noopener" target="_blank">orangeの博客</a>
+            </li>
+            <li class="links-of-blogroll-item">
+              <a href="https://luiyang08.github.io/" title="https:&#x2F;&#x2F;luiyang08.github.io" rel="noopener" target="_blank">LuiYang</a>
+            </li>
+        </ul>
+      </div>
+    </div>
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/05/04/ztncui%E7%A7%81%E6%9C%89%E5%8C%96zerotier%E6%9D%A5%E5%88%9B%E5%BB%BAmoon/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/20230401000222.jpg">
+      <meta itemprop="name" content="ienA">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ienAの博客">
+      <meta itemprop="description" content="致力于分享自己学习过程笔记的萌新博主૮(˶ᵔ ᵕ ᵔ˶)ა">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="ztncui私有化zerotier来创建moon | ienAの博客">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          ztncui私有化zerotier来创建moon
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-05-04 23:33:25" itemprop="dateCreated datePublished" datetime="2023-05-04T23:33:25+08:00">2023-05-04</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2023-11-17 02:28:39" itemprop="dateModified" datetime="2023-11-17T02:28:39+08:00">2023-11-17</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/orangepi/" itemprop="url" rel="index"><span itemprop="name">orangepi</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>6.4k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>6 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p><strong>zerotier one是众多内网穿透工具平衡性最好的。方便速度快部署简单的比他贵的多，速度比他快比他便宜的部署麻烦，比他便宜部署容易的使用体验又不好。</strong></p>
+<p><strong>不过zerotier one的虚拟网络是由官方控制器控制的，虚拟内网被别人控制总感觉不会不舒服。好在zerotier是开源的，因此zerotier有脱离官方控制器的第三方控制器</strong></p>
+<p><strong>ztncui是zerotier one众多开源第三方控制器中的一个，之所以选它是因为它是唯一一个拥有图形界面的。通过配置客户端的planet就可以跳过官方节点，使用ztncui完成各个节点之间的通讯和打洞。</strong></p>
+<h2 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h2><ul>
+<li><strong>官方的节点通道(Planet服务器)是在国外，一般延迟都在四五百ms左右，使用ztncui搭建的zerotier one不走官方节点的通道，走的是用自己公网服务器搭建的节点通道，延迟较低</strong></li>
+<li><strong>官方编译的Zerotier搭建的moon服务器不能在Android设备上使用，而私有化搭建的moon服务器则能在Android端(需要配合Zerotier FIX来)使用</strong></li>
+<li><strong>相比于用FRP部署的内网穿透，zerotier使用简单，且不像FRP让服务器在公网被来回扫，安全性较高。</strong></li>
+</ul>
+<blockquote>
+<p><strong>FRP部署内网穿透—-&gt;可看这篇文章<a target="_blank" rel="noopener" href="https://aienh.github.io/post/%E8%87%AA%E5%BB%BA%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F%E6%9C%8D%E5%8A%A1%E5%99%A8">《自建内网穿透服务器》</a></strong></p>
+</blockquote>
+<h2 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h2><p><strong>Zerotier不支持以域名方式和控制器通讯，所以你需要准备一个具有固定公网ip的云服务器，最好同时具备固定ipv6。</strong></p>
+<p><strong>对于android设备，需要使用kaaass大神的Zerotier FIX才可以使用自定义控制器和自定义moon服务器，IOS设备无解。</strong></p>
+<p><strong><a target="_blank" rel="noopener" href="https://github.com/kaaass/ZerotierFix/releases">Zerotier FIX项目地址</a></strong></p>
+<h2 id="云服务器"><a href="#云服务器" class="headerlink" title="云服务器"></a>云服务器</h2><p><strong>我这里用的阿里云领的7个月ECS，系统是debian11，，带宽是1Mbps（到后面用搭建的moon，Android端用数据延迟能到一百左右，理论上带宽比我这个大的延迟会更低），没有申请SSL证书</strong></p>
+<p><strong>Debian默认ssh不能root连接，首先在你买服务器的官网的控制台用他们自带的远程连接先连进去，编辑ssh配置文件vim /etc/ssh/sshd_config 添加一个参数：PermitRootLogin yes，这样ssh就能用root连接了</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/ssh/sshd_config</span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;PermitRootLogin yes &quot;</span> &gt;&gt; /etc/ssh/sshd_config</span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;PasswordAuthentication yes &quot;</span> &gt;&gt; /etc/ssh/sshd_config</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="配置安全组（无SSL证书）"><a href="#配置安全组（无SSL证书）" class="headerlink" title="配置安全组（无SSL证书）"></a>配置安全组（无SSL证书）</h3><p><img src="../images/ztncui%E7%A7%81%E6%9C%89%E5%8C%96zerotier%E6%9D%A5%E5%88%9B%E5%BB%BAmoon/image-20230505000328395.png" alt="image-20230505000328395"></p>
+<h3 id="配置安全组（有SSL证书）"><a href="#配置安全组（有SSL证书）" class="headerlink" title="配置安全组（有SSL证书）"></a>配置安全组（有SSL证书）</h3><p><img src="../images/ztncui%E7%A7%81%E6%9C%89%E5%8C%96zerotier%E6%9D%A5%E5%88%9B%E5%BB%BAmoon/image-20230505000753998.png" alt="image-20230505000753998"></p>
+<blockquote>
+<p>3000端口和3443端口为ztncui Web控制面板使用的端口</p>
+<p>3000是http的，3443是https的</p>
+<p>TCP:9993端口为Zerotier节点与控制器通讯的端口</p>
+<p>UDP:9993端口为MOON节点与控制器通讯的中继端口</p>
+<p>端口可自行选择，根据自己选择的端口配置安全组</p>
+</blockquote>
+<h2 id="Server端"><a href="#Server端" class="headerlink" title="Server端"></a>Server端</h2><h3 id="Zerotier安装"><a href="#Zerotier安装" class="headerlink" title="Zerotier安装"></a>Zerotier安装</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#ztncui依赖于zerotier，所以需要先安装zerotier</span></span><br><span class="line">root@Debian:~<span class="comment"># curl -s https://install.zerotier.com | sudo bash</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="ztncui安装"><a href="#ztncui安装" class="headerlink" title="ztncui安装"></a>ztncui安装</h3><p><strong>centos redhat系列下载， root权限执行</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">root@centos:~<span class="comment"># wget https://gitee.com/opopop880/zerotier_planet/raw/master/zertotier_planet.sh &amp;&amp; chmod +x zertotier_planet.sh &amp;&amp; ./zertotier_planet.sh</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>debain ubuntu 系列下载 root权限执行</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">root@Debian:~<span class="comment"># wget https://gitee.com/opopop880/zerotier_planet/raw/master/zerotier_planet_debain.sh &amp;&amp; chmod +x zerotier_planet_debain.sh &amp;&amp; ./zerotier_planet_debain.sh</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>我执行完 ./zerotier_planet_debain.sh这个脚本后，编译安装时会失败，缺少依赖库”fatal error: nlohmann/json.hpp : No such file or directory”<br> #include “nlohmann/json.hpp</p>
+<p>安装依赖</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">root@Debian:~<span class="comment"># apt-get install nlohmann-json3-dev</span></span><br></pre></td></tr></table></figure>
+
+<p>在执行一次脚本</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">root@Debian:~<span class="comment"># ./zerotier_planet_debain.sh</span></span><br></pre></td></tr></table></figure>
+</blockquote>
+<h3 id="配置moon服务器"><a href="#配置moon服务器" class="headerlink" title="配置moon服务器"></a>配置moon服务器</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#进入zerotier one文件夹</span></span><br><span class="line">root@Debian:~<span class="comment"># cd /var/lib/zerotier-one</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#生成moon.json文件</span></span><br><span class="line">root@Debian:/var/lib/zerotier-one<span class="comment"># zerotier-idtool initmoon identity.public &gt;&gt; moon.json</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#编辑moon.json文件</span></span><br><span class="line">root@Debian:/var/lib/zerotier-one<span class="comment"># vim moon.json</span></span><br><span class="line"><span class="comment">#修改里面的stableEndpoints参数,修改完后保存退出</span></span><br><span class="line"><span class="string">&quot;stableEndpoints&quot;</span>: [<span class="string">&quot;你的公网IP/9993&quot;</span> ]</span><br><span class="line"></span><br><span class="line"><span class="comment">#生成客户端用的moon配置文件</span></span><br><span class="line">root@Debian:/var/lib/zerotier-one<span class="comment"># zerotier-idtool genmoon moon.json</span></span><br><span class="line">wrote 00000016089ddab3.moon (signed world with timestamp 1683210080062)</span><br><span class="line"></span><br><span class="line"><span class="comment">#在/var/lib/zerotier-one目录下,手动新建一个moons.d文件夹，并把刚生成的moon配置文件放到该文件夹下</span></span><br><span class="line">root@Debian:/var/lib/zerotier-one<span class="comment"># mkdir moons.d &amp;&amp; mv 00000016089ddab3.moon moons.d/</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#刚刚是在/root的目录下安装的ztncui，把moon.json文件拷贝到/root目录下，这个文件在配置ztncui时有用</span></span><br><span class="line">root@Debian:/var/lib/zerotier-one<span class="comment"># cp moon.json /root</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="配置ztncui"><a href="#配置ztncui" class="headerlink" title="配置ztncui"></a>配置ztncui</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#查看ZT_TOKEN值并复制</span></span><br><span class="line">root@Debian:~<span class="comment"># cat /var/lib/zerotier-one/authtoken.secret</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#检查ztncui的配置文件,看到ZT_TOKEN=的值是否和上面的一样，不一样则替换成上面复制的值（一般都一样）</span></span><br><span class="line">root@Debian:~<span class="comment"># vim /opt/key-networks/ztncui/.env</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#下载mkmoonworld主程序（自己解决github代理）</span></span><br><span class="line">root@Debian:~<span class="comment"># wget https://github.com/kaaass/ZeroTierOne/releases/download/mkmoonworld-1.0/mkmoonworld-x86</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#赋予执行权限</span></span><br><span class="line">root@Debian:~<span class="comment"># ls</span></span><br><span class="line">root@Debian:~<span class="comment"># chmod 777 mkmoonworld-x86</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 生成planet文件（即world.bin文件）</span></span><br><span class="line">root@Debian:~<span class="comment"># ./mkmoonworld-x86 ./moon.json</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 若要设置多个planet节点，将其他节点的moon.json 写入到另外的文件，如 moon1.json moon2.json</span></span><br><span class="line">root@Debian:~<span class="comment"># ./mkmoonworld-x86 ./moon1.json ./moon2.json</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>！！！注意！！！，要配置Android端的Zerotier，需要用到world.bin文件，所以要先备份一份，一起把world.bin文件和000000XXXXX.moon打包文件发到桌面</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 令planet文件生效</span></span><br><span class="line">root@Debian:~<span class="comment"># mv world.bin planet &amp;&amp; systemctl restart zerotier-one</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>重启完zerotier-one服务moon服务器就已经生效了</strong></p>
+<h3 id="备份moon文件"><a href="#备份moon文件" class="headerlink" title="备份moon文件"></a>备份moon文件</h3><p><strong>将生成的000000XXXXX.moon文件打包，留着准备发给各个zerotier one客户端</strong></p>
+<blockquote>
+<p>这里我用windows上的xshell连的服务器，上传和下载文件可能比较麻烦，用finalshell和filezilla传文件方便（我有，但不习惯用，还是习惯用xshell）</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">root@Debian:~<span class="comment"># apt install lrzsz -y</span></span><br><span class="line"></span><br><span class="line">root@Debian:~<span class="comment"># cd /var/lib/zerotier-one</span></span><br><span class="line"></span><br><span class="line">root@Debian:/var/lib/zerotier-one<span class="comment"># tar -zcvf moons.d.tat.gz moons.d/</span></span><br><span class="line"></span><br><span class="line">root@Debian:/var/lib/zerotier-one<span class="comment"># sz  moons.d.tar.gz</span></span><br><span class="line"><span class="comment">#然后选择桌面（弹出来的框路径随便你选）</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="ztncui管理界面配置"><a href="#ztncui管理界面配置" class="headerlink" title="ztncui管理界面配置"></a>ztncui管理界面配置</h3><p><strong>访问http://你的公网IP:3000</strong></p>
+<p><strong>登录用户名：<code>admin</code></strong> </p>
+<p><strong>默认密码： <code>password</code></strong></p>
+<p><strong>添加网络</strong></p>
+<p><img src="../images/ztncui%E7%A7%81%E6%9C%89%E5%8C%96zerotier%E6%9D%A5%E5%88%9B%E5%BB%BAmoon/image-20230505011824909.png" alt="image-20230505011824909"></p>
+<p><strong>配置网络</strong></p>
+<p><img src="../images/ztncui%E7%A7%81%E6%9C%89%E5%8C%96zerotier%E6%9D%A5%E5%88%9B%E5%BB%BAmoon/image-20230505012139481.png" alt="image-20230505012139481"></p>
+<p><img src="../images/ztncui%E7%A7%81%E6%9C%89%E5%8C%96zerotier%E6%9D%A5%E5%88%9B%E5%BB%BAmoon/image-20230505012503870.png" alt="image-20230505012503870"></p>
+<h2 id="Client端"><a href="#Client端" class="headerlink" title="Client端"></a>Client端</h2><h3 id="Linux的client端"><a href="#Linux的client端" class="headerlink" title="Linux的client端"></a>Linux的client端</h3><h4 id="同样安装Zerotier"><a href="#同样安装Zerotier" class="headerlink" title="同样安装Zerotier"></a>同样安装Zerotier</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">root@orangepi5:~<span class="comment"># curl -s https://install.zerotier.com | sudo bash</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="将打包好的moon服务器放进Zerotier目录下"><a href="#将打包好的moon服务器放进Zerotier目录下" class="headerlink" title="将打包好的moon服务器放进Zerotier目录下"></a>将打包好的moon服务器放进Zerotier目录下</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">root@orangepi5:~<span class="comment"># cd /var/lib/zerotier-one</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#选择之前下载到桌面的moons.d.tat.gz</span></span><br><span class="line">root@orangepi5:/var/lib/zerotier-one<span class="comment"># rz</span></span><br><span class="line"></span><br><span class="line">root@orangepi5:/var/lib/zerotier-one<span class="comment"># tar -xf moons.d.tat.gz &amp;&amp; rm -rf moons.d.tat.gz</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="配置完moon服务器后重启Zerotier"><a href="#配置完moon服务器后重启Zerotier" class="headerlink" title="配置完moon服务器后重启Zerotier"></a>配置完moon服务器后重启Zerotier</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">root@orangepi5:~<span class="comment"># systemctl restart zerotier-one</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="加入网络"><a href="#加入网络" class="headerlink" title="加入网络"></a>加入网络</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#加入在ztncui上的网络</span></span><br><span class="line">root@orangepi5:~<span class="comment"># zerotier-cli join  #Network ID</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#离开网络的命令是</span></span><br><span class="line">zerotier-cli leave  <span class="comment">#Network ID</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="在ztncui管理界面允许加入"><a href="#在ztncui管理界面允许加入" class="headerlink" title="在ztncui管理界面允许加入"></a>在ztncui管理界面允许加入</h4><p><img src="../images/ztncui%E7%A7%81%E6%9C%89%E5%8C%96zerotier%E6%9D%A5%E5%88%9B%E5%BB%BAmoon/image-20230505015057633.png" alt="image-20230505015057633"></p>
+<h4 id="列出网络"><a href="#列出网络" class="headerlink" title="列出网络"></a>列出网络</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">root@orangepi5:~<span class="comment"># zerotier-cli listnetworks</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="查看moon服务器"><a href="#查看moon服务器" class="headerlink" title="查看moon服务器"></a>查看moon服务器</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">root@orangepi5:~<span class="comment"># zerotier-cli listpeers</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>列出的moon节点出现自己配置的公网IP则moon服务器已配置成功</strong></p>
+<h3 id="Android的client端"><a href="#Android的client端" class="headerlink" title="Android的client端"></a>Android的client端</h3><p><strong>先安装<a target="_blank" rel="noopener" href="https://github.com/kaaass/ZerotierFix/releases">Zerotier FIX</a>，然后打开Zerotier FIX，点+号先加入Network ID</strong></p>
+<p><strong>将服务器上的world.bin和000000XXXXX.moon文件下载到本地，将world.bin更名为palnet。然后上传到手机</strong></p>
+<p><strong>第一步，安装好Zerotier FIX，打开软件——右上角——设置——启动自定义planet——选择从文件导入——选择刚才的palnet文件。提示导入成功既切换planet成功。</strong></p>
+<p><strong>第二步，加入moon服务器，打开软件——右上角——入轨——右下角加号——从文件导入——选择刚才的moon文件。提示成功，会在入轨界面看到moon服务的id。</strong></p>
+<p><img src="../images/ztncui%E7%A7%81%E6%9C%89%E5%8C%96zerotier%E6%9D%A5%E5%88%9B%E5%BB%BAmoon/image-20230505015941496.png" alt="image-20230505015941496"></p>
+<p><strong>只有完成上面这两步，才能在ztncui管理的网络界面点刷新看到手机的ID，然后在ztncui上授权加入</strong></p>
+<h3 id="Windows的client端"><a href="#Windows的client端" class="headerlink" title="Windows的client端"></a>Windows的client端</h3><p><a target="_blank" rel="noopener" href="https://www.zerotier.com/download/"><strong>ZeroTier官网</strong></a>下载windows的ZeroTier One客户端</p>
+<blockquote>
+<p>下载的zerotier是msi文件，默认会安装到C盘，安装完后会自动运行，在任务栏里会看到zerotier的UI界面，可以把它关掉退出</p>
+</blockquote>
+<p>安装完后在我的电脑打开<code>C盘</code>，点击<code>查看</code>，把<code>隐藏的项目</code>打勾</p>
+<p><img src="../images/ztncui%E7%A7%81%E6%9C%89%E5%8C%96zerotier%E6%9D%A5%E5%88%9B%E5%BB%BAmoon/image-20230520200642469.png" alt="image-20230520200642469"></p>
+<p>打开路径<code>C:\ProgramData\ZeroTier\One</code>，直接把之前备份的<code>moons.d</code>整个目录复制一份进去(目录里面有个000000XXXXX.moon文件)</p>
+<p>在任务栏的搜索框输入<code>cmd</code>，会搜索到<code>命令提示符</code>，鼠标右键以管理员身份运行</p>
+<p>弹出的命令框输入下面的命令进入ZeroTier的目录</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">CD</span> C:\ProgramData\ZeroTier\One\</span><br></pre></td></tr></table></figure>
+
+<p>查看命令帮助</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">zerotier<span class="literal">-one_x64</span>.exe <span class="literal">-h</span></span><br></pre></td></tr></table></figure>
+
+<p>可以看到加了<code>-q</code>参数就可以跟linux端一样操作了</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">ZeroTier One version <span class="number">1.10</span>.<span class="number">6</span></span><br><span class="line">Copyright (c) <span class="number">2020</span> ZeroTier, Inc.</span><br><span class="line">Licensed under the ZeroTier BSL <span class="number">1.1</span> (see LICENSE.txt)</span><br><span class="line">Usage: zerotier<span class="literal">-one_x64</span>.exe [-<span class="type">switches</span>] [<span class="type">home</span> <span class="type">directory</span>]</span><br><span class="line"></span><br><span class="line">Available switches:</span><br><span class="line">  <span class="literal">-h</span>                - Display this help</span><br><span class="line">  <span class="literal">-v</span>                - Show version</span><br><span class="line">  <span class="literal">-U</span>                - Skip privilege check and <span class="keyword">do</span> not attempt to drop privileges</span><br><span class="line">  <span class="literal">-p</span>&lt;port&gt;          - Port <span class="keyword">for</span> UDP and TCP/HTTP (default: <span class="number">9993</span>, <span class="number">0</span> <span class="keyword">for</span> random)</span><br><span class="line">  <span class="literal">-C</span>                - Run from command line instead of as service (Windows)</span><br><span class="line">  <span class="literal">-I</span>                - Install Windows service (Windows)</span><br><span class="line">  <span class="literal">-R</span>                - Uninstall Windows service (Windows)</span><br><span class="line">  <span class="literal">-D</span>                - Remove all instances of Windows tap device (Windows)</span><br><span class="line">  <span class="literal">-i</span>                - Generate and manage identities (zerotier<span class="literal">-idtool</span>)</span><br><span class="line">  <span class="literal">-q</span>                - Query API (zerotier<span class="literal">-cli</span>)</span><br></pre></td></tr></table></figure>
+
+<h4 id="加入网络-1"><a href="#加入网络-1" class="headerlink" title="加入网络"></a>加入网络</h4><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#加入在ztncui上的网络</span></span><br><span class="line">zerotier<span class="literal">-one_x64</span>.exe <span class="literal">-q</span> join  <span class="comment">#Network ID</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="列出网络-1"><a href="#列出网络-1" class="headerlink" title="列出网络"></a>列出网络</h4><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">zerotier<span class="literal">-one_x64</span>.exe <span class="literal">-q</span> listnetworks</span><br></pre></td></tr></table></figure>
+
+<h3 id="重启-ZeroTier"><a href="#重启-ZeroTier" class="headerlink" title="重启 ZeroTier"></a>重启 ZeroTier</h3><p>按“WIN+R”键，打开<strong>运行</strong>窗口；2 输入”<strong>services.msc</strong>”，回车，运行的服务中找到ZeroTier one,选中点击右键，选择重新启动。</p>
+<h4 id="查看moon服务器-1"><a href="#查看moon服务器-1" class="headerlink" title="查看moon服务器"></a>查看moon服务器</h4><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">zerotier<span class="literal">-one_x64</span>.exe <span class="literal">-q</span> listpeers</span><br></pre></td></tr></table></figure>
+
+<p><strong>列出的moon节点出现自己配置的公网IP则moon服务器已配置成功</strong></p>
+<h2 id="安全问题"><a href="#安全问题" class="headerlink" title="安全问题"></a>安全问题</h2><p>进入ztncui控制面板需要通过访问公网服务器的3000端口来管理网络，所以要一直开着公网服务器的3000端口，很不安全，我们可以把节点控制器也加入到网络中，加入后就可以通过zerotier分配的IP来访问ztncui控制面板。</p>
+<p>加入方法和linux client端加入网络类似</p>
+<p>ssh连接到公网服务器</p>
+<h3 id="加入网络-2"><a href="#加入网络-2" class="headerlink" title="加入网络"></a>加入网络</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#加入在ztncui上创建网络的ID</span></span><br><span class="line">root@orangepi5:~<span class="comment"># zerotier-cli join  #Network ID</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="授权加入网络"><a href="#授权加入网络" class="headerlink" title="授权加入网络"></a>授权加入网络</h3><p><img src="../images/ztncui%E7%A7%81%E6%9C%89%E5%8C%96zerotier%E6%9D%A5%E5%88%9B%E5%BB%BAmoon/image-20230520204946512.png" alt="image-20230520204946512"></p>
+<p><strong>授权后点刷新，网络就会给控制器分配IP了</strong></p>
+<p><strong>这样配置完成后我们就可以在其它授权设备上访问<code>http://控制器IP:3000</code>来登录控制面板了，访问成功后就可以去公网服务器的安全组把放行的3000端口关掉了</strong></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer"><div class="post-widgets">
+      <div id="needsharebutton-postbottom">
+        <span class="btn">
+          <i class="fa fa-share-alt" aria-hidden="true"></i>
+        </span>
+      </div>
+    </div>
+          <div class="post-tags">
+              <a href="/tags/zerotier/" rel="tag"><i class="fa fa-tag"></i> zerotier</a>
+              <a href="/tags/moon/" rel="tag"><i class="fa fa-tag"></i> moon</a>
+              <a href="/tags/%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/" rel="tag"><i class="fa fa-tag"></i> 内网穿透</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2023/05/03/%E6%8C%82%E8%BD%BD%E5%A4%9A%E4%B8%AA%E4%BA%91%E7%9B%98/" rel="prev" title="挂载多个云盘">
+                  <i class="fa fa-angle-left"></i> 挂载多个云盘
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2023/05/08/docker%E4%B9%8Bopenwrt/" rel="next" title="docker之openwrt">
+                  docker之openwrt <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2023</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">ienA</span>
+  </div>
+
+<!--
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+-->
+    </div>
+  </footer>
+
+
+
+  
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script><script src="/js/pjax.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+
+
+  
+
+
+
+
+<div id="needsharebutton-float">
+      <span class="btn">
+        <i class="fa fa-share-alt" aria-hidden="true"></i>
+      </span>
+    </div>
+  <script src="//cdn.jsdelivr.net/gh/theme-next/theme-next-needmoreshare2@1/needsharebutton.min.js"></script>
+  <script>
+      pbOptions = {};
+        pbOptions.iconStyle = "default";
+        pbOptions.boxForm = "horizontal";
+        pbOptions.position = "bottomCenter";
+        pbOptions.networks = "Wechat,QQZone,Weibo,Douban,Twitter,Facebook";
+      new needShareButton('#needsharebutton-postbottom', pbOptions);
+      flOptions = {};
+        flOptions.iconStyle = "default";
+        flOptions.boxForm = "horizontal";
+        flOptions.position = "middleRight";
+        flOptions.networks = "Wechat,QQZone,Weibo,Douban,Twitter,Facebook";
+      new needShareButton('#needsharebutton-float', flOptions);
+  </script>
+
+    <meting-js
+    server="netease" 
+    type="playlist"
+    id="8269382559"
+    autoplay="true"
+    volume="0.7"
+    fixed="true" 
+    order="list"
+    preload="metadata"
+    lrc-type="0">
+    </meting-js>
+    
+
+    <div class="waifu">
+        <div class="waifu-tips"></div>
+        <canvas id="live2d" class="live2d"></canvas>
+        <div class="waifu-tool">
+            <span class="fui-home"></span>
+            <span class="fui-chat"></span>
+            <span class="fui-eye"></span>
+            <span class="fui-user"></span>
+            <span class="fui-photo"></span>
+            <span class="fui-info-circle"></span>
+            <span class="fui-cross"></span>
+        </div>    
+
+    <script src="https://fastly.jsdelivr.net/gh/AienH/blog_plugin/live2d/assets/waifu-tips.js"></script>
+    <script src="https://fastly.jsdelivr.net/gh/AienH/blog_plugin/live2d/assets/live2d.js"></script>
+
+    <script type="text/javascript">
+        live2d_settings['modelId'] = 1;
+        live2d_settings['modelTexturesId'] = 87;
+        initModel("https://fastly.jsdelivr.net/gh/AienH/blog_plugin/live2d/assets/waifu-tips.json")
+    </script>
+    <script src="https://fastly.jsdelivr.net/gh/AienH/blog_plugin/live2d/assets/autoload.js"></script>
+
+</body>
+</html>

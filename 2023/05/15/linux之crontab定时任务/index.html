@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 5.4.2">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha256-CTSx/A06dm1B063156EVh15m6Y67pAjZZaQc89LLSrU=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.18.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"mac"},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="Linux crontab 命令Linux crontab 是用来定期执行程序的命令。 当安装完成操作系统之后，默认便会启动此任务调度命令。 crond 命令每分钟会定期检查是否有要执行的工作，如果有要执行的工作便会自动执行该工作。 注意：新创建的 cron 任务，不会马上执行，至少要过 2 分钟后才可以，当然你可以重启 cron 来马上执行。 而 linux 任务调度的工作主要分为以下两类：">
+<meta property="og:type" content="article">
+<meta property="og:title" content="linux之crontab定时任务">
+<meta property="og:url" content="http://example.com/2023/05/15/linux%E4%B9%8Bcrontab%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1/index.html">
+<meta property="og:site_name" content="ienAの博客">
+<meta property="og:description" content="Linux crontab 命令Linux crontab 是用来定期执行程序的命令。 当安装完成操作系统之后，默认便会启动此任务调度命令。 crond 命令每分钟会定期检查是否有要执行的工作，如果有要执行的工作便会自动执行该工作。 注意：新创建的 cron 任务，不会马上执行，至少要过 2 分钟后才可以，当然你可以重启 cron 来马上执行。 而 linux 任务调度的工作主要分为以下两类：">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-05-15T14:48:27.000Z">
+<meta property="article:modified_time" content="2023-11-16T18:27:04.455Z">
+<meta property="article:author" content="ienA">
+<meta property="article:tag" content="命令">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://example.com/2023/05/15/linux%E4%B9%8Bcrontab%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2023/05/15/linux%E4%B9%8Bcrontab%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1/","path":"2023/05/15/linux之crontab定时任务/","title":"linux之crontab定时任务"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>linux之crontab定时任务 | ienAの博客</title>
+  
+
+
+
+
+
+
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/gh/theme-next/theme-next-needmoreshare2@1/needsharebutton.min.css"><style>
+#needsharebutton-postbottom {
+  cursor: pointer;
+  height: 26px;
+  margin-top: 10px;
+  position: relative;
+}
+#needsharebutton-postbottom .btn {
+  border: 1px solid $btn-default-border-color;
+  border-radius: 3px;
+  display: initial;
+  padding: 1px 4px;
+}
+</style><style>
+#needsharebutton-float {
+  bottom: 88px;
+  cursor: pointer;
+  left: -8px;
+  position: fixed;
+  z-index: 9999;
+}
+#needsharebutton-float .btn {
+  border: 1px solid $btn-default-border-color;
+  border-radius: 4px;
+  padding: 0 10px 0 14px;
+}
+</style>
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+    <script src="https://fastly.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://fastly.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css">
+    <script src=" https://cdn.jsdelivr.net/npm/jquery-ui@1.13.2/dist/jquery-ui.min.js "></script>
+    <script rel="preload" src="https://fastly.jsdelivr.net/gh/AienH/blog_plugin@master/APlayer/dist/APlayer.min.js"></script>
+    <script rel="preload" src="https://fastly.jsdelivr.net/gh/AienH/blog_plugin@master/MetingJS/dist/Meting.min.js"></script>
+    <link rel="stylesheet" href="https://fastly.jsdelivr.net/gh/AienH/blog_plugin@master/APlayer/dist/APlayer.min.css">     
+    <link rel="stylesheet" type="text/css" href="https://fastly.jsdelivr.net/gh/AienH/blog_plugin/live2d/assets/waifu.css"/>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">ienAの博客</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Linux-crontab-%E5%91%BD%E4%BB%A4"><span class="nav-number">1.</span> <span class="nav-text">Linux crontab 命令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9A%E6%97%B6%E6%89%A7%E8%A1%8C%E5%91%BD%E4%BB%A4"><span class="nav-number">1.1.</span> <span class="nav-text">定时执行命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9A%E6%97%B6%E6%89%A7%E8%A1%8Cshell%E8%84%9A%E6%9C%AC"><span class="nav-number">1.2.</span> <span class="nav-text">定时执行shell脚本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BFcrontab%E4%BB%BB%E5%8A%A1%E7%94%9F%E6%95%88"><span class="nav-number">1.3.</span> <span class="nav-text">使crontab任务生效</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%84%9A%E6%9C%AC%E6%97%A0%E6%B3%95%E6%89%A7%E8%A1%8C%E9%97%AE%E9%A2%98"><span class="nav-number">1.4.</span> <span class="nav-text">脚本无法执行问题</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="ienA"
+      src="/images/20230401000222.jpg">
+  <p class="site-author-name" itemprop="name">ienA</p>
+  <div class="site-description" itemprop="description">致力于分享自己学习过程笔记的萌新博主૮(˶ᵔ ᵕ ᵔ˶)ა</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">20</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">19</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="/GG" title="GitHub → GG" rel="noopener me"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/%E4%B8%8D%E7%BB%99%E4%BD%A0%EF%BC%81%EF%BC%81%EF%BC%81" title="E-Mail → 不给你！！！" rel="noopener me"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+    <div class="sidebar-inner sidebar-blogroll">
+      <div class="links-of-blogroll animated">
+        <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
+          链接
+        </div>
+        <ul class="links-of-blogroll-list">
+            <li class="links-of-blogroll-item">
+              <a href="https://julintongxue.github.io/" title="https:&#x2F;&#x2F;julintongxue.github.io" rel="noopener" target="_blank">orangeの博客</a>
+            </li>
+            <li class="links-of-blogroll-item">
+              <a href="https://luiyang08.github.io/" title="https:&#x2F;&#x2F;luiyang08.github.io" rel="noopener" target="_blank">LuiYang</a>
+            </li>
+        </ul>
+      </div>
+    </div>
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/05/15/linux%E4%B9%8Bcrontab%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/20230401000222.jpg">
+      <meta itemprop="name" content="ienA">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ienAの博客">
+      <meta itemprop="description" content="致力于分享自己学习过程笔记的萌新博主૮(˶ᵔ ᵕ ᵔ˶)ა">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="linux之crontab定时任务 | ienAの博客">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          linux之crontab定时任务
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-05-15 22:48:27" itemprop="dateCreated datePublished" datetime="2023-05-15T22:48:27+08:00">2023-05-15</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2023-11-17 02:27:04" itemprop="dateModified" datetime="2023-11-17T02:27:04+08:00">2023-11-17</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/linux/" itemprop="url" rel="index"><span itemprop="name">linux</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>3k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>3 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h2 id="Linux-crontab-命令"><a href="#Linux-crontab-命令" class="headerlink" title="Linux crontab 命令"></a>Linux crontab 命令</h2><p>Linux crontab 是用来定期执行程序的命令。</p>
+<p>当安装完成操作系统之后，默认便会启动此任务调度命令。</p>
+<p><strong>crond</strong> 命令每分钟会定期检查是否有要执行的工作，如果有要执行的工作便会自动执行该工作。</p>
+<p><strong>注意：</strong>新创建的 cron 任务，不会马上执行，至少要过 2 分钟后才可以，当然你可以重启 cron 来马上执行。</p>
+<p>而 linux 任务调度的工作主要分为以下两类：</p>
+<ul>
+<li>1、系统执行的工作：系统周期性所要执行的工作，如备份系统数据、清理缓存</li>
+<li>2、个人执行的工作：某个用户定期要做的工作，例如每隔 10 分钟检查邮件服务器是否有新信，这些工作可由每个用户自行设置 </li>
+</ul>
+<p><strong>在<code>/etc/crontab</code>文件中可以看到所有用户的crontab任务，我自己实测直接修改<code>/etc/crontab</code>来添加crontab任务没有生效（可能是权限问题，我没深究），所以没有修改该文件来创建crontab任务</strong></p>
+<blockquote>
+<p>/etc/cron.deny  #该文件中所列的用户不允许使用Crontab命令</p>
+<p>/etc/cron.allow  #该文件中所列的用户允许使用Crontab命令</p>
+</blockquote>
+<p><strong>crontab命令格式详解</strong></p>
+<p>每项工作 (每行) 的格式都是具有六个栏位，这六个栏位的意义为：</p>
+<table>
+<thead>
+<tr>
+<th align="left">代表意义</th>
+<th align="left">分钟</th>
+<th align="left">小时</th>
+<th align="left">日期（天）</th>
+<th align="left">月份</th>
+<th align="left">周</th>
+<th align="left">命令</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">数字范围</td>
+<td align="left">0-59</td>
+<td align="left">0-23</td>
+<td align="left">1-31</td>
+<td align="left">1-12</td>
+<td align="left">0-7</td>
+<td align="left">呀就命令啊</td>
+</tr>
+</tbody></table>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">crontab -u &#123;username&#125; -e  <span class="comment">#不加-u参数默认为当前用户创建定时任务</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>输入命令后会显示编辑一个文件，直接在下面添加参数，username可以不加，则默认给当前用户添加定时任务</strong></p>
+<blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">*    *    *    *    * &#123;username&#125; 命令/要执行shell脚本的路径</span><br><span class="line">-    -    -    -    -</span><br><span class="line">|    |    |    |    |</span><br><span class="line">|    |    |    |    +----- 星期中星期几 (0 - 6) (星期天 为0)</span><br><span class="line">|    |    |    +---------- 月份 (1 - 12) </span><br><span class="line">|    |    +--------------- 一个月中的第几天 (1 - 31)</span><br><span class="line">|    +-------------------- 小时 (0 - 23)</span><br><span class="line">+------------------------- 分钟 (0 - 59)</span><br></pre></td></tr></table></figure>
+</blockquote>
+<p><strong>修改定时任务crontab -e的时候，控制台输出“crontab: installing new crontab”，表示任务添加成功，且之后三分钟不会执行对应的任务，所以在调试定时器的时候，要把这三分钟考虑进去，如果执行的时间在三分钟内的话，对应的任务则不会生效。</strong></p>
+<h3 id="定时执行命令"><a href="#定时执行命令" class="headerlink" title="定时执行命令"></a>定时执行命令</h3><p>例如安装的Tomcat服务器需要每次开机后都要重启一次</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#在crontab -e命令后添加的参数</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#系统重启后执行重启</span></span><br><span class="line">@reboot systemctl restart tomcat</span><br><span class="line"><span class="comment"># @reboot [nohup] systemctl restart tomcat</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>nohup 是用来让运行的程序忽略 SIGHUP 指令（因为在父程序退出后，所有的子程序会受到 SIGHUP 指令）从而保证运行的程序不退出, 根据实际情况决定是否使用该参数(本人实际操作过程中,加入该参数时无法成功执行任务,请自测)<br>@reboot 只针对可登录服务器的用户生效, 如果使用不可登录服务器的用户执行该类型crontab任务,将会遭到忽略,执行失败</p>
+</blockquote>
+<p>定时关机</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#每天 23:00 关机</span></span><br><span class="line">* 23 * * * root /sbin/shutdown -h now</span><br><span class="line"><span class="comment">#每天 23:00 十分钟后关机</span></span><br><span class="line">* 23 * * * root /sbin/shutdown -h at 23:10</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>因为直接crontab来执行命令，可能有些命令太复杂或者太长可能会执行失败，这时候就会用到shell脚本</strong></p>
+<h3 id="定时执行shell脚本"><a href="#定时执行shell脚本" class="headerlink" title="定时执行shell脚本"></a>定时执行shell脚本</h3><table>
+<thead>
+<tr>
+<th align="center">执行时间</th>
+<th>格式</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">每分钟定时执行一次</td>
+<td>* * * * *</td>
+</tr>
+<tr>
+<td align="center">每小时定时执行一次</td>
+<td>0 * * * *</td>
+</tr>
+<tr>
+<td align="center">每天定时执行一次</td>
+<td>0 0 * * *</td>
+</tr>
+<tr>
+<td align="center">每周定时执行一次</td>
+<td>0 0 * * 0</td>
+</tr>
+<tr>
+<td align="center">每月定时执行一次</td>
+<td>0 0 1 * *</td>
+</tr>
+<tr>
+<td align="center">每月最后一天定时执行一次</td>
+<td>0 0 L * *</td>
+</tr>
+<tr>
+<td align="center">每年定时执行一次</td>
+<td>0 0 1 1 *</td>
+</tr>
+</tbody></table>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#在crontab -e命令后添加的参数</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">#每天 02:00 执行任务</span></span><br><span class="line">0 2 * * * /bin/sh backup.sh</span><br><span class="line"></span><br><span class="line"><span class="comment">#每天 5:00和17:00执行任务</span></span><br><span class="line">0 5,17 * * * /scripts/script.sh</span><br><span class="line"></span><br><span class="line"><span class="comment">#每分钟执行一次任务</span></span><br><span class="line">* * * * * /scripts/script.sh</span><br><span class="line"></span><br><span class="line"><span class="comment">#每周日 17:00 执行任务</span></span><br><span class="line">0 17 * * 7  /scripts/script.sh</span><br><span class="line"></span><br><span class="line"><span class="comment">#每 10min 执行一次任务</span></span><br><span class="line">*/10 * * * * /scripts/monitor.sh</span><br><span class="line"></span><br><span class="line"><span class="comment">#在每周五、周日的17点执行任务</span></span><br><span class="line">0 17 * * sun,fri /script/scripy.sh</span><br><span class="line"></span><br><span class="line"><span class="comment">#每四个小时执行一个任务</span></span><br><span class="line">0 */4 * * * /scripts/script.sh</span><br><span class="line"></span><br><span class="line"><span class="comment">#每周一、周日的4:00和17:00执行任务</span></span><br><span class="line">0 4,17 * * sun,mon /scripts/script.sh</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>比较有趣的是那个『周』喔！周的数字为0或7时，都代表『星期天』的意思！另外， 还有一些辅助的字符，大概有底下这些：</p>
+<table>
+<thead>
+<tr>
+<th align="left">特殊字符</th>
+<th align="left">代表意义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">*(星号)</td>
+<td align="left">代表任何时刻都接受的意思！举例来说，范例一内那个日、月、周都是 * ， 就代表著『不论何月、何日的礼拜几的 12:00 都运行后续命令』的意思！</td>
+</tr>
+<tr>
+<td align="left">,(逗号)</td>
+<td align="left">代表分隔时段的意思。举例来说，如果要下达的工作是 3:00 与 6:00 时，就会是： 0 3,6 * * * command 时间参数还是有五栏，不过第二栏是 3,6 ，代表 3 与 6 都适用！</td>
+</tr>
+<tr>
+<td align="left">-(减号)</td>
+<td align="left">代表一段时间范围内，举例来说， 8 点到 12 点之间的每小时的 20 分都进行一项工作： 20 8-12 * * * command 仔细看到第二栏变成 8-12 喔！代表 8,9,10,11,12 都适用的意思！</td>
+</tr>
+<tr>
+<td align="left">/n(斜线)</td>
+<td align="left">那个 n 代表数字，亦即是『每隔 n 单位间隔』的意思，例如每五分钟进行一次，则： */5 * * * * command 很简单吧！用 * 与 /5 来搭配，也可以写成 0-59/5 ，相同意思！</td>
+</tr>
+</tbody></table>
+<p>周与日月不可同时并存</p>
+<p>另一个需要注意的地方在於：『你可以分别以周或者是日月为单位作为循环，但你不可使用「几月几号且为星期几」的模式工作』。 这个意思是说，你不可以这样编写一个工作排程：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">30 12 11 9 5 root <span class="built_in">echo</span> <span class="string">&quot;just test&quot;</span>  &lt;==这是错误的写法</span><br></pre></td></tr></table></figure>
+
+<p>本来你以为九月十一号且为星期五才会进行这项工作，无奈的是，系统可能会判定每个星期五作一次，或每年的 9 月 11 号分别进行，如此一来与你当初的规划就不一样了～所以罗，得要注意这个地方！上述的写法是不对的！</p>
+<h3 id="使crontab任务生效"><a href="#使crontab任务生效" class="headerlink" title="使crontab任务生效"></a>使crontab任务生效</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#查看crontab任务</span></span><br><span class="line">crontab -l</span><br><span class="line"></span><br><span class="line"><span class="comment">#加载配置文件</span></span><br><span class="line">/etc/init.d/cron reload</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>centos的定时任务service是crond</p>
+</blockquote>
+<h3 id="脚本无法执行问题"><a href="#脚本无法执行问题" class="headerlink" title="脚本无法执行问题"></a>脚本无法执行问题</h3><p>如果我们使用 crontab 来定时执行脚本，无法执行，但是如果直接通过命令（如：./test.sh)又可以正常执行，这主要是因为无法读取环境变量的原因。</p>
+<p><strong>解决方法：</strong></p>
+<ul>
+<li><p>1、所有命令需要写成绝对路径形式，如: /usr/local/bin/docker。</p>
+</li>
+<li><p>2、在 shell 脚本开头使用以下代码：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/bash</span><br><span class="line"></span><br><span class="line">. /etc/profile</span><br><span class="line">. ~/.bashrc</span><br></pre></td></tr></table></figure></li>
+<li><p>3、在 <strong>/etc/crontab</strong> 中添加环境变量，在可执行命令之前添加命令  . /etc/profile;/bin/sh，使得环境变量生效，例如：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">20 03 * * * . /etc/profile;/bin/sh /var/www/runoob/test.sh</span><br></pre></td></tr></table></figure></li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer"><div class="post-widgets">
+      <div id="needsharebutton-postbottom">
+        <span class="btn">
+          <i class="fa fa-share-alt" aria-hidden="true"></i>
+        </span>
+      </div>
+    </div>
+          <div class="post-tags">
+              <a href="/tags/%E5%91%BD%E4%BB%A4/" rel="tag"><i class="fa fa-tag"></i> 命令</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2023/05/08/docker%E4%B9%8Bopenwrt/" rel="prev" title="docker之openwrt">
+                  <i class="fa fa-angle-left"></i> docker之openwrt
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2023/05/22/debian11%E9%83%A8%E7%BD%B2LNMP%EF%BC%88nginx-mariadb-php%EF%BC%89%E6%95%99%E7%A8%8B/" rel="next" title="debian11部署LNMP（nginx+mariadb+php）教程">
+                  debian11部署LNMP（nginx+mariadb+php）教程 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2023</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">ienA</span>
+  </div>
+
+<!--
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+-->
+    </div>
+  </footer>
+
+
+
+  
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script><script src="/js/pjax.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+
+
+  
+
+
+
+
+<div id="needsharebutton-float">
+      <span class="btn">
+        <i class="fa fa-share-alt" aria-hidden="true"></i>
+      </span>
+    </div>
+  <script src="//cdn.jsdelivr.net/gh/theme-next/theme-next-needmoreshare2@1/needsharebutton.min.js"></script>
+  <script>
+      pbOptions = {};
+        pbOptions.iconStyle = "default";
+        pbOptions.boxForm = "horizontal";
+        pbOptions.position = "bottomCenter";
+        pbOptions.networks = "Wechat,QQZone,Weibo,Douban,Twitter,Facebook";
+      new needShareButton('#needsharebutton-postbottom', pbOptions);
+      flOptions = {};
+        flOptions.iconStyle = "default";
+        flOptions.boxForm = "horizontal";
+        flOptions.position = "middleRight";
+        flOptions.networks = "Wechat,QQZone,Weibo,Douban,Twitter,Facebook";
+      new needShareButton('#needsharebutton-float', flOptions);
+  </script>
+
+    <meting-js
+    server="netease" 
+    type="playlist"
+    id="8269382559"
+    autoplay="true"
+    volume="0.7"
+    fixed="true" 
+    order="list"
+    preload="metadata"
+    lrc-type="0">
+    </meting-js>
+    
+
+    <div class="waifu">
+        <div class="waifu-tips"></div>
+        <canvas id="live2d" class="live2d"></canvas>
+        <div class="waifu-tool">
+            <span class="fui-home"></span>
+            <span class="fui-chat"></span>
+            <span class="fui-eye"></span>
+            <span class="fui-user"></span>
+            <span class="fui-photo"></span>
+            <span class="fui-info-circle"></span>
+            <span class="fui-cross"></span>
+        </div>    
+
+    <script src="https://fastly.jsdelivr.net/gh/AienH/blog_plugin/live2d/assets/waifu-tips.js"></script>
+    <script src="https://fastly.jsdelivr.net/gh/AienH/blog_plugin/live2d/assets/live2d.js"></script>
+
+    <script type="text/javascript">
+        live2d_settings['modelId'] = 1;
+        live2d_settings['modelTexturesId'] = 87;
+        initModel("https://fastly.jsdelivr.net/gh/AienH/blog_plugin/live2d/assets/waifu-tips.json")
+    </script>
+    <script src="https://fastly.jsdelivr.net/gh/AienH/blog_plugin/live2d/assets/autoload.js"></script>
+
+</body>
+</html>

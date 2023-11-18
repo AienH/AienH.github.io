@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 5.4.2">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha256-CTSx/A06dm1B063156EVh15m6Y67pAjZZaQc89LLSrU=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.18.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"mac"},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="本人搬运的是github上的一个开源项目 地址：https:&#x2F;&#x2F;github.com&#x2F;ffffffff0x&#x2F;f8x  f8x  介绍一款红&#x2F;蓝队环境自动化部署工具,支持多种场景,渗透,开发,代理环境,服务可选项等 大多数场景下，在不同的云购买一些 vps 服务器用于部署红 &#x2F; 蓝队设施，不能做到开箱即用，使用 f8x 可以快速部署所需要的各类服务。同时兼顾到本地 VM 虚拟机的需求，可以选择走">
+<meta property="og:type" content="article">
+<meta property="og:title" content="红&#x2F;蓝队环境自动化部署工具">
+<meta property="og:url" content="http://example.com/2023/04/24/%E7%BA%A2%E8%93%9D%E9%98%9F%E7%8E%AF%E5%A2%83%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2%E5%B7%A5%E5%85%B7/index.html">
+<meta property="og:site_name" content="ienAの博客">
+<meta property="og:description" content="本人搬运的是github上的一个开源项目 地址：https:&#x2F;&#x2F;github.com&#x2F;ffffffff0x&#x2F;f8x  f8x  介绍一款红&#x2F;蓝队环境自动化部署工具,支持多种场景,渗透,开发,代理环境,服务可选项等 大多数场景下，在不同的云购买一些 vps 服务器用于部署红 &#x2F; 蓝队设施，不能做到开箱即用，使用 f8x 可以快速部署所需要的各类服务。同时兼顾到本地 VM 虚拟机的需求，可以选择走">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/2023/04/24/images/%E7%BA%A2%E8%93%9D%E9%98%9F%E7%8E%AF%E5%A2%83%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2%E5%B7%A5%E5%85%B7/1.png">
+<meta property="og:image" content="http://example.com/2023/04/24/images/%E7%BA%A2%E8%93%9D%E9%98%9F%E7%8E%AF%E5%A2%83%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2%E5%B7%A5%E5%85%B7/centos7.svg">
+<meta property="og:image" content="http://example.com/2023/04/24/images/%E7%BA%A2%E8%93%9D%E9%98%9F%E7%8E%AF%E5%A2%83%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2%E5%B7%A5%E5%85%B7/centos7.svg">
+<meta property="og:image" content="http://example.com/2023/04/24/images/%E7%BA%A2%E8%93%9D%E9%98%9F%E7%8E%AF%E5%A2%83%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2%E5%B7%A5%E5%85%B7/debian10.svg">
+<meta property="og:image" content="http://example.com/2023/04/24/images/%E7%BA%A2%E8%93%9D%E9%98%9F%E7%8E%AF%E5%A2%83%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2%E5%B7%A5%E5%85%B7/fedora33.svg">
+<meta property="og:image" content="http://example.com/2023/04/24/images/%E7%BA%A2%E8%93%9D%E9%98%9F%E7%8E%AF%E5%A2%83%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2%E5%B7%A5%E5%85%B7/Ubuntu20.10.svg">
+<meta property="article:published_time" content="2023-04-24T09:16:00.000Z">
+<meta property="article:modified_time" content="2023-11-16T18:30:12.631Z">
+<meta property="article:author" content="ienA">
+<meta property="article:tag" content="工具">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2023/04/24/images/%E7%BA%A2%E8%93%9D%E9%98%9F%E7%8E%AF%E5%A2%83%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2%E5%B7%A5%E5%85%B7/1.png">
+
+
+<link rel="canonical" href="http://example.com/2023/04/24/%E7%BA%A2%E8%93%9D%E9%98%9F%E7%8E%AF%E5%A2%83%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2%E5%B7%A5%E5%85%B7/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2023/04/24/%E7%BA%A2%E8%93%9D%E9%98%9F%E7%8E%AF%E5%A2%83%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2%E5%B7%A5%E5%85%B7/","path":"2023/04/24/红蓝队环境自动化部署工具/","title":"红/蓝队环境自动化部署工具"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>红/蓝队环境自动化部署工具 | ienAの博客</title>
+  
+
+
+
+
+
+
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/gh/theme-next/theme-next-needmoreshare2@1/needsharebutton.min.css"><style>
+#needsharebutton-postbottom {
+  cursor: pointer;
+  height: 26px;
+  margin-top: 10px;
+  position: relative;
+}
+#needsharebutton-postbottom .btn {
+  border: 1px solid $btn-default-border-color;
+  border-radius: 3px;
+  display: initial;
+  padding: 1px 4px;
+}
+</style><style>
+#needsharebutton-float {
+  bottom: 88px;
+  cursor: pointer;
+  left: -8px;
+  position: fixed;
+  z-index: 9999;
+}
+#needsharebutton-float .btn {
+  border: 1px solid $btn-default-border-color;
+  border-radius: 4px;
+  padding: 0 10px 0 14px;
+}
+</style>
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+    <script src="https://fastly.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://fastly.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css">
+    <script src=" https://cdn.jsdelivr.net/npm/jquery-ui@1.13.2/dist/jquery-ui.min.js "></script>
+    <script rel="preload" src="https://fastly.jsdelivr.net/gh/AienH/blog_plugin@master/APlayer/dist/APlayer.min.js"></script>
+    <script rel="preload" src="https://fastly.jsdelivr.net/gh/AienH/blog_plugin@master/MetingJS/dist/Meting.min.js"></script>
+    <link rel="stylesheet" href="https://fastly.jsdelivr.net/gh/AienH/blog_plugin@master/APlayer/dist/APlayer.min.css">     
+    <link rel="stylesheet" type="text/css" href="https://fastly.jsdelivr.net/gh/AienH/blog_plugin/live2d/assets/waifu.css"/>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">ienAの博客</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">f8x</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%8B%E7%BB%8D"><span class="nav-number">1.1.</span> <span class="nav-text">介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BC%80%E5%A7%8B"><span class="nav-number">1.2.</span> <span class="nav-text">开始</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%94%AF%E6%8C%81%E9%80%89%E9%A1%B9"><span class="nav-number">1.3.</span> <span class="nav-text">支持选项</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9E%E9%99%85%E6%95%88%E6%9E%9C"><span class="nav-number">1.4.</span> <span class="nav-text">实际效果</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#FAQ"><span class="nav-number">1.5.</span> <span class="nav-text">FAQ</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="ienA"
+      src="/images/20230401000222.jpg">
+  <p class="site-author-name" itemprop="name">ienA</p>
+  <div class="site-description" itemprop="description">致力于分享自己学习过程笔记的萌新博主૮(˶ᵔ ᵕ ᵔ˶)ა</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">20</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">19</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="/GG" title="GitHub → GG" rel="noopener me"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/%E4%B8%8D%E7%BB%99%E4%BD%A0%EF%BC%81%EF%BC%81%EF%BC%81" title="E-Mail → 不给你！！！" rel="noopener me"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+    <div class="sidebar-inner sidebar-blogroll">
+      <div class="links-of-blogroll animated">
+        <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
+          链接
+        </div>
+        <ul class="links-of-blogroll-list">
+            <li class="links-of-blogroll-item">
+              <a href="https://julintongxue.github.io/" title="https:&#x2F;&#x2F;julintongxue.github.io" rel="noopener" target="_blank">orangeの博客</a>
+            </li>
+            <li class="links-of-blogroll-item">
+              <a href="https://luiyang08.github.io/" title="https:&#x2F;&#x2F;luiyang08.github.io" rel="noopener" target="_blank">LuiYang</a>
+            </li>
+        </ul>
+      </div>
+    </div>
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/04/24/%E7%BA%A2%E8%93%9D%E9%98%9F%E7%8E%AF%E5%A2%83%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2%E5%B7%A5%E5%85%B7/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/20230401000222.jpg">
+      <meta itemprop="name" content="ienA">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ienAの博客">
+      <meta itemprop="description" content="致力于分享自己学习过程笔记的萌新博主૮(˶ᵔ ᵕ ᵔ˶)ა">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="红/蓝队环境自动化部署工具 | ienAの博客">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          红/蓝队环境自动化部署工具
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-04-24 17:16:00" itemprop="dateCreated datePublished" datetime="2023-04-24T17:16:00+08:00">2023-04-24</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2023-11-17 02:30:12" itemprop="dateModified" datetime="2023-11-17T02:30:12+08:00">2023-11-17</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/" itemprop="url" rel="index"><span itemprop="name">网络安全</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>4.3k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>4 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><blockquote>
+<p><strong>本人搬运的是github上的一个开源项目</strong></p>
+<p><strong>地址：<a target="_blank" rel="noopener" href="https://github.com/ffffffff0x/f8x">https://github.com/ffffffff0x/f8x</a></strong></p>
+</blockquote>
+<h1 align="center">f8x</h1>
+
+<h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p><strong>一款红/蓝队环境自动化部署工具,支持多种场景,渗透,开发,代理环境,服务可选项等</strong></p>
+<p><strong>大多数场景下，在不同的云购买一些 vps 服务器用于部署红 / 蓝队设施，不能做到开箱即用，使用 f8x 可以快速部署所需要的各类服务。同时兼顾到本地 VM 虚拟机的需求，可以选择走 socket 代理进行安装部署，Proxychains-ng 也会自动安装，只需做好 Proxychains-ng 配置即可。</strong></p>
+<h2 id="开始"><a href="#开始" class="headerlink" title="开始"></a>开始</h2><p><strong>下载</strong></p>
+<ul>
+<li><p>通过 CF Workers 下载 [推荐]</p>
+<ul>
+<li>wget : <code>wget -O f8x https://f8x.io/</code></li>
+<li>curl : <code>curl -o f8x https://f8x.io/</code></li>
+</ul>
+</li>
+<li><p>github 直链</p>
+<ul>
+<li>wget : <code>wget -O f8x https://raw.githubusercontent.com/ffffffff0x/f8x/main/f8x</code></li>
+<li>curl : <code>curl -o f8x https://raw.githubusercontent.com/ffffffff0x/f8x/main/f8x</code></li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>后续不会更新 releases,建议不要下载 releases 的旧版本 f8x</p>
+</blockquote>
+<p><strong>使用</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bash f8x -h</span><br></pre></td></tr></table></figure>
+
+<p>如果你希望方便点使用可以直接加到环境变量中</p>
+<ul>
+<li>wget : <code>wget -O f8x https://f8x.io/ &amp;&amp; mv --force f8x /usr/local/bin/f8x &amp;&amp; chmod +x /usr/local/bin/f8x</code><ul>
+<li><code>f8x -h</code></li>
+</ul>
+</li>
+<li>curl : <code>curl -o f8x https://f8x.io/ &amp;&amp; mv --force f8x /usr/local/bin/f8x &amp;&amp; chmod +x /usr/local/bin/f8x</code><ul>
+<li><code>f8x -h</code></li>
+</ul>
+</li>
+</ul>
+<p><strong>系统依赖</strong></p>
+<p>f8x 基本上不需要任何依赖,或者说它就是为了帮助你安装各种依赖而生的😁</p>
+<p><strong>f8x-ctf</strong></p>
+<p>该脚本用于部署 CTF 环境,支持 (Web、Misc、Crypto、Pwn、Iot) 分类</p>
+<ul>
+<li>wget : <code>wget -O f8x-ctf https://f8x.io/ctf</code><ul>
+<li><code>bash f8x-ctf -help</code></li>
+</ul>
+</li>
+<li>curl : <code>curl -o f8x-ctf https://f8x.io/ctf</code><ul>
+<li><code>bash f8x-ctf -help</code></li>
+</ul>
+</li>
+</ul>
+<p><strong>f8x-dev</strong></p>
+<p>该脚本用于部署中间件和数据库环境,支持 (apache、nginx、tomcat、Database、php) 分类</p>
+<ul>
+<li>wget : <code>wget -O f8x-dev https://f8x.io/dev</code><ul>
+<li><code>bash f8x-dev -help</code></li>
+</ul>
+</li>
+<li>curl : <code>curl -o f8x-dev https://f8x.io/dev</code><ul>
+<li><code>bash f8x-dev -help</code></li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="支持选项"><a href="#支持选项" class="headerlink" title="支持选项"></a>支持选项</h2><p>目前 f8x 支持以下部署选项 (Linux arm64 下大部分都支持)</p>
+<p><strong>1. 批量化安装</strong></p>
+<ul>
+<li>使用 -b 选项安装基本环境 (gcc、make、git、vim、telnet、jq、unzip 等基本工具)</li>
+<li>使用 -p 选项安装代理环境 (警告:国外云服务器上不要用,会降速)</li>
+<li>使用 -d 选项安装开发环境 (python3、pip3、Go、Docker、Docker-Compose、SDKMAN)</li>
+<li>使用 -k 选项安装渗透环境 (hashcat、ffuf、OneForAll、ksubdomain、impacket 等渗透工具)<ul>
+<li>-ka 信息收集、扫描、爆破、抓取</li>
+<li>-kb 漏洞利用</li>
+<li>-kc 后渗透、C2</li>
+<li>-kd 其他</li>
+<li>-ke 功能重叠或长期不维护</li>
+</ul>
+</li>
+<li>使用 -s 选项安装蓝队环境 (Fail2Ban、chkrootkit、rkhunter、河马webshell查杀工具)</li>
+<li>使用 -f 选项安装其他工具 (Bash_Insulter、vlmcsd、AdguardTeam、trash-cli 等辅助工具)</li>
+<li>使用 -cloud 选项安装云应用 (Terraform、Serverless Framework、wrangler)</li>
+<li>使用 -all 选项全自动化部署 (默认不走代理,兼容 CentOS7/8,Debain10/9,Ubuntu20/18,Fedora33)</li>
+</ul>
+<p><strong>2. 开发环境</strong></p>
+<ul>
+<li>使用 -docker 选项安装 docker 环境</li>
+<li>使用 -lua 选项安装 lua 环境</li>
+<li>使用 -nn 选项安装 npm &amp; NodeJs 环境</li>
+<li>使用 -go 选项安装 go 环境</li>
+<li>使用 -oraclejdk(8/11) 选项安装 oraclejdk 环境</li>
+<li>使用 -openjdk 选项安装 openjdk 环境</li>
+<li>使用 -py3(7/8/9/10) 选项安装 python3 环境</li>
+<li>使用 -py2 选项安装 python2 环境</li>
+<li>使用 -pip2-f 选项强制安装 pip2 环境 (建议在 -python2 选项失败的情况下运行)</li>
+<li>使用 -perl 选项安装 perl 环境</li>
+<li>使用 -ruby 选项安装 ruby 环境</li>
+<li>使用 -rust 选项安装 rust 环境</li>
+<li>使用 -code 选项安装 code-server 环境</li>
+<li>使用 -chromium 选项安装 Chromium 环境 (用于配合 -k 选项中的 rad、crawlergo)</li>
+<li>使用 -phantomjs 选项安装 PhantomJS</li>
+</ul>
+<p><strong>3. 蓝队工具</strong></p>
+<ul>
+<li>使用 -binwalk 选项安装 binwalk 环境</li>
+<li>使用 -binwalk-f 选项强制安装 binwalk 环境 (建议在 -binwalk 选项失败的情况下运行)</li>
+<li>使用 -clamav 选项安装 ClamAV 工具</li>
+<li>使用 -lt 选项部署 LogonTracer 环境 (非超高配置机器不要部署,这个应用太吃配置了)</li>
+<li>使用 -suricata 选项部署 Suricata 环境</li>
+<li>使用 -vol 选项安装 volatility 取证工具</li>
+<li>使用 -vol3 选项安装 volatility3 取证工具</li>
+</ul>
+<p><strong>4. 红队工具</strong></p>
+<ul>
+<li>使用 -aircrack 选项部署 aircrack-ng 环境</li>
+<li>使用 -bypass 选项部署 Bypass 环境</li>
+<li>使用 -goby 选项部署 Goby 环境 (需要图形化环境)</li>
+<li>使用 -wpscan 选项安装 wpscan 工具</li>
+<li>使用 -yakit 选项部署 yakit 环境</li>
+</ul>
+<p><strong>5. 红队基础设施</strong></p>
+<ul>
+<li>使用 -awvs14 选项部署 AWVS13 环境(1.04 GB)</li>
+<li>使用 -cs 选项部署 CobaltStrike4.3 环境</li>
+<li>使用 -cs45 选项部署 CobaltStrike4.5 环境</li>
+<li>使用 -frp 选项部署 frp 工具</li>
+<li>使用 -interactsh 选项部署 interactsh 工具 (<a target="_blank" rel="noopener" href="https://github.com/projectdiscovery/interactsh">https://github.com/projectdiscovery/interactsh</a>)</li>
+<li>使用 -merlin 选项部署 merlin 环境 (<a target="_blank" rel="noopener" href="https://github.com/Ne0nd0g/merlin">https://github.com/Ne0nd0g/merlin</a>)</li>
+<li>使用 -msf 选项部署 Metasploit 环境</li>
+<li>使用 -nps 选项部署 nps 工具</li>
+<li>使用 -pupy 选项部署 pupy 环境 (<a target="_blank" rel="noopener" href="https://github.com/n1nj4sec/pupy">https://github.com/n1nj4sec/pupy</a>)</li>
+<li>使用 -rg 选项部署 RedGuard 工具 (<a target="_blank" rel="noopener" href="https://github.com/wikiZ/RedGuard">https://github.com/wikiZ/RedGuard</a>)</li>
+<li>使用 -sliver 选项部署 sliver 环境 (<a target="_blank" rel="noopener" href="https://github.com/BishopFox/sliver">https://github.com/BishopFox/sliver</a>)</li>
+<li>使用 -sliver-client 选项安装 sliver-client 工具</li>
+<li>使用 -sps 选项部署 SharPyShell 工具 (<a target="_blank" rel="noopener" href="https://github.com/antonioCoco/SharPyShell">https://github.com/antonioCoco/SharPyShell</a>)</li>
+<li>使用 -viper 选项部署 Viper 环境(2.1 GB)</li>
+</ul>
+<p><strong>6. 基于 Docker 的环境部署</strong></p>
+<ul>
+<li>使用 -arl 选项部署 ARL 环境(872 MB)</li>
+<li>使用 -mobsf 选项部署 MobSF 环境(1.54 GB)</li>
+<li>使用 -nodejsscan 选项部署 nodejsscan 环境(873 MB)</li>
+<li>使用 -vulhub 选项部署 vulhub 环境(210 MB)</li>
+<li>使用 -vulfocus 选项部署 vulfocus 环境(1.04 GB)</li>
+<li>使用 -TerraformGoat 选项部署 TerraformGoat 环境</li>
+</ul>
+<p><strong>7. 杂项服务</strong></p>
+<ul>
+<li>使用 -asciinema 选项安装 asciinema 截图工具</li>
+<li>使用 -bt 选项部署宝塔服务</li>
+<li>使用 -clash 选项安装 clash 工具 (<a target="_blank" rel="noopener" href="https://github.com/juewuy/ShellClash">https://github.com/juewuy/ShellClash</a>)</li>
+<li>使用 -nginx 选项配置 nginx 服务</li>
+<li>使用 -ssh 选项配置 ssh 环境 (RedHat 系默认可用,无需重复安装)</li>
+<li>使用 -ssr 选项部署 ssr 工具</li>
+<li>使用 -zsh 选项部署 zsh 工具</li>
+</ul>
+<p><strong>8. 其他</strong></p>
+<ul>
+<li>使用 -clear 选项清理系统使用痕迹</li>
+<li>使用 -info 选项查看系统各项信息</li>
+<li>使用 -optimize 选项改善设备选项,优化性能</li>
+<li>使用 -remove 选项卸载国内 vps 云监控</li>
+<li>使用 -rmlock 选项运行除锁模块</li>
+<li>使用 -swap 选项配置 swap 分区</li>
+<li>使用 -update 选项更新 f8x 工具</li>
+<li>使用 -upgrade 选项更新渗透工具</li>
+</ul>
+<hr>
+<h2 id="实际效果"><a href="#实际效果" class="headerlink" title="实际效果"></a>实际效果</h2><p><strong>-h 查看帮助</strong></p>
+<p><img src="../images/%E7%BA%A2%E8%93%9D%E9%98%9F%E7%8E%AF%E5%A2%83%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2%E5%B7%A5%E5%85%B7/1.png" alt="1"></p>
+<p><strong>-all 全自动化部署</strong></p>
+<p><img src="../images/%E7%BA%A2%E8%93%9D%E9%98%9F%E7%8E%AF%E5%A2%83%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2%E5%B7%A5%E5%85%B7/centos7.svg" alt="centos7"></p>
+<p>以 vultr vps 为例,结果分别如下</p>
+<p><strong>CentOS 7</strong></p>
+<p><img src="../images/%E7%BA%A2%E8%93%9D%E9%98%9F%E7%8E%AF%E5%A2%83%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2%E5%B7%A5%E5%85%B7/centos7.svg" alt="centos7"></p>
+<p><strong>Debian 10</strong></p>
+<p><img src="../images/%E7%BA%A2%E8%93%9D%E9%98%9F%E7%8E%AF%E5%A2%83%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2%E5%B7%A5%E5%85%B7/debian10.svg" alt="debian10"></p>
+<p><strong>Fedora 33</strong></p>
+<p><img src="../images/%E7%BA%A2%E8%93%9D%E9%98%9F%E7%8E%AF%E5%A2%83%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2%E5%B7%A5%E5%85%B7/fedora33.svg" alt="Fedora 33"></p>
+<p><strong>Ubuntu 20.10</strong></p>
+<p><img src="../images/%E7%BA%A2%E8%93%9D%E9%98%9F%E7%8E%AF%E5%A2%83%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2%E5%B7%A5%E5%85%B7/Ubuntu20.10.svg" alt="Ubuntu 20.10"></p>
+<hr>
+<h2 id="FAQ"><a href="#FAQ" class="headerlink" title="FAQ"></a>FAQ</h2><p><strong>-p 选项会执行什么</strong></p>
+<ol>
+<li>替换你的 DNS(默认为 223.5.5.5), 如果判断是 debian 系还会帮你安装 resolvconf, 长期修改 DNS</li>
+<li>检查基础的编译环境是否安装, 并通过默认的包管理器安装 gcc,make,unzip 这些基本软件</li>
+<li>可选的从 <a target="_blank" rel="noopener" href="https://github.com/rofl0r/proxychains-ng">https://github.com/rofl0r/proxychains-ng</a> 或 ffffffff0x.com 下载 Proxychains-ng 的源码, 编译安装</li>
+<li>要求你修改 /etc/proxychains.conf 文件</li>
+<li>修改 pip 代理为 <a target="_blank" rel="noopener" href="https://mirrors.aliyun.com/pypi/simple/">https://mirrors.aliyun.com/pypi/simple/</a></li>
+<li>修改 docker 代理为 <a target="_blank" rel="noopener" href="https://docker.mirrors.ustc.edu.cn/">https://docker.mirrors.ustc.edu.cn</a> , 并重启 docker 服务</li>
+</ol>
+<p><strong>我想跑在 CI/CD 里,不想要交互行不行?</strong></p>
+<p>当然没有问题, f8x 的 GitHub action 就是自动运行每个选项部署环境的。只需要在 /tmp 创建一个名为 IS_CI 的空文件即可</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">touch</span> /tmp/IS_CI</span><br><span class="line">wget -O f8x https://f8x.io/ &amp;&amp; <span class="built_in">mv</span> --force f8x /usr/local/bin/f8x &amp;&amp; <span class="built_in">chmod</span> +x /usr/local/bin/f8x</span><br><span class="line">f8x -k</span><br></pre></td></tr></table></figure>
+
+<p><strong>如何自定义版本</strong></p>
+<p>shell脚本在运行时，可以通过 <code>. ./test.sh</code> 这样同等进程运行修改当前shell环境变量，那么f8x对同目录下的 f8x_version.sh 文件做个判断，当有这个文件时，会加载这个文件中的内容，也就是覆盖f8x的变量值，这样只需要在当前目录下对 f8x_version.sh 文件做修改或定制，即可做到安装指定版本</p>
+<hr>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer"><div class="post-widgets">
+      <div id="needsharebutton-postbottom">
+        <span class="btn">
+          <i class="fa fa-share-alt" aria-hidden="true"></i>
+        </span>
+      </div>
+    </div>
+          <div class="post-tags">
+              <a href="/tags/%E5%B7%A5%E5%85%B7/" rel="tag"><i class="fa fa-tag"></i> 工具</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2023/04/24/%E9%9B%86%E6%88%90%E5%BC%80%E6%BA%90%E6%94%BB%E9%98%B2%E6%AD%A6%E5%99%A8%E9%A1%B9%E7%9B%AE/" rel="prev" title="集成开源攻防武器项目">
+                  <i class="fa fa-angle-left"></i> 集成开源攻防武器项目
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2023/04/24/docker%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BA%E5%90%84%E5%A4%A7%E6%BC%8F%E6%B4%9E%E9%9D%B6%E5%9C%BA/" rel="next" title="docker快速搭建各大漏洞靶场">
+                  docker快速搭建各大漏洞靶场 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2023</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">ienA</span>
+  </div>
+
+<!--
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+-->
+    </div>
+  </footer>
+
+
+
+  
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script><script src="/js/pjax.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+
+
+  
+
+
+
+
+<div id="needsharebutton-float">
+      <span class="btn">
+        <i class="fa fa-share-alt" aria-hidden="true"></i>
+      </span>
+    </div>
+  <script src="//cdn.jsdelivr.net/gh/theme-next/theme-next-needmoreshare2@1/needsharebutton.min.js"></script>
+  <script>
+      pbOptions = {};
+        pbOptions.iconStyle = "default";
+        pbOptions.boxForm = "horizontal";
+        pbOptions.position = "bottomCenter";
+        pbOptions.networks = "Wechat,QQZone,Weibo,Douban,Twitter,Facebook";
+      new needShareButton('#needsharebutton-postbottom', pbOptions);
+      flOptions = {};
+        flOptions.iconStyle = "default";
+        flOptions.boxForm = "horizontal";
+        flOptions.position = "middleRight";
+        flOptions.networks = "Wechat,QQZone,Weibo,Douban,Twitter,Facebook";
+      new needShareButton('#needsharebutton-float', flOptions);
+  </script>
+
+    <meting-js
+    server="netease" 
+    type="playlist"
+    id="8269382559"
+    autoplay="true"
+    volume="0.7"
+    fixed="true" 
+    order="list"
+    preload="metadata"
+    lrc-type="0">
+    </meting-js>
+    
+
+    <div class="waifu">
+        <div class="waifu-tips"></div>
+        <canvas id="live2d" class="live2d"></canvas>
+        <div class="waifu-tool">
+            <span class="fui-home"></span>
+            <span class="fui-chat"></span>
+            <span class="fui-eye"></span>
+            <span class="fui-user"></span>
+            <span class="fui-photo"></span>
+            <span class="fui-info-circle"></span>
+            <span class="fui-cross"></span>
+        </div>    
+
+    <script src="https://fastly.jsdelivr.net/gh/AienH/blog_plugin/live2d/assets/waifu-tips.js"></script>
+    <script src="https://fastly.jsdelivr.net/gh/AienH/blog_plugin/live2d/assets/live2d.js"></script>
+
+    <script type="text/javascript">
+        live2d_settings['modelId'] = 1;
+        live2d_settings['modelTexturesId'] = 87;
+        initModel("https://fastly.jsdelivr.net/gh/AienH/blog_plugin/live2d/assets/waifu-tips.json")
+    </script>
+    <script src="https://fastly.jsdelivr.net/gh/AienH/blog_plugin/live2d/assets/autoload.js"></script>
+
+</body>
+</html>

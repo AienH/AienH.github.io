@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 5.4.2">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha256-CTSx/A06dm1B063156EVh15m6Y67pAjZZaQc89LLSrU=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.18.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"mac"},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="介绍我上一台手机是小米的mix2s，因为用了三年多了，也有一些毛病，存储也不太够，所以我就换手机了，我这台小米mix2s就成为了备用机，但用到的时候很少，我就想着能不能刷成linux，我找到了一篇文章：在骁龙（835 845 855等）设备通过UEFI运行Archlinux，我要刷ubuntu，其实步骤差不多，只是rootfs用的是ubuntu，因为本人技术有限，没刷成，我就想着看有没有现成的，然">
+<meta property="og:type" content="article">
+<meta property="og:title" content="旧手机变为linux服务器之Mobian">
+<meta property="og:url" content="http://example.com/2023/05/26/%E6%97%A7%E6%89%8B%E6%9C%BA%E5%8F%98%E4%B8%BAlinux%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B9%8BMobian/index.html">
+<meta property="og:site_name" content="ienAの博客">
+<meta property="og:description" content="介绍我上一台手机是小米的mix2s，因为用了三年多了，也有一些毛病，存储也不太够，所以我就换手机了，我这台小米mix2s就成为了备用机，但用到的时候很少，我就想着能不能刷成linux，我找到了一篇文章：在骁龙（835 845 855等）设备通过UEFI运行Archlinux，我要刷ubuntu，其实步骤差不多，只是rootfs用的是ubuntu，因为本人技术有限，没刷成，我就想着看有没有现成的，然">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-05-25T16:33:49.000Z">
+<meta property="article:modified_time" content="2023-11-16T18:30:44.676Z">
+<meta property="article:author" content="ienA">
+<meta property="article:tag" content="linux">
+<meta property="article:tag" content="debian">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://example.com/2023/05/26/%E6%97%A7%E6%89%8B%E6%9C%BA%E5%8F%98%E4%B8%BAlinux%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B9%8BMobian/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2023/05/26/%E6%97%A7%E6%89%8B%E6%9C%BA%E5%8F%98%E4%B8%BAlinux%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B9%8BMobian/","path":"2023/05/26/旧手机变为linux服务器之Mobian/","title":"旧手机变为linux服务器之Mobian"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>旧手机变为linux服务器之Mobian | ienAの博客</title>
+  
+
+
+
+
+
+
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/gh/theme-next/theme-next-needmoreshare2@1/needsharebutton.min.css"><style>
+#needsharebutton-postbottom {
+  cursor: pointer;
+  height: 26px;
+  margin-top: 10px;
+  position: relative;
+}
+#needsharebutton-postbottom .btn {
+  border: 1px solid $btn-default-border-color;
+  border-radius: 3px;
+  display: initial;
+  padding: 1px 4px;
+}
+</style><style>
+#needsharebutton-float {
+  bottom: 88px;
+  cursor: pointer;
+  left: -8px;
+  position: fixed;
+  z-index: 9999;
+}
+#needsharebutton-float .btn {
+  border: 1px solid $btn-default-border-color;
+  border-radius: 4px;
+  padding: 0 10px 0 14px;
+}
+</style>
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+    <script src="https://fastly.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://fastly.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css">
+    <script src=" https://cdn.jsdelivr.net/npm/jquery-ui@1.13.2/dist/jquery-ui.min.js "></script>
+    <script rel="preload" src="https://fastly.jsdelivr.net/gh/AienH/blog_plugin@master/APlayer/dist/APlayer.min.js"></script>
+    <script rel="preload" src="https://fastly.jsdelivr.net/gh/AienH/blog_plugin@master/MetingJS/dist/Meting.min.js"></script>
+    <link rel="stylesheet" href="https://fastly.jsdelivr.net/gh/AienH/blog_plugin@master/APlayer/dist/APlayer.min.css">     
+    <link rel="stylesheet" type="text/css" href="https://fastly.jsdelivr.net/gh/AienH/blog_plugin/live2d/assets/waifu.css"/>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">ienAの博客</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%8B%E7%BB%8D"><span class="nav-number">1.</span> <span class="nav-text">介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Mobian%E7%AE%80%E4%BB%8B"><span class="nav-number">2.</span> <span class="nav-text">Mobian简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%87%86%E5%A4%87"><span class="nav-number">3.</span> <span class="nav-text">准备</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85%E6%96%B9%E6%B3%95"><span class="nav-number">4.</span> <span class="nav-text">安装方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%8B%E8%BD%BD%E9%95%9C%E5%83%8F"><span class="nav-number">4.1.</span> <span class="nav-text">下载镜像</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85adb-fastboot"><span class="nav-number">4.2.</span> <span class="nav-text">安装adb-fastboot</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%B7%E5%85%A5%E9%95%9C%E5%83%8F"><span class="nav-number">4.3.</span> <span class="nav-text">刷入镜像</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%99%BB%E5%BD%95"><span class="nav-number">4.4.</span> <span class="nav-text">登录</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E7%A1%80%E9%85%8D%E7%BD%AE%E5%92%8C%E4%BD%BF%E7%94%A8"><span class="nav-number">5.</span> <span class="nav-text">基础配置和使用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8D%A2%E6%BA%90"><span class="nav-number">5.1.</span> <span class="nav-text">换源</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%99%BB%E5%BD%95-root"><span class="nav-number">5.2.</span> <span class="nav-text">登录 root</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9%E5%AF%86%E7%A0%81"><span class="nav-number">5.3.</span> <span class="nav-text">修改密码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9B%B4%E6%96%B0%E6%BA%90"><span class="nav-number">5.4.</span> <span class="nav-text">更新源</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AE%BE%E7%BD%AE"><span class="nav-number">5.5.</span> <span class="nav-text">设置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85%E5%9F%BA%E7%A1%80%E5%B7%A5%E5%85%B7"><span class="nav-number">5.6.</span> <span class="nav-text">安装基础工具</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%81%E8%AE%B8root%E7%94%A8%E6%88%B7ssh%E8%BF%9C%E7%A8%8B%E7%99%BB%E5%BD%95"><span class="nav-number">5.7.</span> <span class="nav-text">允许root用户ssh远程登录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85docker"><span class="nav-number">5.8.</span> <span class="nav-text">安装docker</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%89%E8%A3%85-apt-%E4%BE%9D%E8%B5%96%E5%8C%85%EF%BC%8C%E7%94%A8%E4%BA%8E%E9%80%9A%E8%BF%87-HTTPS-%E6%9D%A5%E8%8E%B7%E5%8F%96%E4%BB%93%E5%BA%93%E3%80%82"><span class="nav-number">5.8.1.</span> <span class="nav-text">安装 apt 依赖包，用于通过 HTTPS 来获取仓库。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0-Docker-%E7%9A%84%E5%AE%98%E6%96%B9-GPG-%E5%AF%86%E9%92%A5%EF%BC%9A"><span class="nav-number">5.8.2.</span> <span class="nav-text">添加 Docker 的官方 GPG 密钥：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0%E6%BA%90"><span class="nav-number">5.8.3.</span> <span class="nav-text">添加源</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#warning"><span class="nav-number">5.8.4.</span> <span class="nav-text">warning</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%A7%A3%E5%86%B3warning"><span class="nav-number">5.8.5.</span> <span class="nav-text">解决warning</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85-Docker-Engine-Community"><span class="nav-number">5.9.</span> <span class="nav-text">安装 Docker Engine-Community</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE%E9%95%9C%E5%83%8F%E5%8A%A0%E9%80%9F"><span class="nav-number">5.9.1.</span> <span class="nav-text">配置镜像加速</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85Zerotier-One"><span class="nav-number">5.10.</span> <span class="nav-text">安装Zerotier-One</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85Kali-Linux%E7%9A%84%E5%B7%A5%E5%85%B7%E9%9B%86"><span class="nav-number">5.11.</span> <span class="nav-text">安装Kali Linux的工具集</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0kali%E6%BA%90"><span class="nav-number">5.11.1.</span> <span class="nav-text">添加kali源</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0kali%E5%85%AC%E9%92%A5"><span class="nav-number">5.11.2.</span> <span class="nav-text">添加kali公钥</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#warning-1"><span class="nav-number">5.11.3.</span> <span class="nav-text">warning</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%A7%A3%E5%86%B3warning-1"><span class="nav-number">5.11.4.</span> <span class="nav-text">解决warning</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%89%E8%A3%85%E4%B8%80%E4%BA%9Bkali%E5%B7%A5%E5%85%B7"><span class="nav-number">5.11.5.</span> <span class="nav-text">安装一些kali工具</span></a></li></ol></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="ienA"
+      src="/images/20230401000222.jpg">
+  <p class="site-author-name" itemprop="name">ienA</p>
+  <div class="site-description" itemprop="description">致力于分享自己学习过程笔记的萌新博主૮(˶ᵔ ᵕ ᵔ˶)ა</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">20</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">19</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="/GG" title="GitHub → GG" rel="noopener me"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/%E4%B8%8D%E7%BB%99%E4%BD%A0%EF%BC%81%EF%BC%81%EF%BC%81" title="E-Mail → 不给你！！！" rel="noopener me"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+    <div class="sidebar-inner sidebar-blogroll">
+      <div class="links-of-blogroll animated">
+        <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
+          链接
+        </div>
+        <ul class="links-of-blogroll-list">
+            <li class="links-of-blogroll-item">
+              <a href="https://julintongxue.github.io/" title="https:&#x2F;&#x2F;julintongxue.github.io" rel="noopener" target="_blank">orangeの博客</a>
+            </li>
+            <li class="links-of-blogroll-item">
+              <a href="https://luiyang08.github.io/" title="https:&#x2F;&#x2F;luiyang08.github.io" rel="noopener" target="_blank">LuiYang</a>
+            </li>
+        </ul>
+      </div>
+    </div>
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/05/26/%E6%97%A7%E6%89%8B%E6%9C%BA%E5%8F%98%E4%B8%BAlinux%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B9%8BMobian/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/20230401000222.jpg">
+      <meta itemprop="name" content="ienA">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ienAの博客">
+      <meta itemprop="description" content="致力于分享自己学习过程笔记的萌新博主૮(˶ᵔ ᵕ ᵔ˶)ა">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="旧手机变为linux服务器之Mobian | ienAの博客">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          旧手机变为linux服务器之Mobian
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-05-26 00:33:49" itemprop="dateCreated datePublished" datetime="2023-05-26T00:33:49+08:00">2023-05-26</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2023-11-17 02:30:44" itemprop="dateModified" datetime="2023-11-17T02:30:44+08:00">2023-11-17</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Android/" itemprop="url" rel="index"><span itemprop="name">Android</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>5.3k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>5 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>我上一台手机是小米的mix2s，因为用了三年多了，也有一些毛病，存储也不太够，所以我就换手机了，我这台小米mix2s就成为了备用机，但用到的时候很少，我就想着能不能刷成linux，<strong>我找到了一篇文章：<a target="_blank" rel="noopener" href="https://forum.renegade-project.tech/t/835-845-855-uefi-archlinux/2497">在骁龙（835 845 855等）设备通过UEFI运行Archlinux</a>，</strong>我要刷ubuntu，其实步骤差不多，只是rootfs用的是ubuntu，因为本人技术有限，没刷成，我就想着看有没有现成的，然后就找到两个适合我手机型号的开源系统，分别是</p>
+<ul>
+<li><p><strong><a target="_blank" rel="noopener" href="https://www.postmarketos.org/">postmarketOS</a></strong></p>
+</li>
+<li><p><strong><a target="_blank" rel="noopener" href="https://mobian-project.org/">Mobian</a></strong></p>
+</li>
+</ul>
+<p>其中postmarketOS使用Alpine Linux，而Mobian使用Debian GNU/Linux作为其开发和运行环境。</p>
+<p>postmarketOS上适配小米mix2s设备的是社区某个大佬移植，测试版，不是稳定版，功能很少，我用过postmarketOS，bug挺多的。</p>
+<p>而mobian相比于postmarketOS，适配小米mix2s的功能更多，所以我使用了mobian。</p>
+<blockquote>
+<p>在对应官网上查看支持的设备型号，看有没有支持自己型号的手机，在选择对应的系统，尽量选择稳定版（Main）的，测试版（Testing）的bug较多</p>
+</blockquote>
+<ul>
+<li><p><strong><a target="_blank" rel="noopener" href="https://wiki.postmarketos.org/wiki/Devices">postmarketOS支持设备</a></strong></p>
+</li>
+<li><p><strong><a target="_blank" rel="noopener" href="https://wiki.mobian.org/doku.php?id=devices">Mobian支持设备</a></strong></p>
+</li>
+</ul>
+<p><strong>除了这些支持的设备，可以在github上面找找，应该能找到非官方移植支持的其它设备，例如<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/554022195">红米2刷Mobian体验原生Linux及软件安装问题处理[ 手机刷LINUX系列]</a>，<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1xM4y1q7Na/">为红米6 Pro移植mobian</a></strong></p>
+<h2 id="Mobian简介"><a href="#Mobian简介" class="headerlink" title="Mobian简介"></a>Mobian简介</h2><p>Mobian是一个社区驱动的项目，它基于Debian GNU / Linux操作系统设计，专为支持ARM架构而开发。作为一个非官方移植的操作系统，Mobian致力于在智能手机、平板电脑、单板计算机等设备上提供一种开放、自由和隐私保护的替代操作系统。</p>
+<p>Mobian采用了GNOME桌面环境和Phosh用户界面，并集成了各种自由和开源应用程序，如Firefox浏览器、电话、信息、媒体播放器等。这样，用户可以方便地实现日常任务和消费需求。此外，Mobian还强调安全性和隐私性，为用户设备数据提供匿名性和私密性保障。通过添加各种安全控件和软件特性，Mobian确保用户在使用其操作系统时都有充分的保障和安全。</p>
+<p>尽管Mobian是一个非官方移植，但已经获得了广泛的关注和支持。它由自愿参与的开发者和社区成员共同维护，不受任何公司或组织的控制。对于需要一个符合自己需求的操作系统的ARM设备用户来说，Mobian是一个令人兴奋的选择。</p>
+<h2 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h2><p><strong>刷镜像前要确保已经解了BL锁，解BL锁方法上网一搜随便都能找到，这里是我搜到一篇小米的：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/465104171">【玩机教程】小米手机详细官方解BL锁🔒教程</a></strong></p>
+<h2 id="安装方法"><a href="#安装方法" class="headerlink" title="安装方法"></a>安装方法</h2><p><strong>mobian有支持我的设备，直接按官方方法刷入即可</strong></p>
+<h3 id="下载镜像"><a href="#下载镜像" class="headerlink" title="下载镜像"></a>下载镜像</h3><p><strong><a target="_blank" rel="noopener" href="https://images.mobian.org/sdm845/weekly/">SDM845</a></strong> </p>
+<blockquote>
+<p>下载最新的版本，最新版本是debian12</p>
+</blockquote>
+<h3 id="安装adb-fastboot"><a href="#安装adb-fastboot" class="headerlink" title="安装adb-fastboot"></a>安装adb-fastboot</h3><p>首先电脑要安装<strong>adb-fastboot</strong>，这里我们下载windows版的</p>
+<ul>
+<li><strong><a target="_blank" rel="noopener" href="https://dl.google.com/android/repository/platform-tools-latest-windows.zip">Windows版本</a></strong></li>
+<li><strong><a target="_blank" rel="noopener" href="https://dl.google.com/android/repository/platform-tools-latest-darwin.zip">Mac版本</a></strong></li>
+<li><strong><a target="_blank" rel="noopener" href="https://dl.google.com/android/repository/platform-tools-latest-linux.zip">Linux版本</a></strong></li>
+</ul>
+<p>解压，进入解压的目录，打开<code>platform-tools</code>文件夹，可以看到有<code>adb</code>和<code>fastboot</code>的exe文件，把整个<code>platform-tools</code>文件夹拖到你的任意盘里（建议弄个专门放工具的目录tools）</p>
+<p>添加环境变量，这样我们就方便使用<code>adb</code>和<code>fastboot</code>命令了，环境变量参数就是<code>platform-tools</code>文件夹的路径，例如<code>E:\tools\platform-tools</code></p>
+<h3 id="刷入镜像"><a href="#刷入镜像" class="headerlink" title="刷入镜像"></a>刷入镜像</h3><p><strong><a target="_blank" rel="noopener" href="https://wiki.mobian-project.org/doku.php?id=install-android">官方文档</a></strong></p>
+<p>我下载的目前最新的20230521包，是解压下载的tar.gz包，然后进入文件夹，在当前目录上面的路径显示框中输入cmd，然后回车即可。</p>
+<blockquote>
+<p>如果不同型号也是骁龙845的，看官方文档来确定手机的代号，小米mix2s的代号是polaris</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#检查设备是否连接</span></span><br><span class="line">fastboot devices</span><br><span class="line"></span><br><span class="line"><span class="comment">#刷入boot分区</span></span><br><span class="line">fastboot flash boot mobian-sdm845-phosh-20230521.boot-polaris.img</span><br><span class="line"></span><br><span class="line"><span class="comment">#刷入system分区</span></span><br><span class="line">fastboot flash system mobian-sdm845-phosh-20230521.boot.img</span><br><span class="line"></span><br><span class="line"><span class="comment">#刷入userdata分区</span></span><br><span class="line">fastboot -S 100M flash userdata mobian-sdm845-phosh-20230521.rootfs.img</span><br><span class="line"></span><br><span class="line"><span class="comment">#清除缓存文件</span></span><br><span class="line">fastboot erase dtbo</span><br></pre></td></tr></table></figure>
+
+<p><strong>重启完就能使用mobian了</strong></p>
+<h3 id="登录"><a href="#登录" class="headerlink" title="登录"></a>登录</h3><p>默认用户：<code>mobian</code></p>
+<p>默认密码：<code>1234</code></p>
+<h2 id="基础配置和使用"><a href="#基础配置和使用" class="headerlink" title="基础配置和使用"></a>基础配置和使用</h2><h3 id="换源"><a href="#换源" class="headerlink" title="换源"></a>换源</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vim /etc/apt/sources.list</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#中科大源</span></span><br><span class="line">deb https://mirrors.ustc.edu.cn/debian/ bookworm main contrib non-free non-free-firmware</span><br><span class="line">deb-src https://mirrors.ustc.edu.cn/debian/ bookworm main contrib non-free non-free-firmware</span><br><span class="line">deb https://mirrors.ustc.edu.cn/debian/ bookworm-updates main contrib non-free non-free-firmware</span><br><span class="line">deb-src https://mirrors.ustc.edu.cn/debian/ bookworm-updates main contrib non-free non-free-firmware</span><br><span class="line">deb https://mirrors.ustc.edu.cn/debian/ bookworm-backports main contrib non-free non-free-firmware</span><br><span class="line">deb-src https://mirrors.ustc.edu.cn/debian/ bookworm-backports main contrib non-free non-free-firmware</span><br><span class="line">deb https://mirrors.ustc.edu.cn/debian-security/ bookworm-security main contrib non-free non-free-firmware</span><br><span class="line">deb-src https://mirrors.ustc.edu.cn/debian-security/ bookworm-security main contrib non-free non-free-firmware</span><br></pre></td></tr></table></figure>
+
+<h3 id="登录-root"><a href="#登录-root" class="headerlink" title="登录 root"></a>登录 root</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo -i</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>下面的命令我都是用root用户进行，命令失败注意看权限</p>
+</blockquote>
+<h3 id="修改密码"><a href="#修改密码" class="headerlink" title="修改密码"></a>修改密码</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">passwd root</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">passwd mobian</span><br></pre></td></tr></table></figure>
+
+<h3 id="更新源"><a href="#更新源" class="headerlink" title="更新源"></a>更新源</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt update &amp;&amp; apt upgrade -y</span><br></pre></td></tr></table></figure>
+
+<h3 id="设置"><a href="#设置" class="headerlink" title="设置"></a>设置</h3><p>设置firefox浏览器为中文</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt install firefox-esr-l10n-zh-cn -y </span><br></pre></td></tr></table></figure>
+
+<h3 id="安装基础工具"><a href="#安装基础工具" class="headerlink" title="安装基础工具"></a>安装基础工具</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt install cmake make wget curl git gcc g++ clang python3-pip openssh* lrzsz neofetch htop -y</span><br></pre></td></tr></table></figure>
+
+<h3 id="允许root用户ssh远程登录"><a href="#允许root用户ssh远程登录" class="headerlink" title="允许root用户ssh远程登录"></a>允许root用户ssh远程登录</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">&quot;PermitRootLogin yes &quot;</span> &gt;&gt; /etc/ssh/sshd_config | <span class="built_in">echo</span> <span class="string">&quot;PasswordAuthentication yes &quot;</span> &gt;&gt; /etc/ssh/sshd_config</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl restart sshd</span><br></pre></td></tr></table></figure>
+
+<h3 id="安装docker"><a href="#安装docker" class="headerlink" title="安装docker"></a>安装docker</h3><h4 id="安装-apt-依赖包，用于通过-HTTPS-来获取仓库。"><a href="#安装-apt-依赖包，用于通过-HTTPS-来获取仓库。" class="headerlink" title="安装 apt 依赖包，用于通过 HTTPS 来获取仓库。"></a>安装 apt 依赖包，用于通过 HTTPS 来获取仓库。</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt install apt-transport-https ca-certificates gnupg2 software-properties-common -y</span><br></pre></td></tr></table></figure>
+
+<h4 id="添加-Docker-的官方-GPG-密钥："><a href="#添加-Docker-的官方-GPG-密钥：" class="headerlink" title="添加 Docker 的官方 GPG 密钥："></a>添加 Docker 的官方 GPG 密钥：</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -fsSL https://mirrors.ustc.edu.cn/docker-ce/linux/debian/gpg | apt-key add -</span><br></pre></td></tr></table></figure>
+
+<h4 id="添加源"><a href="#添加源" class="headerlink" title="添加源"></a>添加源</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/apt/sources.list.d/docker.list</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#中科大源</span></span><br><span class="line">deb [<span class="built_in">arch</span>=arm64] https://mirrors.ustc.edu.cn/docker-ce/linux/debian bookworm stable</span><br><span class="line"><span class="comment">#deb-src [arch=arm64] https://mirrors.ustc.edu.cn/docker-ce/linux/debian bookworm stable</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt update</span><br></pre></td></tr></table></figure>
+
+<h4 id="warning"><a href="#warning" class="headerlink" title="warning"></a>warning</h4><p>会出现以下warning：</p>
+<blockquote>
+<p>W: <a target="_blank" rel="noopener" href="https://mirrors.ustc.edu.cn/docker-ce/linux/debian/dists/bookworm/InRelease">https://mirrors.ustc.edu.cn/docker-ce/linux/debian/dists/bookworm/InRelease</a>: 密钥存储在过时的 trusted.gpg 密钥环中（/etc/apt/trusted.gpg），请参见 apt-key(8) 的 DEPRECATION 一节以了解详情。</p>
+</blockquote>
+<h4 id="解决warning"><a href="#解决warning" class="headerlink" title="解决warning"></a>解决warning</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt-key list</span><br></pre></td></tr></table></figure>
+
+<p>找到docker的公钥指纹，复制后八个字符0EBFCD88（不包括空格）</p>
+<p>导入 <code>/etc/apt/trusted.gpg.d</code> 目录下专用文件中的 GPG 密钥：</p>
+<blockquote>
+<p>这里是新创建了一个文件 <code>docker.gpg</code></p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt-key <span class="built_in">export</span> 0EBFCD88 | gpg --dearmour -o /etc/apt/trusted.gpg.d/docker.gpg</span><br></pre></td></tr></table></figure>
+
+<h3 id="安装-Docker-Engine-Community"><a href="#安装-Docker-Engine-Community" class="headerlink" title="安装 Docker Engine-Community"></a>安装 Docker Engine-Community</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt install docker-ce docker-ce-cli containerd.io -y</span><br></pre></td></tr></table></figure>
+
+<h4 id="配置镜像加速"><a href="#配置镜像加速" class="headerlink" title="配置镜像加速"></a>配置镜像加速</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/docker/daemon.json</span><br></pre></td></tr></table></figure>
+
+<p>加入以下内容：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="string">&quot;registry-mirrors&quot;</span>: [<span class="string">&quot;https://docker.mirrors.ustc.edu.cn/&quot;</span>]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl daemon-reload &amp;&amp; systemctl restart docker</span><br></pre></td></tr></table></figure>
+
+<h3 id="安装Zerotier-One"><a href="#安装Zerotier-One" class="headerlink" title="安装Zerotier-One"></a>安装Zerotier-One</h3><blockquote>
+<p>用脚本安装zerotier，脚本会将你的系统识别为buster，所以可以手动安装zerotier</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/apt/sources.list.d/zerotier.list</span><br></pre></td></tr></table></figure>
+
+<p>添加下面内容：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">deb http://download.zerotier.com/debian/bookworm bookworm main</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt update</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt install zerotier-one -y</span><br></pre></td></tr></table></figure>
+
+
+
+<blockquote>
+<p><strong>直接把mobian变为kali</strong></p>
+</blockquote>
+<h3 id="安装Kali-Linux的工具集"><a href="#安装Kali-Linux的工具集" class="headerlink" title="安装Kali Linux的工具集"></a>安装Kali Linux的工具集</h3><p>Kali Linux 2019.03开始对默认工具集进行重大更改，默认工具集将分为三个主要类别：</p>
+<ul>
+<li>kali-linux-default，其中包含用于渗透测试的基本工具</li>
+<li>kali-linux-large，具有更广泛的渗透测试工具集</li>
+<li>kali-linux-everything，所有黑客工具</li>
+</ul>
+<h4 id="添加kali源"><a href="#添加kali源" class="headerlink" title="添加kali源"></a>添加kali源</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/apt/sources.list.d/kali.list</span><br></pre></td></tr></table></figure>
+
+<p>添加以下内容：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#中科大源</span></span><br><span class="line">deb https://mirrors.ustc.edu.cn/kali kali-rolling main non-free contrib</span><br><span class="line">deb-src https://mirrors.ustc.edu.cn/kali kali-rolling main non-free contrib</span><br></pre></td></tr></table></figure>
+
+<h4 id="添加kali公钥"><a href="#添加kali公钥" class="headerlink" title="添加kali公钥"></a>添加kali公钥</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -fsSL https://archive.kali.org/archive-key.asc | apt-key add - </span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt update</span><br></pre></td></tr></table></figure>
+
+<h4 id="warning-1"><a href="#warning-1" class="headerlink" title="warning"></a>warning</h4><p>会出现以下warning：</p>
+<blockquote>
+<p>W: <a target="_blank" rel="noopener" href="https://mirrors.ustc.edu.cn/kali/dists/kali-rolling/InRelease">https://mirrors.ustc.edu.cn/kali/dists/kali-rolling/InRelease</a>: 密钥存储在过时的 trusted.gpg 密钥环中（/etc/apt/trusted.gpg），请参见 apt-key(8) 的 DEPRECATION 一节以了解详情。</p>
+</blockquote>
+<h4 id="解决warning-1"><a href="#解决warning-1" class="headerlink" title="解决warning"></a>解决warning</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt-key list</span><br></pre></td></tr></table></figure>
+
+<p>找到kali的公钥指纹，复制后八个字符7D8D0BF6（不包括空格）</p>
+<p>导入 <code>/etc/apt/trusted.gpg.d</code> 目录下专用文件中的 GPG 密钥：</p>
+<blockquote>
+<p>这里是新创建了一个文件 <code>kali-linux.gpg</code></p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt-key <span class="built_in">export</span> 7D8D0BF6 | gpg --dearmour -o /etc/apt/trusted.gpg.d/kali-linux.gpg</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt update</span><br></pre></td></tr></table></figure>
+
+<p>这样就可以安装一些kali的的工具集了</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt search kali-linux</span><br></pre></td></tr></table></figure>
+
+<p>例如安装kali-linux-default</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt install kali-linux-default -y</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>默认的工具集里面有些工具需要GUI，例如burpsuite，手机不好操作，所以我就没有安装了，只挑了几个工具安装</p>
+</blockquote>
+<h4 id="安装一些kali工具"><a href="#安装一些kali工具" class="headerlink" title="安装一些kali工具"></a>安装一些kali工具</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt install sqlmap nmap metasploit-framework <span class="built_in">set</span> -y</span><br></pre></td></tr></table></figure>
+
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer"><div class="post-widgets">
+      <div id="needsharebutton-postbottom">
+        <span class="btn">
+          <i class="fa fa-share-alt" aria-hidden="true"></i>
+        </span>
+      </div>
+    </div>
+          <div class="post-tags">
+              <a href="/tags/linux/" rel="tag"><i class="fa fa-tag"></i> linux</a>
+              <a href="/tags/debian/" rel="tag"><i class="fa fa-tag"></i> debian</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2023/05/22/debian11%E9%83%A8%E7%BD%B2LNMP%EF%BC%88nginx-mariadb-php%EF%BC%89%E6%95%99%E7%A8%8B/" rel="prev" title="debian11部署LNMP（nginx+mariadb+php）教程">
+                  <i class="fa fa-angle-left"></i> debian11部署LNMP（nginx+mariadb+php）教程
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2023/06/06/%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%8F%98%E6%88%90%E8%87%AA%E5%B7%B1%E7%9A%84NAS%E5%92%8C%E4%B8%8B%E8%BD%BD%E5%99%A8/" rel="next" title="将自己的树莓派/服务器变成自己的NAS、下载器">
+                  将自己的树莓派/服务器变成自己的NAS、下载器 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2023</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">ienA</span>
+  </div>
+
+<!--
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+-->
+    </div>
+  </footer>
+
+
+
+  
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script><script src="/js/pjax.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+
+
+  
+
+
+
+
+<div id="needsharebutton-float">
+      <span class="btn">
+        <i class="fa fa-share-alt" aria-hidden="true"></i>
+      </span>
+    </div>
+  <script src="//cdn.jsdelivr.net/gh/theme-next/theme-next-needmoreshare2@1/needsharebutton.min.js"></script>
+  <script>
+      pbOptions = {};
+        pbOptions.iconStyle = "default";
+        pbOptions.boxForm = "horizontal";
+        pbOptions.position = "bottomCenter";
+        pbOptions.networks = "Wechat,QQZone,Weibo,Douban,Twitter,Facebook";
+      new needShareButton('#needsharebutton-postbottom', pbOptions);
+      flOptions = {};
+        flOptions.iconStyle = "default";
+        flOptions.boxForm = "horizontal";
+        flOptions.position = "middleRight";
+        flOptions.networks = "Wechat,QQZone,Weibo,Douban,Twitter,Facebook";
+      new needShareButton('#needsharebutton-float', flOptions);
+  </script>
+
+    <meting-js
+    server="netease" 
+    type="playlist"
+    id="8269382559"
+    autoplay="true"
+    volume="0.7"
+    fixed="true" 
+    order="list"
+    preload="metadata"
+    lrc-type="0">
+    </meting-js>
+    
+
+    <div class="waifu">
+        <div class="waifu-tips"></div>
+        <canvas id="live2d" class="live2d"></canvas>
+        <div class="waifu-tool">
+            <span class="fui-home"></span>
+            <span class="fui-chat"></span>
+            <span class="fui-eye"></span>
+            <span class="fui-user"></span>
+            <span class="fui-photo"></span>
+            <span class="fui-info-circle"></span>
+            <span class="fui-cross"></span>
+        </div>    
+
+    <script src="https://fastly.jsdelivr.net/gh/AienH/blog_plugin/live2d/assets/waifu-tips.js"></script>
+    <script src="https://fastly.jsdelivr.net/gh/AienH/blog_plugin/live2d/assets/live2d.js"></script>
+
+    <script type="text/javascript">
+        live2d_settings['modelId'] = 1;
+        live2d_settings['modelTexturesId'] = 87;
+        initModel("https://fastly.jsdelivr.net/gh/AienH/blog_plugin/live2d/assets/waifu-tips.json")
+    </script>
+    <script src="https://fastly.jsdelivr.net/gh/AienH/blog_plugin/live2d/assets/autoload.js"></script>
+
+</body>
+</html>

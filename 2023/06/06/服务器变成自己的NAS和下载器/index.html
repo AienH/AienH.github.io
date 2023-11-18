@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 5.4.2">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha256-CTSx/A06dm1B063156EVh15m6Y67pAjZZaQc89LLSrU=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.18.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"mac"},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="前言对NAS总是抱有好奇？对NAS的价格望而却步？但是，如果你有树莓派（或者其它arm64架构的开发板也行），或者是Linux服务器，为什么不试试让它们变成自己的小型NAS？ NASNAS（Network Attached Storage：网络附属存储）按字面简单说就是连接在网络上，具备资料存储功能的装置，因此也称为“网络存储器”。它是一种专用数据存储服务器。 大型的NAS，比如：群晖。可以有Ap">
+<meta property="og:type" content="article">
+<meta property="og:title" content="将自己的树莓派&#x2F;服务器变成自己的NAS、下载器">
+<meta property="og:url" content="http://example.com/2023/06/06/%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%8F%98%E6%88%90%E8%87%AA%E5%B7%B1%E7%9A%84NAS%E5%92%8C%E4%B8%8B%E8%BD%BD%E5%99%A8/index.html">
+<meta property="og:site_name" content="ienAの博客">
+<meta property="og:description" content="前言对NAS总是抱有好奇？对NAS的价格望而却步？但是，如果你有树莓派（或者其它arm64架构的开发板也行），或者是Linux服务器，为什么不试试让它们变成自己的小型NAS？ NASNAS（Network Attached Storage：网络附属存储）按字面简单说就是连接在网络上，具备资料存储功能的装置，因此也称为“网络存储器”。它是一种专用数据存储服务器。 大型的NAS，比如：群晖。可以有Ap">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/2023/06/06/images/%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%8F%98%E6%88%90%E8%87%AA%E5%B7%B1%E7%9A%84NAS%E5%92%8C%E4%B8%8B%E8%BD%BD%E5%99%A8/DownloadToNAS.png">
+<meta property="og:image" content="http://example.com/2023/06/06/images/%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%8F%98%E6%88%90%E8%87%AA%E5%B7%B1%E7%9A%84NAS%E5%92%8C%E4%B8%8B%E8%BD%BD%E5%99%A8/MountInWindows.png">
+<meta property="og:image" content="http://example.com/2023/06/06/images/%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%8F%98%E6%88%90%E8%87%AA%E5%B7%B1%E7%9A%84NAS%E5%92%8C%E4%B8%8B%E8%BD%BD%E5%99%A8/image-20230607013014512.png">
+<meta property="og:image" content="http://example.com/2023/06/06/images/%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%8F%98%E6%88%90%E8%87%AA%E5%B7%B1%E7%9A%84NAS%E5%92%8C%E4%B8%8B%E8%BD%BD%E5%99%A8/AriaNG_NativeSetting.png">
+<meta property="og:image" content="http://example.com/2023/06/06/images/%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%8F%98%E6%88%90%E8%87%AA%E5%B7%B1%E7%9A%84NAS%E5%92%8C%E4%B8%8B%E8%BD%BD%E5%99%A8/AriaNG_Native.png">
+<meta property="og:image" content="http://example.com/2023/06/06/images/%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%8F%98%E6%88%90%E8%87%AA%E5%B7%B1%E7%9A%84NAS%E5%92%8C%E4%B8%8B%E8%BD%BD%E5%99%A8/image-20230607021439381.png">
+<meta property="og:image" content="http://example.com/2023/06/06/images/%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%8F%98%E6%88%90%E8%87%AA%E5%B7%B1%E7%9A%84NAS%E5%92%8C%E4%B8%8B%E8%BD%BD%E5%99%A8/image-20230607021742222.png">
+<meta property="og:image" content="http://example.com/2023/06/06/images/%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%8F%98%E6%88%90%E8%87%AA%E5%B7%B1%E7%9A%84NAS%E5%92%8C%E4%B8%8B%E8%BD%BD%E5%99%A8/image-20230607021835467.png">
+<meta property="og:image" content="http://example.com/2023/06/06/images/%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%8F%98%E6%88%90%E8%87%AA%E5%B7%B1%E7%9A%84NAS%E5%92%8C%E4%B8%8B%E8%BD%BD%E5%99%A8/image-20230607022037734.png">
+<meta property="og:image" content="http://example.com/2023/06/06/images/%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%8F%98%E6%88%90%E8%87%AA%E5%B7%B1%E7%9A%84NAS%E5%92%8C%E4%B8%8B%E8%BD%BD%E5%99%A8/image-20230607022319769.png">
+<meta property="og:image" content="http://example.com/2023/06/06/images/%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%8F%98%E6%88%90%E8%87%AA%E5%B7%B1%E7%9A%84NAS%E5%92%8C%E4%B8%8B%E8%BD%BD%E5%99%A8/image-20230607022411558.png">
+<meta property="og:image" content="http://example.com/2023/06/06/images/%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%8F%98%E6%88%90%E8%87%AA%E5%B7%B1%E7%9A%84NAS%E5%92%8C%E4%B8%8B%E8%BD%BD%E5%99%A8/image-20230607022456123.png">
+<meta property="article:published_time" content="2023-06-06T08:19:41.000Z">
+<meta property="article:modified_time" content="2023-11-16T18:25:15.601Z">
+<meta property="article:author" content="ienA">
+<meta property="article:tag" content="arm64">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2023/06/06/images/%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%8F%98%E6%88%90%E8%87%AA%E5%B7%B1%E7%9A%84NAS%E5%92%8C%E4%B8%8B%E8%BD%BD%E5%99%A8/DownloadToNAS.png">
+
+
+<link rel="canonical" href="http://example.com/2023/06/06/%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%8F%98%E6%88%90%E8%87%AA%E5%B7%B1%E7%9A%84NAS%E5%92%8C%E4%B8%8B%E8%BD%BD%E5%99%A8/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2023/06/06/%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%8F%98%E6%88%90%E8%87%AA%E5%B7%B1%E7%9A%84NAS%E5%92%8C%E4%B8%8B%E8%BD%BD%E5%99%A8/","path":"2023/06/06/服务器变成自己的NAS和下载器/","title":"将自己的树莓派/服务器变成自己的NAS、下载器"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>将自己的树莓派/服务器变成自己的NAS、下载器 | ienAの博客</title>
+  
+
+
+
+
+
+
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/gh/theme-next/theme-next-needmoreshare2@1/needsharebutton.min.css"><style>
+#needsharebutton-postbottom {
+  cursor: pointer;
+  height: 26px;
+  margin-top: 10px;
+  position: relative;
+}
+#needsharebutton-postbottom .btn {
+  border: 1px solid $btn-default-border-color;
+  border-radius: 3px;
+  display: initial;
+  padding: 1px 4px;
+}
+</style><style>
+#needsharebutton-float {
+  bottom: 88px;
+  cursor: pointer;
+  left: -8px;
+  position: fixed;
+  z-index: 9999;
+}
+#needsharebutton-float .btn {
+  border: 1px solid $btn-default-border-color;
+  border-radius: 4px;
+  padding: 0 10px 0 14px;
+}
+</style>
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+    <script src="https://fastly.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://fastly.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css">
+    <script src=" https://cdn.jsdelivr.net/npm/jquery-ui@1.13.2/dist/jquery-ui.min.js "></script>
+    <script rel="preload" src="https://fastly.jsdelivr.net/gh/AienH/blog_plugin@master/APlayer/dist/APlayer.min.js"></script>
+    <script rel="preload" src="https://fastly.jsdelivr.net/gh/AienH/blog_plugin@master/MetingJS/dist/Meting.min.js"></script>
+    <link rel="stylesheet" href="https://fastly.jsdelivr.net/gh/AienH/blog_plugin@master/APlayer/dist/APlayer.min.css">     
+    <link rel="stylesheet" type="text/css" href="https://fastly.jsdelivr.net/gh/AienH/blog_plugin/live2d/assets/waifu.css"/>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">ienAの博客</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#NAS"><span class="nav-number">1.1.</span> <span class="nav-text">NAS</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%93%8D%E4%BD%9C%E6%80%9D%E8%B7%AF"><span class="nav-number">1.2.</span> <span class="nav-text">操作思路</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E5%9C%A8%E7%BA%BF%E8%AE%BF%E9%97%AE%E6%95%B0%E6%8D%AE"><span class="nav-number">1.2.1.</span> <span class="nav-text">1. 在线访问数据</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E4%B8%8B%E8%BD%BD%E7%AB%99"><span class="nav-number">1.2.2.</span> <span class="nav-text">2. 下载站</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E6%8C%82%E8%BD%BD%E5%88%B0%E6%9C%AC%E5%9C%B0%E7%A3%81%E7%9B%98"><span class="nav-number">1.2.3.</span> <span class="nav-text">3. 挂载到本地磁盘</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-number">1.2.4.</span> <span class="nav-text">总结</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%89%8D%E6%8E%92%E6%8F%90%E7%A4%BA"><span class="nav-number">2.</span> <span class="nav-text">前排提示</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%A6%81%E6%B1%82"><span class="nav-number">3.</span> <span class="nav-text">服务器要求</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#PHP"><span class="nav-number">4.</span> <span class="nav-text">PHP</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85%E4%BE%9D%E8%B5%96"><span class="nav-number">4.1.</span> <span class="nav-text">安装依赖</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%8B%E8%BD%BDPHP"><span class="nav-number">4.2.</span> <span class="nav-text">下载PHP</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE%E7%94%A8%E6%88%B7%E5%92%8C%E7%94%A8%E6%88%B7%E7%BB%84"><span class="nav-number">4.3.</span> <span class="nav-text">配置用户和用户组</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE%E7%BC%96%E8%AF%91%E5%8F%82%E6%95%B0"><span class="nav-number">4.4.</span> <span class="nav-text">配置编译参数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85"><span class="nav-number">4.5.</span> <span class="nav-text">编译安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%8D%E5%88%B6%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="nav-number">4.6.</span> <span class="nav-text">复制配置文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B5%8B%E8%AF%95%E8%BF%90%E8%A1%8C"><span class="nav-number">4.7.</span> <span class="nav-text">测试运行</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9F%A5%E7%9C%8B%E6%9C%8D%E5%8A%A1%E8%BF%9B%E7%A8%8B%E5%92%8C%E7%AB%AF%E5%8F%A3"><span class="nav-number">4.8.</span> <span class="nav-text">查看服务进程和端口</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Nginx"><span class="nav-number">5.</span> <span class="nav-text">Nginx</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85%E4%BE%9D%E8%B5%96-1"><span class="nav-number">5.1.</span> <span class="nav-text">安装依赖</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A2%9D%E5%A4%96%E6%A8%A1%E5%9D%97"><span class="nav-number">5.2.</span> <span class="nav-text">额外模块</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%8B%E8%BD%BDNginx"><span class="nav-number">5.3.</span> <span class="nav-text">下载Nginx</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE%E7%94%A8%E6%88%B7%E5%92%8C%E7%94%A8%E6%88%B7%E7%BB%84-1"><span class="nav-number">5.4.</span> <span class="nav-text">配置用户和用户组</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE%E7%BC%96%E8%AF%91%E5%8F%82%E6%95%B0-1"><span class="nav-number">5.5.</span> <span class="nav-text">配置编译参数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85-1"><span class="nav-number">5.6.</span> <span class="nav-text">编译安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE"><span class="nav-number">5.7.</span> <span class="nav-text">配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B5%8B%E8%AF%95%E8%BF%90%E8%A1%8C-1"><span class="nav-number">5.8.</span> <span class="nav-text">测试运行</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9F%A5%E7%9C%8B%E6%9C%8D%E5%8A%A1%E8%BF%9B%E7%A8%8B%E5%92%8C%E7%AB%AF%E5%8F%A3-1"><span class="nav-number">5.9.</span> <span class="nav-text">查看服务进程和端口</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE-h5ai"><span class="nav-number">6.</span> <span class="nav-text">配置_h5ai</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%8B%E8%BD%BD-h5ai"><span class="nav-number">6.1.</span> <span class="nav-text">下载_h5ai</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9Nginx%E9%85%8D%E7%BD%AE"><span class="nav-number">6.2.</span> <span class="nav-text">修改Nginx配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8"><span class="nav-number">6.3.</span> <span class="nav-text">使用</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE%E4%B8%8B%E8%BD%BD%E5%99%A8"><span class="nav-number">7.</span> <span class="nav-text">配置下载器</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%85%8D%E7%BD%AEAria2"><span class="nav-number">7.1.</span> <span class="nav-text">配置Aria2</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B5%8B%E8%AF%95%E4%BD%BF%E7%94%A8"><span class="nav-number">7.2.</span> <span class="nav-text">测试使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%BE%E7%BD%AE%E9%AA%8C%E8%AF%81%E7%94%A8%E6%88%B7"><span class="nav-number">7.3.</span> <span class="nav-text">设置验证用户</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%A2%E6%88%B7%E7%AB%AF%E7%99%BB%E9%99%86"><span class="nav-number">7.4.</span> <span class="nav-text">客户端登陆</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0%E7%B3%BB%E7%BB%9F%E6%9C%8D%E5%8A%A1"><span class="nav-number">8.</span> <span class="nav-text">添加系统服务</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%BF%9E%E6%8E%A5Aria2%E8%BF%9B%E7%A8%8B"><span class="nav-number">9.</span> <span class="nav-text">连接Aria2进程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#AriaNG-Native"><span class="nav-number">9.1.</span> <span class="nav-text">AriaNG Native</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%90%AD%E5%BB%BA%E7%BD%91%E9%A1%B5%E5%89%8D%E7%AB%AF%E2%80%94%E2%80%94AriaNg"><span class="nav-number">9.2.</span> <span class="nav-text">搭建网页前端——AriaNg</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9A%84%E6%89%A9%E5%B1%95%E7%A8%8B%E5%BA%8F"><span class="nav-number">9.3.</span> <span class="nav-text">浏览器的扩展程序</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE-1"><span class="nav-number">9.3.1.</span> <span class="nav-text">配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8-1"><span class="nav-number">9.3.2.</span> <span class="nav-text">使用</span></a></li></ol></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="ienA"
+      src="/images/20230401000222.jpg">
+  <p class="site-author-name" itemprop="name">ienA</p>
+  <div class="site-description" itemprop="description">致力于分享自己学习过程笔记的萌新博主૮(˶ᵔ ᵕ ᵔ˶)ა</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">20</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">19</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="/GG" title="GitHub → GG" rel="noopener me"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/%E4%B8%8D%E7%BB%99%E4%BD%A0%EF%BC%81%EF%BC%81%EF%BC%81" title="E-Mail → 不给你！！！" rel="noopener me"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+    <div class="sidebar-inner sidebar-blogroll">
+      <div class="links-of-blogroll animated">
+        <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
+          链接
+        </div>
+        <ul class="links-of-blogroll-list">
+            <li class="links-of-blogroll-item">
+              <a href="https://julintongxue.github.io/" title="https:&#x2F;&#x2F;julintongxue.github.io" rel="noopener" target="_blank">orangeの博客</a>
+            </li>
+            <li class="links-of-blogroll-item">
+              <a href="https://luiyang08.github.io/" title="https:&#x2F;&#x2F;luiyang08.github.io" rel="noopener" target="_blank">LuiYang</a>
+            </li>
+        </ul>
+      </div>
+    </div>
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/06/06/%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%8F%98%E6%88%90%E8%87%AA%E5%B7%B1%E7%9A%84NAS%E5%92%8C%E4%B8%8B%E8%BD%BD%E5%99%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/20230401000222.jpg">
+      <meta itemprop="name" content="ienA">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ienAの博客">
+      <meta itemprop="description" content="致力于分享自己学习过程笔记的萌新博主૮(˶ᵔ ᵕ ᵔ˶)ა">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="将自己的树莓派/服务器变成自己的NAS、下载器 | ienAの博客">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          将自己的树莓派/服务器变成自己的NAS、下载器
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-06-06 16:19:41" itemprop="dateCreated datePublished" datetime="2023-06-06T16:19:41+08:00">2023-06-06</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2023-11-17 02:25:15" itemprop="dateModified" datetime="2023-11-17T02:25:15+08:00">2023-11-17</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/orangepi/" itemprop="url" rel="index"><span itemprop="name">orangepi</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>9.3k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>8 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>对NAS总是抱有好奇？对NAS的价格望而却步？<br>但是，如果你有<strong>树莓派（或者其它arm64架构的开发板也行）</strong>，或者是Linux服务器，为什么不试试让它们变成自己的小型NAS？</p>
+<h2 id="NAS"><a href="#NAS" class="headerlink" title="NAS"></a>NAS</h2><p>NAS（Network Attached Storage：网络附属存储）按字面简单说就是连接在网络上，具备资料存储功能的装置，因此也称为“网络存储器”。它是一种专用数据存储服务器。</p>
+<p>大型的NAS，比如：群晖。可以有App，对手机照片进行备份，还可以对数据进行灾变处理，但是价格就比较贵了。而本次搭建NAS，主要满足：</p>
+<ul>
+<li>在线访问数据</li>
+<li>下载站</li>
+<li>挂载到电脑上，作为网络U盘</li>
+</ul>
+<h2 id="操作思路"><a href="#操作思路" class="headerlink" title="操作思路"></a>操作思路</h2><h3 id="1-在线访问数据"><a href="#1-在线访问数据" class="headerlink" title="1. 在线访问数据"></a>1. 在线访问数据</h3><p>比如：.flv、.mp4、.jpg等等，我们使用PHP实现网络浏览，这里我们使用_h5ai:</p>
+<p><strong><a target="_blank" rel="noopener" href="https://larsjung.de/h5ai/demo/">演示网站</a></strong></p>
+<p><strong><a target="_blank" rel="noopener" href="https://larsjung.de/h5ai/">官方文档</a></strong></p>
+<h3 id="2-下载站"><a href="#2-下载站" class="headerlink" title="2. 下载站"></a>2. 下载站</h3><p><img src="../images/%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%8F%98%E6%88%90%E8%87%AA%E5%B7%B1%E7%9A%84NAS%E5%92%8C%E4%B8%8B%E8%BD%BD%E5%99%A8/DownloadToNAS.png" alt="DownloadToNAS"><br>下载站，我们使用Aria2这个多线程下载器实现，难点是挂载到电脑上，也就是目录映射。最好能满足：</p>
+<ul>
+<li>加密传输，保证安全</li>
+<li>支持平台多，速度稳定</li>
+</ul>
+<h3 id="3-挂载到本地磁盘"><a href="#3-挂载到本地磁盘" class="headerlink" title="3. 挂载到本地磁盘"></a>3. 挂载到本地磁盘</h3><p>在Windwos上挂载<img src="../images/%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%8F%98%E6%88%90%E8%87%AA%E5%B7%B1%E7%9A%84NAS%E5%92%8C%E4%B8%8B%E8%BD%BD%E5%99%A8/MountInWindows.png" alt="在Windwos上挂载"></p>
+<p>其实，本地挂载树莓派、服务器磁盘的选择有很多。比如：SMB、FTP等。但是，考虑安全和利用情况下，我还是选择Webdav。</p>
+<p>Windows和macOS都支持挂载Webdav，但是可能会出现无法写的情况。我建议使用第三方免费工具：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://www.raidrive.com/">For Windwos：Raidrive</a></li>
+<li><a target="_blank" rel="noopener" href="https://apps.apple.com/cn/app/fe%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86%E5%99%A8/id1444382558?mt=12">For macOS：FE文件管理器</a></li>
+</ul>
+<p>以上两款软件也都是免费的。</p>
+<p>本文使用Webdav挂载，如果你使用宝塔，或者使用SMB，那么也完全可以选择非Webdav协议挂载磁盘。</p>
+<p>（宝塔不可使用Nginx Webdav插件）</p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>综上，我们本次需要安装：</p>
+<ul>
+<li>Nginx：用来提供Web目录访问</li>
+<li>PHP：用来映射目录，实现_h5ai</li>
+<li>Nginx模块：Webdav模块和Fancyindex模块，用来实现Webdav</li>
+</ul>
+<h1 id="前排提示"><a href="#前排提示" class="headerlink" title="前排提示"></a>前排提示</h1><p>本次教程，适用所有架构的Linux（arm架构和x86都可以）。PHP、Nginx的配置，使用编译安装的方法。</p>
+<p>不建议用宝塔安装Nginx和PHP，服务管理起来不方便，其它的懂的都懂</p>
+<h1 id="服务器要求"><a href="#服务器要求" class="headerlink" title="服务器要求"></a>服务器要求</h1><p>如果是<strong>树莓派（或者其它arm64架构的开发板也行）</strong>，那么没什么具体要求，有个可以刷写SD卡的软件即可</p>
+<p>但是，如果是服务器，最好选择高带宽的服务器，内存最好需要2G以上，否则编译PHP时，可能需要SWAP的支持。</p>
+<p>我的是香橙派，也是arm64架构的开发板，系统用的Debian11，用其它linux系统的可以根据 命令自行修改一下即可</p>
+<blockquote>
+<p>从下面开始我都是用root用户来进行，不想用root用户的可以在命令前面加上<code>sudo</code></p>
+</blockquote>
+<h1 id="PHP"><a href="#PHP" class="headerlink" title="PHP"></a>PHP</h1><p><strong><a target="_blank" rel="noopener" href="https://www.php.net/downloads.php">PHP官方下载地址</a></strong></p>
+<h2 id="安装依赖"><a href="#安装依赖" class="headerlink" title="安装依赖"></a>安装依赖</h2><blockquote>
+<p>为下面编译参数做准备</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt install build-essential pkg-config openssl libssl-dev libsqlite3-dev zlib1g-dev libcurl4-openssl-dev libpng-dev libjpeg-dev libonig-dev libzip-dev ffmpeg imagemagick -y</span><br></pre></td></tr></table></figure>
+
+<h2 id="下载PHP"><a href="#下载PHP" class="headerlink" title="下载PHP"></a>下载PHP</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">wget https://www.php.net/distributions/php-8.2.6.tar.gz -P /usr/local/src</span><br><span class="line"><span class="built_in">cd</span> /usr/local/src &amp;&amp; tar xf php-8.2.6.tar.gz</span><br><span class="line"><span class="built_in">cd</span> php-8.2.6</span><br></pre></td></tr></table></figure>
+
+<h2 id="配置用户和用户组"><a href="#配置用户和用户组" class="headerlink" title="配置用户和用户组"></a>配置用户和用户组</h2><blockquote>
+<p>orangepi是我开发板自带的用户，不想用自带的用户也可以创建一个别的用户和用户组</p>
+</blockquote>
+<p>如果你在服务器上操作，建议创建一个www用户和www用户组：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 创建一个www用户</span></span><br><span class="line">sudo useradd www</span><br><span class="line"></span><br><span class="line"><span class="comment"># 创建一个www用户组</span></span><br><span class="line">sudo groupadd www</span><br><span class="line"></span><br><span class="line"><span class="comment"># www用户归属于www用户组</span></span><br><span class="line">sudo usermod -a -G www www</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="配置编译参数"><a href="#配置编译参数" class="headerlink" title="配置编译参数"></a>配置编译参数</h2><blockquote>
+<p>这是我配置的编译参数，其他PHP版本可能略微不一样，需要自己判断），也可以参考我这篇文章<a target="_blank" rel="noopener" href="https://aienh.github.io/post/debian11%E9%83%A8%E7%BD%B2LNMP%EF%BC%88nginx-mariadb-php%EF%BC%89%E6%95%99%E7%A8%8B">部署LNMP教程</a></p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">./configure \</span><br><span class="line">--prefix=/usr/local/php \</span><br><span class="line">--with-curl \</span><br><span class="line">--with-mysqli \</span><br><span class="line">--with-openssl \</span><br><span class="line">--with-pdo-mysql \</span><br><span class="line">--with-jpeg \</span><br><span class="line">--enable-gd \</span><br><span class="line">--enable-fpm \</span><br><span class="line">--with-fpm-user=orangepi \</span><br><span class="line">--with-fpm-group=orangepi \</span><br><span class="line">--enable-bcmath \</span><br><span class="line">--enable-xml \</span><br><span class="line">--with-zip \</span><br><span class="line">--enable-mbstring \</span><br><span class="line">--enable-sockets  \</span><br><span class="line">--with-zlib   \</span><br><span class="line">--enable-fileinfo \</span><br><span class="line">--enable-exif</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>–with-fpm-user：fpm进程属于的用户</li>
+<li>–with-fpm-group：fpm进程属于的用户组</li>
+</ul>
+<h2 id="编译安装"><a href="#编译安装" class="headerlink" title="编译安装"></a>编译安装</h2><blockquote>
+<p>上面的<code>configure</code>配置没有问题，接下来就是编译和安装了，我图方便就一条命令来执行，新手可以把两条命令分开执行，先<code>make</code>在<code>make install</code></p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">make -j$(<span class="built_in">nproc</span>) &amp;&amp; make install -j$(<span class="built_in">nproc</span>)</span><br></pre></td></tr></table></figure>
+
+<h2 id="复制配置文件"><a href="#复制配置文件" class="headerlink" title="复制配置文件"></a>复制配置文件</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cp</span> /usr/local/php/etc/php-fpm.conf.default /usr/local/php/etc/php-fpm.conf</span><br><span class="line"><span class="built_in">cp</span> /usr/local/php/etc/php-fpm.d/www.conf.default /usr/local/php/etc/php-fpm.d/www.conf</span><br></pre></td></tr></table></figure>
+
+<h2 id="测试运行"><a href="#测试运行" class="headerlink" title="测试运行"></a>测试运行</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/usr/local/php7/sbin/php-fpm</span><br></pre></td></tr></table></figure>
+
+<h2 id="查看服务进程和端口"><a href="#查看服务进程和端口" class="headerlink" title="查看服务进程和端口"></a>查看服务进程和端口</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ps aux | grep php-fpm</span><br><span class="line">lsof -i:9000</span><br></pre></td></tr></table></figure>
+
+<h1 id="Nginx"><a href="#Nginx" class="headerlink" title="Nginx"></a>Nginx</h1><p><a target="_blank" rel="noopener" href="http://nginx.org/en/download.html">Nginx官方下载地址</a></p>
+<h2 id="安装依赖-1"><a href="#安装依赖-1" class="headerlink" title="安装依赖"></a>安装依赖</h2><blockquote>
+<p>为下面编译参数做准备</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt install build-essential libpcre3 libpcre3-dev zlib1g-dev openssl libssl-dev libxml2-dev libxslt-dev -y</span><br></pre></td></tr></table></figure>
+
+<h2 id="额外模块"><a href="#额外模块" class="headerlink" title="额外模块"></a>额外模块</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/aperezdc/ngx-fancyindex">Fancyindex模块</a></li>
+</ul>
+<p>如果我们需要进行目录映射，需要更好看的、更实用的目录映射，需要额外的Fancyindex模块支持。</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/arut/nginx-dav-ext-module">WebDav模块</a></li>
+</ul>
+<p>Nginx自带的Webdav支持不完善，需要额外的模块进行支持。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> /usr/local/src/NginxModule/ &amp;&amp; <span class="built_in">cd</span> /usr/local/src/NginxModule</span><br><span class="line">git <span class="built_in">clone</span> https://github.com/arut/nginx-dav-ext-module.git</span><br><span class="line">git <span class="built_in">clone</span> https://github.com/aperezdc/ngx-fancyindex.git</span><br></pre></td></tr></table></figure>
+
+<h2 id="下载Nginx"><a href="#下载Nginx" class="headerlink" title="下载Nginx"></a>下载Nginx</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">wget http://nginx.org/download/nginx-1.24.0.tar.gz -P /usr/local/src</span><br><span class="line"><span class="built_in">cd</span> /usr/local/src &amp;&amp; tar xf nginx-1.24.0.tar.gz</span><br><span class="line"><span class="built_in">cd</span> nginx-1.24.0</span><br></pre></td></tr></table></figure>
+
+<h2 id="配置用户和用户组-1"><a href="#配置用户和用户组-1" class="headerlink" title="配置用户和用户组"></a>配置用户和用户组</h2><blockquote>
+<p>orangepi是我开发板自带的用户，不想用自带的用户也可以创建一个别的用户和用户组</p>
+</blockquote>
+<p>如果你在服务器上操作，建议创建一个www用户和www用户组：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 创建一个www用户</span></span><br><span class="line">sudo useradd www</span><br><span class="line"></span><br><span class="line"><span class="comment"># 创建一个www用户组</span></span><br><span class="line">sudo groupadd www</span><br><span class="line"></span><br><span class="line"><span class="comment"># www用户归属于www用户组</span></span><br><span class="line">sudo usermod -a -G www www</span><br></pre></td></tr></table></figure>
+
+<h2 id="配置编译参数-1"><a href="#配置编译参数-1" class="headerlink" title="配置编译参数"></a>配置编译参数</h2><blockquote>
+<p>这是我配置的编译参数，其他Nginx版本可能略微不一样，需要自己判断），也可以参考我这篇文章<a target="_blank" rel="noopener" href="https://aienh.github.io/post/debian11%E9%83%A8%E7%BD%B2LNMP%EF%BC%88nginx-mariadb-php%EF%BC%89%E6%95%99%E7%A8%8B">部署LNMP教程</a></p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">./configure \</span><br><span class="line">--prefix=/usr/local/nginx \</span><br><span class="line">--user=orangepi \</span><br><span class="line">--group=orangepi \</span><br><span class="line">--sbin-path=/usr/local/nginx/sbin/nginx \</span><br><span class="line">--conf-path=/usr/local/nginx/nginx.conf \</span><br><span class="line">--error-log-path=/var/log/nginx/error.log \</span><br><span class="line">--http-log-path=/var/log/nginx/access.log \</span><br><span class="line">--pid-path=/var/run/nginx.pid \</span><br><span class="line">--lock-path=/var/run/nginx.lock \</span><br><span class="line">--http-client-body-temp-path=/var/cache/nginx/client_temp \</span><br><span class="line">--http-proxy-temp-path=/var/cache/nginx/proxy_temp \</span><br><span class="line">--http-fastcgi-temp-path=/var/cache/nginx/fastcgi_temp \</span><br><span class="line">--http-uwsgi-temp-path=/var/cache/nginx/uwsgi_temp \</span><br><span class="line">--http-scgi-temp-path=/var/cache/nginx/scgi_temp \</span><br><span class="line">--with-file-aio \</span><br><span class="line">--with-threads \</span><br><span class="line">--with-http_addition_module \</span><br><span class="line">--with-http_auth_request_module \</span><br><span class="line">--with-http_dav_module \</span><br><span class="line">--with-http_flv_module \</span><br><span class="line">--with-http_gunzip_module \</span><br><span class="line">--with-http_gzip_static_module \</span><br><span class="line">--with-http_mp4_module \</span><br><span class="line">--with-http_random_index_module \</span><br><span class="line">--with-http_realip_module \</span><br><span class="line">--with-http_secure_link_module \</span><br><span class="line">--with-http_slice_module \</span><br><span class="line">--with-http_ssl_module \</span><br><span class="line">--with-http_stub_status_module \</span><br><span class="line">--with-http_sub_module \</span><br><span class="line">--with-http_v2_module \</span><br><span class="line">--with-mail \</span><br><span class="line">--with-mail_ssl_module \</span><br><span class="line">--with-stream \</span><br><span class="line">--with-stream_realip_module \</span><br><span class="line">--with-stream_ssl_module \</span><br><span class="line">--with-stream_ssl_preread_module \</span><br><span class="line">--add-module=/usr/local/src/NginxModule/nginx-dav-ext-module \</span><br><span class="line">--add-module=/usr/local/src/NginxModule/ngx-fancyindex</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>–user：nginx进程属于的用户</li>
+<li>–group：nginx进程属于的用户组</li>
+</ul>
+<h2 id="编译安装-1"><a href="#编译安装-1" class="headerlink" title="编译安装"></a>编译安装</h2><blockquote>
+<p>上面的<code>configure</code>配置没有问题，接下来就是编译和安装了，我图方便就一条命令来执行，新手可以把两条命令分开执行，先<code>make</code>在<code>make install</code></p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">make -j$(<span class="built_in">nproc</span>) &amp;&amp; make install -j$(<span class="built_in">nproc</span>)</span><br></pre></td></tr></table></figure>
+
+<h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><blockquote>
+<p>因为上面配置参数指定缓存文件在<code>/var/cache/nginx</code>，日志文件在<code>/var/log/nginx</code>，所以需要创建</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> /var/cache/nginx</span><br><span class="line"><span class="built_in">mkdir</span> /var/log/nginx</span><br></pre></td></tr></table></figure>
+
+<h2 id="测试运行-1"><a href="#测试运行-1" class="headerlink" title="测试运行"></a>测试运行</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/usr/local/nginx/sbin/nginx</span><br></pre></td></tr></table></figure>
+
+<h2 id="查看服务进程和端口-1"><a href="#查看服务进程和端口-1" class="headerlink" title="查看服务进程和端口"></a>查看服务进程和端口</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ps aux | grep nginx</span><br><span class="line">lsof -i:80</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h1 id="配置-h5ai"><a href="#配置-h5ai" class="headerlink" title="配置_h5ai"></a>配置_h5ai</h1><p>H5AI，其实全称是：HTML5 Apache Index。最初是用来在Apache Web服务器上，完成资源映射，但是后来适配到Nginx等其他平台。配置很简单：<code>下载_h5ai</code>-<code>修改Nginx配置文件</code>-<code>开始使用</code>。<br>注意_h5ai的映射逻辑：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">网站根目录(需要映射的目录）</span><br><span class="line"> ├─ _h5ai</span><br><span class="line"> ├─ 你的其他文件1</span><br><span class="line"> └─ 你的其他文件1</span><br></pre></td></tr></table></figure>
+
+<h2 id="下载-h5ai"><a href="#下载-h5ai" class="headerlink" title="下载_h5ai"></a>下载_h5ai</h2><p>因为是开源的工具，所以网上有很多修改版本，包含官方的：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://larsjung.de/h5ai/">官方版本</a>：官方的版本，功能全、稳定。</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/Pearlulu/h5ai_dplayer">Dplayer版本</a>：基于官方旧版本开发，支持更多格式的在线视频播放。</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/Mintimate/h5ai_M">Mintimate’s _h5ai</a>：基于Dplayer版本并合并官方最新版本代码。</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /home/orangepi</span><br><span class="line"><span class="built_in">mkdir</span> Downloads</span><br><span class="line"></span><br><span class="line"><span class="built_in">cd</span> Downloads</span><br><span class="line">git <span class="built_in">clone</span> https://github.com/Mintimate/h5ai_M</span><br><span class="line"></span><br><span class="line"><span class="comment">#将h5ai_M项目里的_h5ai移到Downloads目录下</span></span><br><span class="line"><span class="built_in">cd</span> h5ai_M</span><br><span class="line"><span class="built_in">mv</span> _h5ai ..</span><br><span class="line"></span><br><span class="line"><span class="comment">#因为是用root用户创建的，需要修改该文件夹的所属用户和组</span></span><br><span class="line"><span class="built_in">cd</span> /home/orangepi</span><br><span class="line"><span class="built_in">chown</span> -R orangpepi:orangepi Downloads</span><br></pre></td></tr></table></figure>
+
+<h2 id="修改Nginx配置"><a href="#修改Nginx配置" class="headerlink" title="修改Nginx配置"></a>修改Nginx配置</h2><p>备份原先的nginx配置文件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">mv</span> /usr/local/nginx/nginx.conf /usr/local/nginx/nginx.conf.bak</span><br></pre></td></tr></table></figure>
+
+<p>新建一个配置文件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /usr/local/nginx/nginx.conf</span><br></pre></td></tr></table></figure>
+
+<p>直接添加配置：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#所属用户</span></span><br><span class="line">user  orangepi;</span><br><span class="line">worker_processes  1;</span><br><span class="line">events &#123;</span><br><span class="line">    worker_connections  1024;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">http &#123;</span><br><span class="line">    include       mime.types;</span><br><span class="line">    default_type  application/octet-stream;</span><br><span class="line"></span><br><span class="line">    sendfile        on;</span><br><span class="line"></span><br><span class="line">    keepalive_timeout  65;</span><br><span class="line"></span><br><span class="line">    gzip  on;</span><br><span class="line"></span><br><span class="line">    server &#123;</span><br><span class="line">        listen       80;</span><br><span class="line">        server_name  localhost;</span><br><span class="line">        <span class="comment">#映射目录</span></span><br><span class="line">        root /home/orangepi/Downloads;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        location / &#123;</span><br><span class="line">            index  index.html index.htm /_h5ai/public/index.php;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        error_page   500 502 503 504  /50x.html;</span><br><span class="line">        location = /50x.html &#123;</span><br><span class="line">            root   html;</span><br><span class="line">        &#125;</span><br><span class="line">		</span><br><span class="line">		<span class="comment">#webdav配置</span></span><br><span class="line">        location ^~/webdav&#123;</span><br><span class="line">            <span class="built_in">set</span> <span class="variable">$dest</span> <span class="variable">$http_destination</span>;</span><br><span class="line">            <span class="keyword">if</span> (-d \<span class="variable">$request_filename</span>) &#123;</span><br><span class="line">                   rewrite ^(.*[^/])$ <span class="variable">$1</span>/;</span><br><span class="line">                   <span class="built_in">set</span> <span class="variable">$dest</span> <span class="variable">$dest</span>/;</span><br><span class="line">             &#125;</span><br><span class="line">            <span class="keyword">if</span> (<span class="variable">$request_method</span> ~ MKCOL) &#123;</span><br><span class="line">                   rewrite ^(.*[^/])$ <span class="variable">$1</span>/ <span class="built_in">break</span>;</span><br><span class="line">             &#125;</span><br><span class="line">             <span class="comment"># 映射目录</span></span><br><span class="line">            <span class="built_in">alias</span> /home/pi/Downloads/;</span><br><span class="line">            autoindex on;</span><br><span class="line">            <span class="comment"># Webdav设置</span></span><br><span class="line">            dav_methods PUT DELETE MKCOL COPY MOVE;</span><br><span class="line">            dav_ext_methods PROPFIND OPTIONS;</span><br><span class="line">            create_full_put_path on;</span><br><span class="line">            <span class="comment"># 最大上传文件</span></span><br><span class="line">            client_max_body_size 3G;</span><br><span class="line">            dav_access user:rw group:rw all:rw;</span><br><span class="line">            auth_basic <span class="string">&quot;Authorized Users Only&quot;</span>;</span><br><span class="line">            <span class="comment"># 验证用户</span></span><br><span class="line">            auth_basic_user_file webdavpasswd;</span><br><span class="line">        &#125;		</span><br><span class="line"></span><br><span class="line">        <span class="comment"># php-fpm配置</span></span><br><span class="line">        location ~ [^/]\.php(/|$)&#123;</span><br><span class="line">            <span class="comment"># try_files $uri =404;</span></span><br><span class="line">            fastcgi_pass  127.0.0.1:9000;</span><br><span class="line">            include fastcgi.conf;</span><br><span class="line">            fastcgi_index  index.php;</span><br><span class="line">            fastcgi_param  SCRIPT_FILENAME  <span class="variable">$document_root</span>/<span class="variable">$fastcgi_script_name</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><blockquote>
+<p>如果装了宝塔的，使用前记得开放对应端口，80端口和9000端口</p>
+</blockquote>
+<p>直接用浏览器访问香橙派的IP，就可以访问<code>_h5ai</code>的映射目录</p>
+<p>默认：</p>
+<ul>
+<li>用户名：<code>admin</code></li>
+<li>密码：<code>admin</code></li>
+</ul>
+<p>然后进入这个地址：http://服务器的IP/_h5ai/public/index.php，这个界面是没有密码的，直接点击login</p>
+<p>看到配置全绿就OK了</p>
+<h1 id="配置下载器"><a href="#配置下载器" class="headerlink" title="配置下载器"></a>配置下载器</h1><p>如果只配置了_h5ai，距离NAS基本算完成一大步了。但是，我认为还需要配置下载器，能把网上资源，直接下载到服务器才算是NAS。<br>这里我们使用Aria2作为下载器。</p>
+<h2 id="配置Aria2"><a href="#配置Aria2" class="headerlink" title="配置Aria2"></a>配置Aria2</h2><p>一键脚本搭建：</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/Mintimate/AutoInstallAria2">AutoInstallAria2</a></p>
+<blockquote>
+<p>因为一键安装脚本会在家目录下创建目录，所以切换到orangepi用户</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">su orangepi</span><br><span class="line">wget <span class="string">&quot;https://cdn.jsdelivr.net/gh/Mintimate/AutoInstallAria2@latest/AutoInstallAria2ForLinux.sh&quot;</span> &amp;&amp; bash AutoInstallAria2ForLinux.sh</span><br></pre></td></tr></table></figure>
+
+<h2 id="测试使用"><a href="#测试使用" class="headerlink" title="测试使用"></a>测试使用</h2><p>这个时候，我们本地就可以使用Aria2的RPC进行下载了，首先Linux服务器上启动Aira2:</p>
+<blockquote>
+<p>如果装了宝塔的，使用前记得开放对应端口，默认6800端口，可在配置中修改</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> ~</span><br><span class="line">sudo ./aria2.sh</span><br></pre></td></tr></table></figure>
+
+<p>上面修改的Nginx配置，已经设置Webdav参数和目录，还设置了<strong>验证用户</strong>，所以还需要创建<strong>webdavpasswd</strong>这个验证文件。如果不需要验证，可以注释这一项，就可以使用本地的Webdav客户端访问了。</p>
+<h2 id="设置验证用户"><a href="#设置验证用户" class="headerlink" title="设置验证用户"></a>设置验证用户</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cat</span> &lt;&lt; <span class="string">EOF &gt; /usr/local/nginx/webdavpasswd</span></span><br><span class="line"><span class="string">#设置登录用户名和密码</span></span><br><span class="line"><span class="string">admin:$(openssl passwd 123)</span></span><br><span class="line"><span class="string">EOF</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p><code>admin</code>是设置的<strong>用户名</strong></p>
+</li>
+<li><p><code>123</code>是设置的<strong>密码</strong></p>
+</li>
+</ul>
+<p><strong>用户名</strong>和<strong>密码</strong>可自行修改，之后重新加载配置文件和重启服务：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">/usr/local/nginx/sbin/nginx -s reload</span><br><span class="line">killall nginx</span><br><span class="line">/usr/local/nginx/sbin/nginx</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="客户端登陆"><a href="#客户端登陆" class="headerlink" title="客户端登陆"></a>客户端登陆</h2><p>macOS和Windows的文件管理器都可以登录，但是功能不全（无法上传），这里推荐：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://apps.apple.com/cn/app/fe%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86%E5%99%A8/id1444382558?mt=12">macOS：FE文件管理器</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.raidrive.com/">Windwos：Raidrive</a></li>
+</ul>
+<p>以上软件，个人使用免费版本就可以了：</p>
+<blockquote>
+<p>没用过mac，我用windows演示</p>
+</blockquote>
+<p><img src="../images/%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%8F%98%E6%88%90%E8%87%AA%E5%B7%B1%E7%9A%84NAS%E5%92%8C%E4%B8%8B%E8%BD%BD%E5%99%A8/image-20230607013014512.png" alt="image-20230607013014512"></p>
+<p>nginx默认80端口，如果80端口要跑其它服务，也可以修改nginx配置文件把80端口改成其它端口，路径要加<code>/webdav</code>，然后一定要取消勾选<strong>地址！！！</strong></p>
+<h1 id="添加系统服务"><a href="#添加系统服务" class="headerlink" title="添加系统服务"></a>添加系统服务</h1><blockquote>
+<p>还是可以参考我这篇文章<a target="_blank" rel="noopener" href="https://aienh.github.io/post/debian11%E9%83%A8%E7%BD%B2LNMP%EF%BC%88nginx-mariadb-php%EF%BC%89%E6%95%99%E7%A8%8B">部署LNMP教程</a></p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /usr/lib/systemd/system/nginx.service</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">[Unit]</span><br><span class="line">Description=nginx</span><br><span class="line">After=network.target</span><br><span class="line">  </span><br><span class="line">[Service]</span><br><span class="line">Type=forking</span><br><span class="line">ExecStart=/usr/local/nginx/sbin/nginx</span><br><span class="line">ExecReload=/usr/local/nginx/sbin/nginx -s reload</span><br><span class="line">ExecStop=/usr/local/nginx/sbin/nginx -s quit</span><br><span class="line">PrivateTmp=<span class="literal">true</span></span><br><span class="line">  </span><br><span class="line">[Install]</span><br><span class="line">WantedBy=multi-user.target</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vim /usr/lib/systemd/system/php-fpm.service</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">[Unit]</span><br><span class="line">Description=php-fpm</span><br><span class="line">After=network.target</span><br><span class="line">  </span><br><span class="line">[Service]</span><br><span class="line">Type=forking</span><br><span class="line">ExecStart=/usr/local/php7/sbin/php-fpm</span><br><span class="line">PrivateTmp=<span class="literal">true</span></span><br><span class="line">  </span><br><span class="line">[Install]</span><br><span class="line">WantedBy=multi-user.target</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vim /usr/lib/systemd/system/aria2.service</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">[Unit]</span><br><span class="line">Description=Aria2</span><br><span class="line">After=network.target</span><br><span class="line"></span><br><span class="line">[Service]</span><br><span class="line">User=pi</span><br><span class="line">Type=simple</span><br><span class="line">ExecStart=/etc/aria2/aria2c --conf-path=/etc/aria2/aria2.conf</span><br><span class="line"></span><br><span class="line">[Install]</span><br><span class="line">WantedBy=multi-user.target</span><br></pre></td></tr></table></figure>
+
+<p>建议还是给予执行权限：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">chmod</span> +x nginx.service</span><br><span class="line"><span class="built_in">chmod</span> +x php-fpm.service</span><br><span class="line"><span class="built_in">chmod</span> +x aria2.service</span><br></pre></td></tr></table></figure>
+
+<p>允许开机启动并激活：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">systemctl <span class="built_in">enable</span> nginx.service</span><br><span class="line">systemctl <span class="built_in">enable</span> php-fpm.service</span><br><span class="line">systemctl <span class="built_in">enable</span> aria2.service</span><br></pre></td></tr></table></figure>
+
+<h1 id="连接Aria2进程"><a href="#连接Aria2进程" class="headerlink" title="连接Aria2进程"></a>连接Aria2进程</h1><ul>
+<li>使用AriaNG连接Aria2进程</li>
+</ul>
+<h2 id="AriaNG-Native"><a href="#AriaNG-Native" class="headerlink" title="AriaNG Native"></a>AriaNG Native</h2><p>个人推荐使用AriaNG Native连接服务器和本地的Aria2进程。</p>
+<ul>
+<li>GitHub地址：<a target="_blank" rel="noopener" href="https://github.com/mayswind/AriaNg-Native/releases">https://github.com/mayswind/AriaNg-Native/releases</a></li>
+</ul>
+<p>我们下载对应自己电脑版本的AriaNG Native：<br>之后，我们设置RPC：</p>
+<blockquote>
+<p>设置的RPC要和在linux上aria2.conf配置文件中的RPC一致（rpc-secret：设置Aria2验证远程码）</p>
+</blockquote>
+<p><img src="../images/%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%8F%98%E6%88%90%E8%87%AA%E5%B7%B1%E7%9A%84NAS%E5%92%8C%E4%B8%8B%E8%BD%BD%E5%99%A8/AriaNG_NativeSetting.png" alt="设置RPC"></p>
+<p>刷新即可连接：<br><img src="../images/%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%8F%98%E6%88%90%E8%87%AA%E5%B7%B1%E7%9A%84NAS%E5%92%8C%E4%B8%8B%E8%BD%BD%E5%99%A8/AriaNG_Native.png" alt="连接成功"></p>
+<h2 id="搭建网页前端——AriaNg"><a href="#搭建网页前端——AriaNg" class="headerlink" title="搭建网页前端——AriaNg"></a>搭建网页前端——AriaNg</h2><p>这个一般是部署在服务器<br>项目地址（GitHub）： <a target="_blank" rel="noopener" href="https://github.com/mayswind/AriaNg/releases">https://github.com/mayswind/AriaNg/releases</a>    </p>
+<h2 id="浏览器的扩展程序"><a href="#浏览器的扩展程序" class="headerlink" title="浏览器的扩展程序"></a>浏览器的扩展程序</h2><p>这是Chrome浏览器的扩展程序：</p>
+<p><a target="_blank" rel="noopener" href="https://chrome.google.com/webstore/detail/aria2-explorer/mpkodccbngfoacfalldjimigbofkhgjn?utm_source=ext_app_menu">https://chrome.google.com/webstore/detail/aria2-explorer/mpkodccbngfoacfalldjimigbofkhgjn?utm_source=ext_app_menu</a>    </p>
+<blockquote>
+<p>我图方便用的也是这种，用的火狐浏览器</p>
+</blockquote>
+<p><img src="../images/%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%8F%98%E6%88%90%E8%87%AA%E5%B7%B1%E7%9A%84NAS%E5%92%8C%E4%B8%8B%E8%BD%BD%E5%99%A8/image-20230607021439381.png" alt="image-20230607021439381"></p>
+<p>我下载的是第一个扩展</p>
+<h3 id="配置-1"><a href="#配置-1" class="headerlink" title="配置"></a>配置</h3><p>打开管理扩展，点击选项</p>
+<p><img src="../images/%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%8F%98%E6%88%90%E8%87%AA%E5%B7%B1%E7%9A%84NAS%E5%92%8C%E4%B8%8B%E8%BD%BD%E5%99%A8/image-20230607021742222.png" alt="image-20230607021742222"></p>
+<p>点击RPC服务器后再点击默认服务器</p>
+<p><img src="../images/%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%8F%98%E6%88%90%E8%87%AA%E5%B7%B1%E7%9A%84NAS%E5%92%8C%E4%B8%8B%E8%BD%BD%E5%99%A8/image-20230607021835467.png" alt="image-20230607021835467"></p>
+<p>协议选http，填入服务器IP，密钥要和在linux上aria2.conf配置文件中的RPC一致，然后点保存</p>
+<p><img src="../images/%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%8F%98%E6%88%90%E8%87%AA%E5%B7%B1%E7%9A%84NAS%E5%92%8C%E4%B8%8B%E8%BD%BD%E5%99%A8/image-20230607022037734.png" alt="image-20230607022037734"></p>
+<h3 id="使用-1"><a href="#使用-1" class="headerlink" title="使用"></a>使用</h3><p>固定到工具栏</p>
+<p><img src="../images/%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%8F%98%E6%88%90%E8%87%AA%E5%B7%B1%E7%9A%84NAS%E5%92%8C%E4%B8%8B%E8%BD%BD%E5%99%A8/image-20230607022319769.png" alt="image-20230607022319769"></p>
+<p>点详情就可以使用了</p>
+<p><img src="../images/%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%8F%98%E6%88%90%E8%87%AA%E5%B7%B1%E7%9A%84NAS%E5%92%8C%E4%B8%8B%E8%BD%BD%E5%99%A8/image-20230607022411558.png" alt="image-20230607022411558"></p>
+<p><img src="../images/%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%8F%98%E6%88%90%E8%87%AA%E5%B7%B1%E7%9A%84NAS%E5%92%8C%E4%B8%8B%E8%BD%BD%E5%99%A8/image-20230607022456123.png" alt="image-20230607022456123"></p>
+<p>连接到Aria2后就可以新建任务，把下载链接复制过去，就能把文件下载到Linux本地上了</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer"><div class="post-widgets">
+      <div id="needsharebutton-postbottom">
+        <span class="btn">
+          <i class="fa fa-share-alt" aria-hidden="true"></i>
+        </span>
+      </div>
+    </div>
+          <div class="post-tags">
+              <a href="/tags/arm64/" rel="tag"><i class="fa fa-tag"></i> arm64</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2023/05/26/%E6%97%A7%E6%89%8B%E6%9C%BA%E5%8F%98%E4%B8%BAlinux%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B9%8BMobian/" rel="prev" title="旧手机变为linux服务器之Mobian">
+                  <i class="fa fa-angle-left"></i> 旧手机变为linux服务器之Mobian
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2023/07/04/git%E4%B8%8A%E4%BC%A0%E6%96%B9%E6%B3%95/" rel="next" title="两种方法上传本地文件到github">
+                  两种方法上传本地文件到github <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2023</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">ienA</span>
+  </div>
+
+<!--
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+-->
+    </div>
+  </footer>
+
+
+
+  
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script><script src="/js/pjax.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+
+
+  
+
+
+
+
+<div id="needsharebutton-float">
+      <span class="btn">
+        <i class="fa fa-share-alt" aria-hidden="true"></i>
+      </span>
+    </div>
+  <script src="//cdn.jsdelivr.net/gh/theme-next/theme-next-needmoreshare2@1/needsharebutton.min.js"></script>
+  <script>
+      pbOptions = {};
+        pbOptions.iconStyle = "default";
+        pbOptions.boxForm = "horizontal";
+        pbOptions.position = "bottomCenter";
+        pbOptions.networks = "Wechat,QQZone,Weibo,Douban,Twitter,Facebook";
+      new needShareButton('#needsharebutton-postbottom', pbOptions);
+      flOptions = {};
+        flOptions.iconStyle = "default";
+        flOptions.boxForm = "horizontal";
+        flOptions.position = "middleRight";
+        flOptions.networks = "Wechat,QQZone,Weibo,Douban,Twitter,Facebook";
+      new needShareButton('#needsharebutton-float', flOptions);
+  </script>
+
+    <meting-js
+    server="netease" 
+    type="playlist"
+    id="8269382559"
+    autoplay="true"
+    volume="0.7"
+    fixed="true" 
+    order="list"
+    preload="metadata"
+    lrc-type="0">
+    </meting-js>
+    
+
+    <div class="waifu">
+        <div class="waifu-tips"></div>
+        <canvas id="live2d" class="live2d"></canvas>
+        <div class="waifu-tool">
+            <span class="fui-home"></span>
+            <span class="fui-chat"></span>
+            <span class="fui-eye"></span>
+            <span class="fui-user"></span>
+            <span class="fui-photo"></span>
+            <span class="fui-info-circle"></span>
+            <span class="fui-cross"></span>
+        </div>    
+
+    <script src="https://fastly.jsdelivr.net/gh/AienH/blog_plugin/live2d/assets/waifu-tips.js"></script>
+    <script src="https://fastly.jsdelivr.net/gh/AienH/blog_plugin/live2d/assets/live2d.js"></script>
+
+    <script type="text/javascript">
+        live2d_settings['modelId'] = 1;
+        live2d_settings['modelTexturesId'] = 87;
+        initModel("https://fastly.jsdelivr.net/gh/AienH/blog_plugin/live2d/assets/waifu-tips.json")
+    </script>
+    <script src="https://fastly.jsdelivr.net/gh/AienH/blog_plugin/live2d/assets/autoload.js"></script>
+
+</body>
+</html>
