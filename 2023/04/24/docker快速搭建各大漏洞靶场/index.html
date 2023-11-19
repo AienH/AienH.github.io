@@ -87,7 +87,7 @@
     <script src=" https://cdn.jsdelivr.net/npm/jquery-ui@1.13.2/dist/jquery-ui.min.js "></script>
     <script rel="preload" src="https://fastly.jsdelivr.net/gh/AienH/blog_plugin@master/APlayer/dist/APlayer.min.js"></script>
     <script rel="preload" src="https://fastly.jsdelivr.net/gh/AienH/blog_plugin@master/MetingJS/dist/Meting.min.js"></script>
-    <link rel="stylesheet" href="https://fastly.jsdelivr.net/gh/AienH/blog_plugin@master/APlayer/dist/APlayer.min.css">     
+    <link rel="stylesheet" href="https://fastly.jsdelivr.net/gh/AienH/blog_plugin@master/APlayer/dist/APlayer.min.css">
     <link rel="stylesheet" type="text/css" href="https://fastly.jsdelivr.net/gh/AienH/blog_plugin/live2d/assets/waifu.css"/>
 </head>
 
@@ -190,7 +190,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">20</span>
+          <span class="site-state-item-count">21</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -201,7 +201,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">19</span>
+        <span class="site-state-item-count">20</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -578,6 +578,21 @@
 
 
 
+
+
+<script class="next-config" data-name="valine" type="application/json">{"enable":true,"appId":"syB10s5rcgF4v3uTLsEzM9Wk-gzGzoHsz","appKey":"q66MkE73mzIDInf5AjqXW0Pt","serverURLs":"https://syb10s5r.api.lncldglobal.com","placeholder":"输入你的评论\n昵称为必填项目，输入QQ号可以直接获取用户名和头像，并且省去了填写邮箱的麻烦！\n虽然email不是必选，但是填写了email可以收到推送通知哦！","avatar":"hide","meta":["nick","mail","link"],"pageSize":10,"lang":null,"visitor":false,"comment_count":true,"recordIP":false,"enableQQ":false,"requiredFields":[],"el":"#valine-comments","path":"/2023/04/24/docker%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BA%E5%90%84%E5%A4%A7%E6%BC%8F%E6%B4%9E%E9%9D%B6%E5%9C%BA/"}</script>
+<script>
+document.addEventListener('page:loaded', () => {
+  NexT.utils.loadComments(CONFIG.valine.el)
+    .then(() => NexT.utils.getScript(
+      'https://fastly.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js',
+      { condition: window.Valine }
+    ))
+    .then(() => {
+      new Valine(CONFIG.valine);
+    });
+});
+</script>
 <div id="needsharebutton-float">
       <span class="btn">
         <i class="fa fa-share-alt" aria-hidden="true"></i>
@@ -597,22 +612,7 @@
         flOptions.position = "middleRight";
         flOptions.networks = "Wechat,QQZone,Weibo,Douban,Twitter,Facebook";
       new needShareButton('#needsharebutton-float', flOptions);
-  </script>
-
-<script class="next-config" data-name="valine" type="application/json">{"enable":true,"appId":"syB10s5rcgF4v3uTLsEzM9Wk-gzGzoHsz","appKey":"q66MkE73mzIDInf5AjqXW0Pt","serverURLs":"https://syb10s5r.api.lncldglobal.com","placeholder":"输入你的评论\n昵称为必填项目，输入QQ号可以直接获取用户名和头像，并且省去了填写邮箱的麻烦！\n虽然email不是必选，但是填写了email可以收到推送通知哦！","avatar":"hide","meta":["nick","mail","link"],"pageSize":10,"lang":null,"visitor":false,"comment_count":true,"recordIP":false,"enableQQ":false,"requiredFields":[],"el":"#valine-comments","path":"/2023/04/24/docker%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BA%E5%90%84%E5%A4%A7%E6%BC%8F%E6%B4%9E%E9%9D%B6%E5%9C%BA/"}</script>
-<script>
-document.addEventListener('page:loaded', () => {
-  NexT.utils.loadComments(CONFIG.valine.el)
-    .then(() => NexT.utils.getScript(
-      'https://fastly.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js',
-      { condition: window.Valine }
-    ))
-    .then(() => {
-      new Valine(CONFIG.valine);
-    });
-});
-</script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/disqusjs/3.0.2/styles/disqusjs.css" integrity="sha256-71XarXwNr1Td27HmZI9zjY+rMzRdush6/glo6VFXp7o=" crossorigin="anonymous">
+  </script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/disqusjs/3.0.2/styles/disqusjs.css" integrity="sha256-71XarXwNr1Td27HmZI9zjY+rMzRdush6/glo6VFXp7o=" crossorigin="anonymous">
 
 <script class="next-config" data-name="disqusjs" type="application/json">{"enable":true,"api":"https://disqus.skk.moe/disqus/","apikey":"yca1exawujXgiC2JDBZ1WSfENSBXd2J9IdgXcRKROHKskFK1Z2UAcUCDEg7EnTgF","shortname":"aienh","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/disqusjs/3.0.2/disqusjs.es2015.umd.min.js","integrity":"sha256-okP99ZQKVpIy7+NogAMpGlIQzJa9XKXhIJcFgdju5bU="}}</script>
 <script src="/js/third-party/comments/disqusjs.js"></script>
