@@ -17,7 +17,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha256-CTSx/A06dm1B063156EVh15m6Y67pAjZZaQc89LLSrU=" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.18.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"mac"},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"disqusjs","storage":true,"lazyload":false,"nav":{"disqusjs":{"text":"Load Disqus","order":-2},"valine":{"order":-1}},"activeClass":"disqusjs"},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":true}}</script><script src="/js/config.js"></script>
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.18.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"mac"},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"disqusjs","storage":true,"lazyload":false,"nav":{"disqusjs":{"text":"Disqus","order":-2},"valine":{"order":-1}},"activeClass":"disqusjs"},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":true}}</script><script src="/js/config.js"></script>
 
     <meta name="description" content="介绍我上一台手机是小米的mix2s，因为用了三年多了，也有一些毛病，存储也不太够，所以我就换手机了，我这台小米mix2s就成为了备用机，但用到的时候很少，我就想着能不能刷成linux，我找到了一篇文章：在骁龙（835 845 855等）设备通过UEFI运行Archlinux，我要刷ubuntu，其实步骤差不多，只是rootfs用的是ubuntu，因为本人技术有限，没刷成，我就想着看有没有现成的，然">
 <meta property="og:type" content="article">
@@ -27,10 +27,10 @@
 <meta property="og:description" content="介绍我上一台手机是小米的mix2s，因为用了三年多了，也有一些毛病，存储也不太够，所以我就换手机了，我这台小米mix2s就成为了备用机，但用到的时候很少，我就想着能不能刷成linux，我找到了一篇文章：在骁龙（835 845 855等）设备通过UEFI运行Archlinux，我要刷ubuntu，其实步骤差不多，只是rootfs用的是ubuntu，因为本人技术有限，没刷成，我就想着看有没有现成的，然">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-05-25T16:33:49.000Z">
-<meta property="article:modified_time" content="2023-11-16T18:30:44.676Z">
+<meta property="article:modified_time" content="2023-11-19T09:43:45.170Z">
 <meta property="article:author" content="ienA">
-<meta property="article:tag" content="debian">
 <meta property="article:tag" content="linux">
+<meta property="article:tag" content="debian">
 <meta name="twitter:card" content="summary">
 
 
@@ -285,7 +285,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2023-11-17 02:30:44" itemprop="dateModified" datetime="2023-11-17T02:30:44+08:00">2023-11-17</time>
+      <time title="修改时间：2023-11-19 17:43:45" itemprop="dateModified" datetime="2023-11-19T17:43:45+08:00">2023-11-19</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -355,7 +355,9 @@
 </li>
 </ul>
 <p><strong>除了这些支持的设备，可以在github上面找找，应该能找到非官方移植支持的其它设备，例如<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/554022195">红米2刷Mobian体验原生Linux及软件安装问题处理[ 手机刷LINUX系列]</a>，<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1xM4y1q7Na/">为红米6 Pro移植mobian</a></strong></p>
-<h2 id="Mobian简介"><a href="#Mobian简介" class="headerlink" title="Mobian简介"></a>Mobian简介</h2><p>Mobian是一个社区驱动的项目，它基于Debian GNU / Linux操作系统设计，专为支持ARM架构而开发。作为一个非官方移植的操作系统，Mobian致力于在智能手机、平板电脑、单板计算机等设备上提供一种开放、自由和隐私保护的替代操作系统。</p>
+<h2 id="Mobian简介"><a href="#Mobian简介" class="headerlink" title="Mobian简介"></a>Mobian简介</h2><span id="more"></span>
+
+<p>Mobian是一个社区驱动的项目，它基于Debian GNU / Linux操作系统设计，专为支持ARM架构而开发。作为一个非官方移植的操作系统，Mobian致力于在智能手机、平板电脑、单板计算机等设备上提供一种开放、自由和隐私保护的替代操作系统。</p>
 <p>Mobian采用了GNOME桌面环境和Phosh用户界面，并集成了各种自由和开源应用程序，如Firefox浏览器、电话、信息、媒体播放器等。这样，用户可以方便地实现日常任务和消费需求。此外，Mobian还强调安全性和隐私性，为用户设备数据提供匿名性和私密性保障。通过添加各种安全控件和软件特性，Mobian确保用户在使用其操作系统时都有充分的保障和安全。</p>
 <p>尽管Mobian是一个非官方移植，但已经获得了广泛的关注和支持。它由自愿参与的开发者和社区成员共同维护，不受任何公司或组织的控制。对于需要一个符合自己需求的操作系统的ARM设备用户来说，Mobian是一个令人兴奋的选择。</p>
 <h2 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h2><p><strong>刷镜像前要确保已经解了BL锁，解BL锁方法上网一搜随便都能找到，这里是我搜到一篇小米的：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/465104171">【玩机教程】小米手机详细官方解BL锁🔒教程</a></strong></p>
@@ -511,8 +513,8 @@
       </div>
     </div>
           <div class="post-tags">
-              <a href="/tags/debian/" rel="tag"><i class="fa fa-tag"></i> debian</a>
               <a href="/tags/linux/" rel="tag"><i class="fa fa-tag"></i> linux</a>
+              <a href="/tags/debian/" rel="tag"><i class="fa fa-tag"></i> debian</a>
           </div>
 
         
@@ -540,7 +542,7 @@
 
       <div class="tabs tabs-comment">
         <ul class="nav-tabs">
-            <li class="tab"><a href="#comment-disqusjs">Load Disqus</a></li>
+            <li class="tab"><a href="#comment-disqusjs">Disqus</a></li>
             <li class="tab"><a href="#comment-valine">valine</a></li>
         </ul>
         <div class="tab-content">
@@ -571,9 +573,7 @@
     <span class="author" itemprop="copyrightHolder">ienA</span>
   </div>
 
-<!--
-  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
-  </div><script type="text/javascript" src="/js/click_love.js"></script>
+<!--<script type="text/javascript" src="/js/click_love.js"></script>
 
 -->
     </div>
@@ -612,21 +612,6 @@
 
 
 
-
-
-<script class="next-config" data-name="valine" type="application/json">{"enable":true,"appId":"syB10s5rcgF4v3uTLsEzM9Wk-gzGzoHsz","appKey":"q66MkE73mzIDInf5AjqXW0Pt","serverURLs":"https://syb10s5r.api.lncldglobal.com","placeholder":"输入你的评论\n昵称为必填项目，输入QQ号可以直接获取用户名和头像，并且省去了填写邮箱的麻烦！\n虽然email不是必选，但是填写了email可以收到推送通知哦！","avatar":"hide","meta":["nick","mail","link"],"pageSize":10,"lang":null,"visitor":false,"comment_count":true,"recordIP":false,"enableQQ":false,"requiredFields":[],"el":"#valine-comments","path":"/2023/05/26/%E6%97%A7%E6%89%8B%E6%9C%BA%E5%8F%98%E4%B8%BAlinux%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B9%8BMobian/"}</script>
-<script>
-document.addEventListener('page:loaded', () => {
-  NexT.utils.loadComments(CONFIG.valine.el)
-    .then(() => NexT.utils.getScript(
-      'https://fastly.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js',
-      { condition: window.Valine }
-    ))
-    .then(() => {
-      new Valine(CONFIG.valine);
-    });
-});
-</script>
 <div id="needsharebutton-float">
       <span class="btn">
         <i class="fa fa-share-alt" aria-hidden="true"></i>
@@ -646,7 +631,22 @@ document.addEventListener('page:loaded', () => {
         flOptions.position = "middleRight";
         flOptions.networks = "Wechat,QQZone,Weibo,Douban,Twitter,Facebook";
       new needShareButton('#needsharebutton-float', flOptions);
-  </script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/disqusjs/3.0.2/styles/disqusjs.css" integrity="sha256-71XarXwNr1Td27HmZI9zjY+rMzRdush6/glo6VFXp7o=" crossorigin="anonymous">
+  </script>
+
+<script class="next-config" data-name="valine" type="application/json">{"enable":true,"appId":"syB10s5rcgF4v3uTLsEzM9Wk-gzGzoHsz","appKey":"q66MkE73mzIDInf5AjqXW0Pt","serverURLs":"https://syb10s5r.api.lncldglobal.com","placeholder":"输入你的评论\n昵称为必填项目，输入QQ号可以直接获取用户名和头像，并且省去了填写邮箱的麻烦！\n虽然email不是必选，但是填写了email可以收到推送通知哦！","avatar":"hide","meta":["nick","mail","link"],"pageSize":10,"lang":null,"visitor":false,"comment_count":true,"recordIP":false,"enableQQ":false,"requiredFields":[],"el":"#valine-comments","path":"/2023/05/26/%E6%97%A7%E6%89%8B%E6%9C%BA%E5%8F%98%E4%B8%BAlinux%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B9%8BMobian/"}</script>
+<script>
+document.addEventListener('page:loaded', () => {
+  NexT.utils.loadComments(CONFIG.valine.el)
+    .then(() => NexT.utils.getScript(
+      'https://fastly.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js',
+      { condition: window.Valine }
+    ))
+    .then(() => {
+      new Valine(CONFIG.valine);
+    });
+});
+</script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/disqusjs/3.0.2/styles/disqusjs.css" integrity="sha256-71XarXwNr1Td27HmZI9zjY+rMzRdush6/glo6VFXp7o=" crossorigin="anonymous">
 
 <script class="next-config" data-name="disqusjs" type="application/json">{"enable":true,"api":"https://disqus.skk.moe/disqus/","apikey":"yca1exawujXgiC2JDBZ1WSfENSBXd2J9IdgXcRKROHKskFK1Z2UAcUCDEg7EnTgF","shortname":"aienh","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/disqusjs/3.0.2/disqusjs.es2015.umd.min.js","integrity":"sha256-okP99ZQKVpIy7+NogAMpGlIQzJa9XKXhIJcFgdju5bU="}}</script>
 <script src="/js/third-party/comments/disqusjs.js"></script>

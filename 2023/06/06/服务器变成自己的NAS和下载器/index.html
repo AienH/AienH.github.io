@@ -17,7 +17,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha256-CTSx/A06dm1B063156EVh15m6Y67pAjZZaQc89LLSrU=" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.18.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"mac"},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"disqusjs","storage":true,"lazyload":false,"nav":{"disqusjs":{"text":"Load Disqus","order":-2},"valine":{"order":-1}},"activeClass":"disqusjs"},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":true}}</script><script src="/js/config.js"></script>
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.18.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"mac"},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"disqusjs","storage":true,"lazyload":false,"nav":{"disqusjs":{"text":"Disqus","order":-2},"valine":{"order":-1}},"activeClass":"disqusjs"},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":true}}</script><script src="/js/config.js"></script>
 
     <meta name="description" content="前言对NAS总是抱有好奇？对NAS的价格望而却步？但是，如果你有树莓派（或者其它arm64架构的开发板也行），或者是Linux服务器，为什么不试试让它们变成自己的小型NAS？ NASNAS（Network Attached Storage：网络附属存储）按字面简单说就是连接在网络上，具备资料存储功能的装置，因此也称为“网络存储器”。它是一种专用数据存储服务器。 大型的NAS，比如：群晖。可以有Ap">
 <meta property="og:type" content="article">
@@ -39,7 +39,7 @@
 <meta property="og:image" content="http://example.com/2023/06/06/images/%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%8F%98%E6%88%90%E8%87%AA%E5%B7%B1%E7%9A%84NAS%E5%92%8C%E4%B8%8B%E8%BD%BD%E5%99%A8/image-20230607022411558.png">
 <meta property="og:image" content="http://example.com/2023/06/06/images/%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%8F%98%E6%88%90%E8%87%AA%E5%B7%B1%E7%9A%84NAS%E5%92%8C%E4%B8%8B%E8%BD%BD%E5%99%A8/image-20230607022456123.png">
 <meta property="article:published_time" content="2023-06-06T08:19:41.000Z">
-<meta property="article:modified_time" content="2023-11-16T18:25:15.601Z">
+<meta property="article:modified_time" content="2023-11-19T07:54:01.309Z">
 <meta property="article:author" content="ienA">
 <meta property="article:tag" content="arm64">
 <meta name="twitter:card" content="summary">
@@ -297,7 +297,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2023-11-17 02:25:15" itemprop="dateModified" datetime="2023-11-17T02:25:15+08:00">2023-11-17</time>
+      <time title="修改时间：2023-11-19 15:54:01" itemprop="dateModified" datetime="2023-11-19T15:54:01+08:00">2023-11-19</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -358,6 +358,8 @@
 <h2 id="操作思路"><a href="#操作思路" class="headerlink" title="操作思路"></a>操作思路</h2><h3 id="1-在线访问数据"><a href="#1-在线访问数据" class="headerlink" title="1. 在线访问数据"></a>1. 在线访问数据</h3><p>比如：.flv、.mp4、.jpg等等，我们使用PHP实现网络浏览，这里我们使用_h5ai:</p>
 <p><strong><a target="_blank" rel="noopener" href="https://larsjung.de/h5ai/demo/">演示网站</a></strong></p>
 <p><strong><a target="_blank" rel="noopener" href="https://larsjung.de/h5ai/">官方文档</a></strong></p>
+<span id="more"></span>
+
 <h3 id="2-下载站"><a href="#2-下载站" class="headerlink" title="2. 下载站"></a>2. 下载站</h3><p><img src="../images/%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%8F%98%E6%88%90%E8%87%AA%E5%B7%B1%E7%9A%84NAS%E5%92%8C%E4%B8%8B%E8%BD%BD%E5%99%A8/DownloadToNAS.png" alt="DownloadToNAS"><br>下载站，我们使用Aria2这个多线程下载器实现，难点是挂载到电脑上，也就是目录映射。最好能满足：</p>
 <ul>
 <li>加密传输，保证安全</li>
@@ -637,7 +639,7 @@
 
       <div class="tabs tabs-comment">
         <ul class="nav-tabs">
-            <li class="tab"><a href="#comment-disqusjs">Load Disqus</a></li>
+            <li class="tab"><a href="#comment-disqusjs">Disqus</a></li>
             <li class="tab"><a href="#comment-valine">valine</a></li>
         </ul>
         <div class="tab-content">
@@ -668,9 +670,7 @@
     <span class="author" itemprop="copyrightHolder">ienA</span>
   </div>
 
-<!--
-  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
-  </div><script type="text/javascript" src="/js/click_love.js"></script>
+<!--<script type="text/javascript" src="/js/click_love.js"></script>
 
 -->
     </div>
@@ -709,21 +709,6 @@
 
 
 
-
-
-<script class="next-config" data-name="valine" type="application/json">{"enable":true,"appId":"syB10s5rcgF4v3uTLsEzM9Wk-gzGzoHsz","appKey":"q66MkE73mzIDInf5AjqXW0Pt","serverURLs":"https://syb10s5r.api.lncldglobal.com","placeholder":"输入你的评论\n昵称为必填项目，输入QQ号可以直接获取用户名和头像，并且省去了填写邮箱的麻烦！\n虽然email不是必选，但是填写了email可以收到推送通知哦！","avatar":"hide","meta":["nick","mail","link"],"pageSize":10,"lang":null,"visitor":false,"comment_count":true,"recordIP":false,"enableQQ":false,"requiredFields":[],"el":"#valine-comments","path":"/2023/06/06/%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%8F%98%E6%88%90%E8%87%AA%E5%B7%B1%E7%9A%84NAS%E5%92%8C%E4%B8%8B%E8%BD%BD%E5%99%A8/"}</script>
-<script>
-document.addEventListener('page:loaded', () => {
-  NexT.utils.loadComments(CONFIG.valine.el)
-    .then(() => NexT.utils.getScript(
-      'https://fastly.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js',
-      { condition: window.Valine }
-    ))
-    .then(() => {
-      new Valine(CONFIG.valine);
-    });
-});
-</script>
 <div id="needsharebutton-float">
       <span class="btn">
         <i class="fa fa-share-alt" aria-hidden="true"></i>
@@ -743,7 +728,22 @@ document.addEventListener('page:loaded', () => {
         flOptions.position = "middleRight";
         flOptions.networks = "Wechat,QQZone,Weibo,Douban,Twitter,Facebook";
       new needShareButton('#needsharebutton-float', flOptions);
-  </script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/disqusjs/3.0.2/styles/disqusjs.css" integrity="sha256-71XarXwNr1Td27HmZI9zjY+rMzRdush6/glo6VFXp7o=" crossorigin="anonymous">
+  </script>
+
+<script class="next-config" data-name="valine" type="application/json">{"enable":true,"appId":"syB10s5rcgF4v3uTLsEzM9Wk-gzGzoHsz","appKey":"q66MkE73mzIDInf5AjqXW0Pt","serverURLs":"https://syb10s5r.api.lncldglobal.com","placeholder":"输入你的评论\n昵称为必填项目，输入QQ号可以直接获取用户名和头像，并且省去了填写邮箱的麻烦！\n虽然email不是必选，但是填写了email可以收到推送通知哦！","avatar":"hide","meta":["nick","mail","link"],"pageSize":10,"lang":null,"visitor":false,"comment_count":true,"recordIP":false,"enableQQ":false,"requiredFields":[],"el":"#valine-comments","path":"/2023/06/06/%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%8F%98%E6%88%90%E8%87%AA%E5%B7%B1%E7%9A%84NAS%E5%92%8C%E4%B8%8B%E8%BD%BD%E5%99%A8/"}</script>
+<script>
+document.addEventListener('page:loaded', () => {
+  NexT.utils.loadComments(CONFIG.valine.el)
+    .then(() => NexT.utils.getScript(
+      'https://fastly.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js',
+      { condition: window.Valine }
+    ))
+    .then(() => {
+      new Valine(CONFIG.valine);
+    });
+});
+</script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/disqusjs/3.0.2/styles/disqusjs.css" integrity="sha256-71XarXwNr1Td27HmZI9zjY+rMzRdush6/glo6VFXp7o=" crossorigin="anonymous">
 
 <script class="next-config" data-name="disqusjs" type="application/json">{"enable":true,"api":"https://disqus.skk.moe/disqus/","apikey":"yca1exawujXgiC2JDBZ1WSfENSBXd2J9IdgXcRKROHKskFK1Z2UAcUCDEg7EnTgF","shortname":"aienh","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/disqusjs/3.0.2/disqusjs.es2015.umd.min.js","integrity":"sha256-okP99ZQKVpIy7+NogAMpGlIQzJa9XKXhIJcFgdju5bU="}}</script>
 <script src="/js/third-party/comments/disqusjs.js"></script>
