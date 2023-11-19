@@ -282,7 +282,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2023-11-19 17:44:38" itemprop="dateModified" datetime="2023-11-19T17:44:38+08:00">2023-11-19</time>
+      <time title="修改时间：2023-11-19 21:57:14" itemprop="dateModified" datetime="2023-11-19T21:57:14+08:00">2023-11-19</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -335,14 +335,39 @@
     <div class="post-body" itemprop="articleBody">
           <h3 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h3><p>几种通过自己服务器实现内网穿透的教程</p>
 <h2 id="基于Docker的FRP内网穿透部署"><a href="#基于Docker的FRP内网穿透部署" class="headerlink" title="基于Docker的FRP内网穿透部署"></a>基于Docker的FRP内网穿透部署</h2><h3 id="服务器搭建（FRPS）"><a href="#服务器搭建（FRPS）" class="headerlink" title="服务器搭建（FRPS）"></a>服务器搭建（FRPS）</h3><p>创建配置文件</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2023/03/30/%E8%87%AA%E5%BB%BA%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F%E6%9C%8D%E5%8A%A1%E5%99%A8/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 创建存放目录</span></span><br><span class="line">sudo <span class="built_in">mkdir</span> /etc/frp</span><br><span class="line"><span class="comment"># 创建frps.ini文件</span></span><br><span class="line">nano /etc/frp/frps.ini</span><br></pre></td></tr></table></figure>
+<p>frps.ini内容如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">[common]</span><br><span class="line"><span class="comment"># 监听端口</span></span><br><span class="line">bind_port = 7000</span><br><span class="line"><span class="comment"># 面板端口</span></span><br><span class="line">dashboard_port = 7500</span><br><span class="line"><span class="comment"># 登录面板账号设置</span></span><br><span class="line">dashboard_user = admin</span><br><span class="line">dashboard_pwd = spoto1234</span><br><span class="line"><span class="comment"># 设置http及https协议下代理端口（非重要）</span></span><br><span class="line">vhost_http_port = 7080</span><br><span class="line">vhost_https_port = 7081</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 身份验证</span></span><br><span class="line">token = 12345678</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#服务器镜像：snowdreamtech/frps</span></span><br><span class="line"><span class="comment">#重启：always</span></span><br><span class="line"><span class="comment">#网络模式：host</span></span><br><span class="line"><span class="comment">#文件映射：/etc/frp/frps.ini:/etc/frp/frps.ini</span></span><br><span class="line"></span><br><span class="line">docker run --restart=always --network host -d -v /etc/frp/frps.ini:/etc/frp/frps.ini --name frps snowdreamtech/frps</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="中转客户端配置（FRPC）"><a href="#中转客户端配置（FRPC）" class="headerlink" title="中转客户端配置（FRPC）"></a>中转客户端配置（FRPC）</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">服务器镜像：snowdreamtech/frpc</span><br><span class="line">重启：always</span><br><span class="line">网络模式：host</span><br><span class="line">文件映射：/路径/frp/:/etc/frp/</span><br><span class="line"></span><br><span class="line">docker run --restart=always --network host -d -v /etc/frp/frpc.ini:/etc/frp/frpc.ini --name frpc snowdreamtech/frpc</span><br></pre></td></tr></table></figure>
+
+<p>配置文件示例：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line">[common]</span><br><span class="line"><span class="comment"># server_addr为FRPS服务器IP地址</span></span><br><span class="line">server_addr = x.x.x.x</span><br><span class="line"><span class="comment"># server_port为服务端监听端口，bind_port</span></span><br><span class="line">server_port = 7000</span><br><span class="line"><span class="comment"># 身份验证</span></span><br><span class="line">token = 12345678</span><br><span class="line"></span><br><span class="line">[ssh]</span><br><span class="line"><span class="built_in">type</span> = tcp</span><br><span class="line">local_ip = 127.0.0.1</span><br><span class="line">local_port = 22</span><br><span class="line">remote_port = 2288</span><br><span class="line"></span><br><span class="line"><span class="comment"># [ssh] 为服务名称，下方此处设置为，访问frp服务段的2288端口时，等同于通过中转服务器访问127.0.0.1的22端口。</span></span><br><span class="line"><span class="comment"># type 为连接的类型，此处为tcp</span></span><br><span class="line"><span class="comment"># local_ip 为中转客户端实际访问的IP </span></span><br><span class="line"><span class="comment"># local_port 为目标端口</span></span><br><span class="line"><span class="comment"># remote_port 为远程端口</span></span><br><span class="line"></span><br><span class="line">[ssh]</span><br><span class="line"><span class="built_in">type</span> = tcp</span><br><span class="line">local_ip = 192.168.1.229</span><br><span class="line">local_port = 80</span><br><span class="line">remote_port = 18022</span><br><span class="line"></span><br><span class="line">[unRAID web]</span><br><span class="line"><span class="built_in">type</span> = tcp</span><br><span class="line">local_ip = 192.168.1.229</span><br><span class="line">local_port = 80</span><br><span class="line">remote_port = 18088</span><br><span class="line"></span><br><span class="line">[Truenas web]</span><br><span class="line"><span class="built_in">type</span> = tcp</span><br><span class="line">local_ip = 192.168.1.235</span><br><span class="line">local_port = 80</span><br><span class="line">remote_port = 18188</span><br><span class="line"></span><br><span class="line">[speedtest]</span><br><span class="line"><span class="built_in">type</span> = tcp</span><br><span class="line">local_ip = 192.168.1.229</span><br><span class="line">local_port = 6580</span><br><span class="line">remote_port = 18190</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">[webdav]</span><br><span class="line"><span class="built_in">type</span> = tcp</span><br><span class="line">local_ip = 192.168.1.235</span><br><span class="line">local_port = 18080</span><br><span class="line">remote_port = 18189</span><br><span class="line"></span><br><span class="line">[RDP PC1]</span><br><span class="line"><span class="built_in">type</span> = tcp</span><br><span class="line">local_ip = 192.168.1.235</span><br><span class="line">local_port = 3389</span><br><span class="line">remote_port = 18389</span><br></pre></td></tr></table></figure>
+<ul>
+<li>如果监听服务可以有IP限制的设置，需要允许的访问IP为中转内网设备的内网IP；</li>
+<li>FRP由于端口会暴露在互联网上，虽然说使用方便但安全性较差；</li>
+</ul>
+<h2 id="基于Zerotier根服务器的内网穿透部署"><a href="#基于Zerotier根服务器的内网穿透部署" class="headerlink" title="基于Zerotier根服务器的内网穿透部署"></a>基于Zerotier根服务器的内网穿透部署</h2><h3 id="创建（伪）根服务器-项目地址：https-github-com-Jonnyan404-zerotier-planet"><a href="#创建（伪）根服务器-项目地址：https-github-com-Jonnyan404-zerotier-planet" class="headerlink" title="创建（伪）根服务器 | 项目地址：https://github.com/Jonnyan404/zerotier-planet"></a>创建（伪）根服务器 | 项目地址：<a target="_blank" rel="noopener" href="https://github.com/Jonnyan404/zerotier-planet">https://github.com/Jonnyan404/zerotier-planet</a></h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run --restart=on-failure:3 -d --name ztncui -e HTTP_PORT=4000 -e HTTP_ALL_INTERFACES=<span class="built_in">yes</span> -e ZTNCUI_PASSWD=mrdoc.fun -p 4000:4000 keynetworks/ztncui</span><br></pre></td></tr></table></figure>
+
+<h3 id="创建-moon-服务器-项目地址：https-github-com-jonnyan404-docker-zerotier-moon"><a href="#创建-moon-服务器-项目地址：https-github-com-jonnyan404-docker-zerotier-moon" class="headerlink" title="创建 moon 服务器 | 项目地址：https://github.com/jonnyan404/docker-zerotier-moon"></a>创建 moon 服务器 | 项目地址：<a target="_blank" rel="noopener" href="https://github.com/jonnyan404/docker-zerotier-moon">https://github.com/jonnyan404/docker-zerotier-moon</a></h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#创建容器</span></span><br><span class="line">docker run --name zerotier-moon -d -p 9993:9993 -p 9993:9993/udp -v /etc/ztconf/:/var/lib/zerotier-one jonnyan404/zerotier-moon -4 [公网ipx.x.x.x]</span><br><span class="line"></span><br><span class="line"><span class="comment">#查看moon ID</span></span><br><span class="line">docker logs zerotier-moon</span><br></pre></td></tr></table></figure>
+
+<h3 id="群晖-DSM-7-x-安装Zerotier客户端"><a href="#群晖-DSM-7-x-安装Zerotier客户端" class="headerlink" title="群晖 DSM 7.x 安装Zerotier客户端"></a>群晖 DSM 7.x 安装Zerotier客户端</h3><h4 id="登录SSH并创建虚拟网络设备TUN"><a href="#登录SSH并创建虚拟网络设备TUN" class="headerlink" title="登录SSH并创建虚拟网络设备TUN"></a>登录SSH并创建虚拟网络设备TUN</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#获取权限</span></span><br><span class="line">sudo -i</span><br><span class="line"></span><br><span class="line"><span class="comment">#创建“创建虚拟网络设备TUN”的脚本，并设为开机自动运行</span></span><br><span class="line"><span class="built_in">echo</span> -e <span class="string">&#x27;#!/bin/sh -e \ninsmod /lib/modules/tun.ko&#x27;</span> &gt; /usr/local/etc/rc.d/tun.sh</span><br><span class="line"></span><br><span class="line"><span class="comment">#给予脚本运行权限</span></span><br><span class="line"><span class="built_in">chmod</span> a+x /usr/local/etc/rc.d/tun.sh</span><br><span class="line"></span><br><span class="line"><span class="comment">#运行脚本创建TUN</span></span><br><span class="line">/usr/local/etc/rc.d/tun.sh</span><br><span class="line"></span><br><span class="line"><span class="comment">#确认TUN是否创建成功</span></span><br><span class="line"><span class="built_in">ls</span> /dev/net/tun</span><br></pre></td></tr></table></figure>
+
+<p>创建存放配置文件的目录</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> /var/lib/zerotier-one</span><br></pre></td></tr></table></figure>
+<p>创建Zerotier应用容器：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">docker run -d           \</span><br><span class="line">  --name zt             \</span><br><span class="line">  --restart=always      \</span><br><span class="line">  --device=/dev/net/tun \</span><br><span class="line">  --net=host            \</span><br><span class="line">  --cap-add=NET_ADMIN   \</span><br><span class="line">  --cap-add=SYS_ADMIN   \</span><br><span class="line">  -v /var/lib/zerotier-one:/var/lib/zerotier-one zerotier/zerotier-synology:latest</span><br></pre></td></tr></table></figure>
+
+<p>常用命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#查看zerotier状态</span></span><br><span class="line">docker <span class="built_in">exec</span> -it zt zerotier-cli status</span><br><span class="line"></span><br><span class="line"><span class="comment">#加入网络</span></span><br><span class="line">docker <span class="built_in">exec</span> -it zt zerotier-cli <span class="built_in">join</span> [xxxxxxxxxxxx]</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#加入moon服务器</span></span><br><span class="line">docker <span class="built_in">exec</span> zt zerotier-cli orbit [moon_ID] [moon_ID]</span><br><span class="line"><span class="comment">#确认是否加入</span></span><br><span class="line">docker <span class="built_in">exec</span> zt zerotier-cli listpeers </span><br></pre></td></tr></table></figure>
+
+<h3 id="Windows-客户端加入moon服务器"><a href="#Windows-客户端加入moon服务器" class="headerlink" title="Windows 客户端加入moon服务器"></a>Windows 客户端加入moon服务器</h3><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> C:\ProgramData\ZeroTier\One</span><br><span class="line">zerotier<span class="literal">-cli</span> orbit [<span class="type">moon_id</span>] [<span class="type">moon_id</span>]</span><br></pre></td></tr></table></figure>
       
     </div>
 
@@ -404,7 +429,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2023-11-19 17:42:42" itemprop="dateModified" datetime="2023-11-19T17:42:42+08:00">2023-11-19</time>
+      <time title="修改时间：2023-11-19 21:55:39" itemprop="dateModified" datetime="2023-11-19T21:55:39+08:00">2023-11-19</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -463,15 +488,142 @@
 <li><a target="_blank" rel="noopener" href="http://git-scm.com/">Git</a></li>
 </ul>
 <p><strong>随着大前端的快速发展，node版本更新很快，我们在工作中，可以会有老版本的node的项目需要维护，也可能有新版本的node的项目需要开发，如果我们只有一个node版本的话将会很麻烦，<a target="_blank" rel="noopener" href="https://github.com/creationix/nvm">nvm</a> 应运而生，nvm 是 Mac 下的 node 管理工具，有点类似管理 Ruby 的 rvm，如果需要管理 Windows 下的 node，官方推荐使用 <a target="_blank" rel="noopener" href="https://github.com/hakobera/nvmw">nvmw</a> 或 <a target="_blank" rel="noopener" href="https://github.com/coreybutler/nvm-windows">nvm-windows</a>。不过，nvm-windows 并不是 nvm 的简单移植，他们也没有任何关系。但下面介绍的所有命令，都可以在 nvm-windows 中运行，nvm是<a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=node&spm=1001.2101.3001.7020">node</a>的版本管理器，可以方便地安装&amp;切换不同版本的node</strong></p>
-<h2 id="1-安装NVM"><a href="#1-安装NVM" class="headerlink" title="1.安装NVM"></a>1.安装NVM</h2>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2023/03/29/%E6%90%AD%E5%BB%BAhexo%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
+<h2 id="1-安装NVM"><a href="#1-安装NVM" class="headerlink" title="1.安装NVM"></a>1.安装NVM</h2><p><strong>进入NVM-Windows项目发布地址：</strong> <a target="_blank" rel="noopener" href="https://github.com/coreybutler/nvm-windows/releases">https://github.com/coreybutler/nvm-windows/releases</a> <strong>，选择最新发行版本<code>nvm-setup.zip</code>下载：</strong></p>
+<p><img src="../images/%E6%90%AD%E5%BB%BAhexo%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/20210531232213538.png" alt="20210531232213538"></p>
+<p><strong>安装需要注意两点</strong></p>
+<p><strong>1、 把电脑上面的node环境先卸载干净（C:\Users\用户名\AppData\Roaming\node下面的文件也要解决干净）</strong></p>
+<p><strong>2、 安装时，建议选择手动安装版，然后疯狂下一步就行，不要尝试改变安装目录。</strong></p>
+<p><strong>如果不想放在C盘，例如放在D盘，安装路径是这样的：</strong></p>
+<blockquote>
+<p>第一步：D:/你想放的文件夹名 </p>
+<p>第二步：D:/你想放的文件夹名(最好不要中文名)/nodejs</p>
+</blockquote>
+<p><strong>检查安装是否成功</strong></p>
+<p><strong>在搜索栏查找<code>poweshell</code>,选中<code>x86</code>的<code>powershell</code>鼠标右击选择<code>以管理员身份运行</code>。</strong><img src="../images/%E6%90%AD%E5%BB%BAhexo%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/image-20221127134846193.png" alt="image-20221127134846193"></p>
+<p><strong>在<code>Powershell</code>下，输入<code>NVM</code>，即可发现安装完成：</strong></p>
+<h2 id="2-配置国内源"><a href="#2-配置国内源" class="headerlink" title="2.配置国内源"></a>2.配置国内源</h2><p><strong>到你<code>NVM</code>安装路径，*打开<code>setting.txt</code>文件（如果没有，则创建即可），更改为：</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">root: D:\NVM</span><br><span class="line">path: D:\NVM\nodejs</span><br><span class="line">arch: 64</span><br><span class="line">proxy: none</span><br><span class="line">node_mirror: https://npm.taobao.org/mirrors/node/</span><br><span class="line">npm_mirror: https://npm.taobao.org/mirrors/npm/</span><br></pre></td></tr></table></figure>
+
+<p><strong>解释参数：</strong></p>
+<ul>
+<li><strong>root：NVM的安装地址。即上文的<code>%NVM_HOME%</code></strong></li>
+<li><strong>path：激活node.js时的存储路径，即上文的<code>%NVM_SYMLINK%</code></strong></li>
+<li><strong>arch：系统架构，如果你的Windwos不是<code>x64</code>，则填<code>32</code></strong></li>
+<li><strong>proxy：是否走代理</strong></li>
+<li><strong>node_mirror：node.js的下载源，这里使用的是淘宝源</strong></li>
+<li><strong>npm_mirror：npm的下载源，这里使用的是淘宝源</strong></li>
+</ul>
+<p><img src="../images/%E6%90%AD%E5%BB%BAhexo%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/image-20230331220734968.png" alt="image-20230331220734968"></p>
+<h2 id="3-使用NVM"><a href="#3-使用NVM" class="headerlink" title="3.使用NVM"></a>3.使用NVM</h2><p><strong>在cmd或pwoershell使用命令</strong></p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nvm list available</span><br></pre></td></tr></table></figure>
+
+<p><img src="../images/%E6%90%AD%E5%BB%BAhexo%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/image-20220710002047715.png" alt="image-20220710002047715"></p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">2</span>、安装方式 nvm install 版本号</span><br><span class="line">current：当前最新的版本</span><br><span class="line">LTS：稳定版本</span><br><span class="line"></span><br><span class="line">nvm install <span class="number">19.8</span>.<span class="number">1</span> （当前稳定的最新版）</span><br><span class="line"></span><br><span class="line">我安装了两个</span><br><span class="line">nvm install <span class="number">18.13</span>.<span class="number">0</span></span><br><span class="line">nvm install <span class="number">16.15</span>.<span class="number">1</span></span><br><span class="line">使用nvm <span class="built_in">ls</span> 或者 nvm list可以查看安装的不同node版本，*指向的就是当前版本</span><br></pre></td></tr></table></figure>
+
+<h3 id="激活Node-js版本"><a href="#激活Node-js版本" class="headerlink" title="激活Node.js版本"></a>激活Node.js版本</h3><p><strong>我们安装好Node.js以后，需要激活它</strong></p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">nvm use <span class="number">16.15</span>.<span class="number">1</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="4-安装Git"><a href="#4-安装Git" class="headerlink" title="4.安装Git"></a>4.安装Git</h2><p><strong>无脑下一步！！！<a target="_blank" rel="noopener" href="https://git-scm.com/">Git的官网地址</a></strong> </p>
+<h2 id="5-安装hexo"><a href="#5-安装hexo" class="headerlink" title="5.安装hexo"></a>5.安装hexo</h2><p><strong>先在NVM安装目录内建立2个目录node_cache和node_global</strong></p>
+<p><img src="../images/%E6%90%AD%E5%BB%BAhexo%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/image-20230331224443212.png" alt="image-20230331224443212"></p>
+<p><strong>输入下面命令</strong></p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm config <span class="built_in">set</span> prefix <span class="string">&quot;D:\NVM\node_global&quot;</span></span><br><span class="line">npm config <span class="built_in">set</span> cache <span class="string">&quot;D:\NVM\node_cache&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>更换源</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm config set registry=http://registry.npm.taobao.org </span><br></pre></td></tr></table></figure>
+
+<p>所有必备的应用程序安装完成后，即可使用 npm 安装 Hexo。</p>
+<h3 id="使用Npm安装Hexo"><a href="#使用Npm安装Hexo" class="headerlink" title="使用Npm安装Hexo"></a>使用Npm安装Hexo</h3><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install <span class="literal">-g</span> hexo<span class="literal">-cli</span></span><br></pre></td></tr></table></figure>
+
+<p>如报错，更新一下npm</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">npm install <span class="literal">-g</span> npm<span class="literal">-windows-upgrade</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="built_in">set-ExecutionPolicy</span> RemoteSigned</span><br><span class="line"></span><br><span class="line">执行策略更改</span><br><span class="line">执行策略可帮助你防止执行不信任的脚本。更改执行策略可能会产生安全风险，如 https:/go.microsoft.com/fwlink/?LinkID=<span class="number">135170</span></span><br><span class="line">中的 about_Execution_Policies 帮助主题所述。是否要更改执行策略?</span><br><span class="line">[<span class="type">Y</span>] 是(Y)  [<span class="type">A</span>] 全是(A)  [<span class="type">N</span>] 否(N)  [<span class="type">L</span>] 全否(L)  [<span class="type">S</span>] 暂停(S)  [?] 帮助 (默认值为“N”): y</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">npm<span class="literal">-windows-upgrade</span></span><br><span class="line">npm<span class="literal">-windows-upgrade</span> v6.<span class="number">0.1</span></span><br><span class="line">? Which version <span class="keyword">do</span> you want to install? <span class="number">8.13</span>.<span class="number">2</span></span><br><span class="line">Checked system <span class="keyword">for</span> npm installation:</span><br><span class="line">According to PowerShell: D:\nodejs</span><br><span class="line">According to npm:        D:\nodejs</span><br><span class="line">Decided that npm is installed <span class="keyword">in</span> D:\nodejs</span><br><span class="line">Upgrading npm... |</span><br><span class="line"></span><br><span class="line">Upgrade finished. Your new npm version is <span class="number">8.13</span>.<span class="number">2</span>. Have a nice day!</span><br></pre></td></tr></table></figure>
+
+<p><strong>安装好以后，测试一下：</strong></p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo</span><br></pre></td></tr></table></figure>
+
+<p><img src="../images/%E6%90%AD%E5%BB%BAhexo%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/image-20220710004601578.png"></p>
+<p><strong>没有出现未知命令，说明安装成功。可以接下来操作了。</strong></p>
+<p><strong>如果出现hexo : 无法加载文件 C:\Program  Files\nodejs\hexo.ps1，因为在此系统上禁止运行脚本。有关详细信息，请参阅 https:/go.micros  oft.com/fwlink/?LinkID=135170 中的 about_Execution_Policies。 所在位置 行:1 字符:  1。</strong></p>
+<p><strong>那是因为你用的是win11系统，你需要在<code>设置-&gt;隐私和安全性-&gt;开发者选项-&gt;允许本地powershell脚本在为签名的情况下运行</code></strong><img src="../images/%E6%90%AD%E5%BB%BAhexo%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/image-20230308210045396.png" alt="image-20230308210045396"></p>
+<p><strong>应用之后，重新打开新的powershell，再次输入hexo即可。</strong></p>
+<p><img src="../images/%E6%90%AD%E5%BB%BAhexo%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/image-20230308210149994.png"></p>
+<h2 id="6-创建hexo"><a href="#6-创建hexo" class="headerlink" title="6.创建hexo"></a>6.创建hexo</h2><p><strong>创建你的博客的空白文件夹，然后打开文件夹,我们已经安装好Git，所以我们直接是由鼠标右键的<code>Git Bash Here</code></strong></p>
+<p><img src="../images/%E6%90%AD%E5%BB%BAhexo%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/image-20220710233249939.png" alt="image-20220710233249939"></p>
+<h3 id="在博客目录内初始化博客"><a href="#在博客目录内初始化博客" class="headerlink" title="在博客目录内初始化博客"></a>在博客目录内初始化博客</h3><p><strong>初始化目录：</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 进目录之后，在Git bash里面输入下面目录初始化</span></span><br><span class="line">hexo init</span><br></pre></td></tr></table></figure>
+
+<p><strong>初始化后回生成许多文件</strong></p>
+<p><img src="../images/%E6%90%AD%E5%BB%BAhexo%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/image-20230331230347045.png" alt="image-20230331230347045"></p>
+<p><strong>输入命令后，它会自动爬取hexo的初始化目录，在国内网络是非常不好的，如果出错需要删除目录内容重新执行命令直到成功。</strong></p>
+<h2 id="7-构建hexo"><a href="#7-构建hexo" class="headerlink" title="7.构建hexo"></a>7.构建hexo</h2><p><strong>初始化Hexo后，其实Hexo就可以使用了；构建Hexo：</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">hexo g</span><br></pre></td></tr></table></figure>
+
+<h2 id="8-启动Hexo内建服务器"><a href="#8-启动Hexo内建服务器" class="headerlink" title="8.启动Hexo内建服务器"></a>8.启动Hexo内建服务器</h2><p><strong>其实，整个<code>public</code>文件就是一个博客了，但是我们还要部署<code>Nginx</code>等网络环境或者使用<code>HBuilderX</code>等根据，启动Web服务器才能用浏览器本地IP(即：<code>127.0.0.1</code>或<code>localhost</code>)加端口进行访问；为了减少麻烦，可以使用Hexo内建服务器：</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">hexo s</span><br></pre></td></tr></table></figure>
+
+<p><img src="../images/%E6%90%AD%E5%BB%BAhexo%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/image-20220710234306097.png" alt="image-20220710234306097"></p>
+<p><strong>我们可以去<code>127.0.0.1:4000</code>网址看看初始化页面的样子</strong><img src="../images/%E6%90%AD%E5%BB%BAhexo%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/image-20220710234335015.png" alt="image-20220710234335015"></p>
+<h2 id="9-部署Hexo到github"><a href="#9-部署Hexo到github" class="headerlink" title="9.部署Hexo到github"></a>9.部署Hexo到github</h2><p><strong>上述操作，我们已经把<code>Hexo</code>部署在本地；接下来，我们来看看怎么部署到远程平台，部署到远程平台后，公网用户就可以访问了（也就是可以让你小伙伴通过浏览器访问到你的博客）。</strong></p>
+<h3 id="1-创建github仓库"><a href="#1-创建github仓库" class="headerlink" title="1) 创建github仓库"></a>1) 创建github仓库</h3><p><img src="../images/%E6%90%AD%E5%BB%BAhexo%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/image-20230407151939650.png" alt="image-20230407151939650"></p>
+<blockquote>
+<p>需要注意的是作为网站访问的这个仓库，仓库名称一定是，<strong>拥有者名+github.io</strong></p>
+</blockquote>
+<h3 id="2-生成ssh-keys"><a href="#2-生成ssh-keys" class="headerlink" title="2) 生成ssh keys"></a>2) 生成ssh keys</h3><blockquote>
+<p>在博客文件夹根目录下，右键，调用<strong>git bash here</strong>功能</p>
+</blockquote>
+<p>输入命令，本地生成<strong>ssh keys</strong>  ，有回车按回车，有（y/n）？就输入y</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t ed25519 -C <span class="string">&quot;your_email@example.com&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>注意：如果你使用的是不支持 Ed25519 算法的旧系统，请使用以下命令：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -b 4096 -C &quot;your_email@example.com&quot;</span><br></pre></td></tr></table></figure>
+
+<p><strong>出现这个则生成成功</strong></p>
+<p><img src="../images/%E6%90%AD%E5%BB%BAhexo%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/image-20230407152653491.png" alt="image-20230407152653491"></p>
+<blockquote>
+<p>在电脑打开生成公钥的文件夹</p>
+<p><strong>路径：C:/用户/你的用户名/.ssh</strong></p>
+</blockquote>
+<p>找到后打开id_rsa.pub（默认记事本打开），复制公钥（ctrl+A全选， ctrl+C复制）</p>
+<p>打开github，头像箭头，下拉选项setting（设置）-SSH与GPG keys -new ssh keys（新建ssh秘钥）</p>
+<p>tilte随便起，然后ctrl+V粘贴到key里面</p>
+<p><img src="../images/%E6%90%AD%E5%BB%BAhexo%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/image-20230416135608274.png" alt="image-20230416135608274"></p>
+<h3 id="3）测试是否绑定成功"><a href="#3）测试是否绑定成功" class="headerlink" title="3）测试是否绑定成功"></a>3）测试是否绑定成功</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -T git@github.com</span><br></pre></td></tr></table></figure>
+
+<p><img src="../images/%E6%90%AD%E5%BB%BAhexo%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/image-20230416134842427.png" alt="image-20230416134842427"></p>
+<blockquote>
+<p>yes，然后按回车</p>
+<p>出现successfully字样则绑定成功</p>
+</blockquote>
+<h3 id="4）上传博客到github仓库"><a href="#4）上传博客到github仓库" class="headerlink" title="4）上传博客到github仓库"></a>4）上传博客到github仓库</h3><h5 id="修改配置文件"><a href="#修改配置文件" class="headerlink" title="修改配置文件"></a>修改配置文件</h5><p>在创建博客文件夹的根目录下修改-config.yml文件</p>
+<p><img src="../images/%E6%90%AD%E5%BB%BAhexo%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/image-20230407163241369.png" alt="image-20230407163241369"></p>
+<p>输入时注意冒号后面有空格，然后保存退出</p>
+<h5 id="安装hexo-deployer-git"><a href="#安装hexo-deployer-git" class="headerlink" title="安装hexo-deployer-git"></a>安装hexo-deployer-git</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#注意这些插件是安装在博客目录内的，所以是跟随博客内容一起走的</span></span><br><span class="line"><span class="comment">#这个插件是提供上传git能力</span></span><br><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
+
+
+
+<blockquote>
+<p><strong>因为github在国外，有些时候推送会出现ssl出错，其实就是网络差，我们在Git Bash里面输入下面这行命令，不验证ssl：</strong></p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --global http.sslVerify <span class="string">&quot;false&quot;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h5 id="博客推送"><a href="#博客推送" class="headerlink" title="博客推送"></a>博客推送</h5><p><strong>在博客目录下命令窗口/终端输入</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#配置git push的信息</span></span><br><span class="line">git config --global user.email <span class="string">&quot;your_email&quot;</span></span><br><span class="line">git config --global user.name <span class="string">&quot;your_name&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#查看和检查配置的信息</span></span><br><span class="line">git config --list</span><br><span class="line"></span><br><span class="line"><span class="comment"># hexo d就是推送博客到指定的地方(本博客推送的地方是Github)</span></span><br><span class="line">hexo cl &amp;&amp; hexo g &amp;&amp; hexo d</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h2 id="10-博客主题"><a href="#10-博客主题" class="headerlink" title="10.博客主题"></a>10.博客主题</h2><p><strong>打开hexo的<a target="_blank" rel="noopener" href="https://hexo.io/themes/">主题网站</a></strong></p>
+<p><img src="../images/%E6%90%AD%E5%BB%BAhexo%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/image-20230508003429447.png" alt="image-20230508003429447"></p>
+<p><strong>比如打开Ayer这款主题，打开后能看到主题的效果</strong></p>
+<p><img src="../images/%E6%90%AD%E5%BB%BAhexo%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/image-20230508003515559.png" alt="image-20230508003515559"></p>
+<p><strong>一般在博客主题内会有github的项目链接或者安装和使用的指南</strong></p>
+<p><img src="../images/%E6%90%AD%E5%BB%BAhexo%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/image-20230508003741044.png" alt="image-20230508003741044"></p>
+<p><strong>打开github项目有下面有个README.md的安装教程，其安装步骤我就不一一展示了，按教程来有手就行[doge]</strong></p>
+<p><img src="../images/%E6%90%AD%E5%BB%BAhexo%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/image-20230508003943456.png" alt="image-20230508003943456"></p>
+
       
     </div>
 
