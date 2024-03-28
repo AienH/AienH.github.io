@@ -771,8 +771,8 @@
         <category>Android</category>
       </categories>
       <tags>
-        <tag>linux</tag>
         <tag>debian</tag>
+        <tag>linux</tag>
       </tags>
   </entry>
   <entry>
@@ -1285,7 +1285,7 @@
 <p><strong>点击第二个，复制右边的命令，回到操作系统里粘贴</strong></p>
 <p><img src="../images/docker%E4%B9%8Bopenwrt/image-20230509195820116.png" alt="image-20230509195820116"></p>
 <blockquote>
-<p>找到适合自己架构拉取镜像即可，我的是aarch4，所以拉取tag为armv8的</p>
+<p>找到适合自己架构拉取镜像即可，我的是aarch64，所以拉取tag为armv8的</p>
 </blockquote>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker pull sulinggg/openwrt:armv8</span><br></pre></td></tr></table></figure>
 
