@@ -183,7 +183,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">22</span>
+          <span class="site-state-item-count">23</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -237,6 +237,262 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/04/10/%E5%AE%89%E8%A3%85%E5%92%8C%E5%88%87%E6%8D%A2%E5%A4%9A%E7%89%88%E6%9C%ACjava%20(linux%E7%AF%87)/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/20230401000222.jpg">
+      <meta itemprop="name" content="ienA">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ienAの博客">
+      <meta itemprop="description" content="致力于分享自己学习过程笔记的萌新博主૮(˶ᵔ ᵕ ᵔ˶)ა">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | ienAの博客">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2023/04/10/%E5%AE%89%E8%A3%85%E5%92%8C%E5%88%87%E6%8D%A2%E5%A4%9A%E7%89%88%E6%9C%ACjava%20(linux%E7%AF%87)/" class="post-title-link" itemprop="url">安装和切换多版本java (linux篇)</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-04-10 13:00:27" itemprop="dateCreated datePublished" datetime="2023-04-10T13:00:27+08:00">2023-04-10</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2023-11-19 21:55:17" itemprop="dateModified" datetime="2023-11-19T21:55:17+08:00">2023-11-19</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/linux/" itemprop="url" rel="index"><span itemprop="name">linux</span></a>
+        </span>
+    </span>
+
+  
+  
+  <span class="post-meta-item">
+    
+    <span class="post-meta-item-icon">
+      <i class="far fa-comment"></i>
+    </span>
+    <span class="post-meta-item-text">Valine：</span>
+  
+    <a title="valine" href="/2023/04/10/%E5%AE%89%E8%A3%85%E5%92%8C%E5%88%87%E6%8D%A2%E5%A4%9A%E7%89%88%E6%9C%ACjava%20(linux%E7%AF%87)/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2023/04/10/%E5%AE%89%E8%A3%85%E5%92%8C%E5%88%87%E6%8D%A2%E5%A4%9A%E7%89%88%E6%9C%ACjava%20(linux%E7%AF%87)/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>11k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>10 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p><strong>一、JDK是什么？</strong></p>
+<p>1、JDK : Java Development ToolKit(Java开发工具包)。JDK是整个JAVA的核心，包括了Java运行环境（Java Runtime Envirnment），一堆Java工具（javac/java/jdb等）和Java基础的类库（即Java API 包括rt.jar）。</p>
+<p>最主流的JDK是Oracle公司发布的JDK，除了Oracle之外，还有很多公司和组织都开发了属于自己的JDK，例如国外IBM公司开发了属于自己的JDK，国内淘宝也开发了属于自己的JDK，各个组织开发自己的JDK都是为了在某些方面得到一些提高，以适应自己的需求，比如IBM的JDK据说运行效率就比Oralce的JDK高的多。但不管怎么说，我们还是需要先把基础的Oracle JDK掌握好。</p>
+<p>2、JDK是java开发工具包，在其安装目录下面有五个文件夹、一些描述文件、一个src压缩文件。bin、lib、 jre这四个文件夹起作用。可以看出来JDK包含JRE，而JRE包含JVM。</p>
+<p>·bin:最主要的是编译器(javac.exe)</p>
+<p>·lib：类库（开发中需要使用到的一些jdk提供的一些类）</p>
+<p>·jre:java运行环境（注意：这里的bin、lib文件夹和jre里的bin、lib是不同的）</p>
+<p>· <strong>总的来说JDK是用于java程序的开发,而jre则是只能运行class而没有编译的功能</strong>。</p>
+<p>3、JDK是提供给Java开发人员使用的，其中包含了java的开发工具，也包括了JRE。所以安装了JDK，就不用在单独安装JRE了。</p>
+<p><strong>二、jdk和jre的区别？</strong></p>
+<p>JRE顾名思义是java运行时环境，包含了java虚拟机，java基础类库。是使用java语言编写的程序运行所需要的软件环境，是提供给想运行java程序的用户使用的。</p>
+<p>一句话： jre就是Java程序运行的环境。</p>
+<h1 id="Linux"><a href="#Linux" class="headerlink" title="Linux"></a>Linux</h1><h2 id="1-包管理安装"><a href="#1-包管理安装" class="headerlink" title="1.包管理安装"></a>1.包管理安装</h2><h3 id="1-1centos7"><a href="#1-1centos7" class="headerlink" title="1.1centos7"></a>1.1centos7</h3><p><strong>随意使用一条命令便可以查询到java的安装信息</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">root@centos:~<span class="comment">#yum list installed | grep java</span></span><br><span class="line"></span><br><span class="line">root@centos:~<span class="comment">#rpm -qa | grep java</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>出现内容，表明你系统已经安装了java，如果安装的版本不适合将要搭建的服务环境，你就需要卸载掉。</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">root@centos:~<span class="comment">#yum -y remove java-11-openjdk* #卸载所有java-11-openjdk</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>查看所有JDK版本</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">root@centos:~<span class="comment">#yum search java | grep jdk</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>选择版本并安装（这里我安装的是java8）</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">root@centos:~<span class="comment">#yum install -y java-1.8.0-openjdk*</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>检查jdk是否安装成功</strong></p>
+<hr>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">root@ubuntu:~<span class="comment">#java --version</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>注意这里是–version  </p>
+</blockquote>
+<h3 id="1-2ubuntu"><a href="#1-2ubuntu" class="headerlink" title="1.2ubuntu"></a>1.2ubuntu</h3><p><strong>查询已安装java的信息</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">root@ubuntu:~<span class="comment">#java -version</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>注意这里是-version</p>
+</blockquote>
+<p><strong>先卸载之前的版本</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#之前安装过jdk11</span></span><br><span class="line">root@ubuntu:~<span class="comment">#apt remove openjdk-11-jdk</span></span><br><span class="line"></span><br><span class="line">root@ubuntu:~<span class="comment">#apt autoremove</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>查看所有JDK版本</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">root@ubuntu:~<span class="comment">#apt search openjdk</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>选择版本并安装（这里我安装的是java8）</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">root@ubuntu:~<span class="comment">#apt install -y openjdk-8-jdk</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>检查jdk是否安装成功</strong></p>
+<hr>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">root@ubuntu:~<span class="comment">#java -version</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="2-源码包安装"><a href="#2-源码包安装" class="headerlink" title="2.源码包安装"></a>2.源码包安装</h2><p><strong>这里就和windows安装java差不多了，linux是下载压缩包后，解压完添加环境变量即可使用</strong></p>
+<p><strong>winget给出了所有jdk的最新版本列表，winget查找JDK的网址==&gt; <a target="_blank" rel="noopener" href="https://whichjdk.com/">whichjdk</a></strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line">winget search OpenJDK</span><br><span class="line">Name                                       Id                             Version     Match        Source</span><br><span class="line">---------------------------------------------------------------------------------------------------------</span><br><span class="line">ojdkbuild OpenJDK JRE 8                    ojdkbuild.ojdkbuild            1.8.3221.6               winget</span><br><span class="line">Java SE Development Kit 18                 Oracle.JDK.18                  18.0.2.0    Tag: openjdk winget</span><br><span class="line">Java SE Development Kit 17                 Oracle.JDK.17                  17.0.4.0    Tag: openjdk winget</span><br><span class="line">ojdkbuild OpenJDK JRE 17                   ojdkbuild.openjdk.17.jre       17.0030.6.1 Tag: openjdk winget</span><br><span class="line">ojdkbuild OpenJDK 17                       ojdkbuild.openjdk.17.jdk       17.0030.6.1 Tag: openjdk winget</span><br><span class="line">OpenJDK JRE 11                             ojdkbuild.openjdk.11.jre       11.0.15.1   Tag: openjdk winget</span><br><span class="line">OpenJDK 11                                 ojdkbuild.openjdk.11.jdk       11.0.15.1   Tag: openjdk winget</span><br><span class="line">Microsoft Build of OpenJDK with Hotspot 17 Microsoft.OpenJDK.17           17.0.4.8    Tag: openjdk winget</span><br><span class="line">Microsoft Build of OpenJDK with Hotspot 16 Microsoft.OpenJDK.16           16.0.2.7    Tag: openjdk winget</span><br><span class="line">Microsoft Build of OpenJDK with Hotspot 11 Microsoft.OpenJDK.11           11.0.16.8   Tag: openjdk winget</span><br><span class="line">Eclipse Temurin JRE with Hotspot 8         EclipseAdoptium.TemurinJRE.8   8.0.322.9   Tag: openjdk winget</span><br><span class="line">Eclipse Temurin JRE with Hotspot 18        EclipseAdoptium.TemurinJRE.18  18.0.1.10   Tag: openjdk winget</span><br><span class="line">Eclipse Temurin JRE with Hotspot 17        EclipseAdoptium.TemurinJRE.17  17.0.4.8    Tag: openjdk winget</span><br><span class="line">Eclipse Temurin JRE with Hotspot 11        EclipseAdoptium.TemurinJRE.11  11.0.16.8   Tag: openjdk winget</span><br><span class="line">Liberica JDK 8 Full                        BellSoft.LibericaJDK.8.Full    8.0.342.7   Tag: openjdk winget</span><br><span class="line">Liberica JDK 8                             BellSoft.LibericaJDK.8         8.0.342.7   Tag: openjdk winget</span><br><span class="line">Liberica JDK 18 Full                       BellSoft.LibericaJDK.18.Full   18.0.2.10   Tag: openjdk winget</span><br><span class="line">Liberica JDK 18                            BellSoft.LibericaJDK.18        18.0.2.10   Tag: openjdk winget</span><br><span class="line">Liberica JDK 17 Full                       BellSoft.LibericaJDK.17.Full   17.0.4.8    Tag: openjdk winget</span><br><span class="line">Liberica JDK 17                            BellSoft.LibericaJDK.17        17.0.4.8    Tag: openjdk winget</span><br><span class="line">Liberica JDK 16 Full                       BellSoft.LibericaJDK.16.Full   16.0.2.7    Tag: openjdk winget</span><br><span class="line">Liberica JDK 16                            BellSoft.LibericaJDK.16        16.0.2.7    Tag: openjdk winget</span><br><span class="line">Liberica JDK 15 Full                       BellSoft.LibericaJDK.15.Full   15.0.2.10   Tag: openjdk winget</span><br><span class="line">Liberica JDK 15                            BellSoft.LibericaJDK.15        15.0.2.10   Tag: openjdk winget</span><br><span class="line">Liberica JDK 14 Full                       BellSoft.LibericaJDK.14.Full   14.0.2.13   Tag: openjdk winget</span><br><span class="line">Liberica JDK 14                            BellSoft.LibericaJDK.14        14.0.2.13   Tag: openjdk winget</span><br><span class="line">Liberica JDK 11 Full                       BellSoft.LibericaJDK.11.Full   11.0.16.8   Tag: openjdk winget</span><br><span class="line">Liberica JDK 11                            BellSoft.LibericaJDK.11        11.0.16.8   Tag: openjdk winget</span><br><span class="line">Azul Zulu JDK 7                            Azul.Zulu.7                    7.56.0.11   Tag: openjdk winget</span><br><span class="line">Azul Zulu JDK 6                            Azul.Zulu.6                    6.22.0.3    Tag: openjdk winget</span><br><span class="line">AdoptOpenJDK JDK with Hotspot 8            AdoptOpenJDK.OpenJDK.8         8.0.292.10  Tag: openjdk winget</span><br><span class="line">AdoptOpenJDK JDK with Hotspot 16           AdoptOpenJDK.OpenJDK.16        16.0.1.9    Tag: openjdk winget</span><br><span class="line">AdoptOpenJDK JDK with Hotspot 15           AdoptOpenJDK.OpenJDK.15        15.0.2.7    Tag: openjdk winget</span><br><span class="line">AdoptOpenJDK JDK with Hotspot 14           AdoptOpenJDK.OpenJDK.14        14.0.2.12   Tag: openjdk winget</span><br><span class="line">AdoptOpenJDK JDK with Hotspot 11           AdoptOpenJDK.OpenJDK.11        11.0.11.9   Tag: openjdk winget</span><br><span class="line">Eclipse Temurin JDK with Hotspot 8         EclipseAdoptium.Temurin.8.JDK  8.0.332.9   Tag: openjdk winget</span><br><span class="line">Eclipse Temurin JDK with Hotspot 11        EclipseAdoptium.Temurin.11.JDK 11.0.16.8   Tag: openjdk winget</span><br><span class="line">Azul Zulu JDK 17                           Azul.Zulu.17.JDK               17.36.15    Tag: openjdk winget</span><br><span class="line">Eclipse Temurin JDK with Hotspot 20 (Beta) EclipseAdoptium.Temurin.20.JDK 20.0.0.5    Tag: openjdk winget</span><br><span class="line">Eclipse Temurin JDK with Hotspot 19 (Beta) EclipseAdoptium.Temurin.19.JDK 19.0.0.30   Tag: openjdk winget</span><br><span class="line">Eclipse Temurin JDK with Hotspot 18        EclipseAdoptium.Temurin.18.JDK 18.0.2.9    Tag: openjdk winget</span><br><span class="line">Eclipse Temurin JDK with Hotspot 17        EclipseAdoptium.Temurin.17.JDK 17.0.4.8    Tag: openjdk winget</span><br><span class="line">Eclipse Temurin JDK with Hotspot 16        EclipseAdoptium.Temurin.16.JDK 16.0.2.7    Tag: openjdk winget</span><br><span class="line">Azul Zulu JDK 18                           Azul.Zulu.18.JDK               18.32.11    Tag: openjdk winget</span><br><span class="line">Azul Zulu JDK 16                           Azul.Zulu.16.JDK               16.32.15    Tag: openjdk winget</span><br><span class="line">Azul Zulu JDK 15                           Azul.Zulu.15.JDK               15.42.15    Tag: openjdk winget</span><br><span class="line">Azul Zulu JDK 13                           Azul.Zulu.13.JDK               13.50.15    Tag: openjdk winget</span><br><span class="line">Azul Zulu JDK 11                           Azul.Zulu.11.JDK               11.58.17    Tag: openjdk winget</span><br><span class="line">Azul Zulu JDK 8                            Azul.Zulu.8.JDK                8.64.0.15   Tag: openjdk winget</span><br><span class="line">OpenJDK 14                                 ojdkbuild.openjdk.14.jdk       14.0.1.1                 winget</span><br><span class="line">OpenJDK 13                                 ojdkbuild.openjdk.13.jdk       13.0.3.1                 winget</span><br><span class="line">AdoptOpenJDK JDK with Eclipse OpenJ9 17    AdoptOpenJDK.OpenJDK.17        17.0.0.18                winget</span><br><span class="line">Update Watcher for AdoptOpenJDK            tushev.org.AJUpdateWatcher     2.0.4.0                  winget</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>从<a target="_blank" rel="noopener" href="https://www.oracle.com/java/technologies/downloads/">oracle官网</a>下载Java压缩包</strong>    </p>
+<p><strong>Java8：</strong><a target="_blank" rel="noopener" href="https://www.oracle.com/java/technologies/javase/javase-jdk8-downloads.html">Java SE Development Kit 8 Downloads</a></p>
+<p>![image-20230404181515372](../images/安装和切换多版本java (linux篇)/image-20230404181515372.png)</p>
+<p><strong>注册登录后即可获得下载链接，这里注意自己的系统是arm64还是amd64</strong></p>
+<p><strong>也可使用<a target="_blank" rel="noopener" href="https://www.azul.com/downloads/?package=jdk#zulu">ZuluJDK（一个OpenJDK的发行版本）</a></strong></p>
+<blockquote>
+<p>我arm64架构的系统试过安装多个这种版本的openjdk，会报错，所以我重新选择了oracle的jdk</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">root@ubuntu:~<span class="comment">#wget https://cdn.azul.com/zulu/bin/zulu8.66.0.15-ca-jdk8.0.352-linux_x64.tar.gz</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="2-1创建一个存放源码包的目录并解压"><a href="#2-1创建一个存放源码包的目录并解压" class="headerlink" title="2.1创建一个存放源码包的目录并解压"></a><strong>2.1创建一个存放源码包的目录并解压</strong></h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">root@ubuntu:~<span class="comment">#mkdir /usr/local/JDK</span></span><br><span class="line">root@ubuntu:~<span class="comment">#cd /usr/local/JDK</span></span><br><span class="line">root@ubuntu:~<span class="comment">#tar -xvf jdk-8u361-linux-i586.tar.gz -C /usr/local/JDK</span></span><br><span class="line">root@ubuntu:~<span class="comment"># mv jdk1.8.0_361 jdk8</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="3-配置环境"><a href="#3-配置环境" class="headerlink" title="3.配置环境"></a>3.配置环境</h2><h3 id="3-1添加环境变量的两种方法："><a href="#3-1添加环境变量的两种方法：" class="headerlink" title="3.1添加环境变量的两种方法："></a><strong>3.1添加环境变量的两种方法：</strong></h3><p><strong>适用于centos，ubuntu</strong></p>
+<h4 id="1）vim-etc-profile"><a href="#1）vim-etc-profile" class="headerlink" title="1）vim /etc/profile"></a>1）vim /etc/profile</h4><ul>
+<li>推荐使用这种方法，因为所有用户的shell都有权使用这些环境变量，<strong>缺点</strong>是可能会给系统带来安全性问题。 这里是针对<strong>所有的用户的</strong>,<strong>所有的shell</strong>;</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/profile</span><br><span class="line"><span class="comment"># 使用source命令使修改立刻生效： </span></span><br><span class="line"><span class="built_in">source</span>  /etc/profile</span><br></pre></td></tr></table></figure>
+
+<h4 id="2）vi-bashrc"><a href="#2）vi-bashrc" class="headerlink" title="2）vi ~/.bashrc"></a>2）vi ~/.bashrc</h4><p>修改.bashrc文件,这种方法更为安全，它可以把使用这些环境变量的权限控制到用户级别,这里是针对某一个特定的用户，如果需要给某个用户权限<br>使用这些环境变量，只需要修改其个人用户主目录下的.bashrc文件就可以了。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">vi ~/.bashrc</span><br><span class="line"></span><br><span class="line"><span class="built_in">source</span> ~/.bashrc</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="3-2添加java环境变量"><a href="#3-2添加java环境变量" class="headerlink" title="3.2添加java环境变量"></a>3.2添加java环境变量</h3><blockquote>
+<p>我用的是vi ~/.bashrc</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">root@ubuntu:~<span class="comment">#vim ~/.bashrc</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#然后在文本末端，加上这么几句</span></span><br><span class="line">JAVA_HOME=/usr/local/JDK/jdk8   <span class="comment">#安装java的路径，路径一定要对</span></span><br><span class="line">CLASSPATH=<span class="variable">$JAVA_HOME</span>/lib/</span><br><span class="line">PATH=<span class="variable">$PATH</span>:<span class="variable">$JAVA_HOME</span>/bin/</span><br><span class="line"><span class="built_in">export</span> PATH JAVA_HOME CLASSSPATH</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">root@ubuntu:~<span class="comment">#source ~/.bashrc</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#执行java -version或java --version，到Java的版本号就成功了</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="4-切换java版本"><a href="#4-切换java版本" class="headerlink" title="4.切换java版本"></a>4.切换java版本</h2><ul>
+<li><p><strong>用包管理安装可能不是很全，没有自己需要的java版本，管理也不方便，所以一般都是用源码包方式来安装的多个版本的java</strong></p>
+</li>
+<li><p><strong>不管理只使用的话也可以直接用包管理安装</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">root@Debian:~<span class="comment"># apt search openjdk</span></span><br><span class="line"><span class="comment">#比如我安装11和17</span></span><br><span class="line">root@Debian:~<span class="comment"># apt install openjdk-11-jdk -y &amp;&amp; apt install openjdk-17-jdk -y</span></span><br><span class="line">root@Debian:~<span class="comment"># which java</span></span><br><span class="line">/usr/bin/java</span><br><span class="line">root@Debian:~<span class="comment"># ls -l /usr/bin/java</span></span><br><span class="line">lrwxrwxrwx 1 root root 22 May 17 17:27 /usr/bin/java -&gt; /etc/alternatives/java</span><br><span class="line">root@Debian:~<span class="comment"># ls -l /etc/alternatives/java</span></span><br><span class="line">lrwxrwxrwx 1 root root 43 May 17 17:27 /etc/alternatives/java -&gt; /usr/lib/jvm/java-11-openjdk-amd64/bin/java</span><br><span class="line"></span><br><span class="line"><span class="comment">#用apt安装的不需要用update-alternatives --install 来添加链接，因为它自己会自动添加的</span></span><br><span class="line">root@Debian:~<span class="comment"># update-alternatives --display java</span></span><br><span class="line">java - auto mode</span><br><span class="line">  <span class="built_in">link</span> best version is /usr/lib/jvm/java-17-openjdk-amd64/bin/java</span><br><span class="line">  <span class="built_in">link</span> currently points to /usr/lib/jvm/java-17-openjdk-amd64/bin/java</span><br><span class="line">  <span class="built_in">link</span> java is /usr/bin/java</span><br><span class="line">  slave java.1.gz is /usr/share/man/man1/java.1.gz</span><br><span class="line">/usr/lib/jvm/java-11-openjdk-amd64/bin/java - priority 1111</span><br><span class="line">  slave java.1.gz: /usr/lib/jvm/java-11-openjdk-amd64/man/man1/java.1.gz</span><br><span class="line">/usr/lib/jvm/java-17-openjdk-amd64/bin/java - priority 1711</span><br><span class="line">  slave java.1.gz: /usr/lib/jvm/java-17-openjdk-amd64/man/man1/java.1.gz</span><br><span class="line">  </span><br><span class="line"><span class="comment">#切换java</span></span><br><span class="line">root@Debian:~<span class="comment"># update-alternatives --config java</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="alternatives命令介绍"><a href="#alternatives命令介绍" class="headerlink" title="alternatives命令介绍"></a>alternatives命令介绍</h3><p>当我们频繁使用java的不同版本，不可能采用卸载java后在重新安装需要用的java的版本的方法，这时我们可以用到alternatives命令。</p>
+<p>alternatives是Linux下的一个功能强大的命令。只能在root权限下执行。如系统中有几个命令功能十分类似，却又不能随意删除，那么可以用 alternatives 来指定一个全局的设置。<br>alternatives常用于同一个系统中安装同一软件的多个版本。比如为了开发需要，我需要安装JDK16，同时还需要JDK8，我怎么样才能忽略安装路径，按照我自己的意思，使用我想要的java版本呢？<br>命令格式:<br>update-alternatives [options] command</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">update-alternatives</span><br><span class="line">用法：alternatives --install &lt;链接&gt; &lt;名称&gt; &lt;路径&gt; &lt;优先度&gt;</span><br><span class="line">                    [--initscript &lt;服务&gt;]</span><br><span class="line">                    [--slave &lt;链接&gt; &lt;名称&gt; &lt;路径&gt;]*</span><br><span class="line">       alternatives --remove &lt;名称&gt; &lt;路径&gt;</span><br><span class="line">       alternatives --auto &lt;名称&gt;</span><br><span class="line">       alternatives --config &lt;名称&gt;</span><br><span class="line">       alternatives --display &lt;名称&gt;</span><br><span class="line">       alternatives --<span class="built_in">set</span> &lt;名称&gt; &lt;路径&gt;</span><br><span class="line">       alternatives --list</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="4-1使用方法"><a href="#4-1使用方法" class="headerlink" title="4.1使用方法"></a>4.1使用方法</h3><p><strong>通过以下指令来看我们安装了多少openJDK</strong></p>
+<blockquote>
+<p>我的用到ubuntu，centos命令则把apt改为yum </p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">root@ubuntu:~<span class="comment">#apt list installed | grep jdk</span></span><br></pre></td></tr></table></figure>
+
+
+
+<blockquote>
+<p>在这里我又下载了一个jdk17，解压放到了/usr/local/JDK/目录下 </p>
+</blockquote>
+<p><strong>先修改添加的java环境变量，修改为</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#在这里添加你想切换的jdk版本，例如我在8和17之间切换，如需更多版本则将路径添加到JAVA_HOME中（冒号添加路径）</span></span><br><span class="line">JAVA_HOME=/usr/local/JDK/jdk8:/usr/local/JDK/jdk17  </span><br><span class="line">CLASSPATH=<span class="variable">$JAVA_HOME</span>/lib/</span><br><span class="line">PATH=<span class="variable">$PATH</span>:<span class="variable">$JAVA_HOME</span>/bin/</span><br><span class="line"><span class="built_in">export</span> PATH JAVA_HOME CLASSSPATH</span><br></pre></td></tr></table></figure>
+
+<p><strong>使配置生效</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">root@ubuntu:~<span class="comment"># source ~/.bashrc</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>然后用update-alternatives –install 命令</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">root@ubuntu:~<span class="comment">#update-alternatives --install /usr/bin/java java /usr/local/JDK/jdk8/bin/java 8</span></span><br><span class="line"></span><br><span class="line">root@ubuntu:~<span class="comment">#update-alternatives --install /usr/bin/javac javac /usr/local/JDK/jdk8/bin/javac 8</span></span><br><span class="line"></span><br><span class="line">root@ubuntu:~<span class="comment">#update-alternatives --install /usr/bin/java java /usr/local/JDK/jdk17/bin/java 17</span></span><br><span class="line"></span><br><span class="line">root@ubuntu:~<span class="comment">#update-alternatives --install /usr/bin/javac javac /usr/local/JDK/jdk17/bin/javac 17</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>–install 选项</p>
+<p>使用语法：<br>update-alternatives –install link name path priority [–slave link name path]…<br>其中link为系统中功能相同软件的 公共链接目录，比如/usr/bin/java(需绝对目录);</p>
+<p>name为命令链接符名称,如java；</p>
+<p>path为你所要使用新命令、新软件的所在目录；</p>
+<p>priority为优先级， 当命令链接已存在时，需高于当前值，因为当alternative为自动模式时,系统默认启用priority高的链接;</p>
+<p>–slave为从alternative。</p>
+<p>alternative有两种模式：auto和manual，默认都为auto模式，因为大多数情况下update-alternatives命令都被postinst (configure) or prerm (install)调用的，如果将其更改成手动的话安装脚本将不会更新它了。</p>
+</blockquote>
+<p><strong>切换java版本命令</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">root@ubuntu:~<span class="comment"># update-alternatives --config java   #java是我设置的链接符名称</span></span><br><span class="line">There are 2 choices <span class="keyword">for</span> the alternative java (providing /usr/bin/java).</span><br><span class="line"></span><br><span class="line">  Selection    Path                  Priority   Status</span><br><span class="line">------------------------------------------------------------</span><br><span class="line">* 0            /usr/local/JDK/jdk17/bin/java   17        auto mode</span><br><span class="line">  1            /usr/local/JDK/jdk8/bin/java    8         manual mode</span><br><span class="line">  2            /usr/local/JDK/jdk17/bin/java   17        manual mode</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Press &lt;enter&gt; to keep the current choice[*], or <span class="built_in">type</span> selection number: 1</span><br><span class="line">update-alternatives: using /usr/local/JDK/jdk8 to provide /usr/local/JDK/ (java) <span class="keyword">in</span> manual mode</span><br><span class="line">update-alternatives: warning: not replacing /usr/local/JDK/ with a <span class="built_in">link</span></span><br><span class="line">root@ubuntu:~<span class="comment"># java -version</span></span><br><span class="line">java version <span class="string">&quot;1.8.0_361&quot;</span></span><br><span class="line">Java(TM) SE Runtime Environment (build 1.8.0_361-b09)</span><br><span class="line">Java HotSpot(TM) 64-Bit Server VM (build 25.361-b09, mixed mode)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="5-切换其它的环境（例如python）"><a href="#5-切换其它的环境（例如python）" class="headerlink" title="5.切换其它的环境（例如python）"></a>5.切换其它的环境（例如python）</h2><p><strong>其实切换其它的依赖环境也是可以的，例如debian内置python2和python3，我的默认使用python2，然后切换成python3</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">root@orangepi5:~<span class="comment"># whereis python2</span></span><br><span class="line">python2: /usr/bin/python2.7 /usr/bin/python2 /usr/lib/python2.7 /etc/python2.7 /usr/local/lib/python2.7 /usr/share/man/man1/python2.1.gz</span><br><span class="line">root@orangepi5:~<span class="comment"># whereis python3</span></span><br><span class="line">python3: /usr/bin/python3.9-config /usr/bin/python3 /usr/bin/python3.9 /usr/lib/aarch64-linux-gnu/python3.9 /usr/lib/python3 /usr/lib/python3.9 /etc/python3 /etc/python3.9 /usr/local/lib/python3.9 /usr/include/python3.9 /usr/share/python3 /usr/share/man/man1/python3.1.gz</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">root@orangepi5:~<span class="comment"># update-alternatives --install /usr/bin/python python /usr/bin/python2 100</span></span><br><span class="line">root@orangepi5:~<span class="comment"># update-alternatives --install /usr/bin/python python /usr/bin/python3 150</span></span><br><span class="line">root@orangepi5:~<span class="comment"># update-alternatives --config python</span></span><br><span class="line">There are 2 choices <span class="keyword">for</span> the alternative python (providing /usr/bin/python).</span><br><span class="line"></span><br><span class="line">  Selection    Path              Priority   Status</span><br><span class="line">------------------------------------------------------------</span><br><span class="line">* 0            /usr/bin/python3   150       auto mode</span><br><span class="line">  1            /usr/bin/python2   100       manual mode</span><br><span class="line">  2            /usr/bin/python3   150       manual mode</span><br><span class="line"></span><br><span class="line">Press &lt;enter&gt; to keep the current choice[*], or <span class="built_in">type</span> selection number: 2</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">root@orangepi5:~<span class="comment"># python --version</span></span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
