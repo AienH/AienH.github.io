@@ -401,31 +401,31 @@
     <url>/2023/07/04/git%E4%B8%8A%E4%BC%A0%E6%96%B9%E6%B3%95/</url>
     <content><![CDATA[<h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>自从使用github以来，一直都是在<a href="https://github.com/">github网站</a>在线上传文件到仓库中，但是有时因为网络或者电脑的原因上传失败。最重要的原因是我习惯本地编辑，完成以后再一起上传github。看过了几个教程，总结出最适合自己的比较简单的方法。</p>
 <p><img src="/2023/07/04/git%E4%B8%8A%E4%BC%A0%E6%96%B9%E6%B3%95/webp.png" alt="img"></p>
-<h4 id="1-github在线上传文件夹"><a href="#1-github在线上传文件夹" class="headerlink" title="1. github在线上传文件夹"></a>1. github在线上传文件夹</h4><p>在线上传也可以上传完整的文件夹结构，直接拖拽到上传文件页面的框中即可。</p>
-<h5 id="1-1点击上传文件"><a href="#1-1点击上传文件" class="headerlink" title="1.1点击上传文件"></a>1.1点击上传文件</h5><p><img src="/2023/07/04/git%E4%B8%8A%E4%BC%A0%E6%96%B9%E6%B3%95/webp1.png" alt="img"></p>
-<h5 id="1-2-直接拖拽"><a href="#1-2-直接拖拽" class="headerlink" title="1.2 直接拖拽"></a>1.2 直接拖拽</h5><p>直接拖拽即可上传文件夹及文件夹里面的文件。如果点击* choose your files *就只能上传单个文件。</p>
+<h2 id="github在线上传文件夹"><a href="#github在线上传文件夹" class="headerlink" title="github在线上传文件夹"></a>github在线上传文件夹</h2><p>在线上传也可以上传完整的文件夹结构，直接拖拽到上传文件页面的框中即可。</p>
+<h3 id="点击上传文件"><a href="#点击上传文件" class="headerlink" title="点击上传文件"></a>点击上传文件</h3><p><img src="/2023/07/04/git%E4%B8%8A%E4%BC%A0%E6%96%B9%E6%B3%95/webp1.png" alt="img"></p>
+<h3 id="直接拖拽"><a href="#直接拖拽" class="headerlink" title="直接拖拽"></a>直接拖拽</h3><p>直接拖拽即可上传文件夹及文件夹里面的文件。如果点击* choose your files *就只能上传单个文件。</p>
 <p><img src="/2023/07/04/git%E4%B8%8A%E4%BC%A0%E6%96%B9%E6%B3%95/webp2.png" alt="img"></p>
-<h4 id="2-通过git工具上传本地文件夹（本地项目）"><a href="#2-通过git工具上传本地文件夹（本地项目）" class="headerlink" title="2. 通过git工具上传本地文件夹（本地项目）"></a>2. 通过git工具上传本地文件夹（本地项目）</h4><h5 id="2-1-下载git工具"><a href="#2-1-下载git工具" class="headerlink" title="2.1 下载git工具"></a>2.1 下载<a href="https://link.jianshu.com/?t=https://git-scm.com/downloads">git工具</a></h5><p><img src="/2023/07/04/git%E4%B8%8A%E4%BC%A0%E6%96%B9%E6%B3%95/webp7.png" alt="img"></p>
-<h5 id="2-2-下载完成后安装完成，注意在安装过程中可以选择创建桌面快捷方式"><a href="#2-2-下载完成后安装完成，注意在安装过程中可以选择创建桌面快捷方式" class="headerlink" title="2.2 下载完成后安装完成，注意在安装过程中可以选择创建桌面快捷方式"></a>2.2 下载完成后安装完成，注意在安装过程中可以选择创建桌面快捷方式</h5><p><img src="/2023/07/04/git%E4%B8%8A%E4%BC%A0%E6%96%B9%E6%B3%95/webp8.png" alt="img"></p>
-<h5 id="2-3-绑定用户"><a href="#2-3-绑定用户" class="headerlink" title="2.3 绑定用户"></a>2.3 绑定用户</h5><p>打开git-bash.exe（直接在桌面上点击右键，或者点击开始按钮找到Git Bash）</p>
+<h2 id="通过git工具上传本地文件夹（本地项目）"><a href="#通过git工具上传本地文件夹（本地项目）" class="headerlink" title="通过git工具上传本地文件夹（本地项目）"></a>通过git工具上传本地文件夹（本地项目）</h2><h3 id="下载git工具"><a href="#下载git工具" class="headerlink" title="下载git工具"></a>下载<a href="https://link.jianshu.com/?t=https://git-scm.com/downloads">git工具</a></h3><p><img src="/2023/07/04/git%E4%B8%8A%E4%BC%A0%E6%96%B9%E6%B3%95/webp7.png" alt="img"></p>
+<h3 id="下载完成后安装完成，注意在安装过程中可以选择创建桌面快捷方式"><a href="#下载完成后安装完成，注意在安装过程中可以选择创建桌面快捷方式" class="headerlink" title="下载完成后安装完成，注意在安装过程中可以选择创建桌面快捷方式"></a>下载完成后安装完成，注意在安装过程中可以选择创建桌面快捷方式</h3><p><img src="/2023/07/04/git%E4%B8%8A%E4%BC%A0%E6%96%B9%E6%B3%95/webp8.png" alt="img"></p>
+<h3 id="绑定用户"><a href="#绑定用户" class="headerlink" title="绑定用户"></a>绑定用户</h3><p>打开git-bash.exe（直接在桌面上点击右键，或者点击开始按钮找到Git Bash）</p>
 <p><img src="/2023/07/04/git%E4%B8%8A%E4%BC%A0%E6%96%B9%E6%B3%95/%E8%BF%90%E8%A1%8CgitBash.gif" alt="img"></p>
 <p>在打开的GIt Bash中输入以下命令（用户和邮箱为你github注册的账号和邮箱）</p>
 <figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line">$ git config --<span class="keyword">global</span> user.name <span class="string">&quot;hanyuntao&quot;</span></span><br><span class="line">$ git config --<span class="keyword">global</span> user.email <span class="string">&quot;hanyuntaocn@163.com&quot;</span></span><br></pre></td></tr></table></figure>
 
 <p><img src="/2023/07/04/git%E4%B8%8A%E4%BC%A0%E6%96%B9%E6%B3%95/webp4.png" alt="img"></p>
-<h5 id="2-4-设置SSH-key（git中sshkey有何作用？）"><a href="#2-4-设置SSH-key（git中sshkey有何作用？）" class="headerlink" title="2.4 设置SSH key（git中sshkey有何作用？）"></a>2.4 设置SSH key（<a href="https://link.jianshu.com/?t=https://segmentfault.com/q/1010000000118744">git中sshkey有何作用？</a>）</h5><h6 id="2-4-1-生成ssh-key"><a href="#2-4-1-生成ssh-key" class="headerlink" title="2.4.1 生成ssh key"></a>2.4.1 生成ssh key</h6><p>首先检查是否已生成密钥<code>cd ~/.ssh</code>，如果返回的<code>ls</code>有3个文件,则密钥已经生成。</p>
+<h3 id="设置SSH-key（git中sshkey有何作用？）"><a href="#设置SSH-key（git中sshkey有何作用？）" class="headerlink" title="设置SSH key（git中sshkey有何作用？）"></a>设置SSH key（<a href="https://link.jianshu.com/?t=https://segmentfault.com/q/1010000000118744">git中sshkey有何作用？</a>）</h3><h4 id="生成ssh-key"><a href="#生成ssh-key" class="headerlink" title="生成ssh key"></a>生成ssh key</h4><p>首先检查是否已生成密钥<code>cd ~/.ssh</code>，如果返回的<code>ls</code>有3个文件,则密钥已经生成。</p>
 <p><img src="/2023/07/04/git%E4%B8%8A%E4%BC%A0%E6%96%B9%E6%B3%95/webp5.png" alt="img"></p>
 <p>如果没有密钥，则通过</p>
 <figure class="highlight ruby"><table><tr><td class="code"><pre><span class="line"><span class="variable">$ </span>ssh-keygen -t rsa -C <span class="string">&quot;hanyuntaocn@163.com&quot;</span></span><br></pre></td></tr></table></figure>
 
 <p>生成，生成过程中一路按3次回车键就好了。（默认路径，默认没有密码登录）<br> 生成成功后，去对应目录C:/Users/hyt.ssh里（hyt为电脑用户名，每个人不同）用记事本打开id_rsa.pub，得到ssh key公钥。</p>
 <p><img src="/2023/07/04/git%E4%B8%8A%E4%BC%A0%E6%96%B9%E6%B3%95/ssh-key%E5%85%AC%E9%92%A5.png" alt="img"></p>
-<h6 id="2-4-2-为github账号配置ssh-key"><a href="#2-4-2-为github账号配置ssh-key" class="headerlink" title="2.4.2 为github账号配置ssh key"></a>2.4.2 为github账号配置ssh key</h6><p>切换到github，展开个人头像的小三角，点击settings，然后打开SSH keys菜单， 点击Add SSH key新增密钥，填上标题（最好跟本地仓库保持一致）。</p>
+<h4 id="为github账号配置ssh-key"><a href="#为github账号配置ssh-key" class="headerlink" title="为github账号配置ssh key"></a>为github账号配置ssh key</h4><p>切换到github，展开个人头像的小三角，点击settings，然后打开SSH keys菜单， 点击Add SSH key新增密钥，填上标题（最好跟本地仓库保持一致）。</p>
 <p><img src="/2023/07/04/git%E4%B8%8A%E4%BC%A0%E6%96%B9%E6%B3%95/%E8%AE%BE%E7%BD%AEsshkey.gif" alt="img"></p>
 <p>接着将id_rsa.pub文件中key粘贴到此，最后Add key生成密钥.</p>
-<h4 id="2-5-上传本地项目到github"><a href="#2-5-上传本地项目到github" class="headerlink" title="2.5 上传本地项目到github"></a>2.5 上传本地项目到github</h4><h5 id="2-5-1-创建一个本地项目"><a href="#2-5-1-创建一个本地项目" class="headerlink" title="2.5.1 创建一个本地项目"></a>2.5.1 创建一个本地项目</h5><p>这是我自己创建的几个文件夹及文件。</p>
+<h3 id="上传本地项目到github"><a href="#上传本地项目到github" class="headerlink" title="上传本地项目到github"></a>上传本地项目到github</h3><h4 id="创建一个本地项目"><a href="#创建一个本地项目" class="headerlink" title="创建一个本地项目"></a>创建一个本地项目</h4><p>这是我自己创建的几个文件夹及文件。</p>
 <p><img src="/2023/07/04/git%E4%B8%8A%E4%BC%A0%E6%96%B9%E6%B3%95/%E6%9C%AC%E5%9C%B0%E9%A1%B9%E7%9B%AE.png" alt="img"></p>
-<h5 id="2-5-2-建立本地仓库"><a href="#2-5-2-建立本地仓库" class="headerlink" title="2.5.2 建立本地仓库"></a>2.5.2 建立本地仓库</h5><p>1.首先进入text文件夹</p>
+<h4 id="建立本地仓库"><a href="#建立本地仓库" class="headerlink" title="建立本地仓库"></a>建立本地仓库</h4><p>1.首先进入text文件夹</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> d:text</span><br></pre></td></tr></table></figure>
 
 <p><img src="/2023/07/04/git%E4%B8%8A%E4%BC%A0%E6%96%B9%E6%B3%95/webp9.png" alt="img"></p>
@@ -447,7 +447,7 @@
 
 <p> 双引号内是提交注释。</p>
 <p><img src="/2023/07/04/git%E4%B8%8A%E4%BC%A0%E6%96%B9%E6%B3%95/%E6%8F%90%E4%BA%A4%E6%96%87%E4%BB%B6.png" alt="img"></p>
-<h5 id="2-5-3-关联github仓库"><a href="#2-5-3-关联github仓库" class="headerlink" title="2.5.3 关联github仓库"></a>2.5.3 关联github仓库</h5><p>1.到github text仓库复制仓库地址</p>
+<h4 id="关联github仓库"><a href="#关联github仓库" class="headerlink" title="关联github仓库"></a>关联github仓库</h4><p>1.到github text仓库复制仓库地址</p>
 <p><img src="/2023/07/04/git%E4%B8%8A%E4%BC%A0%E6%96%B9%E6%B3%95/%E5%A4%8D%E5%88%B6%E4%BB%93%E5%BA%93%E5%9C%B0%E5%9D%80.png" alt="img"></p>
 <p> 2.执行指令：</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git remote add origin https://github.com/hanyuntao/text.git</span><br></pre></td></tr></table></figure>
@@ -455,11 +455,11 @@
 
 
 <p><img src="/2023/07/04/git%E4%B8%8A%E4%BC%A0%E6%96%B9%E6%B3%95/%E6%89%A7%E8%A1%8C%E6%8C%87%E4%BB%A41.png" alt="img"></p>
-<h5 id="2-5-4-上传本地代码"><a href="#2-5-4-上传本地代码" class="headerlink" title="2.5.4 上传本地代码"></a>2.5.4 上传本地代码</h5><p>执行指令：</p>
+<h4 id="上传本地代码"><a href="#上传本地代码" class="headerlink" title="上传本地代码"></a>上传本地代码</h4><p>执行指令：</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git push -u origin master</span><br></pre></td></tr></table></figure>
 
 <p><img src="/2023/07/04/git%E4%B8%8A%E4%BC%A0%E6%96%B9%E6%B3%95/%E6%89%A7%E8%A1%8C%E6%8C%87%E4%BB%A42.png" alt="img"></p>
-<h5 id="2-5-5完成"><a href="#2-5-5完成" class="headerlink" title="2.5.5完成"></a>2.5.5完成</h5><p>可以看到我们的本地项目已经上传到了github上了。</p>
+<h4 id="完成"><a href="#完成" class="headerlink" title="完成"></a>完成</h4><p>可以看到我们的本地项目已经上传到了github上了。</p>
 <p><img src="/2023/07/04/git%E4%B8%8A%E4%BC%A0%E6%96%B9%E6%B3%95/webp17.png" alt="img"></p>
 <blockquote>
 <p>注意：git是不能管理空的文件夹的，文件夹里必须有文件才能上传。</p>
@@ -5114,11 +5114,11 @@
 <p><strong>具体安装脚本流程：</strong><a href="https://www.sqlsec.com/2020/04/termuxlinux.html#Fedora">https://www.sqlsec.com/2020/04/termuxlinux.html#Fedora</a></p>
 <h2 id="Linux-Deploy"><a href="#Linux-Deploy" class="headerlink" title="Linux Deploy"></a>Linux Deploy</h2><p>Linux  Deploy是一款可以在Android设备上部署Linux环境的应用，其原理大概是在Android的Linux层跑一个chroot或者proot容器，然后再在容器中运行我们准备好的另外一个Linux系统。值得注意的是，这与我们熟知的虚拟机技术不同，新的Linux系统将和Android系统平行运行(非专业解释不要深究)。</p>
 <p>在使用Linux Deploy之前，<strong>我们需要获取手机的Root权限（必须）</strong>，获取Root权限后，由于原机自带的Linux命令集不完整，我们需要安装Busybox来扩充Linux命令集（不安装也可以）。</p>
-<h3 id="1）准备工作"><a href="#1）准备工作" class="headerlink" title="1）准备工作"></a>1）准备工作</h3><p>.一台安卓设备（旧手机）</p>
+<h3 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h3><p>.一台安卓设备（旧手机）</p>
 <p>设备硬件要求：建议RAM在1G及以上，手机ROM空闲容量4G左右</p>
 <p>设备软件要求：建议安卓版本4.0以上，系统必须是拥有ROOT系统权限的</p>
 <p>（我用的是小米mix2s 安卓10）</p>
-<h3 id="2）安装需要的软件"><a href="#2）安装需要的软件" class="headerlink" title="2）安装需要的软件"></a>2）安装需要的软件</h3><ul>
+<h3 id="安装需要的软件"><a href="#安装需要的软件" class="headerlink" title="安装需要的软件"></a>安装需要的软件</h3><ul>
 <li><p><a href="https://github.com/meefik/linuxdeploy/releases">Linux Deploy</a></p>
 </li>
 <li><p><a href="https://github.com/meefik/busybox/releases">BusyBox</a></p>
@@ -5137,7 +5137,7 @@
 </li>
 </ul>
 <p>juicessh和VNC我放的是官网的链接，下载需要魔法，没魔法的可以去找资源，实在找不到的可以在下面评论给我留言</p>
-<h3 id="3）busybox的设置"><a href="#3）busybox的设置" class="headerlink" title="3）busybox的设置"></a>3）busybox的设置</h3><p><strong>安装路径不改，因为这个路径我们在linux deploy软件的设置中有一个环境变量的选项，就是填入这个，然后更新环境变量，安装组件和替换组件勾选</strong></p>
+<h3 id="busybox的设置"><a href="#busybox的设置" class="headerlink" title="busybox的设置"></a>busybox的设置</h3><p><strong>安装路径不改，因为这个路径我们在linux deploy软件的设置中有一个环境变量的选项，就是填入这个，然后更新环境变量，安装组件和替换组件勾选</strong></p>
 <p><img src="/2023/04/13/Android%E5%88%A9%E7%94%A8%E5%AE%B9%E5%99%A8%E9%83%A8%E7%BD%B2linux/2564615615.jpg" alt="2564615615"></p>
 <p><strong>回到主页点击安装，安装完成以后查看安装信息，显示下面的就是安装完成，现在手机基本都是aarch64，也就是arm64的</strong></p>
 <p><img src="/2023/04/13/Android%E5%88%A9%E7%94%A8%E5%AE%B9%E5%99%A8%E9%83%A8%E7%BD%B2linux/9846131.jpg" alt="9846131"></p>
@@ -5155,7 +5155,7 @@
 
 
 
-<h3 id="4）linux-deploy的设置"><a href="#4）linux-deploy的设置" class="headerlink" title="4）linux deploy的设置"></a>4）linux deploy的设置</h3><p><strong>在左上角三个横杠打开设置</strong></p>
+<h3 id="linux-deploy的设置"><a href="#linux-deploy的设置" class="headerlink" title="linux deploy的设置"></a>linux deploy的设置</h3><p><strong>在左上角三个横杠打开设置</strong></p>
 <p><strong>打勾三个的都点亮，正式运行的时候屏幕黑掉之后，后天运行会非常卡，建议点亮</strong></p>
 <p><img src="/2023/04/13/Android%E5%88%A9%E7%94%A8%E5%AE%B9%E5%99%A8%E9%83%A8%E7%BD%B2linux/165161681.jpg" alt="165161681"></p>
 <p><strong>开机自动启动根据自己的需求设置，其它的默认就好</strong></p>
@@ -5170,19 +5170,19 @@
 <p>选择镜像安装的要注意镜像大小要分配2G以上，或者直接10240M</p>
 </blockquote>
 <p><strong>配置源地址方式有两种，一种是在线安装，另一种是tar包安装</strong></p>
-<h4 id="a-在线安装"><a href="#a-在线安装" class="headerlink" title="a.在线安装"></a>a.在线安装</h4><p><img src="/2023/04/13/Android%E5%88%A9%E7%94%A8%E5%AE%B9%E5%99%A8%E9%83%A8%E7%BD%B2linux/985621469.jpg" alt="img"></p>
-<h4 id="b-tar包安装"><a href="#b-tar包安装" class="headerlink" title="b.tar包安装"></a>b.tar包安装</h4><blockquote>
+<h4 id="在线安装"><a href="#在线安装" class="headerlink" title="在线安装"></a>在线安装</h4><p><img src="/2023/04/13/Android%E5%88%A9%E7%94%A8%E5%AE%B9%E5%99%A8%E9%83%A8%E7%BD%B2linux/985621469.jpg" alt="img"></p>
+<h4 id="tar包安装"><a href="#tar包安装" class="headerlink" title="tar包安装"></a>tar包安装</h4><blockquote>
 <p>tar打包linux具体可看我另一篇<a href="https://aienh.github.io/post/%E5%88%B6%E4%BD%9Cdebian%E7%9A%84rootfs">制作rootfs</a>的博客，这里安装类型也建议改为目录</p>
 </blockquote>
 <p><img src="/2023/04/13/Android%E5%88%A9%E7%94%A8%E5%AE%B9%E5%99%A8%E9%83%A8%E7%BD%B2linux/5862411146.jpg" alt="img"></p>
-<h4 id="c-其它配置"><a href="#c-其它配置" class="headerlink" title="c.其它配置"></a>c.其它配置</h4><p><strong>本地化选择中文包就可以了</strong></p>
+<h4 id="其它配置"><a href="#其它配置" class="headerlink" title="其它配置"></a>其它配置</h4><p><strong>本地化选择中文包就可以了</strong></p>
 <p><img src="/2023/04/13/Android%E5%88%A9%E7%94%A8%E5%AE%B9%E5%99%A8%E9%83%A8%E7%BD%B2linux/98464166.jpg" alt="在这里插入图片描述"></p>
 <p><strong>sdcard挂载到根系统</strong><img src="/2023/04/13/Android%E5%88%A9%E7%94%A8%E5%AE%B9%E5%99%A8%E9%83%A8%E7%BD%B2linux/173048_ghVz_2846946.png" alt="img"></p>
 <p><strong>启用SSH打勾，建议更改SSH的端口，例如7777，8888，22端口可能会在手机上被别的服务占用，SSH可能会连接不上</strong></p>
 <p><strong>图形界面有需求可选择打勾安装</strong></p>
 <p><img src="/2023/04/13/Android%E5%88%A9%E7%94%A8%E5%AE%B9%E5%99%A8%E9%83%A8%E7%BD%B2linux/7b06f45652578707.jpg" alt="img"></p>
 <p>这样就配置完成了</p>
-<h3 id="5）安装"><a href="#5）安装" class="headerlink" title="5）安装"></a>5）安装</h3><p><img src="/2023/04/13/Android%E5%88%A9%E7%94%A8%E5%AE%B9%E5%99%A8%E9%83%A8%E7%BD%B2linux/245614151.png" alt="245614151"></p>
+<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p><img src="/2023/04/13/Android%E5%88%A9%E7%94%A8%E5%AE%B9%E5%99%A8%E9%83%A8%E7%BD%B2linux/245614151.png" alt="245614151"></p>
 <p><strong>configuring extra/ssh 没有fail</strong></p>
 <p><strong>&lt;&lt;&lt;deploy</strong> </p>
 <p><strong>说明安装完成</strong></p>
