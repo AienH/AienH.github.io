@@ -183,7 +183,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">23</span>
+          <span class="site-state-item-count">24</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -246,6 +246,253 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/05/04/ztncui%E7%A7%81%E6%9C%89%E5%8C%96zerotier%E6%9D%A5%E5%88%9B%E5%BB%BAmoon/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/20230401000222.jpg">
+      <meta itemprop="name" content="ienA">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ienAの博客">
+      <meta itemprop="description" content="致力于分享自己学习过程笔记的萌新博主૮(˶ᵔ ᵕ ᵔ˶)ა">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | ienAの博客">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2023/05/04/ztncui%E7%A7%81%E6%9C%89%E5%8C%96zerotier%E6%9D%A5%E5%88%9B%E5%BB%BAmoon/" class="post-title-link" itemprop="url">ztncui私有化zerotier来创建moon</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-05-04 23:33:25" itemprop="dateCreated datePublished" datetime="2023-05-04T23:33:25+08:00">2023-05-04</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-05-14 23:13:45" itemprop="dateModified" datetime="2024-05-14T23:13:45+08:00">2024-05-14</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/orangepi/" itemprop="url" rel="index"><span itemprop="name">orangepi</span></a>
+        </span>
+    </span>
+
+  
+  
+  <span class="post-meta-item">
+    
+    <span class="post-meta-item-icon">
+      <i class="far fa-comment"></i>
+    </span>
+    <span class="post-meta-item-text">Valine：</span>
+  
+    <a title="valine" href="/2023/05/04/ztncui%E7%A7%81%E6%9C%89%E5%8C%96zerotier%E6%9D%A5%E5%88%9B%E5%BB%BAmoon/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2023/05/04/ztncui%E7%A7%81%E6%9C%89%E5%8C%96zerotier%E6%9D%A5%E5%88%9B%E5%BB%BAmoon/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>6.4k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>6 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p><strong>zerotier one是众多内网穿透工具平衡性最好的。方便速度快部署简单的比他贵的多，速度比他快比他便宜的部署麻烦，比他便宜部署容易的使用体验又不好。</strong></p>
+<p><strong>不过zerotier one的虚拟网络是由官方控制器控制的，虚拟内网被别人控制总感觉不会不舒服。好在zerotier是开源的，因此zerotier有脱离官方控制器的第三方控制器</strong></p>
+<p><strong>ztncui是zerotier one众多开源第三方控制器中的一个，之所以选它是因为它是唯一一个拥有图形界面的。通过配置客户端的planet就可以跳过官方节点，使用ztncui完成各个节点之间的通讯和打洞。</strong></p>
+<h2 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h2><ul>
+<li><strong>官方的节点通道(Planet服务器)是在国外，一般延迟都在四五百ms左右，使用ztncui搭建的zerotier one不走官方节点的通道，走的是用自己公网服务器搭建的节点通道，延迟较低</strong></li>
+<li><strong>官方编译的Zerotier搭建的moon服务器不能在Android设备上使用，而私有化搭建的moon服务器则能在Android端(需要配合Zerotier FIX来)使用</strong></li>
+<li><strong>相比于用FRP部署的内网穿透，zerotier使用简单，且不像FRP让服务器在公网被来回扫，安全性较高。</strong></li>
+</ul>
+<blockquote>
+<p><strong>FRP部署内网穿透—-&gt;可看这篇文章<a target="_blank" rel="noopener" href="https://aienh.github.io/post/%E8%87%AA%E5%BB%BA%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F%E6%9C%8D%E5%8A%A1%E5%99%A8">《自建内网穿透服务器》</a></strong></p>
+</blockquote>
+<h2 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h2><p><strong>Zerotier不支持以域名方式和控制器通讯，所以你需要准备一个具有固定公网ip的云服务器，最好同时具备固定ipv6。</strong></p>
+<p><strong>对于android设备，需要使用kaaass大神的Zerotier FIX才可以使用自定义控制器和自定义moon服务器，IOS设备无解。</strong></p>
+<p><strong><a target="_blank" rel="noopener" href="https://github.com/kaaass/ZerotierFix/releases">Zerotier FIX项目地址</a></strong></p>
+<h2 id="云服务器"><a href="#云服务器" class="headerlink" title="云服务器"></a>云服务器</h2><p><strong>我这里用的阿里云领的7个月ECS，系统是debian11，，带宽是1Mbps（到后面用搭建的moon，Android端用数据延迟能到一百左右，理论上带宽比我这个大的延迟会更低），没有申请SSL证书</strong></p>
+<p><strong>Debian默认ssh不能root连接，首先在你买服务器的官网的控制台用他们自带的远程连接先连进去，编辑ssh配置文件vim /etc/ssh/sshd_config 添加一个参数：PermitRootLogin yes，这样ssh就能用root连接了</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/ssh/sshd_config</span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;PermitRootLogin yes &quot;</span> &gt;&gt; /etc/ssh/sshd_config</span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;PasswordAuthentication yes &quot;</span> &gt;&gt; /etc/ssh/sshd_config</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="配置安全组（无SSL证书）"><a href="#配置安全组（无SSL证书）" class="headerlink" title="配置安全组（无SSL证书）"></a>配置安全组（无SSL证书）</h3><p><img src="/2023/05/04/ztncui%E7%A7%81%E6%9C%89%E5%8C%96zerotier%E6%9D%A5%E5%88%9B%E5%BB%BAmoon/image-20230505000328395.png" alt="image-20230505000328395"></p>
+<h3 id="配置安全组（有SSL证书）"><a href="#配置安全组（有SSL证书）" class="headerlink" title="配置安全组（有SSL证书）"></a>配置安全组（有SSL证书）</h3><p><img src="/2023/05/04/ztncui%E7%A7%81%E6%9C%89%E5%8C%96zerotier%E6%9D%A5%E5%88%9B%E5%BB%BAmoon/image-20230505000753998.png" alt="image-20230505000753998"></p>
+<blockquote>
+<p>3000端口和3443端口为ztncui Web控制面板使用的端口</p>
+<p>3000是http的，3443是https的</p>
+<p>TCP:9993端口为Zerotier节点与控制器通讯的端口</p>
+<p>UDP:9993端口为MOON节点与控制器通讯的中继端口</p>
+<p>端口可自行选择，根据自己选择的端口配置安全组</p>
+</blockquote>
+<h2 id="Server端"><a href="#Server端" class="headerlink" title="Server端"></a>Server端</h2><h3 id="Zerotier安装"><a href="#Zerotier安装" class="headerlink" title="Zerotier安装"></a>Zerotier安装</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#ztncui依赖于zerotier，所以需要先安装zerotier</span></span><br><span class="line">root@Debian:~<span class="comment"># curl -s https://install.zerotier.com | sudo bash</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="ztncui安装"><a href="#ztncui安装" class="headerlink" title="ztncui安装"></a>ztncui安装</h3><p><strong>centos redhat系列下载， root权限执行</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">root@centos:~<span class="comment"># wget https://gitee.com/opopop880/zerotier_planet/raw/master/zertotier_planet.sh &amp;&amp; chmod +x zertotier_planet.sh &amp;&amp; ./zertotier_planet.sh</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>debain ubuntu 系列下载 root权限执行</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">root@Debian:~<span class="comment"># wget https://gitee.com/opopop880/zerotier_planet/raw/master/zerotier_planet_debain.sh &amp;&amp; chmod +x zerotier_planet_debain.sh &amp;&amp; ./zerotier_planet_debain.sh</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>我执行完 ./zerotier_planet_debain.sh这个脚本后，编译安装时会失败，缺少依赖库”fatal error: nlohmann/json.hpp : No such file or directory”<br> #include “nlohmann/json.hpp</p>
+<p>安装依赖</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">root@Debian:~<span class="comment"># apt-get install nlohmann-json3-dev</span></span><br></pre></td></tr></table></figure>
+
+<p>在执行一次脚本</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">root@Debian:~<span class="comment"># ./zerotier_planet_debain.sh</span></span><br></pre></td></tr></table></figure>
+</blockquote>
+<h3 id="配置moon服务器"><a href="#配置moon服务器" class="headerlink" title="配置moon服务器"></a>配置moon服务器</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#进入zerotier one文件夹</span></span><br><span class="line">root@Debian:~<span class="comment"># cd /var/lib/zerotier-one</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#生成moon.json文件</span></span><br><span class="line">root@Debian:/var/lib/zerotier-one<span class="comment"># zerotier-idtool initmoon identity.public &gt;&gt; moon.json</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#编辑moon.json文件</span></span><br><span class="line">root@Debian:/var/lib/zerotier-one<span class="comment"># vim moon.json</span></span><br><span class="line"><span class="comment">#修改里面的stableEndpoints参数,修改完后保存退出</span></span><br><span class="line"><span class="string">&quot;stableEndpoints&quot;</span>: [<span class="string">&quot;你的公网IP/9993&quot;</span> ]</span><br><span class="line"></span><br><span class="line"><span class="comment">#生成客户端用的moon配置文件</span></span><br><span class="line">root@Debian:/var/lib/zerotier-one<span class="comment"># zerotier-idtool genmoon moon.json</span></span><br><span class="line">wrote 00000016089ddab3.moon (signed world with timestamp 1683210080062)</span><br><span class="line"></span><br><span class="line"><span class="comment">#在/var/lib/zerotier-one目录下,手动新建一个moons.d文件夹，并把刚生成的moon配置文件放到该文件夹下</span></span><br><span class="line">root@Debian:/var/lib/zerotier-one<span class="comment"># mkdir moons.d &amp;&amp; mv 00000016089ddab3.moon moons.d/</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#刚刚是在/root的目录下安装的ztncui，把moon.json文件拷贝到/root目录下，这个文件在配置ztncui时有用</span></span><br><span class="line">root@Debian:/var/lib/zerotier-one<span class="comment"># cp moon.json /root</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="配置ztncui"><a href="#配置ztncui" class="headerlink" title="配置ztncui"></a>配置ztncui</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#查看ZT_TOKEN值并复制</span></span><br><span class="line">root@Debian:~<span class="comment"># cat /var/lib/zerotier-one/authtoken.secret</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#检查ztncui的配置文件,看到ZT_TOKEN=的值是否和上面的一样，不一样则替换成上面复制的值（一般都一样）</span></span><br><span class="line">root@Debian:~<span class="comment"># vim /opt/key-networks/ztncui/.env</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#下载mkmoonworld主程序（自己解决github代理）</span></span><br><span class="line">root@Debian:~<span class="comment"># wget https://github.com/kaaass/ZeroTierOne/releases/download/mkmoonworld-1.0/mkmoonworld-x86</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#赋予执行权限</span></span><br><span class="line">root@Debian:~<span class="comment"># ls</span></span><br><span class="line">root@Debian:~<span class="comment"># chmod 777 mkmoonworld-x86</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 生成planet文件（即world.bin文件）</span></span><br><span class="line">root@Debian:~<span class="comment"># ./mkmoonworld-x86 ./moon.json</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 若要设置多个planet节点，将其他节点的moon.json 写入到另外的文件，如 moon1.json moon2.json</span></span><br><span class="line">root@Debian:~<span class="comment"># ./mkmoonworld-x86 ./moon1.json ./moon2.json</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>！！！注意！！！，要配置Android端的Zerotier，需要用到world.bin文件，所以要先备份一份，一起把world.bin文件和000000XXXXX.moon打包文件发到桌面</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 令planet文件生效</span></span><br><span class="line">root@Debian:~<span class="comment"># mv world.bin planet &amp;&amp; systemctl restart zerotier-one</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>重启完zerotier-one服务moon服务器就已经生效了</strong></p>
+<h3 id="备份moon文件"><a href="#备份moon文件" class="headerlink" title="备份moon文件"></a>备份moon文件</h3><p><strong>将生成的000000XXXXX.moon文件打包，留着准备发给各个zerotier one客户端</strong></p>
+<blockquote>
+<p>这里我用windows上的xshell连的服务器，上传和下载文件可能比较麻烦，用finalshell和filezilla传文件方便（我有，但不习惯用，还是习惯用xshell）</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">root@Debian:~<span class="comment"># apt install lrzsz -y</span></span><br><span class="line"></span><br><span class="line">root@Debian:~<span class="comment"># cd /var/lib/zerotier-one</span></span><br><span class="line"></span><br><span class="line">root@Debian:/var/lib/zerotier-one<span class="comment"># tar -zcvf moons.d.tat.gz moons.d/</span></span><br><span class="line"></span><br><span class="line">root@Debian:/var/lib/zerotier-one<span class="comment"># sz  moons.d.tar.gz</span></span><br><span class="line"><span class="comment">#然后选择桌面（弹出来的框路径随便你选）</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="ztncui管理界面配置"><a href="#ztncui管理界面配置" class="headerlink" title="ztncui管理界面配置"></a>ztncui管理界面配置</h3><p><strong>访问http://你的公网IP:3000</strong></p>
+<p><strong>登录用户名：<code>admin</code></strong> </p>
+<p><strong>默认密码： <code>password</code></strong></p>
+<p><strong>添加网络</strong></p>
+<p><img src="/2023/05/04/ztncui%E7%A7%81%E6%9C%89%E5%8C%96zerotier%E6%9D%A5%E5%88%9B%E5%BB%BAmoon/image-20230505011824909.png" alt="image-20230505011824909"></p>
+<p><strong>配置网络</strong></p>
+<p><img src="/2023/05/04/ztncui%E7%A7%81%E6%9C%89%E5%8C%96zerotier%E6%9D%A5%E5%88%9B%E5%BB%BAmoon/image-20230505012139481.png" alt="image-20230505012139481"></p>
+<p><img src="/2023/05/04/ztncui%E7%A7%81%E6%9C%89%E5%8C%96zerotier%E6%9D%A5%E5%88%9B%E5%BB%BAmoon/image-20230505012503870.png" alt="image-20230505012503870"></p>
+<h2 id="Client端"><a href="#Client端" class="headerlink" title="Client端"></a>Client端</h2><h3 id="Linux的client端"><a href="#Linux的client端" class="headerlink" title="Linux的client端"></a>Linux的client端</h3><h4 id="同样安装Zerotier"><a href="#同样安装Zerotier" class="headerlink" title="同样安装Zerotier"></a>同样安装Zerotier</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">root@orangepi5:~<span class="comment"># curl -s https://install.zerotier.com | sudo bash</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="将打包好的moon服务器放进Zerotier目录下"><a href="#将打包好的moon服务器放进Zerotier目录下" class="headerlink" title="将打包好的moon服务器放进Zerotier目录下"></a>将打包好的moon服务器放进Zerotier目录下</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">root@orangepi5:~<span class="comment"># cd /var/lib/zerotier-one</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#选择之前下载到桌面的moons.d.tat.gz</span></span><br><span class="line">root@orangepi5:/var/lib/zerotier-one<span class="comment"># rz</span></span><br><span class="line"></span><br><span class="line">root@orangepi5:/var/lib/zerotier-one<span class="comment"># tar -xf moons.d.tat.gz &amp;&amp; rm -rf moons.d.tat.gz</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="配置完moon服务器后重启Zerotier"><a href="#配置完moon服务器后重启Zerotier" class="headerlink" title="配置完moon服务器后重启Zerotier"></a>配置完moon服务器后重启Zerotier</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">root@orangepi5:~<span class="comment"># systemctl restart zerotier-one</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="加入网络"><a href="#加入网络" class="headerlink" title="加入网络"></a>加入网络</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#加入在ztncui上的网络</span></span><br><span class="line">root@orangepi5:~<span class="comment"># zerotier-cli join  #Network ID</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#离开网络的命令是</span></span><br><span class="line">zerotier-cli leave  <span class="comment">#Network ID</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="在ztncui管理界面允许加入"><a href="#在ztncui管理界面允许加入" class="headerlink" title="在ztncui管理界面允许加入"></a>在ztncui管理界面允许加入</h4><p><img src="/2023/05/04/ztncui%E7%A7%81%E6%9C%89%E5%8C%96zerotier%E6%9D%A5%E5%88%9B%E5%BB%BAmoon/image-20230505015057633.png" alt="image-20230505015057633"></p>
+<h4 id="列出网络"><a href="#列出网络" class="headerlink" title="列出网络"></a>列出网络</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">root@orangepi5:~<span class="comment"># zerotier-cli listnetworks</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="查看moon服务器"><a href="#查看moon服务器" class="headerlink" title="查看moon服务器"></a>查看moon服务器</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">root@orangepi5:~<span class="comment"># zerotier-cli listpeers</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>列出的moon节点出现自己配置的公网IP则moon服务器已配置成功</strong></p>
+<h3 id="Android的client端"><a href="#Android的client端" class="headerlink" title="Android的client端"></a>Android的client端</h3><p><strong>先安装<a target="_blank" rel="noopener" href="https://github.com/kaaass/ZerotierFix/releases">Zerotier FIX</a>，然后打开Zerotier FIX，点+号先加入Network ID</strong></p>
+<p><strong>将服务器上的world.bin和000000XXXXX.moon文件下载到本地，将world.bin更名为palnet。然后上传到手机</strong></p>
+<p><strong>第一步，安装好Zerotier FIX，打开软件——右上角——设置——启动自定义planet——选择从文件导入——选择刚才的palnet文件。提示导入成功既切换planet成功。</strong></p>
+<p><strong>第二步，加入moon服务器，打开软件——右上角——入轨——右下角加号——从文件导入——选择刚才的moon文件。提示成功，会在入轨界面看到moon服务的id。</strong></p>
+<p><img src="/2023/05/04/ztncui%E7%A7%81%E6%9C%89%E5%8C%96zerotier%E6%9D%A5%E5%88%9B%E5%BB%BAmoon/image-20230505015941496.png" alt="image-20230505015941496"></p>
+<p><strong>只有完成上面这两步，才能在ztncui管理的网络界面点刷新看到手机的ID，然后在ztncui上授权加入</strong></p>
+<h3 id="Windows的client端"><a href="#Windows的client端" class="headerlink" title="Windows的client端"></a>Windows的client端</h3><p><a target="_blank" rel="noopener" href="https://www.zerotier.com/download/"><strong>ZeroTier官网</strong></a>下载windows的ZeroTier One客户端</p>
+<blockquote>
+<p>下载的zerotier是msi文件，默认会安装到C盘，安装完后会自动运行，在任务栏里会看到zerotier的UI界面，可以把它关掉退出</p>
+</blockquote>
+<p>安装完后在我的电脑打开<code>C盘</code>，点击<code>查看</code>，把<code>隐藏的项目</code>打勾</p>
+<p><img src="/2023/05/04/ztncui%E7%A7%81%E6%9C%89%E5%8C%96zerotier%E6%9D%A5%E5%88%9B%E5%BB%BAmoon/image-20230520200642469.png" alt="image-20230520200642469"></p>
+<p>打开路径<code>C:\ProgramData\ZeroTier\One</code>，直接把之前备份的<code>moons.d</code>整个目录复制一份进去(目录里面有个000000XXXXX.moon文件)</p>
+<p>在任务栏的搜索框输入<code>cmd</code>，会搜索到<code>命令提示符</code>，鼠标右键以管理员身份运行</p>
+<p>弹出的命令框输入下面的命令进入ZeroTier的目录</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">CD</span> C:\ProgramData\ZeroTier\One\</span><br></pre></td></tr></table></figure>
+
+<p>查看命令帮助</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">zerotier<span class="literal">-one_x64</span>.exe <span class="literal">-h</span></span><br></pre></td></tr></table></figure>
+
+<p>可以看到加了<code>-q</code>参数就可以跟linux端一样操作了</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">ZeroTier One version <span class="number">1.10</span>.<span class="number">6</span></span><br><span class="line">Copyright (c) <span class="number">2020</span> ZeroTier, Inc.</span><br><span class="line">Licensed under the ZeroTier BSL <span class="number">1.1</span> (see LICENSE.txt)</span><br><span class="line">Usage: zerotier<span class="literal">-one_x64</span>.exe [-<span class="type">switches</span>] [<span class="type">home</span> <span class="type">directory</span>]</span><br><span class="line"></span><br><span class="line">Available switches:</span><br><span class="line">  <span class="literal">-h</span>                - Display this help</span><br><span class="line">  <span class="literal">-v</span>                - Show version</span><br><span class="line">  <span class="literal">-U</span>                - Skip privilege check and <span class="keyword">do</span> not attempt to drop privileges</span><br><span class="line">  <span class="literal">-p</span>&lt;port&gt;          - Port <span class="keyword">for</span> UDP and TCP/HTTP (default: <span class="number">9993</span>, <span class="number">0</span> <span class="keyword">for</span> random)</span><br><span class="line">  <span class="literal">-C</span>                - Run from command line instead of as service (Windows)</span><br><span class="line">  <span class="literal">-I</span>                - Install Windows service (Windows)</span><br><span class="line">  <span class="literal">-R</span>                - Uninstall Windows service (Windows)</span><br><span class="line">  <span class="literal">-D</span>                - Remove all instances of Windows tap device (Windows)</span><br><span class="line">  <span class="literal">-i</span>                - Generate and manage identities (zerotier<span class="literal">-idtool</span>)</span><br><span class="line">  <span class="literal">-q</span>                - Query API (zerotier<span class="literal">-cli</span>)</span><br></pre></td></tr></table></figure>
+
+<h4 id="加入网络-1"><a href="#加入网络-1" class="headerlink" title="加入网络"></a>加入网络</h4><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#加入在ztncui上的网络</span></span><br><span class="line">zerotier<span class="literal">-one_x64</span>.exe <span class="literal">-q</span> join  <span class="comment">#Network ID</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="列出网络-1"><a href="#列出网络-1" class="headerlink" title="列出网络"></a>列出网络</h4><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">zerotier<span class="literal">-one_x64</span>.exe <span class="literal">-q</span> listnetworks</span><br></pre></td></tr></table></figure>
+
+<h3 id="重启-ZeroTier"><a href="#重启-ZeroTier" class="headerlink" title="重启 ZeroTier"></a>重启 ZeroTier</h3><p>按“WIN+R”键，打开<strong>运行</strong>窗口；2 输入”<strong>services.msc</strong>”，回车，运行的服务中找到ZeroTier one,选中点击右键，选择重新启动。</p>
+<h4 id="查看moon服务器-1"><a href="#查看moon服务器-1" class="headerlink" title="查看moon服务器"></a>查看moon服务器</h4><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">zerotier<span class="literal">-one_x64</span>.exe <span class="literal">-q</span> listpeers</span><br></pre></td></tr></table></figure>
+
+<p><strong>列出的moon节点出现自己配置的公网IP则moon服务器已配置成功</strong></p>
+<h2 id="安全问题"><a href="#安全问题" class="headerlink" title="安全问题"></a>安全问题</h2><p>进入ztncui控制面板需要通过访问公网服务器的3000端口来管理网络，所以要一直开着公网服务器的3000端口，很不安全，我们可以把节点控制器也加入到网络中，加入后就可以通过zerotier分配的IP来访问ztncui控制面板。</p>
+<p>加入方法和linux client端加入网络类似</p>
+<p>ssh连接到公网服务器</p>
+<h3 id="加入网络-2"><a href="#加入网络-2" class="headerlink" title="加入网络"></a>加入网络</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#加入在ztncui上创建网络的ID</span></span><br><span class="line">root@orangepi5:~<span class="comment"># zerotier-cli join  #Network ID</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="授权加入网络"><a href="#授权加入网络" class="headerlink" title="授权加入网络"></a>授权加入网络</h3><p><img src="/2023/05/04/ztncui%E7%A7%81%E6%9C%89%E5%8C%96zerotier%E6%9D%A5%E5%88%9B%E5%BB%BAmoon/image-20230520204946512.png" alt="image-20230520204946512"></p>
+<p><strong>授权后点刷新，网络就会给控制器分配IP了</strong></p>
+<p><strong>这样配置完成后我们就可以在其它授权设备上访问<code>http://控制器IP:3000</code>来登录控制面板了，访问成功后就可以去公网服务器的安全组把放行的3000端口关掉了</strong></p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="http://example.com/2023/05/03/%E6%8C%82%E8%BD%BD%E5%A4%9A%E4%B8%AA%E4%BA%91%E7%9B%98/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -282,7 +529,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2023-11-19 21:56:10" itemprop="dateModified" datetime="2023-11-19T21:56:10+08:00">2023-11-19</time>
+      <time title="修改时间：2024-05-14 23:11:00" itemprop="dateModified" datetime="2024-05-14T23:11:00+08:00">2024-05-14</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -365,7 +612,7 @@
 <p><strong>推荐用脚本安装，方便</strong></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#自定义路径</span></span><br><span class="line">curl -fsSL <span class="string">&quot;https://alist.nn.ci/v3.sh&quot;</span> | bash -s install /root</span><br></pre></td></tr></table></figure>
 
-<p><img src="../images/%E6%8C%82%E8%BD%BD%E5%A4%9A%E4%B8%AA%E4%BA%91%E7%9B%98/image-20230503223713159.png" alt="image-20230503223713159"></p>
+<p><img src="/2023/05/03/%E6%8C%82%E8%BD%BD%E5%A4%9A%E4%B8%AA%E4%BA%91%E7%9B%98/image-20230503223713159.png" alt="image-20230503223713159"></p>
 <p><strong>启动Alist</strong></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">systemctl start alist</span><br><span class="line"><span class="comment">#设置自启动</span></span><br><span class="line">systemctl <span class="built_in">enable</span> alist</span><br></pre></td></tr></table></figure>
 
@@ -395,29 +642,29 @@
 <blockquote>
 <p>YOUR_IP  你的服务器IP</p>
 </blockquote>
-<p><img src="../images/%E6%8C%82%E8%BD%BD%E5%A4%9A%E4%B8%AA%E4%BA%91%E7%9B%98/image-20230503212014697.png" alt="image-20230503212014697"></p>
+<p><img src="/2023/05/03/%E6%8C%82%E8%BD%BD%E5%A4%9A%E4%B8%AA%E4%BA%91%E7%9B%98/image-20230503212014697.png" alt="image-20230503212014697"></p>
 <blockquote>
 <p>为了方便，登录后建议改账号和密码</p>
 </blockquote>
 <p><strong>添加云盘</strong></p>
-<p><img src="../images/%E6%8C%82%E8%BD%BD%E5%A4%9A%E4%B8%AA%E4%BA%91%E7%9B%98/image-20230503224912663.png" alt="image-20230503224912663"></p>
-<p><img src="../images/%E6%8C%82%E8%BD%BD%E5%A4%9A%E4%B8%AA%E4%BA%91%E7%9B%98/image-20230503225414510.png" alt="image-20230503225414510"></p>
+<p><img src="/2023/05/03/%E6%8C%82%E8%BD%BD%E5%A4%9A%E4%B8%AA%E4%BA%91%E7%9B%98/image-20230503224912663.png" alt="image-20230503224912663"></p>
+<p><img src="/2023/05/03/%E6%8C%82%E8%BD%BD%E5%A4%9A%E4%B8%AA%E4%BA%91%E7%9B%98/image-20230503225414510.png" alt="image-20230503225414510"></p>
 <p>要用app扫二维码来获取刷新令牌——&gt;<strong><a target="_blank" rel="noopener" href="https://alist.nn.ci/tool/aliyundrive/request.html">刷新令牌获取</a></strong></p>
 <h3 id="迅雷云盘"><a href="#迅雷云盘" class="headerlink" title="迅雷云盘"></a>迅雷云盘</h3><p><strong>挂载路径：/迅雷云盘</strong></p>
 <p><strong>用户名和密码则是你迅雷的账户密码</strong></p>
 <p><strong>直接点保存，旁边会出现警告，复制href=” “ 双引号里的网址（如果警告里的显示不全，按F5刷新在点保存，直到能看到click here就行，这样就能复制全网址了）</strong></p>
-<p><img src="../images/%E6%8C%82%E8%BD%BD%E5%A4%9A%E4%B8%AA%E4%BA%91%E7%9B%98/image-20230503232035282.png" alt="image-20230503232035282"></p>
+<p><img src="/2023/05/03/%E6%8C%82%E8%BD%BD%E5%A4%9A%E4%B8%AA%E4%BA%91%E7%9B%98/image-20230503232035282.png" alt="image-20230503232035282"></p>
 <p><strong>用edge浏览器打开复制的网址，复制captcha_token里的值，粘贴到验证码里</strong></p>
-<p><img src="../images/%E6%8C%82%E8%BD%BD%E5%A4%9A%E4%B8%AA%E4%BA%91%E7%9B%98/image-20230503233650864.png" alt="image-20230503233650864"></p>
+<p><img src="/2023/05/03/%E6%8C%82%E8%BD%BD%E5%A4%9A%E4%B8%AA%E4%BA%91%E7%9B%98/image-20230503233650864.png" alt="image-20230503233650864"></p>
 <p><strong>在管理页面的左边点主页就能看到你挂载的云盘了，在主页下面的点管理又能回到管理页面</strong></p>
-<p><img src="../images/%E6%8C%82%E8%BD%BD%E5%A4%9A%E4%B8%AA%E4%BA%91%E7%9B%98/image-20230503235226850.png" alt="image-20230503235226850"></p>
+<p><img src="/2023/05/03/%E6%8C%82%E8%BD%BD%E5%A4%9A%E4%B8%AA%E4%BA%91%E7%9B%98/image-20230503235226850.png" alt="image-20230503235226850"></p>
 <h3 id="挂载到本地"><a href="#挂载到本地" class="headerlink" title="挂载到本地"></a>挂载到本地</h3><p><strong>下载RaiDrive</strong></p>
-<p><img src="../images/%E6%8C%82%E8%BD%BD%E5%A4%9A%E4%B8%AA%E4%BA%91%E7%9B%98/196048054-086b91ee-a575-4d3d-9a51-53686a00e85f.png" alt="196048054-086b91ee-a575-4d3d-9a51-53686a00e85f"></p>
+<p><img src="/2023/05/03/%E6%8C%82%E8%BD%BD%E5%A4%9A%E4%B8%AA%E4%BA%91%E7%9B%98/196048054-086b91ee-a575-4d3d-9a51-53686a00e85f.png" alt="196048054-086b91ee-a575-4d3d-9a51-53686a00e85f"></p>
 <p><strong>挂载完后在本地磁盘就能看得到了</strong></p>
-<h3 id="用PotPlayer播放器在线观看"><a href="#用PotPlayer播放器在线观看" class="headerlink" title="用PotPlayer播放器在线观看"></a>用PotPlayer播放器在线观看</h3><p><img src="../images/%E6%8C%82%E8%BD%BD%E5%A4%9A%E4%B8%AA%E4%BA%91%E7%9B%98/image-20230504001622503.png" alt="image-20230504001622503"></p>
-<p><img src="../images/%E6%8C%82%E8%BD%BD%E5%A4%9A%E4%B8%AA%E4%BA%91%E7%9B%98/image-20230504001653256.png" alt="image-20230504001653256"></p>
+<h3 id="用PotPlayer播放器在线观看"><a href="#用PotPlayer播放器在线观看" class="headerlink" title="用PotPlayer播放器在线观看"></a>用PotPlayer播放器在线观看</h3><p><img src="/2023/05/03/%E6%8C%82%E8%BD%BD%E5%A4%9A%E4%B8%AA%E4%BA%91%E7%9B%98/image-20230504001622503.png" alt="image-20230504001622503"></p>
+<p><img src="/2023/05/03/%E6%8C%82%E8%BD%BD%E5%A4%9A%E4%B8%AA%E4%BA%91%E7%9B%98/image-20230504001653256.png" alt="image-20230504001653256"></p>
 <p><strong>效果</strong></p>
-<p><img src="../images/%E6%8C%82%E8%BD%BD%E5%A4%9A%E4%B8%AA%E4%BA%91%E7%9B%98/image-20230504001150591.png" alt="image-20230504001150591"></p>
+<p><img src="/2023/05/03/%E6%8C%82%E8%BD%BD%E5%A4%9A%E4%B8%AA%E4%BA%91%E7%9B%98/image-20230504001150591.png" alt="image-20230504001150591"></p>
 
       
     </div>
@@ -480,7 +727,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2023-11-19 21:54:57" itemprop="dateModified" datetime="2023-11-19T21:54:57+08:00">2023-11-19</time>
+      <time title="修改时间：2024-05-14 23:13:19" itemprop="dateModified" datetime="2024-05-14T23:13:19+08:00">2024-05-14</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -535,7 +782,7 @@
 <p>我的orangepi5的系统是debian11server版</p>
 </blockquote>
 <h3 id="准备工作："><a href="#准备工作：" class="headerlink" title="准备工作："></a>准备工作：</h3><p>1、<strong>香橙派5开发板一块</strong>，本文基于香橙派5完成开启热点/WIFI操作，但是都是跑的Linux系统，树莓派/香橙派大差不差；<br> 2、<strong>USB网卡一张</strong>，Orangepi5本身没有wifi模块需要自己另外配usb网卡 这里我用的是官方推荐的RTL8821CU网卡；</p>
-<p><img src="../images/orangepi5%E5%BC%80%E5%90%AF%E7%83%AD%E7%82%B9/17486263331_1660295310.jpg" alt="17486263331_1660295310"></p>
+<p><img src="/2023/04/28/orangepi5%E5%BC%80%E5%90%AF%E7%83%AD%E7%82%B9/17486263331_1660295310.jpg" alt="17486263331_1660295310"></p>
 <h3 id="测试网卡："><a href="#测试网卡：" class="headerlink" title="测试网卡："></a>测试网卡：</h3><blockquote>
 <p>我这里直接用的root用户，不是root用户的请在命令前加<code>sudo</code></p>
 </blockquote>
@@ -704,7 +951,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2023-11-19 21:57:02" itemprop="dateModified" datetime="2023-11-19T21:57:02+08:00">2023-11-19</time>
+      <time title="修改时间：2024-05-14 22:41:28" itemprop="dateModified" datetime="2024-05-14T22:41:28+08:00">2024-05-14</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -836,13 +1083,13 @@
 <h3 id="使用演示"><a href="#使用演示" class="headerlink" title="使用演示"></a>使用演示</h3><p>如果你是通过pip3安装的依赖则使用以下命令运行示例：   </p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">python3 oneforall.py --target example.com run</span><br><span class="line">python3 oneforall.py --targets ./example.txt run</span><br></pre></td></tr></table></figure>
 
-<p><img src="../images/%E5%AD%90%E5%9F%9F%E5%90%8D%E6%94%B6%E9%9B%86%E5%B7%A5%E5%85%B7/usage_example.svg" alt="usage_example"></p>
+<p><img src="/2023/04/24/%E5%AD%90%E5%9F%9F%E6%94%B6%E9%9B%86%E5%B7%A5%E5%85%B7%20/usage_example.svg" alt="usage_example"></p>
 <h3 id="结果说明"><a href="#结果说明" class="headerlink" title="结果说明"></a>结果说明</h3><p>我们以<code>python3 oneforall.py --target example.com run</code>命令为例，OneForAll在默认参数正常执行完毕会在results目录生成相应结果：</p>
-<p><img src="../images/%E5%AD%90%E5%9F%9F%E5%90%8D%E6%94%B6%E9%9B%86%E5%B7%A5%E5%85%B7/Result.png" alt="Result"></p>
+<p><img src="/2023/04/24/%E5%AD%90%E5%9F%9F%E6%94%B6%E9%9B%86%E5%B7%A5%E5%85%B7%20/Result.png" alt="Result"></p>
 <p><code>example.com.csv</code>是每个主域下的子域收集结果。</p>
 <p><code>all_subdomain_result_1583034493.csv</code>是每次运行OneForAll收集到子域的汇总结果，包含<code>example.com.csv</code>，方便在批量收集场景中获取全部结果。</p>
 <p><code>result.sqlite3</code>是存放每次运行OneForAll收集到子域的SQLite3结果数据库，其数据库结构如下图：</p>
-<p><img src="../images/%E5%AD%90%E5%9F%9F%E5%90%8D%E6%94%B6%E9%9B%86%E5%B7%A5%E5%85%B7/Database.png" alt="Database"></p>
+<p><img src="/2023/04/24/%E5%AD%90%E5%9F%9F%E6%94%B6%E9%9B%86%E5%B7%A5%E5%85%B7%20/Database.png" alt="Database"></p>
 <p>其中类似<code>example_com_origin_result</code>表存放每个模块最初子域收集结果。</p>
 <p>其中类似<code>example_com_resolve_result</code>表存放对子域进行解析后的结果。</p>
 <p>其中类似<code>example_com_last_result</code>表存放上一次子域收集结果（需要收集两次以上才会生成）。</p>
@@ -921,7 +1168,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2023-11-19 21:53:32" itemprop="dateModified" datetime="2023-11-19T21:53:32+08:00">2023-11-19</time>
+      <time title="修改时间：2024-05-14 23:11:41" itemprop="dateModified" datetime="2024-05-14T23:11:41+08:00">2024-05-14</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -1087,7 +1334,7 @@
 
 <h3 id="2-同时运行所有漏洞平台"><a href="#2-同时运行所有漏洞平台" class="headerlink" title="2.同时运行所有漏洞平台"></a>2.同时运行所有漏洞平台</h3><p>在项目根目录下运行以下命令</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cd vulstudy</span><br><span class="line">docker-compose up -d #启动容器</span><br><span class="line">docker-compose stop #停止容器</span><br></pre></td></tr></table></figure>
-<p><img src="../images/docker%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BA%E5%90%84%E5%A4%A7%E6%BC%8F%E6%B4%9E%E9%9D%B6%E5%9C%BA/vulstudy.png" alt="vulstudy"></p>
+<p><img src="/2023/04/24/docker%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BA%E5%90%84%E5%A4%A7%E6%BC%8F%E6%B4%9E%E9%9D%B6%E5%9C%BA/vulstudy.png" alt="vulstudy"></p>
 <h2 id="FAQ"><a href="#FAQ" class="headerlink" title="FAQ"></a>FAQ</h2><p><strong>1.第一次启动bWAPP容器访问其主页会报错如下：</strong></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Connection failed: Unknown database &#x27;bWAPP&#x27;</span><br></pre></td></tr></table></figure>
 
@@ -1159,7 +1406,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2023-11-19 21:56:20" itemprop="dateModified" datetime="2023-11-19T21:56:20+08:00">2023-11-19</time>
+      <time title="修改时间：2024-05-14 22:56:23" itemprop="dateModified" datetime="2024-05-14T22:56:23+08:00">2024-05-14</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -4115,7 +4362,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2023-11-19 21:54:09" itemprop="dateModified" datetime="2023-11-19T21:54:09+08:00">2023-11-19</time>
+      <time title="修改时间：2024-05-14 23:13:00" itemprop="dateModified" datetime="2024-05-14T23:13:00+08:00">2024-05-14</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -4317,7 +4564,7 @@
 <blockquote>
 <p>仅仅安装 powerlevel10k 是不够的，你还需要一个能够满足它的字体，包括各种特殊字符和图标（如上图）等，网络中使用最多的是 Hack Nerd Font 。<br> 字体官网链接：<a target="_blank" rel="noopener" href="https://nerdfonts.com/">https://nerdfonts.com/</a></p>
 </blockquote>
-<p><img src="../images/manjaro%E5%85%A5%E9%97%A8%EF%BC%88archlinux%EF%BC%89/1549943-20211016132138588-1630077845.png" alt="截图"></p>
+<p><img src="/2023/04/23/manjaro%E5%85%A5%E9%97%A8%EF%BC%88archlinux%EF%BC%89/1549943-20211016132138588-1630077845.png" alt="截图"></p>
 <blockquote>
 <p>完成后重启终端或者执行</p>
 </blockquote>
@@ -4392,15 +4639,15 @@
 <blockquote>
 <p>执行后会打开弹出，选中默认wine容器</p>
 </blockquote>
-<p><img src="../images/manjaro%E5%85%A5%E9%97%A8%EF%BC%88archlinux%EF%BC%89/1549943-20211016132327702-2095914890.png" alt="截图"></p>
+<p><img src="/2023/04/23/manjaro%E5%85%A5%E9%97%A8%EF%BC%88archlinux%EF%BC%89/1549943-20211016132327702-2095914890.png" alt="截图"></p>
 <blockquote>
 <p>选择需要的选项，这里选择dll安装</p>
 </blockquote>
-<p><img src="../images/manjaro%E5%85%A5%E9%97%A8%EF%BC%88archlinux%EF%BC%89/1549943-20211016132409407-1420021937.png" alt="截图"></p>
+<p><img src="/2023/04/23/manjaro%E5%85%A5%E9%97%A8%EF%BC%88archlinux%EF%BC%89/1549943-20211016132409407-1420021937.png" alt="截图"></p>
 <h4 id="4-用户文件夹名称为英文"><a href="#4-用户文件夹名称为英文" class="headerlink" title="4)用户文件夹名称为英文"></a>4)用户文件夹名称为英文</h4><blockquote>
 <p>先去手动修改文件夹名称，然后在 设置 -&gt; 应用程序 -&gt; 地点 这修改</p>
 </blockquote>
-<p><img src="../images/manjaro%E5%85%A5%E9%97%A8%EF%BC%88archlinux%EF%BC%89/1549943-20211016132439302-941187267.png" alt="截图"></p>
+<p><img src="/2023/04/23/manjaro%E5%85%A5%E9%97%A8%EF%BC%88archlinux%EF%BC%89/1549943-20211016132439302-941187267.png" alt="截图"></p>
 <h4 id="5-qq、微信打不开"><a href="#5-qq、微信打不开" class="headerlink" title="5)qq、微信打不开"></a>5)qq、微信打不开</h4><blockquote>
 <p>Manjaro-kde桌面安装TIM/QQ的时候经常出现无法启动，其主要原因是deein-wine-tim打包了Gnome桌面部分内容，因此在KDE桌面环境下需要安装相应的Gnome桌面设置环境</p>
 </blockquote>
@@ -4466,7 +4713,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2023-11-19 21:53:05" itemprop="dateModified" datetime="2023-11-19T21:53:05+08:00">2023-11-19</time>
+      <time title="修改时间：2024-05-14 23:07:30" itemprop="dateModified" datetime="2024-05-14T23:07:30+08:00">2024-05-14</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -4565,9 +4812,9 @@
 </ul>
 <p>juicessh和VNC我放的是官网的链接，下载需要魔法，没魔法的可以去找资源，实在找不到的可以在下面评论给我留言</p>
 <h3 id="3）busybox的设置"><a href="#3）busybox的设置" class="headerlink" title="3）busybox的设置"></a>3）busybox的设置</h3><p><strong>安装路径不改，因为这个路径我们在linux deploy软件的设置中有一个环境变量的选项，就是填入这个，然后更新环境变量，安装组件和替换组件勾选</strong></p>
-<p><img src="../images/Android%E5%88%A9%E7%94%A8%E5%AE%B9%E5%99%A8%E9%83%A8%E7%BD%B2linux/2564615615.jpg" alt="2564615615"></p>
+<p><img src="/2023/04/13/Android%E5%88%A9%E7%94%A8%E5%AE%B9%E5%99%A8%E9%83%A8%E7%BD%B2linux/2564615615.jpg" alt="2564615615"></p>
 <p><strong>回到主页点击安装，安装完成以后查看安装信息，显示下面的就是安装完成，现在手机基本都是aarch64，也就是arm64的</strong></p>
-<p><img src="../images/Android%E5%88%A9%E7%94%A8%E5%AE%B9%E5%99%A8%E9%83%A8%E7%BD%B2linux/9846131.jpg" alt="9846131"></p>
+<p><img src="/2023/04/13/Android%E5%88%A9%E7%94%A8%E5%AE%B9%E5%99%A8%E9%83%A8%E7%BD%B2linux/9846131.jpg" alt="9846131"></p>
 <h4 id="如果安装busybox失败，另一种安装方式"><a href="#如果安装busybox失败，另一种安装方式" class="headerlink" title="如果安装busybox失败，另一种安装方式"></a>如果安装busybox失败，另一种安装方式</h4><blockquote>
 <p>上面直接用apk来安装busybox一般来说没有出现fail都是成功了，但我就是出现fail，安装失败了，然后我就用另一种安装方式了</p>
 </blockquote>
@@ -4584,36 +4831,36 @@
 
 <h3 id="4）linux-deploy的设置"><a href="#4）linux-deploy的设置" class="headerlink" title="4）linux deploy的设置"></a>4）linux deploy的设置</h3><p><strong>在左上角三个横杠打开设置</strong></p>
 <p><strong>打勾三个的都点亮，正式运行的时候屏幕黑掉之后，后天运行会非常卡，建议点亮</strong></p>
-<p><img src="../images/Android%E5%88%A9%E7%94%A8%E5%AE%B9%E5%99%A8%E9%83%A8%E7%BD%B2linux/165161681.jpg" alt="165161681"></p>
+<p><img src="/2023/04/13/Android%E5%88%A9%E7%94%A8%E5%AE%B9%E5%99%A8%E9%83%A8%E7%BD%B2linux/165161681.jpg" alt="165161681"></p>
 <p><strong>开机自动启动根据自己的需求设置，其它的默认就好</strong></p>
-<p><img src="../images/Android%E5%88%A9%E7%94%A8%E5%AE%B9%E5%99%A8%E9%83%A8%E7%BD%B2linux/1587646427613234.jpg" alt="1587646427613234"></p>
+<p><img src="/2023/04/13/Android%E5%88%A9%E7%94%A8%E5%AE%B9%E5%99%A8%E9%83%A8%E7%BD%B2linux/1587646427613234.jpg" alt="1587646427613234"></p>
 <p><strong>PATH变量填入安装BusyBox的路径，这个很重要</strong></p>
-<p><img src="../images/Android%E5%88%A9%E7%94%A8%E5%AE%B9%E5%99%A8%E9%83%A8%E7%BD%B2linux/1587646427613235.jpg" alt="在这里插入图片描述"></p>
+<p><img src="/2023/04/13/Android%E5%88%A9%E7%94%A8%E5%AE%B9%E5%99%A8%E9%83%A8%E7%BD%B2linux/1587646427613235.jpg" alt="在这里插入图片描述"></p>
 <p><strong>telnet这个可以开一下，ssh连不上可以用telnet连接</strong></p>
-<p><img src="../images/Android%E5%88%A9%E7%94%A8%E5%AE%B9%E5%99%A8%E9%83%A8%E7%BD%B2linux/24568164146614.jpg" alt="在这里插入图片描述"></p>
+<p><img src="/2023/04/13/Android%E5%88%A9%E7%94%A8%E5%AE%B9%E5%99%A8%E9%83%A8%E7%BD%B2linux/24568164146614.jpg" alt="在这里插入图片描述"></p>
 <p> <strong>然后在右下角停止旁边的三个横杠打开配置</strong></p>
 <blockquote>
 <p>安装类型默认的是镜像文件，我选择的是目录，安装完成以后能和手机共享磁盘空间</p>
 <p>选择镜像安装的要注意镜像大小要分配2G以上，或者直接10240M</p>
 </blockquote>
 <p><strong>配置源地址方式有两种，一种是在线安装，另一种是tar包安装</strong></p>
-<h4 id="a-在线安装"><a href="#a-在线安装" class="headerlink" title="a.在线安装"></a>a.在线安装</h4><p><img src="../images/Android%E5%88%A9%E7%94%A8%E5%AE%B9%E5%99%A8%E9%83%A8%E7%BD%B2linux/985621469.jpg" alt="img"></p>
+<h4 id="a-在线安装"><a href="#a-在线安装" class="headerlink" title="a.在线安装"></a>a.在线安装</h4><p><img src="/2023/04/13/Android%E5%88%A9%E7%94%A8%E5%AE%B9%E5%99%A8%E9%83%A8%E7%BD%B2linux/985621469.jpg" alt="img"></p>
 <h4 id="b-tar包安装"><a href="#b-tar包安装" class="headerlink" title="b.tar包安装"></a>b.tar包安装</h4><blockquote>
 <p>tar打包linux具体可看我另一篇<a target="_blank" rel="noopener" href="https://aienh.github.io/post/%E5%88%B6%E4%BD%9Cdebian%E7%9A%84rootfs">制作rootfs</a>的博客，这里安装类型也建议改为目录</p>
 </blockquote>
-<p><img src="../images/Android%E5%88%A9%E7%94%A8%E5%AE%B9%E5%99%A8%E9%83%A8%E7%BD%B2linux/5862411146.jpg" alt="img"></p>
+<p><img src="/2023/04/13/Android%E5%88%A9%E7%94%A8%E5%AE%B9%E5%99%A8%E9%83%A8%E7%BD%B2linux/5862411146.jpg" alt="img"></p>
 <h4 id="c-其它配置"><a href="#c-其它配置" class="headerlink" title="c.其它配置"></a>c.其它配置</h4><p><strong>本地化选择中文包就可以了</strong></p>
-<p><img src="../images/Android%E5%88%A9%E7%94%A8%E5%AE%B9%E5%99%A8%E9%83%A8%E7%BD%B2linux/98464166.jpg" alt="在这里插入图片描述"></p>
-<p><strong>sdcard挂载到根系统</strong><img src="../images/Android%E5%88%A9%E7%94%A8%E5%AE%B9%E5%99%A8%E9%83%A8%E7%BD%B2linux/173048_ghVz_2846946.png" alt="img"></p>
+<p><img src="/2023/04/13/Android%E5%88%A9%E7%94%A8%E5%AE%B9%E5%99%A8%E9%83%A8%E7%BD%B2linux/98464166.jpg" alt="在这里插入图片描述"></p>
+<p><strong>sdcard挂载到根系统</strong><img src="/2023/04/13/Android%E5%88%A9%E7%94%A8%E5%AE%B9%E5%99%A8%E9%83%A8%E7%BD%B2linux/173048_ghVz_2846946.png" alt="img"></p>
 <p><strong>启用SSH打勾，建议更改SSH的端口，例如7777，8888，22端口可能会在手机上被别的服务占用，SSH可能会连接不上</strong></p>
 <p><strong>图形界面有需求可选择打勾安装</strong></p>
-<p><img src="../images/Android%E5%88%A9%E7%94%A8%E5%AE%B9%E5%99%A8%E9%83%A8%E7%BD%B2linux/7b06f45652578707.jpg" alt="img"></p>
+<p><img src="/2023/04/13/Android%E5%88%A9%E7%94%A8%E5%AE%B9%E5%99%A8%E9%83%A8%E7%BD%B2linux/7b06f45652578707.jpg" alt="img"></p>
 <p>这样就配置完成了</p>
-<h3 id="5）安装"><a href="#5）安装" class="headerlink" title="5）安装"></a>5）安装</h3><p><img src="../images/Android%E5%88%A9%E7%94%A8%E5%AE%B9%E5%99%A8%E9%83%A8%E7%BD%B2linux/245614151.png" alt="245614151"></p>
+<h3 id="5）安装"><a href="#5）安装" class="headerlink" title="5）安装"></a>5）安装</h3><p><img src="/2023/04/13/Android%E5%88%A9%E7%94%A8%E5%AE%B9%E5%99%A8%E9%83%A8%E7%BD%B2linux/245614151.png" alt="245614151"></p>
 <p><strong>configuring extra/ssh 没有fail</strong></p>
 <p><strong>&lt;&lt;&lt;deploy</strong> </p>
 <p><strong>说明安装完成</strong></p>
-<p><img src="../images/Android%E5%88%A9%E7%94%A8%E5%AE%B9%E5%99%A8%E9%83%A8%E7%BD%B2linux/824641148.png" alt="824641148"></p>
+<p><img src="/2023/04/13/Android%E5%88%A9%E7%94%A8%E5%AE%B9%E5%99%A8%E9%83%A8%E7%BD%B2linux/824641148.png" alt="824641148"></p>
 <blockquote>
 <p><strong>安装完成后一定要先点停止后再点启动！！！</strong></p>
 <p><strong>不然直接点启动又会重新安装一遍。</strong></p>
@@ -4621,7 +4868,7 @@
 <h2 id="用JuiceSSH连接"><a href="#用JuiceSSH连接" class="headerlink" title="用JuiceSSH连接"></a>用JuiceSSH连接</h2><blockquote>
 <p>用SSH连接时注意你配置时有没有更改端口</p>
 </blockquote>
-<p> <img src="../images/Android%E5%88%A9%E7%94%A8%E5%AE%B9%E5%99%A8%E9%83%A8%E7%BD%B2linux/562411.png" alt="562411"></p>
+<p> <img src="/2023/04/13/Android%E5%88%A9%E7%94%A8%E5%AE%B9%E5%99%A8%E9%83%A8%E7%BD%B2linux/562411.png" alt="562411"></p>
 
       
     </div>
@@ -4843,186 +5090,6 @@
 
 <h3 id="12-打包rootfs"><a href="#12-打包rootfs" class="headerlink" title="12.打包rootfs"></a>12.打包rootfs</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">root@ubuntu:~<span class="comment"># cd rootfs</span></span><br><span class="line">root@ubuntu:~<span class="comment"># tar -czvf debian_buster_arm64.tgz ./*</span></span><br></pre></td></tr></table></figure>
 
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2023/04/10/%E5%AE%89%E8%A3%85%E5%92%8C%E5%88%87%E6%8D%A2%E5%A4%9A%E7%89%88%E6%9C%ACjava%20(windows%E7%AF%87)/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/20230401000222.jpg">
-      <meta itemprop="name" content="ienA">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ienAの博客">
-      <meta itemprop="description" content="致力于分享自己学习过程笔记的萌新博主૮(˶ᵔ ᵕ ᵔ˶)ა">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | ienAの博客">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2023/04/10/%E5%AE%89%E8%A3%85%E5%92%8C%E5%88%87%E6%8D%A2%E5%A4%9A%E7%89%88%E6%9C%ACjava%20(windows%E7%AF%87)/" class="post-title-link" itemprop="url">安装和切换多版本java (windows篇)</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2023-04-10 14:00:27" itemprop="dateCreated datePublished" datetime="2023-04-10T14:00:27+08:00">2023-04-10</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2023-11-19 21:55:29" itemprop="dateModified" datetime="2023-11-19T21:55:29+08:00">2023-11-19</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/windows/" itemprop="url" rel="index"><span itemprop="name">windows</span></a>
-        </span>
-    </span>
-
-  
-  
-  <span class="post-meta-item">
-    
-    <span class="post-meta-item-icon">
-      <i class="far fa-comment"></i>
-    </span>
-    <span class="post-meta-item-text">Valine：</span>
-  
-    <a title="valine" href="/2023/04/10/%E5%AE%89%E8%A3%85%E5%92%8C%E5%88%87%E6%8D%A2%E5%A4%9A%E7%89%88%E6%9C%ACjava%20(windows%E7%AF%87)/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2023/04/10/%E5%AE%89%E8%A3%85%E5%92%8C%E5%88%87%E6%8D%A2%E5%A4%9A%E7%89%88%E6%9C%ACjava%20(windows%E7%AF%87)/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>2.8k</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>3 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p><strong>一、JDK是什么？</strong></p>
-<p>1、JDK : Java Development ToolKit(Java开发工具包)。JDK是整个JAVA的核心，包括了Java运行环境（Java Runtime Envirnment），一堆Java工具（javac/java/jdb等）和Java基础的类库（即Java API 包括rt.jar）。</p>
-<p>最主流的JDK是Oracle公司发布的JDK，除了Oracle之外，还有很多公司和组织都开发了属于自己的JDK，例如国外IBM公司开发了属于自己的JDK，国内淘宝也开发了属于自己的JDK，各个组织开发自己的JDK都是为了在某些方面得到一些提高，以适应自己的需求，比如IBM的JDK据说运行效率就比Oralce的JDK高的多。但不管怎么说，我们还是需要先把基础的Oracle JDK掌握好。</p>
-<p>2、JDK是java开发工具包，在其安装目录下面有五个文件夹、一些描述文件、一个src压缩文件。bin、lib、 jre这四个文件夹起作用。可以看出来JDK包含JRE，而JRE包含JVM。</p>
-<p>·bin:最主要的是编译器(javac.exe)</p>
-<p>·lib：类库（开发中需要使用到的一些jdk提供的一些类）</p>
-<p>·jre:java运行环境（注意：这里的bin、lib文件夹和jre里的bin、lib是不同的）</p>
-<p>· <strong>总的来说JDK是用于java程序的开发,而jre则是只能运行class而没有编译的功能</strong>。</p>
-<p>3、JDK是提供给Java开发人员使用的，其中包含了java的开发工具，也包括了JRE。所以安装了JDK，就不用在单独安装JRE了。</p>
-<p><strong>二、jdk和jre的区别？</strong></p>
-<p>JRE顾名思义是java运行时环境，包含了java虚拟机，java基础类库。是使用java语言编写的程序运行所需要的软件环境，是提供给想运行java程序的用户使用的。</p>
-<p>一句话： jre就是Java程序运行的环境。</p>
-<h1 id="Windows"><a href="#Windows" class="headerlink" title="Windows"></a>Windows</h1><h2 id="jvms工具"><a href="#jvms工具" class="headerlink" title="jvms工具"></a>jvms工具</h2><p>需要用到一个工具jvms</p>
-<p><a target="_blank" rel="noopener" href="https://github.com/ystyle/jvms/">jvms项目地址</a></p>
-<p>打开项目，点击右边<a target="_blank" rel="noopener" href="https://github.com/ystyle/jvms/releases">Releases</a>，下载工具，我下载的是<a target="_blank" rel="noopener" href="https://github.com/ystyle/jvms/releases/download/v2.1.3/jvms_v2.1.3_amd64.zip">jvms_v2.1.3_amd64.zip</a></p>
-<h2 id="解压工具"><a href="#解压工具" class="headerlink" title="解压工具"></a>解压工具</h2><p>解压到你想放置的盘里</p>
-<blockquote>
-<p>例如我放到D盘下，重命名为jvms，路径为D:\jvms</p>
-</blockquote>
-<p>在jvms文件夹里新建两个子文件夹store和download</p>
-<p>![image-20230517175753265](../images/安装和切换多版本java (windows篇)/image-20230517175753265.png)</p>
-<h2 id="运行工具"><a href="#运行工具" class="headerlink" title="运行工具"></a>运行工具</h2><p>然后以管理员身份运行cmd或者powershell</p>
-<p>![image-20230517175644642](../images/安装和切换多版本java (windows篇)/image-20230517175644642.png)</p>
-<h2 id="初始化工具"><a href="#初始化工具" class="headerlink" title="初始化工具"></a>初始化工具</h2><p>输入以下命令来初始化jvms配置文件</p>
-<blockquote>
-<p>用 D:\jvms\jvms.exe init –help 命令 在OPTIONS选项中可以看到设置的默认值</p>
-<p>OPTIONS:<br>   –java_home value     the JAVA_HOME location (default: “C:\Program Files\jdk”)<br>   –originalpath value  the jdk download index file url. (default: “<a target="_blank" rel="noopener" href="https://raw.githubusercontent.com/ystyle/jvms/new/jdkdlindex.json&quot;">https://raw.githubusercontent.com/ystyle/jvms/new/jdkdlindex.json&quot;</a>)</p>
-</blockquote>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">D:\jvms\jvms.exe init</span><br></pre></td></tr></table></figure>
-
-<h2 id="下载JDK"><a href="#下载JDK" class="headerlink" title="下载JDK"></a>下载JDK</h2><p>因为是国内网，访问raw.githubusercontent.com一般都会连不上，这时候有两种方法解决</p>
-<p>第一种方法：</p>
-<p>raw.github的ip经常更换，所以我们先去查一下该网址IP，打开<a target="_blank" rel="noopener" href="https://www.ipaddress.com/">IP查询</a>然后输入</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">raw.githubusercontent.com</span><br></pre></td></tr></table></figure>
-
-<p>在今天 2023/05/17 查询得有4个ipv4的地址</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">185.199.108.133</span><br><span class="line">185.199.109.133</span><br><span class="line">185.199.110.133</span><br><span class="line">185.199.111.133</span><br></pre></td></tr></table></figure>
-
-<p>修改hosts文件</p>
-<p>位置：<code>C:\Windows\System32\drivers\etc\hosts</code></p>
-<p>直接在最下面添加上面查到的随便一个IP，保存</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">185.199.108.133 raw.githubusercontent.com</span><br></pre></td></tr></table></figure>
-
-<p>我用这个方法偶尔可以偶尔又不行，我放弃了</p>
-<p>第二种方法：</p>
-<p>直接在搜索引擎搜github国内镜像站，找一找应该能找到能用的，我找到的<a target="_blank" rel="noopener" href="https://kgithub.com/%EF%BC%8C%E5%9C%A8%E4%BB%8A%E5%A4%A92023/05/17">https://kgithub.com/，在今天2023/05/17</a> 还能用</p>
-<p>直接把原先的地址中的<code>githubusercontent</code>换成<code>kgithub</code>就行</p>
-<p>或者用cdn加速的github镜像仓库</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#我没有用作者的集成的jdk下载链接，我自己写了一个ZuluJDK（一个OpenJDK的发行版本）的下载链接</span></span><br><span class="line">jvms init  <span class="literal">--originalpath</span> https://fastly.jsdelivr.net/gh/AienH/jvms@master/openjdk.json</span><br><span class="line"></span><br><span class="line"><span class="comment">#列出可供下载的可用 jdk 版本</span></span><br><span class="line">jvms rls</span><br><span class="line"><span class="comment">#这个是列出的版本</span></span><br><span class="line">    <span class="number">1</span>) <span class="number">20.0</span>.<span class="number">1</span></span><br><span class="line">    <span class="number">2</span>) <span class="number">19.0</span>.<span class="number">2</span></span><br><span class="line">    <span class="number">3</span>) <span class="number">17.0</span>.<span class="number">7</span></span><br><span class="line">    <span class="number">4</span>) <span class="number">13.0</span>.<span class="number">14</span></span><br><span class="line">    <span class="number">5</span>) <span class="number">11.0</span>.<span class="number">19</span></span><br><span class="line">    <span class="number">6</span>) <span class="number">8.0</span>.<span class="number">372</span></span><br><span class="line">    <span class="number">7</span>) <span class="number">7.0</span>.<span class="number">352</span></span><br><span class="line">    <span class="number">8</span>) <span class="number">6.0</span>.<span class="number">119</span></span><br><span class="line">    <span class="number">9</span>) <span class="number">21.0</span>.<span class="number">0</span><span class="literal">-ea</span></span><br><span class="line">    <span class="number">10</span>) OpenJDK8U<span class="literal">-jdk_x64_windows_hotspot_8u372b07</span></span><br><span class="line"></span><br><span class="line">use <span class="string">&quot;jvm rls -a&quot;</span> show all the versions</span><br><span class="line"></span><br><span class="line"><span class="keyword">For</span> a complete list, visit https://fastly.jsdelivr.net/gh/AienH/jvms@master/openjdk.json</span><br><span class="line"></span><br><span class="line"><span class="comment">#下载JDK17和JDK11</span></span><br><span class="line">jvms install <span class="number">11.0</span>.<span class="number">19</span></span><br><span class="line">jvms install <span class="number">17.0</span>.<span class="number">7</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#查看下载的jdk版本</span></span><br><span class="line">jvms <span class="built_in">ls</span></span><br></pre></td></tr></table></figure>
-
-<p>下载完后在<code>D:\jvms\store</code>目录下能看到下载的几个不同版本的jdk，在<code>D:\jvms\download</code>目录看到jdk的源码包</p>
-<h2 id="配置JAVA"><a href="#配置JAVA" class="headerlink" title="配置JAVA"></a>配置JAVA</h2><p>在<code>C:\Program Files</code>目录下新建文件夹<code>jdk</code></p>
-<p>把<code>D:\jvms\store</code>目录下的所有jdk版本复制到<code>C:\Program Files\jdk</code>目录下</p>
-<p>然后切换想要使用的ava版本</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#使用jdk17</span></span><br><span class="line">jvms <span class="keyword">switch</span> <span class="number">17.0</span>.<span class="number">7</span></span><br></pre></td></tr></table></figure>
-
-<p>测试环境是否成功</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java <span class="literal">--version</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="手动下载JDK包"><a href="#手动下载JDK包" class="headerlink" title="手动下载JDK包"></a>手动下载JDK包</h2><p>不通过<code>jvms install</code>在线下载</p>
-<p>直接把自己下载好的jdk包解压到<code>D:\jvms\store</code>和<code>C:\Program Files\jdk</code>目录下</p>
-<p>例如：添加<code>jdk 17.0.1</code></p>
-<ol>
-<li>将 jdk 主文件夹复制到<code>jvms/store</code></li>
-<li>将文件夹重命名为<code>17.0.1</code></li>
-<li><code>jvms list</code>检查是否显示存在</li>
-</ol>
 
       
     </div>

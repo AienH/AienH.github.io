@@ -183,7 +183,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">23</span>
+          <span class="site-state-item-count">24</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -246,6 +246,186 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/04/10/%E5%AE%89%E8%A3%85%E5%92%8C%E5%88%87%E6%8D%A2%E5%A4%9A%E7%89%88%E6%9C%ACjava%20(windows%E7%AF%87)/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/20230401000222.jpg">
+      <meta itemprop="name" content="ienA">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ienAの博客">
+      <meta itemprop="description" content="致力于分享自己学习过程笔记的萌新博主૮(˶ᵔ ᵕ ᵔ˶)ა">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | ienAの博客">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2023/04/10/%E5%AE%89%E8%A3%85%E5%92%8C%E5%88%87%E6%8D%A2%E5%A4%9A%E7%89%88%E6%9C%ACjava%20(windows%E7%AF%87)/" class="post-title-link" itemprop="url">安装和切换多版本java (windows篇)</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-04-10 14:00:27" itemprop="dateCreated datePublished" datetime="2023-04-10T14:00:27+08:00">2023-04-10</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-05-14 23:14:27" itemprop="dateModified" datetime="2024-05-14T23:14:27+08:00">2024-05-14</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/windows/" itemprop="url" rel="index"><span itemprop="name">windows</span></a>
+        </span>
+    </span>
+
+  
+  
+  <span class="post-meta-item">
+    
+    <span class="post-meta-item-icon">
+      <i class="far fa-comment"></i>
+    </span>
+    <span class="post-meta-item-text">Valine：</span>
+  
+    <a title="valine" href="/2023/04/10/%E5%AE%89%E8%A3%85%E5%92%8C%E5%88%87%E6%8D%A2%E5%A4%9A%E7%89%88%E6%9C%ACjava%20(windows%E7%AF%87)/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2023/04/10/%E5%AE%89%E8%A3%85%E5%92%8C%E5%88%87%E6%8D%A2%E5%A4%9A%E7%89%88%E6%9C%ACjava%20(windows%E7%AF%87)/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>2.8k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>3 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p><strong>一、JDK是什么？</strong></p>
+<p>1、JDK : Java Development ToolKit(Java开发工具包)。JDK是整个JAVA的核心，包括了Java运行环境（Java Runtime Envirnment），一堆Java工具（javac/java/jdb等）和Java基础的类库（即Java API 包括rt.jar）。</p>
+<p>最主流的JDK是Oracle公司发布的JDK，除了Oracle之外，还有很多公司和组织都开发了属于自己的JDK，例如国外IBM公司开发了属于自己的JDK，国内淘宝也开发了属于自己的JDK，各个组织开发自己的JDK都是为了在某些方面得到一些提高，以适应自己的需求，比如IBM的JDK据说运行效率就比Oralce的JDK高的多。但不管怎么说，我们还是需要先把基础的Oracle JDK掌握好。</p>
+<p>2、JDK是java开发工具包，在其安装目录下面有五个文件夹、一些描述文件、一个src压缩文件。bin、lib、 jre这四个文件夹起作用。可以看出来JDK包含JRE，而JRE包含JVM。</p>
+<p>·bin:最主要的是编译器(javac.exe)</p>
+<p>·lib：类库（开发中需要使用到的一些jdk提供的一些类）</p>
+<p>·jre:java运行环境（注意：这里的bin、lib文件夹和jre里的bin、lib是不同的）</p>
+<p>· <strong>总的来说JDK是用于java程序的开发,而jre则是只能运行class而没有编译的功能</strong>。</p>
+<p>3、JDK是提供给Java开发人员使用的，其中包含了java的开发工具，也包括了JRE。所以安装了JDK，就不用在单独安装JRE了。</p>
+<p><strong>二、jdk和jre的区别？</strong></p>
+<p>JRE顾名思义是java运行时环境，包含了java虚拟机，java基础类库。是使用java语言编写的程序运行所需要的软件环境，是提供给想运行java程序的用户使用的。</p>
+<p>一句话： jre就是Java程序运行的环境。</p>
+<h1 id="Windows"><a href="#Windows" class="headerlink" title="Windows"></a>Windows</h1><h2 id="jvms工具"><a href="#jvms工具" class="headerlink" title="jvms工具"></a>jvms工具</h2><p>需要用到一个工具jvms</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/ystyle/jvms/">jvms项目地址</a></p>
+<p>打开项目，点击右边<a target="_blank" rel="noopener" href="https://github.com/ystyle/jvms/releases">Releases</a>，下载工具，我下载的是<a target="_blank" rel="noopener" href="https://github.com/ystyle/jvms/releases/download/v2.1.3/jvms_v2.1.3_amd64.zip">jvms_v2.1.3_amd64.zip</a></p>
+<h2 id="解压工具"><a href="#解压工具" class="headerlink" title="解压工具"></a>解压工具</h2><p>解压到你想放置的盘里</p>
+<blockquote>
+<p>例如我放到D盘下，重命名为jvms，路径为D:\jvms</p>
+</blockquote>
+<p>在jvms文件夹里新建两个子文件夹store和download</p>
+<p>![image-20230517175753265](安装和切换多版本java (windows篇)/image-20230517175753265.png)</p>
+<h2 id="运行工具"><a href="#运行工具" class="headerlink" title="运行工具"></a>运行工具</h2><p>然后以管理员身份运行cmd或者powershell</p>
+<p>![image-20230517175644642](安装和切换多版本java (windows篇)/image-20230517175644642.png)</p>
+<h2 id="初始化工具"><a href="#初始化工具" class="headerlink" title="初始化工具"></a>初始化工具</h2><p>输入以下命令来初始化jvms配置文件</p>
+<blockquote>
+<p>用 D:\jvms\jvms.exe init –help 命令 在OPTIONS选项中可以看到设置的默认值</p>
+<p>OPTIONS:<br>   –java_home value     the JAVA_HOME location (default: “C:\Program Files\jdk”)<br>   –originalpath value  the jdk download index file url. (default: “<a target="_blank" rel="noopener" href="https://raw.githubusercontent.com/ystyle/jvms/new/jdkdlindex.json&quot;">https://raw.githubusercontent.com/ystyle/jvms/new/jdkdlindex.json&quot;</a>)</p>
+</blockquote>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">D:\jvms\jvms.exe init</span><br></pre></td></tr></table></figure>
+
+<h2 id="下载JDK"><a href="#下载JDK" class="headerlink" title="下载JDK"></a>下载JDK</h2><p>因为是国内网，访问raw.githubusercontent.com一般都会连不上，这时候有两种方法解决</p>
+<p>第一种方法：</p>
+<p>raw.github的ip经常更换，所以我们先去查一下该网址IP，打开<a target="_blank" rel="noopener" href="https://www.ipaddress.com/">IP查询</a>然后输入</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">raw.githubusercontent.com</span><br></pre></td></tr></table></figure>
+
+<p>在今天 2023/05/17 查询得有4个ipv4的地址</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">185.199.108.133</span><br><span class="line">185.199.109.133</span><br><span class="line">185.199.110.133</span><br><span class="line">185.199.111.133</span><br></pre></td></tr></table></figure>
+
+<p>修改hosts文件</p>
+<p>位置：<code>C:\Windows\System32\drivers\etc\hosts</code></p>
+<p>直接在最下面添加上面查到的随便一个IP，保存</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">185.199.108.133 raw.githubusercontent.com</span><br></pre></td></tr></table></figure>
+
+<p>我用这个方法偶尔可以偶尔又不行，我放弃了</p>
+<p>第二种方法：</p>
+<p>直接在搜索引擎搜github国内镜像站，找一找应该能找到能用的，我找到的<a target="_blank" rel="noopener" href="https://kgithub.com/%EF%BC%8C%E5%9C%A8%E4%BB%8A%E5%A4%A92023/05/17">https://kgithub.com/，在今天2023/05/17</a> 还能用</p>
+<p>直接把原先的地址中的<code>githubusercontent</code>换成<code>kgithub</code>就行</p>
+<p>或者用cdn加速的github镜像仓库</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#我没有用作者的集成的jdk下载链接，我自己写了一个ZuluJDK（一个OpenJDK的发行版本）的下载链接</span></span><br><span class="line">jvms init  <span class="literal">--originalpath</span> https://fastly.jsdelivr.net/gh/AienH/jvms@master/openjdk.json</span><br><span class="line"></span><br><span class="line"><span class="comment">#列出可供下载的可用 jdk 版本</span></span><br><span class="line">jvms rls</span><br><span class="line"><span class="comment">#这个是列出的版本</span></span><br><span class="line">    <span class="number">1</span>) <span class="number">20.0</span>.<span class="number">1</span></span><br><span class="line">    <span class="number">2</span>) <span class="number">19.0</span>.<span class="number">2</span></span><br><span class="line">    <span class="number">3</span>) <span class="number">17.0</span>.<span class="number">7</span></span><br><span class="line">    <span class="number">4</span>) <span class="number">13.0</span>.<span class="number">14</span></span><br><span class="line">    <span class="number">5</span>) <span class="number">11.0</span>.<span class="number">19</span></span><br><span class="line">    <span class="number">6</span>) <span class="number">8.0</span>.<span class="number">372</span></span><br><span class="line">    <span class="number">7</span>) <span class="number">7.0</span>.<span class="number">352</span></span><br><span class="line">    <span class="number">8</span>) <span class="number">6.0</span>.<span class="number">119</span></span><br><span class="line">    <span class="number">9</span>) <span class="number">21.0</span>.<span class="number">0</span><span class="literal">-ea</span></span><br><span class="line">    <span class="number">10</span>) OpenJDK8U<span class="literal">-jdk_x64_windows_hotspot_8u372b07</span></span><br><span class="line"></span><br><span class="line">use <span class="string">&quot;jvm rls -a&quot;</span> show all the versions</span><br><span class="line"></span><br><span class="line"><span class="keyword">For</span> a complete list, visit https://fastly.jsdelivr.net/gh/AienH/jvms@master/openjdk.json</span><br><span class="line"></span><br><span class="line"><span class="comment">#下载JDK17和JDK11</span></span><br><span class="line">jvms install <span class="number">11.0</span>.<span class="number">19</span></span><br><span class="line">jvms install <span class="number">17.0</span>.<span class="number">7</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#查看下载的jdk版本</span></span><br><span class="line">jvms <span class="built_in">ls</span></span><br></pre></td></tr></table></figure>
+
+<p>下载完后在<code>D:\jvms\store</code>目录下能看到下载的几个不同版本的jdk，在<code>D:\jvms\download</code>目录看到jdk的源码包</p>
+<h2 id="配置JAVA"><a href="#配置JAVA" class="headerlink" title="配置JAVA"></a>配置JAVA</h2><p>在<code>C:\Program Files</code>目录下新建文件夹<code>jdk</code></p>
+<p>把<code>D:\jvms\store</code>目录下的所有jdk版本复制到<code>C:\Program Files\jdk</code>目录下</p>
+<p>然后切换想要使用的ava版本</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#使用jdk17</span></span><br><span class="line">jvms <span class="keyword">switch</span> <span class="number">17.0</span>.<span class="number">7</span></span><br></pre></td></tr></table></figure>
+
+<p>测试环境是否成功</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java <span class="literal">--version</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="手动下载JDK包"><a href="#手动下载JDK包" class="headerlink" title="手动下载JDK包"></a>手动下载JDK包</h2><p>不通过<code>jvms install</code>在线下载</p>
+<p>直接把自己下载好的jdk包解压到<code>D:\jvms\store</code>和<code>C:\Program Files\jdk</code>目录下</p>
+<p>例如：添加<code>jdk 17.0.1</code></p>
+<ol>
+<li>将 jdk 主文件夹复制到<code>jvms/store</code></li>
+<li>将文件夹重命名为<code>17.0.1</code></li>
+<li><code>jvms list</code>检查是否显示存在</li>
+</ol>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="http://example.com/2023/04/10/%E5%AE%89%E8%A3%85%E5%92%8C%E5%88%87%E6%8D%A2%E5%A4%9A%E7%89%88%E6%9C%ACjava%20(linux%E7%AF%87)/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -282,7 +462,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2023-11-19 21:55:17" itemprop="dateModified" datetime="2023-11-19T21:55:17+08:00">2023-11-19</time>
+      <time title="修改时间：2024-05-14 23:14:07" itemprop="dateModified" datetime="2024-05-14T23:14:07+08:00">2024-05-14</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -315,14 +495,14 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>11k</span>
+      <span>12k</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>10 分钟</span>
+      <span>11 分钟</span>
     </span>
 </div>
 
@@ -393,7 +573,7 @@
 
 <p><strong>从<a target="_blank" rel="noopener" href="https://www.oracle.com/java/technologies/downloads/">oracle官网</a>下载Java压缩包</strong>    </p>
 <p><strong>Java8：</strong><a target="_blank" rel="noopener" href="https://www.oracle.com/java/technologies/javase/javase-jdk8-downloads.html">Java SE Development Kit 8 Downloads</a></p>
-<p>![image-20230404181515372](../images/安装和切换多版本java (linux篇)/image-20230404181515372.png)</p>
+<p>![image-20230404181515372](安装和切换多版本java (linux篇)/image-20230404181515372.png)</p>
 <p><strong>注册登录后即可获得下载链接，这里注意自己的系统是arm64还是amd64</strong></p>
 <p><strong>也可使用<a target="_blank" rel="noopener" href="https://www.azul.com/downloads/?package=jdk#zulu">ZuluJDK（一个OpenJDK的发行版本）</a></strong></p>
 <blockquote>
@@ -477,6 +657,9 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">root@orangepi5:~<span class="comment"># whereis python2</span></span><br><span class="line">python2: /usr/bin/python2.7 /usr/bin/python2 /usr/lib/python2.7 /etc/python2.7 /usr/local/lib/python2.7 /usr/share/man/man1/python2.1.gz</span><br><span class="line">root@orangepi5:~<span class="comment"># whereis python3</span></span><br><span class="line">python3: /usr/bin/python3.9-config /usr/bin/python3 /usr/bin/python3.9 /usr/lib/aarch64-linux-gnu/python3.9 /usr/lib/python3 /usr/lib/python3.9 /etc/python3 /etc/python3.9 /usr/local/lib/python3.9 /usr/include/python3.9 /usr/share/python3 /usr/share/man/man1/python3.1.gz</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">root@orangepi5:~<span class="comment"># update-alternatives --install /usr/bin/python python /usr/bin/python2 100</span></span><br><span class="line">root@orangepi5:~<span class="comment"># update-alternatives --install /usr/bin/python python /usr/bin/python3 150</span></span><br><span class="line">root@orangepi5:~<span class="comment"># update-alternatives --config python</span></span><br><span class="line">There are 2 choices <span class="keyword">for</span> the alternative python (providing /usr/bin/python).</span><br><span class="line"></span><br><span class="line">  Selection    Path              Priority   Status</span><br><span class="line">------------------------------------------------------------</span><br><span class="line">* 0            /usr/bin/python3   150       auto mode</span><br><span class="line">  1            /usr/bin/python2   100       manual mode</span><br><span class="line">  2            /usr/bin/python3   150       manual mode</span><br><span class="line"></span><br><span class="line">Press &lt;enter&gt; to keep the current choice[*], or <span class="built_in">type</span> selection number: 2</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">root@orangepi5:~<span class="comment"># python --version</span></span><br></pre></td></tr></table></figure>
 
 
+
+<h2 id="6-centos7中安装python3后使用yum命令报错解决办法"><a href="#6-centos7中安装python3后使用yum命令报错解决办法" class="headerlink" title="6.centos7中安装python3后使用yum命令报错解决办法"></a>6.centos7中安装python3后使用yum命令报错解决办法</h2><p>把第一行<code>#! /usr/bin/python</code>后面的<code>python</code>改成 <code>python2</code>保存退出<br>再输入：<code>vi /usr/libexec/urlgrabber-ext-down</code>同样第一行后面的<code>python</code>改成 <code>python2</code>保存退出</p>
+
       
     </div>
 
@@ -538,7 +721,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2023-11-19 21:57:14" itemprop="dateModified" datetime="2023-11-19T21:57:14+08:00">2023-11-19</time>
+      <time title="修改时间：2024-05-14 22:41:49" itemprop="dateModified" datetime="2024-05-14T22:41:49+08:00">2024-05-14</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -685,7 +868,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2023-11-19 21:55:39" itemprop="dateModified" datetime="2023-11-19T21:55:39+08:00">2023-11-19</time>
+      <time title="修改时间：2024-05-14 23:31:35" itemprop="dateModified" datetime="2024-05-14T23:31:35+08:00">2024-05-14</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -718,7 +901,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>4.3k</span>
+      <span>4.4k</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
@@ -744,8 +927,8 @@
 <li><a target="_blank" rel="noopener" href="http://git-scm.com/">Git</a></li>
 </ul>
 <p><strong>随着大前端的快速发展，node版本更新很快，我们在工作中，可以会有老版本的node的项目需要维护，也可能有新版本的node的项目需要开发，如果我们只有一个node版本的话将会很麻烦，<a target="_blank" rel="noopener" href="https://github.com/creationix/nvm">nvm</a> 应运而生，nvm 是 Mac 下的 node 管理工具，有点类似管理 Ruby 的 rvm，如果需要管理 Windows 下的 node，官方推荐使用 <a target="_blank" rel="noopener" href="https://github.com/hakobera/nvmw">nvmw</a> 或 <a target="_blank" rel="noopener" href="https://github.com/coreybutler/nvm-windows">nvm-windows</a>。不过，nvm-windows 并不是 nvm 的简单移植，他们也没有任何关系。但下面介绍的所有命令，都可以在 nvm-windows 中运行，nvm是<a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=node&spm=1001.2101.3001.7020">node</a>的版本管理器，可以方便地安装&amp;切换不同版本的node</strong></p>
-<h2 id="1-安装NVM"><a href="#1-安装NVM" class="headerlink" title="1.安装NVM"></a>1.安装NVM</h2><p><strong>进入NVM-Windows项目发布地址：</strong> <a target="_blank" rel="noopener" href="https://github.com/coreybutler/nvm-windows/releases">https://github.com/coreybutler/nvm-windows/releases</a> <strong>，选择最新发行版本<code>nvm-setup.zip</code>下载：</strong></p>
-<p><img src="../images/%E6%90%AD%E5%BB%BAhexo%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/20210531232213538.png" alt="20210531232213538"></p>
+<h2 id="安装NVM"><a href="#安装NVM" class="headerlink" title="安装NVM"></a>安装NVM</h2><p><strong>进入NVM-Windows项目发布地址：</strong> <a target="_blank" rel="noopener" href="https://github.com/coreybutler/nvm-windows/releases">https://github.com/coreybutler/nvm-windows/releases</a> <strong>，选择最新发行版本<code>nvm-setup.zip</code>下载：</strong></p>
+<p><img src="/2023/03/29/%E6%90%AD%E5%BB%BAhexo%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/20210531232213538.png" alt="20210531232213538"></p>
 <p><strong>安装需要注意两点</strong></p>
 <p><strong>1、 把电脑上面的node环境先卸载干净（C:\Users\用户名\AppData\Roaming\node下面的文件也要解决干净）</strong></p>
 <p><strong>2、 安装时，建议选择手动安装版，然后疯狂下一步就行，不要尝试改变安装目录。</strong></p>
@@ -755,9 +938,9 @@
 <p>第二步：D:/你想放的文件夹名(最好不要中文名)/nodejs</p>
 </blockquote>
 <p><strong>检查安装是否成功</strong></p>
-<p><strong>在搜索栏查找<code>poweshell</code>,选中<code>x86</code>的<code>powershell</code>鼠标右击选择<code>以管理员身份运行</code>。</strong><img src="../images/%E6%90%AD%E5%BB%BAhexo%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/image-20221127134846193.png" alt="image-20221127134846193"></p>
+<p><strong>在搜索栏查找<code>poweshell</code>,选中<code>x86</code>的<code>powershell</code>鼠标右击选择<code>以管理员身份运行</code>。</strong><img src="/2023/03/29/%E6%90%AD%E5%BB%BAhexo%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/image-20221127134846193.png" alt="image-20221127134846193"></p>
 <p><strong>在<code>Powershell</code>下，输入<code>NVM</code>，即可发现安装完成：</strong></p>
-<h2 id="2-配置国内源"><a href="#2-配置国内源" class="headerlink" title="2.配置国内源"></a>2.配置国内源</h2><p><strong>到你<code>NVM</code>安装路径，*打开<code>setting.txt</code>文件（如果没有，则创建即可），更改为：</strong></p>
+<h2 id="配置国内源"><a href="#配置国内源" class="headerlink" title="配置国内源"></a>配置国内源</h2><p><strong>到你<code>NVM</code>安装路径，*打开<code>setting.txt</code>文件（如果没有，则创建即可），更改为：</strong></p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">root: D:\NVM</span><br><span class="line">path: D:\NVM\nodejs</span><br><span class="line">arch: 64</span><br><span class="line">proxy: none</span><br><span class="line">node_mirror: https://npm.taobao.org/mirrors/node/</span><br><span class="line">npm_mirror: https://npm.taobao.org/mirrors/npm/</span><br></pre></td></tr></table></figure>
 
 <p><strong>解释参数：</strong></p>
@@ -769,19 +952,19 @@
 <li><strong>node_mirror：node.js的下载源，这里使用的是淘宝源</strong></li>
 <li><strong>npm_mirror：npm的下载源，这里使用的是淘宝源</strong></li>
 </ul>
-<p><img src="../images/%E6%90%AD%E5%BB%BAhexo%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/image-20230331220734968.png" alt="image-20230331220734968"></p>
-<h2 id="3-使用NVM"><a href="#3-使用NVM" class="headerlink" title="3.使用NVM"></a>3.使用NVM</h2><p><strong>在cmd或pwoershell使用命令</strong></p>
+<p><img src="/2023/03/29/%E6%90%AD%E5%BB%BAhexo%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/image-20230331220734968.png" alt="image-20230331220734968"></p>
+<h2 id="使用NVM"><a href="#使用NVM" class="headerlink" title="使用NVM"></a>使用NVM</h2><p><strong>在cmd或pwoershell使用命令</strong></p>
 <figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nvm list available</span><br></pre></td></tr></table></figure>
 
-<p><img src="../images/%E6%90%AD%E5%BB%BAhexo%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/image-20220710002047715.png" alt="image-20220710002047715"></p>
+<p><img src="/2023/03/29/%E6%90%AD%E5%BB%BAhexo%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/image-20220710002047715.png" alt="image-20220710002047715"></p>
 <figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">2</span>、安装方式 nvm install 版本号</span><br><span class="line">current：当前最新的版本</span><br><span class="line">LTS：稳定版本</span><br><span class="line"></span><br><span class="line">nvm install <span class="number">19.8</span>.<span class="number">1</span> （当前稳定的最新版）</span><br><span class="line"></span><br><span class="line">我安装了两个</span><br><span class="line">nvm install <span class="number">18.13</span>.<span class="number">0</span></span><br><span class="line">nvm install <span class="number">16.15</span>.<span class="number">1</span></span><br><span class="line">使用nvm <span class="built_in">ls</span> 或者 nvm list可以查看安装的不同node版本，*指向的就是当前版本</span><br></pre></td></tr></table></figure>
 
 <h3 id="激活Node-js版本"><a href="#激活Node-js版本" class="headerlink" title="激活Node.js版本"></a>激活Node.js版本</h3><p><strong>我们安装好Node.js以后，需要激活它</strong></p>
 <figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">nvm use <span class="number">16.15</span>.<span class="number">1</span></span><br></pre></td></tr></table></figure>
 
-<h2 id="4-安装Git"><a href="#4-安装Git" class="headerlink" title="4.安装Git"></a>4.安装Git</h2><p><strong>无脑下一步！！！<a target="_blank" rel="noopener" href="https://git-scm.com/">Git的官网地址</a></strong> </p>
-<h2 id="5-安装hexo"><a href="#5-安装hexo" class="headerlink" title="5.安装hexo"></a>5.安装hexo</h2><p><strong>先在NVM安装目录内建立2个目录node_cache和node_global</strong></p>
-<p><img src="../images/%E6%90%AD%E5%BB%BAhexo%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/image-20230331224443212.png" alt="image-20230331224443212"></p>
+<h2 id="安装Git"><a href="#安装Git" class="headerlink" title="安装Git"></a>安装Git</h2><p><strong>无脑下一步！！！<a target="_blank" rel="noopener" href="https://git-scm.com/">Git的官网地址</a></strong> </p>
+<h2 id="安装hexo"><a href="#安装hexo" class="headerlink" title="安装hexo"></a>安装hexo</h2><p><strong>先在NVM安装目录内建立2个目录node_cache和node_global</strong></p>
+<p><img src="/2023/03/29/%E6%90%AD%E5%BB%BAhexo%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/image-20230331224443212.png" alt="image-20230331224443212"></p>
 <p><strong>输入下面命令</strong></p>
 <figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm config <span class="built_in">set</span> prefix <span class="string">&quot;D:\NVM\node_global&quot;</span></span><br><span class="line">npm config <span class="built_in">set</span> cache <span class="string">&quot;D:\NVM\node_cache&quot;</span></span><br></pre></td></tr></table></figure>
 
@@ -797,34 +980,34 @@
 <p><strong>安装好以后，测试一下：</strong></p>
 <figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo</span><br></pre></td></tr></table></figure>
 
-<p><img src="../images/%E6%90%AD%E5%BB%BAhexo%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/image-20220710004601578.png"></p>
+<p><img src="/2023/03/29/%E6%90%AD%E5%BB%BAhexo%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/image-20220710004601578.png"></p>
 <p><strong>没有出现未知命令，说明安装成功。可以接下来操作了。</strong></p>
 <p><strong>如果出现hexo : 无法加载文件 C:\Program  Files\nodejs\hexo.ps1，因为在此系统上禁止运行脚本。有关详细信息，请参阅 https:/go.micros  oft.com/fwlink/?LinkID=135170 中的 about_Execution_Policies。 所在位置 行:1 字符:  1。</strong></p>
-<p><strong>那是因为你用的是win11系统，你需要在<code>设置-&gt;隐私和安全性-&gt;开发者选项-&gt;允许本地powershell脚本在为签名的情况下运行</code></strong><img src="../images/%E6%90%AD%E5%BB%BAhexo%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/image-20230308210045396.png" alt="image-20230308210045396"></p>
+<p><strong>那是因为你用的是win11系统，你需要在<code>设置-&gt;隐私和安全性-&gt;开发者选项-&gt;允许本地powershell脚本在为签名的情况下运行</code></strong><img src="/2023/03/29/%E6%90%AD%E5%BB%BAhexo%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/image-20230308210045396.png" alt="image-20230308210045396"></p>
 <p><strong>应用之后，重新打开新的powershell，再次输入hexo即可。</strong></p>
-<p><img src="../images/%E6%90%AD%E5%BB%BAhexo%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/image-20230308210149994.png"></p>
-<h2 id="6-创建hexo"><a href="#6-创建hexo" class="headerlink" title="6.创建hexo"></a>6.创建hexo</h2><p><strong>创建你的博客的空白文件夹，然后打开文件夹,我们已经安装好Git，所以我们直接是由鼠标右键的<code>Git Bash Here</code></strong></p>
-<p><img src="../images/%E6%90%AD%E5%BB%BAhexo%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/image-20220710233249939.png" alt="image-20220710233249939"></p>
+<p><img src="/2023/03/29/%E6%90%AD%E5%BB%BAhexo%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/image-20230308210149994.png"></p>
+<h2 id="创建hexo"><a href="#创建hexo" class="headerlink" title="创建hexo"></a>创建hexo</h2><p><strong>创建你的博客的空白文件夹，然后打开文件夹,我们已经安装好Git，所以我们直接是由鼠标右键的<code>Git Bash Here</code></strong></p>
+<p><img src="/2023/03/29/%E6%90%AD%E5%BB%BAhexo%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/image-20220710233249939.png" alt="image-20220710233249939"></p>
 <h3 id="在博客目录内初始化博客"><a href="#在博客目录内初始化博客" class="headerlink" title="在博客目录内初始化博客"></a>在博客目录内初始化博客</h3><p><strong>初始化目录：</strong></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 进目录之后，在Git bash里面输入下面目录初始化</span></span><br><span class="line">hexo init</span><br></pre></td></tr></table></figure>
 
 <p><strong>初始化后回生成许多文件</strong></p>
-<p><img src="../images/%E6%90%AD%E5%BB%BAhexo%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/image-20230331230347045.png" alt="image-20230331230347045"></p>
+<p><img src="/2023/03/29/%E6%90%AD%E5%BB%BAhexo%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/image-20230331230347045.png" alt="image-20230331230347045"></p>
 <p><strong>输入命令后，它会自动爬取hexo的初始化目录，在国内网络是非常不好的，如果出错需要删除目录内容重新执行命令直到成功。</strong></p>
-<h2 id="7-构建hexo"><a href="#7-构建hexo" class="headerlink" title="7.构建hexo"></a>7.构建hexo</h2><p><strong>初始化Hexo后，其实Hexo就可以使用了；构建Hexo：</strong></p>
+<h2 id="构建hexo"><a href="#构建hexo" class="headerlink" title="构建hexo"></a>构建hexo</h2><p><strong>初始化Hexo后，其实Hexo就可以使用了；构建Hexo：</strong></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">hexo g</span><br></pre></td></tr></table></figure>
 
-<h2 id="8-启动Hexo内建服务器"><a href="#8-启动Hexo内建服务器" class="headerlink" title="8.启动Hexo内建服务器"></a>8.启动Hexo内建服务器</h2><p><strong>其实，整个<code>public</code>文件就是一个博客了，但是我们还要部署<code>Nginx</code>等网络环境或者使用<code>HBuilderX</code>等根据，启动Web服务器才能用浏览器本地IP(即：<code>127.0.0.1</code>或<code>localhost</code>)加端口进行访问；为了减少麻烦，可以使用Hexo内建服务器：</strong></p>
+<h2 id="启动Hexo内建服务器"><a href="#启动Hexo内建服务器" class="headerlink" title="启动Hexo内建服务器"></a>启动Hexo内建服务器</h2><p><strong>其实，整个<code>public</code>文件就是一个博客了，但是我们还要部署<code>Nginx</code>等网络环境或者使用<code>HBuilderX</code>等根据，启动Web服务器才能用浏览器本地IP(即：<code>127.0.0.1</code>或<code>localhost</code>)加端口进行访问；为了减少麻烦，可以使用Hexo内建服务器：</strong></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">hexo s</span><br></pre></td></tr></table></figure>
 
-<p><img src="../images/%E6%90%AD%E5%BB%BAhexo%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/image-20220710234306097.png" alt="image-20220710234306097"></p>
-<p><strong>我们可以去<code>127.0.0.1:4000</code>网址看看初始化页面的样子</strong><img src="../images/%E6%90%AD%E5%BB%BAhexo%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/image-20220710234335015.png" alt="image-20220710234335015"></p>
-<h2 id="9-部署Hexo到github"><a href="#9-部署Hexo到github" class="headerlink" title="9.部署Hexo到github"></a>9.部署Hexo到github</h2><p><strong>上述操作，我们已经把<code>Hexo</code>部署在本地；接下来，我们来看看怎么部署到远程平台，部署到远程平台后，公网用户就可以访问了（也就是可以让你小伙伴通过浏览器访问到你的博客）。</strong></p>
-<h3 id="1-创建github仓库"><a href="#1-创建github仓库" class="headerlink" title="1) 创建github仓库"></a>1) 创建github仓库</h3><p><img src="../images/%E6%90%AD%E5%BB%BAhexo%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/image-20230407151939650.png" alt="image-20230407151939650"></p>
+<p><img src="/2023/03/29/%E6%90%AD%E5%BB%BAhexo%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/image-20220710234306097.png" alt="image-20220710234306097"></p>
+<p><strong>我们可以去<code>127.0.0.1:4000</code>网址看看初始化页面的样子</strong><img src="/2023/03/29/%E6%90%AD%E5%BB%BAhexo%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/image-20220710234335015.png" alt="image-20220710234335015"></p>
+<h2 id="部署Hexo到github"><a href="#部署Hexo到github" class="headerlink" title="部署Hexo到github"></a>部署Hexo到github</h2><p><strong>上述操作，我们已经把<code>Hexo</code>部署在本地；接下来，我们来看看怎么部署到远程平台，部署到远程平台后，公网用户就可以访问了（也就是可以让你小伙伴通过浏览器访问到你的博客）。</strong></p>
+<h3 id="创建github仓库"><a href="#创建github仓库" class="headerlink" title="创建github仓库"></a>创建github仓库</h3><p><img src="/2023/03/29/%E6%90%AD%E5%BB%BAhexo%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/image-20230407151939650.png" alt="image-20230407151939650"></p>
 <blockquote>
 <p>需要注意的是作为网站访问的这个仓库，仓库名称一定是，<strong>拥有者名+github.io</strong></p>
 </blockquote>
-<h3 id="2-生成ssh-keys"><a href="#2-生成ssh-keys" class="headerlink" title="2) 生成ssh keys"></a>2) 生成ssh keys</h3><blockquote>
+<h3 id="生成ssh-keys"><a href="#生成ssh-keys" class="headerlink" title="生成ssh keys"></a>生成ssh keys</h3><blockquote>
 <p>在博客文件夹根目录下，右键，调用<strong>git bash here</strong>功能</p>
 </blockquote>
 <p>输入命令，本地生成<strong>ssh keys</strong>  ，有回车按回车，有（y/n）？就输入y</p>
@@ -834,7 +1017,7 @@
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -b 4096 -C &quot;your_email@example.com&quot;</span><br></pre></td></tr></table></figure>
 
 <p><strong>出现这个则生成成功</strong></p>
-<p><img src="../images/%E6%90%AD%E5%BB%BAhexo%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/image-20230407152653491.png" alt="image-20230407152653491"></p>
+<p><img src="/2023/03/29/%E6%90%AD%E5%BB%BAhexo%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/image-20230407152653491.png" alt="image-20230407152653491"></p>
 <blockquote>
 <p>在电脑打开生成公钥的文件夹</p>
 <p><strong>路径：C:/用户/你的用户名/.ssh</strong></p>
@@ -842,18 +1025,18 @@
 <p>找到后打开id_rsa.pub（默认记事本打开），复制公钥（ctrl+A全选， ctrl+C复制）</p>
 <p>打开github，头像箭头，下拉选项setting（设置）-SSH与GPG keys -new ssh keys（新建ssh秘钥）</p>
 <p>tilte随便起，然后ctrl+V粘贴到key里面</p>
-<p><img src="../images/%E6%90%AD%E5%BB%BAhexo%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/image-20230416135608274.png" alt="image-20230416135608274"></p>
-<h3 id="3）测试是否绑定成功"><a href="#3）测试是否绑定成功" class="headerlink" title="3）测试是否绑定成功"></a>3）测试是否绑定成功</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -T git@github.com</span><br></pre></td></tr></table></figure>
+<p><img src="/2023/03/29/%E6%90%AD%E5%BB%BAhexo%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/image-20230416135608274.png" alt="image-20230416135608274"></p>
+<h3 id="测试是否绑定成功"><a href="#测试是否绑定成功" class="headerlink" title="测试是否绑定成功"></a>测试是否绑定成功</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -T git@github.com</span><br></pre></td></tr></table></figure>
 
-<p><img src="../images/%E6%90%AD%E5%BB%BAhexo%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/image-20230416134842427.png" alt="image-20230416134842427"></p>
+<p><img src="/2023/03/29/%E6%90%AD%E5%BB%BAhexo%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/image-20230416134842427.png" alt="image-20230416134842427"></p>
 <blockquote>
 <p>yes，然后按回车</p>
 <p>出现successfully字样则绑定成功</p>
 </blockquote>
-<h3 id="4）上传博客到github仓库"><a href="#4）上传博客到github仓库" class="headerlink" title="4）上传博客到github仓库"></a>4）上传博客到github仓库</h3><h5 id="修改配置文件"><a href="#修改配置文件" class="headerlink" title="修改配置文件"></a>修改配置文件</h5><p>在创建博客文件夹的根目录下修改-config.yml文件</p>
-<p><img src="../images/%E6%90%AD%E5%BB%BAhexo%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/image-20230407163241369.png" alt="image-20230407163241369"></p>
+<h3 id="上传博客到github仓库"><a href="#上传博客到github仓库" class="headerlink" title="上传博客到github仓库"></a>上传博客到github仓库</h3><h4 id="修改配置文件"><a href="#修改配置文件" class="headerlink" title="修改配置文件"></a>修改配置文件</h4><p>在创建博客文件夹的根目录下修改-config.yml文件</p>
+<p><img src="/2023/03/29/%E6%90%AD%E5%BB%BAhexo%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/image-20230407163241369.png" alt="image-20230407163241369"></p>
 <p>输入时注意冒号后面有空格，然后保存退出</p>
-<h5 id="安装hexo-deployer-git"><a href="#安装hexo-deployer-git" class="headerlink" title="安装hexo-deployer-git"></a>安装hexo-deployer-git</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#注意这些插件是安装在博客目录内的，所以是跟随博客内容一起走的</span></span><br><span class="line"><span class="comment">#这个插件是提供上传git能力</span></span><br><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
+<h4 id="安装hexo-deployer-git"><a href="#安装hexo-deployer-git" class="headerlink" title="安装hexo-deployer-git"></a>安装hexo-deployer-git</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#注意这些插件是安装在博客目录内的，所以是跟随博客内容一起走的</span></span><br><span class="line"><span class="comment">#这个插件是提供上传git能力</span></span><br><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
 
 
 
@@ -864,21 +1047,30 @@
 
 
 
-<h5 id="博客推送"><a href="#博客推送" class="headerlink" title="博客推送"></a>博客推送</h5><p><strong>在博客目录下命令窗口/终端输入</strong></p>
+<h4 id="博客推送"><a href="#博客推送" class="headerlink" title="博客推送"></a>博客推送</h4><p><strong>在博客目录下命令窗口/终端输入</strong></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#配置git push的信息</span></span><br><span class="line">git config --global user.email <span class="string">&quot;your_email&quot;</span></span><br><span class="line">git config --global user.name <span class="string">&quot;your_name&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#查看和检查配置的信息</span></span><br><span class="line">git config --list</span><br><span class="line"></span><br><span class="line"><span class="comment"># hexo d就是推送博客到指定的地方(本博客推送的地方是Github)</span></span><br><span class="line">hexo cl &amp;&amp; hexo g &amp;&amp; hexo d</span><br></pre></td></tr></table></figure>
 
 
 
 
 
-<h2 id="10-博客主题"><a href="#10-博客主题" class="headerlink" title="10.博客主题"></a>10.博客主题</h2><p><strong>打开hexo的<a target="_blank" rel="noopener" href="https://hexo.io/themes/">主题网站</a></strong></p>
-<p><img src="../images/%E6%90%AD%E5%BB%BAhexo%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/image-20230508003429447.png" alt="image-20230508003429447"></p>
+<h2 id="博客主题"><a href="#博客主题" class="headerlink" title="博客主题"></a>博客主题</h2><p><strong>打开hexo的<a target="_blank" rel="noopener" href="https://hexo.io/themes/">主题网站</a></strong></p>
+<p><img src="/2023/03/29/%E6%90%AD%E5%BB%BAhexo%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/image-20230508003429447.png" alt="image-20230508003429447"></p>
 <p><strong>比如打开Ayer这款主题，打开后能看到主题的效果</strong></p>
-<p><img src="../images/%E6%90%AD%E5%BB%BAhexo%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/image-20230508003515559.png" alt="image-20230508003515559"></p>
+<p><img src="/2023/03/29/%E6%90%AD%E5%BB%BAhexo%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/image-20230508003515559.png" alt="image-20230508003515559"></p>
 <p><strong>一般在博客主题内会有github的项目链接或者安装和使用的指南</strong></p>
-<p><img src="../images/%E6%90%AD%E5%BB%BAhexo%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/image-20230508003741044.png" alt="image-20230508003741044"></p>
+<p><img src="/2023/03/29/%E6%90%AD%E5%BB%BAhexo%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/image-20230508003741044.png" alt="image-20230508003741044"></p>
 <p><strong>打开github项目有下面有个README.md的安装教程，其安装步骤我就不一一展示了，按教程来有手就行[doge]</strong></p>
-<p><img src="../images/%E6%90%AD%E5%BB%BAhexo%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/image-20230508003943456.png" alt="image-20230508003943456"></p>
+<p><img src="/2023/03/29/%E6%90%AD%E5%BB%BAhexo%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/image-20230508003943456.png" alt="image-20230508003943456"></p>
+<h2 id="解决图片不显示问题"><a href="#解决图片不显示问题" class="headerlink" title="解决图片不显示问题"></a>解决图片不显示问题</h2><h3 id="更改hexo配置文件"><a href="#更改hexo配置文件" class="headerlink" title="更改hexo配置文件"></a>更改hexo配置文件</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim _config.yml <span class="comment">#配置_config.yml里面的post_asset_folder:false 设置为 true 如图</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="/2023/03/29/%E6%90%AD%E5%BB%BAhexo%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/031161b88a660fd50ecc872d942c43fa.png" alt="031161b88a660fd50ecc872d942c43fa"></p>
+<h3 id="安装npm插件"><a href="#安装npm插件" class="headerlink" title="安装npm插件"></a>安装npm插件</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install https://github.com/CodeFalling/hexo-asset-image --save</span><br></pre></td></tr></table></figure>
+
+<h3 id="修改Typora设置"><a href="#修改Typora设置" class="headerlink" title="修改Typora设置"></a>修改Typora设置</h3><p><strong>打开文件菜单的偏好设置</strong></p>
+<p><img src="/2023/03/29/%E6%90%AD%E5%BB%BAhexo%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/image-20240514232927394.png" alt="image-20240514232927394"></p>
+<p><strong>打开图像选项，设置如下图</strong></p>
+<p><img src="/2023/03/29/%E6%90%AD%E5%BB%BAhexo%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/image-20240514233130356.png" alt="image-20240514233130356"></p>
 
       
     </div>

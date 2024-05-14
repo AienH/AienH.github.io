@@ -1,6 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>B站视频下载并转换成MP4</title>
+    <url>/2024/05/14/B%E7%AB%99%E8%A7%86%E9%A2%91%E4%B8%8B%E8%BD%BD%E5%B9%B6%E8%BD%AC%E6%8D%A2%E6%88%90MP4/</url>
+    <content><![CDATA[<h2 id="Bilibili客户端PC版下载"><a href="#Bilibili客户端PC版下载" class="headerlink" title="Bilibili客户端PC版下载"></a>Bilibili客户端PC版下载</h2><p><a href="https://app.bilibili.com/">官网下载</a></p>
+<p><strong>首先下载PC版的B站客户端；打开B站首页，点击右上角的下载客户端，下载Windows客户端即可（mac没试过）</strong></p>
+<h2 id="缓存视频"><a href="#缓存视频" class="headerlink" title="缓存视频"></a>缓存视频</h2><p><strong>打开你想下载的视频；</strong></p>
+<p><img src="/2024/05/14/B%E7%AB%99%E8%A7%86%E9%A2%91%E4%B8%8B%E8%BD%BD%E5%B9%B6%E8%BD%AC%E6%8D%A2%E6%88%90MP4/image-20240514213258485.png" alt="image-20240514213258485"></p>
+<p><strong>点击缓存后会弹出窗口让你选择下载的画质，点击下载即可</strong></p>
+<p><img src="/2024/05/14/B%E7%AB%99%E8%A7%86%E9%A2%91%E4%B8%8B%E8%BD%BD%E5%B9%B6%E8%BD%AC%E6%8D%A2%E6%88%90MP4/image-20240514213420675.png" alt="image-20240514213420675"></p>
+<p><strong>下载完后在下面的目录里面就能找到下载的文件了</strong></p>
+<p><img src="/2024/05/14/B%E7%AB%99%E8%A7%86%E9%A2%91%E4%B8%8B%E8%BD%BD%E5%B9%B6%E8%BD%AC%E6%8D%A2%E6%88%90MP4/image-20240514213721864.png" alt="image-20240514213721864"></p>
+<p><strong>找到两个m4s文件，这两个文件分别是视频和音频</strong></p>
+<p><img src="/2024/05/14/B%E7%AB%99%E8%A7%86%E9%A2%91%E4%B8%8B%E8%BD%BD%E5%B9%B6%E8%BD%AC%E6%8D%A2%E6%88%90MP4/v2-5207e1bbeacd2207ff555d4abe90b781_r.jpg" alt="v2-5207e1bbeacd2207ff555d4abe90b781_r"></p>
+<h2 id="修改m4s视频文件"><a href="#修改m4s视频文件" class="headerlink" title="修改m4s视频文件"></a>修改m4s视频文件</h2><p>用二进制编辑器编辑这两个文件，例如用<code>Notepad++</code>或者<code>Sublime Text</code></p>
+<ul>
+<li><p><a href="https://github.com/notepad-plus-plus/notepad-plus-plus/releases">Notepad++ 下载</a></p>
+</li>
+<li><p><a href="https://www.sublimetext.com/download">Sublime Text 下载</a></p>
+</li>
+</ul>
+<p><strong>二进制打开就删除开头的0</strong></p>
+<p><img src="../images/B%E7%AB%99%E8%A7%86%E9%A2%91%E4%B8%8B%E8%BD%BD%E5%B9%B6%E8%BD%AC%E6%8D%A2%E6%88%90MP4/v2-3bb9f220527b03c48ef665e967c8e95c_r.png" alt="v2-3bb9f220527b03c48ef665e967c8e95c_r"></p>
+<p><strong>十六进制打开就删除开头的30</strong></p>
+<p><img src="/2024/05/14/B%E7%AB%99%E8%A7%86%E9%A2%91%E4%B8%8B%E8%BD%BD%E5%B9%B6%E8%BD%AC%E6%8D%A2%E6%88%90MP4/image-20240514220710987.png" alt="image-20240514220710987"></p>
+<blockquote>
+<p>注意，不要用文本编辑器去编辑器这个 *.m4s文件，会有问题</p>
+</blockquote>
+<h2 id="拓展："><a href="#拓展：" class="headerlink" title="拓展："></a>拓展：</h2><h3 id="Notepad-用十六进制方式打开二进制文件"><a href="#Notepad-用十六进制方式打开二进制文件" class="headerlink" title="Notepad++用十六进制方式打开二进制文件"></a><strong>Notepad++用十六进制方式打开二进制文件</strong></h3><p>在 Notepad++ 中，转到“插件”菜单并选择“插件管理器”。</p>
+<p><img src="/2024/05/14/B%E7%AB%99%E8%A7%86%E9%A2%91%E4%B8%8B%E8%BD%BD%E5%B9%B6%E8%BD%AC%E6%8D%A2%E6%88%90MP4/image-20240514222028755.png" alt="image-20240514222028755"></p>
+<p>找到<code>HEX-Editor</code>，然后单击安装。</p>
+<p><img src="/2024/05/14/B%E7%AB%99%E8%A7%86%E9%A2%91%E4%B8%8B%E8%BD%BD%E5%B9%B6%E8%BD%AC%E6%8D%A2%E6%88%90MP4/image-20240514222249417.png" alt="image-20240514222249417"></p>
+<p>打开二进制文件后，在插件中使用HEX插件即可，文件内容既会变成十六进制的内容</p>
+<p><img src="/2024/05/14/B%E7%AB%99%E8%A7%86%E9%A2%91%E4%B8%8B%E8%BD%BD%E5%B9%B6%E8%BD%AC%E6%8D%A2%E6%88%90MP4/image-20240514222435071.png" alt="image-20240514222435071"></p>
+<h2 id="合并视频"><a href="#合并视频" class="headerlink" title="合并视频"></a>合并视频</h2><p><a href="https://github.com/BtbN/FFmpeg-Builds/releases">ffmpeg 下载</a></p>
+<blockquote>
+<p><strong>下载后建议添加到系统环境变量，使用更方便</strong></p>
+</blockquote>
+<p><strong>使用ffmpeg合并成完整的视频</strong></p>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line">ffmpeg.exe <span class="literal">-i</span> <span class="number">1</span>.m4s <span class="literal">-i</span> <span class="number">2</span>.m4s <span class="literal">-codec</span> <span class="built_in">copy</span> output.mp4</span><br></pre></td></tr></table></figure>
+
+]]></content>
+  </entry>
+  <entry>
     <title>科学上网</title>
     <url>/2024/03/29/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/</url>
     <content><![CDATA[<h1 id="零基础保姆级小白节点搭建教学，目前最安全最稳定的搭建方式，通过x-ui面板实现单端口多用户合租"><a href="#零基础保姆级小白节点搭建教学，目前最安全最稳定的搭建方式，通过x-ui面板实现单端口多用户合租" class="headerlink" title="零基础保姆级小白节点搭建教学，目前最安全最稳定的搭建方式，通过x-ui面板实现单端口多用户合租"></a>零基础保姆级小白节点搭建教学，目前最安全最稳定的搭建方式，通过x-ui面板实现单端口多用户合租</h1><p><strong>教程完全零基础手把手教学，只要跟着步骤来一定能成功搭建。</strong><br>使用<code>X-UI</code>面板搭建<code>vmess+ws+tls+web</code>或者<code>vless+ws+tls+web</code>的节点，这是目前最安全的搭建方式<br>并且为了更进一步的安全，有些步骤甚至有点繁琐，这都是值得的，只有安全了才能实现省时省心<br>非常适合想有自己专属稳定的节点又<strong>不太愿意折腾</strong>的朋友。跳出翻墙出来学翻墙的怪圈。</p>
@@ -33,7 +75,7 @@
 
 <h2 id="MITM节点"><a href="#MITM节点" class="headerlink" title="MITM节点"></a>MITM节点</h2><h3 id="服务端配置"><a href="#服务端配置" class="headerlink" title="服务端配置"></a>服务端配置</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#安装x-ui</span></span><br><span class="line">bash &lt;(curl -Ls https://raw.githubusercontent.com/vaxilu/x-ui/master/install.sh)</span><br><span class="line"></span><br><span class="line"><span class="comment">#无域名，生成自签证书</span></span><br><span class="line">openssl req -new -x509 -nodes -newkey rsa:2048 -keyout /etc/x-ui/ca.key -out /etc/x-ui/ca.crt -subj <span class="string">&quot;/CN=MITM&quot;</span> -days 36500</span><br></pre></td></tr></table></figure>
 
-<p><img src="%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/image-20230531163823796.png" alt="image-20230531163823796"></p>
+<p><img src="../images/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/image-20230531163823796.png" alt="image-20230531163823796"></p>
 <h4 id="x-ui模板"><a href="#x-ui模板" class="headerlink" title="x-ui模板"></a>x-ui模板</h4><figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;log&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">        <span class="attr">&quot;access&quot;</span><span class="punctuation">:</span> <span class="string">&quot;&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;error&quot;</span><span class="punctuation">:</span> <span class="string">&quot;&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;loglevel&quot;</span><span class="punctuation">:</span> <span class="string">&quot;warning&quot;</span></span><br><span class="line">    <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;inbounds&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">        <span class="punctuation">&#123;</span></span><br><span class="line">            <span class="attr">&quot;port&quot;</span><span class="punctuation">:</span> <span class="number">443</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;protocol&quot;</span><span class="punctuation">:</span> <span class="string">&quot;vless&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;settings&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">                <span class="attr">&quot;clients&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">                    <span class="punctuation">&#123;</span></span><br><span class="line">                        <span class="attr">&quot;id&quot;</span><span class="punctuation">:</span> <span class="string">&quot;bulianglin&quot;</span></span><br><span class="line">                    <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">                    <span class="punctuation">&#123;</span></span><br><span class="line">                        <span class="attr">&quot;id&quot;</span><span class="punctuation">:</span> <span class="string">&quot;bulianglin-mitm&quot;</span><span class="punctuation">,</span></span><br><span class="line">                        <span class="attr">&quot;email&quot;</span><span class="punctuation">:</span> <span class="string">&quot;mitm@mitm.com&quot;</span></span><br><span class="line">                    <span class="punctuation">&#125;</span></span><br><span class="line">                <span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">                <span class="attr">&quot;decryption&quot;</span><span class="punctuation">:</span> <span class="string">&quot;none&quot;</span></span><br><span class="line">            <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;streamSettings&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">                <span class="attr">&quot;network&quot;</span><span class="punctuation">:</span> <span class="string">&quot;tcp&quot;</span><span class="punctuation">,</span></span><br><span class="line">                <span class="attr">&quot;security&quot;</span><span class="punctuation">:</span> <span class="string">&quot;tls&quot;</span><span class="punctuation">,</span></span><br><span class="line">                <span class="attr">&quot;tlsSettings&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">                    <span class="attr">&quot;certificates&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">                        <span class="punctuation">&#123;</span></span><br><span class="line">                            <span class="attr">&quot;certificateFile&quot;</span><span class="punctuation">:</span> <span class="string">&quot;/etc/x-ui/ca.crt&quot;</span><span class="punctuation">,</span></span><br><span class="line">                            <span class="attr">&quot;keyFile&quot;</span><span class="punctuation">:</span> <span class="string">&quot;/etc/x-ui/ca.key&quot;</span></span><br><span class="line">                        <span class="punctuation">&#125;</span></span><br><span class="line">                    <span class="punctuation">]</span></span><br><span class="line">                <span class="punctuation">&#125;</span></span><br><span class="line">            <span class="punctuation">&#125;</span></span><br><span class="line">        <span class="punctuation">&#125;</span></span><br><span class="line">    <span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;outbounds&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">        <span class="punctuation">&#123;</span></span><br><span class="line">            <span class="attr">&quot;protocol&quot;</span><span class="punctuation">:</span> <span class="string">&quot;freedom&quot;</span></span><br><span class="line">        <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="punctuation">&#123;</span></span><br><span class="line">            <span class="attr">&quot;tag&quot;</span><span class="punctuation">:</span> <span class="string">&quot;mitm&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;protocol&quot;</span><span class="punctuation">:</span> <span class="string">&quot;freedom&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;streamSettings&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">                <span class="attr">&quot;security&quot;</span><span class="punctuation">:</span> <span class="string">&quot;tls&quot;</span><span class="punctuation">,</span></span><br><span class="line">                <span class="attr">&quot;tlsSettings&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">                    <span class="attr">&quot;alpn&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">                        <span class="string">&quot;http/1.1&quot;</span></span><br><span class="line">                    <span class="punctuation">]</span></span><br><span class="line">                <span class="punctuation">&#125;</span></span><br><span class="line">            <span class="punctuation">&#125;</span></span><br><span class="line">        <span class="punctuation">&#125;</span></span><br><span class="line">    <span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;routing&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">        <span class="attr">&quot;rules&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">            <span class="punctuation">&#123;</span></span><br><span class="line">                <span class="attr">&quot;user&quot;</span><span class="punctuation">:</span> <span class="string">&quot;mitm@mitm.com&quot;</span><span class="punctuation">,</span></span><br><span class="line">                <span class="attr">&quot;outboundTag&quot;</span><span class="punctuation">:</span> <span class="string">&quot;mitm&quot;</span><span class="punctuation">,</span></span><br><span class="line">                <span class="attr">&quot;type&quot;</span><span class="punctuation">:</span> <span class="string">&quot;field&quot;</span></span><br><span class="line">            <span class="punctuation">&#125;</span></span><br><span class="line">        <span class="punctuation">]</span></span><br><span class="line">    <span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
 
 <h3 id="客户端配置"><a href="#客户端配置" class="headerlink" title="客户端配置"></a>客户端配置</h3><h4 id="xray模板"><a href="#xray模板" class="headerlink" title="xray模板"></a>xray模板</h4><figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;log&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">        <span class="attr">&quot;access&quot;</span><span class="punctuation">:</span> <span class="string">&quot;&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;error&quot;</span><span class="punctuation">:</span> <span class="string">&quot;&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;loglevel&quot;</span><span class="punctuation">:</span> <span class="string">&quot;warning&quot;</span></span><br><span class="line">    <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;inbounds&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">        <span class="punctuation">&#123;</span></span><br><span class="line">            <span class="attr">&quot;tag&quot;</span><span class="punctuation">:</span> <span class="string">&quot;socks&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;port&quot;</span><span class="punctuation">:</span> <span class="number">8888</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;listen&quot;</span><span class="punctuation">:</span> <span class="string">&quot;127.0.0.1&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;protocol&quot;</span><span class="punctuation">:</span> <span class="string">&quot;socks&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;settings&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">                <span class="attr">&quot;udp&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">true</span></span></span><br><span class="line">            <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;sniffing&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">                <span class="attr">&quot;enabled&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">true</span></span></span><br><span class="line">            <span class="punctuation">&#125;</span></span><br><span class="line">        <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="punctuation">&#123;</span></span><br><span class="line">            <span class="attr">&quot;tag&quot;</span><span class="punctuation">:</span> <span class="string">&quot;http&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;port&quot;</span><span class="punctuation">:</span> <span class="number">9999</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;listen&quot;</span><span class="punctuation">:</span> <span class="string">&quot;127.0.0.1&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;protocol&quot;</span><span class="punctuation">:</span> <span class="string">&quot;http&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;sniffing&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">                <span class="attr">&quot;enabled&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">true</span></span></span><br><span class="line">            <span class="punctuation">&#125;</span></span><br><span class="line">        <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="punctuation">&#123;</span></span><br><span class="line">            <span class="attr">&quot;listen&quot;</span><span class="punctuation">:</span> <span class="string">&quot;127.0.0.1&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;port&quot;</span><span class="punctuation">:</span> <span class="number">11111</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;tag&quot;</span><span class="punctuation">:</span> <span class="string">&quot;in-mitm&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;protocol&quot;</span><span class="punctuation">:</span> <span class="string">&quot;dokodemo-door&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;settings&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">                <span class="attr">&quot;port&quot;</span><span class="punctuation">:</span> <span class="number">443</span><span class="punctuation">,</span></span><br><span class="line">                <span class="attr">&quot;followRedirect&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">true</span></span></span><br><span class="line">            <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;streamSettings&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">                <span class="attr">&quot;security&quot;</span><span class="punctuation">:</span> <span class="string">&quot;tls&quot;</span><span class="punctuation">,</span></span><br><span class="line">                <span class="attr">&quot;tlsSettings&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">                    <span class="attr">&quot;certificates&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">                        <span class="punctuation">&#123;</span></span><br><span class="line">                            <span class="attr">&quot;usage&quot;</span><span class="punctuation">:</span> <span class="string">&quot;issue&quot;</span><span class="punctuation">,</span></span><br><span class="line">                            <span class="attr">&quot;certificateFile&quot;</span><span class="punctuation">:</span> <span class="string">&quot;ca.crt&quot;</span><span class="punctuation">,</span></span><br><span class="line">                            <span class="attr">&quot;keyFile&quot;</span><span class="punctuation">:</span> <span class="string">&quot;ca.key&quot;</span></span><br><span class="line">                        <span class="punctuation">&#125;</span></span><br><span class="line">                    <span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">                    <span class="attr">&quot;alpn&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">                        <span class="string">&quot;http/1.1&quot;</span></span><br><span class="line">                    <span class="punctuation">]</span></span><br><span class="line">                <span class="punctuation">&#125;</span></span><br><span class="line">            <span class="punctuation">&#125;</span></span><br><span class="line">        <span class="punctuation">&#125;</span></span><br><span class="line">    <span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;outbounds&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">        <span class="punctuation">&#123;</span></span><br><span class="line">            <span class="attr">&quot;tag&quot;</span><span class="punctuation">:</span> <span class="string">&quot;proxy&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;protocol&quot;</span><span class="punctuation">:</span> <span class="string">&quot;vless&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;settings&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">                <span class="attr">&quot;vnext&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">                    <span class="punctuation">&#123;</span></span><br><span class="line">                        <span class="attr">&quot;address&quot;</span><span class="punctuation">:</span> <span class="string">&quot;你的服务器ip&quot;</span><span class="punctuation">,</span></span><br><span class="line">                        <span class="attr">&quot;port&quot;</span><span class="punctuation">:</span> <span class="number">443</span><span class="punctuation">,</span></span><br><span class="line">                        <span class="attr">&quot;users&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">                            <span class="punctuation">&#123;</span></span><br><span class="line">                                <span class="attr">&quot;id&quot;</span><span class="punctuation">:</span> <span class="string">&quot;bulianglin&quot;</span><span class="punctuation">,</span></span><br><span class="line">                                <span class="attr">&quot;encryption&quot;</span><span class="punctuation">:</span> <span class="string">&quot;none&quot;</span><span class="punctuation">,</span></span><br><span class="line">                                <span class="attr">&quot;flow&quot;</span><span class="punctuation">:</span> <span class="string">&quot;&quot;</span></span><br><span class="line">                            <span class="punctuation">&#125;</span></span><br><span class="line">                        <span class="punctuation">]</span></span><br><span class="line">                    <span class="punctuation">&#125;</span></span><br><span class="line">                <span class="punctuation">]</span></span><br><span class="line">            <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;streamSettings&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">                <span class="attr">&quot;network&quot;</span><span class="punctuation">:</span> <span class="string">&quot;tcp&quot;</span><span class="punctuation">,</span></span><br><span class="line">                <span class="attr">&quot;security&quot;</span><span class="punctuation">:</span> <span class="string">&quot;tls&quot;</span><span class="punctuation">,</span></span><br><span class="line">                <span class="attr">&quot;tlsSettings&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">                    <span class="attr">&quot;allowInsecure&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">true</span></span></span><br><span class="line">                <span class="punctuation">&#125;</span></span><br><span class="line">            <span class="punctuation">&#125;</span></span><br><span class="line">        <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="punctuation">&#123;</span></span><br><span class="line">            <span class="attr">&quot;tag&quot;</span><span class="punctuation">:</span> <span class="string">&quot;out-mitm&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;protocol&quot;</span><span class="punctuation">:</span> <span class="string">&quot;vless&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;settings&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">                <span class="attr">&quot;vnext&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">                    <span class="punctuation">&#123;</span></span><br><span class="line">                        <span class="attr">&quot;address&quot;</span><span class="punctuation">:</span> <span class="string">&quot;你的服务器ip&quot;</span><span class="punctuation">,</span></span><br><span class="line">                        <span class="attr">&quot;port&quot;</span><span class="punctuation">:</span> <span class="number">443</span><span class="punctuation">,</span></span><br><span class="line">                        <span class="attr">&quot;users&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">                            <span class="punctuation">&#123;</span></span><br><span class="line">                                <span class="attr">&quot;id&quot;</span><span class="punctuation">:</span> <span class="string">&quot;bulianglin-mitm&quot;</span><span class="punctuation">,</span></span><br><span class="line">                                <span class="attr">&quot;encryption&quot;</span><span class="punctuation">:</span> <span class="string">&quot;none&quot;</span><span class="punctuation">,</span></span><br><span class="line">                                <span class="attr">&quot;flow&quot;</span><span class="punctuation">:</span> <span class="string">&quot;&quot;</span></span><br><span class="line">                            <span class="punctuation">&#125;</span></span><br><span class="line">                        <span class="punctuation">]</span></span><br><span class="line">                    <span class="punctuation">&#125;</span></span><br><span class="line">                <span class="punctuation">]</span></span><br><span class="line">            <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;streamSettings&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">                <span class="attr">&quot;network&quot;</span><span class="punctuation">:</span> <span class="string">&quot;tcp&quot;</span><span class="punctuation">,</span></span><br><span class="line">                <span class="attr">&quot;security&quot;</span><span class="punctuation">:</span> <span class="string">&quot;tls&quot;</span><span class="punctuation">,</span></span><br><span class="line">                <span class="attr">&quot;tlsSettings&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">                    <span class="attr">&quot;allowInsecure&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">true</span></span></span><br><span class="line">                <span class="punctuation">&#125;</span></span><br><span class="line">            <span class="punctuation">&#125;</span></span><br><span class="line">        <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="punctuation">&#123;</span></span><br><span class="line">            <span class="attr">&quot;tag&quot;</span><span class="punctuation">:</span> <span class="string">&quot;direct&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;protocol&quot;</span><span class="punctuation">:</span> <span class="string">&quot;freedom&quot;</span></span><br><span class="line">        <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="punctuation">&#123;</span></span><br><span class="line">            <span class="attr">&quot;protocol&quot;</span><span class="punctuation">:</span> <span class="string">&quot;freedom&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;settings&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">                <span class="attr">&quot;redirect&quot;</span><span class="punctuation">:</span> <span class="string">&quot;127.0.0.1:11111&quot;</span></span><br><span class="line">            <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;tag&quot;</span><span class="punctuation">:</span> <span class="string">&quot;re-entry&quot;</span></span><br><span class="line">        <span class="punctuation">&#125;</span></span><br><span class="line">    <span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;routing&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">        <span class="attr">&quot;domainStrategy&quot;</span><span class="punctuation">:</span> <span class="string">&quot;IPOnDemand&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;domainMatcher&quot;</span><span class="punctuation">:</span> <span class="string">&quot;mph&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;rules&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">            <span class="punctuation">&#123;</span></span><br><span class="line">                <span class="attr">&quot;type&quot;</span><span class="punctuation">:</span> <span class="string">&quot;field&quot;</span><span class="punctuation">,</span></span><br><span class="line">                <span class="attr">&quot;outboundTag&quot;</span><span class="punctuation">:</span> <span class="string">&quot;direct&quot;</span><span class="punctuation">,</span></span><br><span class="line">                <span class="attr">&quot;domain&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">                    <span class="string">&quot;geosite:cn&quot;</span></span><br><span class="line">                <span class="punctuation">]</span></span><br><span class="line">            <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="punctuation">&#123;</span></span><br><span class="line">                <span class="attr">&quot;type&quot;</span><span class="punctuation">:</span> <span class="string">&quot;field&quot;</span><span class="punctuation">,</span></span><br><span class="line">                <span class="attr">&quot;outboundTag&quot;</span><span class="punctuation">:</span> <span class="string">&quot;direct&quot;</span><span class="punctuation">,</span></span><br><span class="line">                <span class="attr">&quot;ip&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">                    <span class="string">&quot;geoip:private&quot;</span><span class="punctuation">,</span></span><br><span class="line">                    <span class="string">&quot;geoip:cn&quot;</span></span><br><span class="line">                <span class="punctuation">]</span></span><br><span class="line">            <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="punctuation">&#123;</span></span><br><span class="line">                <span class="attr">&quot;type&quot;</span><span class="punctuation">:</span> <span class="string">&quot;field&quot;</span><span class="punctuation">,</span></span><br><span class="line">                <span class="attr">&quot;inboundTag&quot;</span><span class="punctuation">:</span> <span class="string">&quot;in-mitm&quot;</span><span class="punctuation">,</span></span><br><span class="line">                <span class="attr">&quot;outboundTag&quot;</span><span class="punctuation">:</span> <span class="string">&quot;out-mitm&quot;</span></span><br><span class="line">            <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="punctuation">&#123;</span></span><br><span class="line">                <span class="attr">&quot;type&quot;</span><span class="punctuation">:</span> <span class="string">&quot;field&quot;</span><span class="punctuation">,</span></span><br><span class="line">                <span class="attr">&quot;port&quot;</span><span class="punctuation">:</span> <span class="string">&quot;443&quot;</span><span class="punctuation">,</span></span><br><span class="line">                <span class="attr">&quot;protocol&quot;</span><span class="punctuation">:</span> <span class="string">&quot;tls&quot;</span><span class="punctuation">,</span></span><br><span class="line">                <span class="attr">&quot;outboundTag&quot;</span><span class="punctuation">:</span> <span class="string">&quot;re-entry&quot;</span></span><br><span class="line">            <span class="punctuation">&#125;</span></span><br><span class="line">        <span class="punctuation">]</span></span><br><span class="line">    <span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
@@ -287,11 +329,11 @@
 <h4 id="常用配置说明"><a href="#常用配置说明" class="headerlink" title="常用配置说明"></a>常用配置说明</h4><p>模型的大小、位置、格式和文本内容等配置，需要自行设置一些配置文件<code>waifu-tips.js</code> 、<code>waifu-tips.json</code>和<code>waifu.css</code>，这里提一些各文件里常用的配置。</p>
 <p><strong>waifu-tips.js</strong></p>
 <p>这里是模型加载启动/点击工具栏相应按钮时的行为和文本内容定义，具体对应可以对照参考原模型的行为，比如</p>
-<p><img src="../images/hexo-next%E4%B8%BB%E9%A2%98%E7%BE%8E%E5%8C%96/2183122-20210503112404379-1613061177.png" alt="2183122-20210503112404379-1613061177"></p>
+<p><img src="/2023/11/19/hexo-next%E4%B8%BB%E9%A2%98%E7%BE%8E%E5%8C%96/2183122-20210503112404379-1613061177.png" alt="2183122-20210503112404379-1613061177"></p>
 <p>这个部分是用来显示用户点回本页面时显示的文本，其余同理。</p>
 <p><strong>waifu-tips.json</strong></p>
 <p>这里是除了上面js里定义的文本以外的其余文本内容，同样可以对照参考原模型猜测来进行修改。</p>
-<p><img src="../images/hexo-next%E4%B8%BB%E9%A2%98%E7%BE%8E%E5%8C%96/2183122-20210503112404630-2003319113.png" alt="2183122-20210503112404630-2003319113"></p>
+<p><img src="/2023/11/19/hexo-next%E4%B8%BB%E9%A2%98%E7%BE%8E%E5%8C%96/2183122-20210503112404630-2003319113.png" alt="2183122-20210503112404630-2003319113"></p>
 <p>值得注意的是，这个文件里分了几大块，架构大概是：</p>
 <figure class="highlight css"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">	&quot;mouseover&quot;: [&#123; // 鼠标悬停在某个特定元素时显示的文本</span><br><span class="line">		&quot;selector&quot;: <span class="string">&quot;...&quot;</span>,</span><br><span class="line">		<span class="string">&quot;text&quot;</span>: <span class="string">&quot;...&quot;</span></span><br><span class="line">	&#125;],</span><br><span class="line">	&quot;click&quot;: [&#123; // 鼠标点击某个特定元素时显示的文本</span><br><span class="line">		&quot;selector&quot;: <span class="string">&quot;...&quot;</span>,</span><br><span class="line">		<span class="string">&quot;text&quot;</span>: <span class="string">&quot;...&quot;</span></span><br><span class="line">	&#125;],</span><br><span class="line">	&quot;seasons&quot;: [&#123; // 在特定日期显示的文本</span><br><span class="line">		&quot;date&quot;: <span class="string">&quot;01/01&quot;</span>,</span><br><span class="line">		<span class="string">&quot;text&quot;</span>: <span class="string">&quot;...&quot;</span></span><br><span class="line">	&#125;]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -352,67 +394,67 @@
     <title>两种方法上传本地文件到github</title>
     <url>/2023/07/04/git%E4%B8%8A%E4%BC%A0%E6%96%B9%E6%B3%95/</url>
     <content><![CDATA[<h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>自从使用github以来，一直都是在<a href="https://github.com/">github网站</a>在线上传文件到仓库中，但是有时因为网络或者电脑的原因上传失败。最重要的原因是我习惯本地编辑，完成以后再一起上传github。看过了几个教程，总结出最适合自己的比较简单的方法。</p>
-<p><img src="../images/git%E4%B8%8A%E4%BC%A0%E6%96%B9%E6%B3%95/webp.png" alt="img"></p>
+<p><img src="/2023/07/04/git%E4%B8%8A%E4%BC%A0%E6%96%B9%E6%B3%95/webp.png" alt="img"></p>
 <h4 id="1-github在线上传文件夹"><a href="#1-github在线上传文件夹" class="headerlink" title="1. github在线上传文件夹"></a>1. github在线上传文件夹</h4><p>在线上传也可以上传完整的文件夹结构，直接拖拽到上传文件页面的框中即可。</p>
-<h5 id="1-1点击上传文件"><a href="#1-1点击上传文件" class="headerlink" title="1.1点击上传文件"></a>1.1点击上传文件</h5><p><img src="../images/git%E4%B8%8A%E4%BC%A0%E6%96%B9%E6%B3%95/webp1.png" alt="img"></p>
+<h5 id="1-1点击上传文件"><a href="#1-1点击上传文件" class="headerlink" title="1.1点击上传文件"></a>1.1点击上传文件</h5><p><img src="/2023/07/04/git%E4%B8%8A%E4%BC%A0%E6%96%B9%E6%B3%95/webp1.png" alt="img"></p>
 <h5 id="1-2-直接拖拽"><a href="#1-2-直接拖拽" class="headerlink" title="1.2 直接拖拽"></a>1.2 直接拖拽</h5><p>直接拖拽即可上传文件夹及文件夹里面的文件。如果点击* choose your files *就只能上传单个文件。</p>
-<p><img src="../images/git%E4%B8%8A%E4%BC%A0%E6%96%B9%E6%B3%95/webp2.png" alt="img"></p>
-<h4 id="2-通过git工具上传本地文件夹（本地项目）"><a href="#2-通过git工具上传本地文件夹（本地项目）" class="headerlink" title="2. 通过git工具上传本地文件夹（本地项目）"></a>2. 通过git工具上传本地文件夹（本地项目）</h4><h5 id="2-1-下载git工具"><a href="#2-1-下载git工具" class="headerlink" title="2.1 下载git工具"></a>2.1 下载<a href="https://link.jianshu.com/?t=https://git-scm.com/downloads">git工具</a></h5><p><img src="../images/git%E4%B8%8A%E4%BC%A0%E6%96%B9%E6%B3%95/webp7.png" alt="img"></p>
-<h5 id="2-2-下载完成后安装完成，注意在安装过程中可以选择创建桌面快捷方式"><a href="#2-2-下载完成后安装完成，注意在安装过程中可以选择创建桌面快捷方式" class="headerlink" title="2.2 下载完成后安装完成，注意在安装过程中可以选择创建桌面快捷方式"></a>2.2 下载完成后安装完成，注意在安装过程中可以选择创建桌面快捷方式</h5><p><img src="../images/git%E4%B8%8A%E4%BC%A0%E6%96%B9%E6%B3%95/webp8.png" alt="img"></p>
+<p><img src="/2023/07/04/git%E4%B8%8A%E4%BC%A0%E6%96%B9%E6%B3%95/webp2.png" alt="img"></p>
+<h4 id="2-通过git工具上传本地文件夹（本地项目）"><a href="#2-通过git工具上传本地文件夹（本地项目）" class="headerlink" title="2. 通过git工具上传本地文件夹（本地项目）"></a>2. 通过git工具上传本地文件夹（本地项目）</h4><h5 id="2-1-下载git工具"><a href="#2-1-下载git工具" class="headerlink" title="2.1 下载git工具"></a>2.1 下载<a href="https://link.jianshu.com/?t=https://git-scm.com/downloads">git工具</a></h5><p><img src="/2023/07/04/git%E4%B8%8A%E4%BC%A0%E6%96%B9%E6%B3%95/webp7.png" alt="img"></p>
+<h5 id="2-2-下载完成后安装完成，注意在安装过程中可以选择创建桌面快捷方式"><a href="#2-2-下载完成后安装完成，注意在安装过程中可以选择创建桌面快捷方式" class="headerlink" title="2.2 下载完成后安装完成，注意在安装过程中可以选择创建桌面快捷方式"></a>2.2 下载完成后安装完成，注意在安装过程中可以选择创建桌面快捷方式</h5><p><img src="/2023/07/04/git%E4%B8%8A%E4%BC%A0%E6%96%B9%E6%B3%95/webp8.png" alt="img"></p>
 <h5 id="2-3-绑定用户"><a href="#2-3-绑定用户" class="headerlink" title="2.3 绑定用户"></a>2.3 绑定用户</h5><p>打开git-bash.exe（直接在桌面上点击右键，或者点击开始按钮找到Git Bash）</p>
-<p><img src="../images/git%E4%B8%8A%E4%BC%A0%E6%96%B9%E6%B3%95/%E8%BF%90%E8%A1%8CgitBash.gif" alt="img"></p>
+<p><img src="/2023/07/04/git%E4%B8%8A%E4%BC%A0%E6%96%B9%E6%B3%95/%E8%BF%90%E8%A1%8CgitBash.gif" alt="img"></p>
 <p>在打开的GIt Bash中输入以下命令（用户和邮箱为你github注册的账号和邮箱）</p>
 <figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line">$ git config --<span class="keyword">global</span> user.name <span class="string">&quot;hanyuntao&quot;</span></span><br><span class="line">$ git config --<span class="keyword">global</span> user.email <span class="string">&quot;hanyuntaocn@163.com&quot;</span></span><br></pre></td></tr></table></figure>
 
-<p><img src="../images/git%E4%B8%8A%E4%BC%A0%E6%96%B9%E6%B3%95/webp4.png" alt="img"></p>
+<p><img src="/2023/07/04/git%E4%B8%8A%E4%BC%A0%E6%96%B9%E6%B3%95/webp4.png" alt="img"></p>
 <h5 id="2-4-设置SSH-key（git中sshkey有何作用？）"><a href="#2-4-设置SSH-key（git中sshkey有何作用？）" class="headerlink" title="2.4 设置SSH key（git中sshkey有何作用？）"></a>2.4 设置SSH key（<a href="https://link.jianshu.com/?t=https://segmentfault.com/q/1010000000118744">git中sshkey有何作用？</a>）</h5><h6 id="2-4-1-生成ssh-key"><a href="#2-4-1-生成ssh-key" class="headerlink" title="2.4.1 生成ssh key"></a>2.4.1 生成ssh key</h6><p>首先检查是否已生成密钥<code>cd ~/.ssh</code>，如果返回的<code>ls</code>有3个文件,则密钥已经生成。</p>
-<p><img src="../images/git%E4%B8%8A%E4%BC%A0%E6%96%B9%E6%B3%95/webp5.png" alt="img"></p>
+<p><img src="/2023/07/04/git%E4%B8%8A%E4%BC%A0%E6%96%B9%E6%B3%95/webp5.png" alt="img"></p>
 <p>如果没有密钥，则通过</p>
 <figure class="highlight ruby"><table><tr><td class="code"><pre><span class="line"><span class="variable">$ </span>ssh-keygen -t rsa -C <span class="string">&quot;hanyuntaocn@163.com&quot;</span></span><br></pre></td></tr></table></figure>
 
 <p>生成，生成过程中一路按3次回车键就好了。（默认路径，默认没有密码登录）<br> 生成成功后，去对应目录C:/Users/hyt.ssh里（hyt为电脑用户名，每个人不同）用记事本打开id_rsa.pub，得到ssh key公钥。</p>
-<p><img src="../images/git%E4%B8%8A%E4%BC%A0%E6%96%B9%E6%B3%95/ssh-key%E5%85%AC%E9%92%A5.png" alt="img"></p>
+<p><img src="/2023/07/04/git%E4%B8%8A%E4%BC%A0%E6%96%B9%E6%B3%95/ssh-key%E5%85%AC%E9%92%A5.png" alt="img"></p>
 <h6 id="2-4-2-为github账号配置ssh-key"><a href="#2-4-2-为github账号配置ssh-key" class="headerlink" title="2.4.2 为github账号配置ssh key"></a>2.4.2 为github账号配置ssh key</h6><p>切换到github，展开个人头像的小三角，点击settings，然后打开SSH keys菜单， 点击Add SSH key新增密钥，填上标题（最好跟本地仓库保持一致）。</p>
-<p><img src="../images/git%E4%B8%8A%E4%BC%A0%E6%96%B9%E6%B3%95/%E8%AE%BE%E7%BD%AEsshkey.gif" alt="img"></p>
+<p><img src="/2023/07/04/git%E4%B8%8A%E4%BC%A0%E6%96%B9%E6%B3%95/%E8%AE%BE%E7%BD%AEsshkey.gif" alt="img"></p>
 <p>接着将id_rsa.pub文件中key粘贴到此，最后Add key生成密钥.</p>
 <h4 id="2-5-上传本地项目到github"><a href="#2-5-上传本地项目到github" class="headerlink" title="2.5 上传本地项目到github"></a>2.5 上传本地项目到github</h4><h5 id="2-5-1-创建一个本地项目"><a href="#2-5-1-创建一个本地项目" class="headerlink" title="2.5.1 创建一个本地项目"></a>2.5.1 创建一个本地项目</h5><p>这是我自己创建的几个文件夹及文件。</p>
-<p><img src="../images/git%E4%B8%8A%E4%BC%A0%E6%96%B9%E6%B3%95/%E6%9C%AC%E5%9C%B0%E9%A1%B9%E7%9B%AE.png" alt="img"></p>
+<p><img src="/2023/07/04/git%E4%B8%8A%E4%BC%A0%E6%96%B9%E6%B3%95/%E6%9C%AC%E5%9C%B0%E9%A1%B9%E7%9B%AE.png" alt="img"></p>
 <h5 id="2-5-2-建立本地仓库"><a href="#2-5-2-建立本地仓库" class="headerlink" title="2.5.2 建立本地仓库"></a>2.5.2 建立本地仓库</h5><p>1.首先进入text文件夹</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> d:text</span><br></pre></td></tr></table></figure>
 
-<p><img src="../images/git%E4%B8%8A%E4%BC%A0%E6%96%B9%E6%B3%95/webp9.png" alt="img"></p>
+<p><img src="/2023/07/04/git%E4%B8%8A%E4%BC%A0%E6%96%B9%E6%B3%95/webp9.png" alt="img"></p>
 <p>2.执行指令：</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git init</span><br></pre></td></tr></table></figure>
 
-<p>![img](../images/git上传方法/执行git init.png)</p>
+<p>![img](git上传方法/执行git init.png)</p>
 <p>初始化成功后你会发现项目里多了一个隐藏文件夹.git</p>
-<p><img src="../images/git%E4%B8%8A%E4%BC%A0%E6%96%B9%E6%B3%95/%E9%9A%90%E8%97%8F%E7%9A%84%E6%96%87%E4%BB%B6%E5%A4%B9.png" alt="img"></p>
+<p><img src="/2023/07/04/git%E4%B8%8A%E4%BC%A0%E6%96%B9%E6%B3%95/%E9%9A%90%E8%97%8F%E7%9A%84%E6%96%87%E4%BB%B6%E5%A4%B9.png" alt="img"></p>
 <p>3.执行指令：</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git add .</span><br></pre></td></tr></table></figure>
 
 
 <p> 将所有文件添加到仓库</p>
-<p><img src="../images/git%E4%B8%8A%E4%BC%A0%E6%96%B9%E6%B3%95/webp12.png" alt="img"></p>
+<p><img src="/2023/07/04/git%E4%B8%8A%E4%BC%A0%E6%96%B9%E6%B3%95/webp12.png" alt="img"></p>
 <p>4.执行指令：</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git commit -m <span class="string">&quot;提交文件&quot;</span></span><br></pre></td></tr></table></figure>
 
 
 <p> 双引号内是提交注释。</p>
-<p><img src="../images/git%E4%B8%8A%E4%BC%A0%E6%96%B9%E6%B3%95/%E6%8F%90%E4%BA%A4%E6%96%87%E4%BB%B6.png" alt="img"></p>
+<p><img src="/2023/07/04/git%E4%B8%8A%E4%BC%A0%E6%96%B9%E6%B3%95/%E6%8F%90%E4%BA%A4%E6%96%87%E4%BB%B6.png" alt="img"></p>
 <h5 id="2-5-3-关联github仓库"><a href="#2-5-3-关联github仓库" class="headerlink" title="2.5.3 关联github仓库"></a>2.5.3 关联github仓库</h5><p>1.到github text仓库复制仓库地址</p>
-<p><img src="../images/git%E4%B8%8A%E4%BC%A0%E6%96%B9%E6%B3%95/%E5%A4%8D%E5%88%B6%E4%BB%93%E5%BA%93%E5%9C%B0%E5%9D%80.png" alt="img"></p>
+<p><img src="/2023/07/04/git%E4%B8%8A%E4%BC%A0%E6%96%B9%E6%B3%95/%E5%A4%8D%E5%88%B6%E4%BB%93%E5%BA%93%E5%9C%B0%E5%9D%80.png" alt="img"></p>
 <p> 2.执行指令：</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git remote add origin https://github.com/hanyuntao/text.git</span><br></pre></td></tr></table></figure>
 
 
 
-<p><img src="../images/git%E4%B8%8A%E4%BC%A0%E6%96%B9%E6%B3%95/%E6%89%A7%E8%A1%8C%E6%8C%87%E4%BB%A41.png" alt="img"></p>
+<p><img src="/2023/07/04/git%E4%B8%8A%E4%BC%A0%E6%96%B9%E6%B3%95/%E6%89%A7%E8%A1%8C%E6%8C%87%E4%BB%A41.png" alt="img"></p>
 <h5 id="2-5-4-上传本地代码"><a href="#2-5-4-上传本地代码" class="headerlink" title="2.5.4 上传本地代码"></a>2.5.4 上传本地代码</h5><p>执行指令：</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git push -u origin master</span><br></pre></td></tr></table></figure>
 
-<p><img src="../images/git%E4%B8%8A%E4%BC%A0%E6%96%B9%E6%B3%95/%E6%89%A7%E8%A1%8C%E6%8C%87%E4%BB%A42.png" alt="img"></p>
+<p><img src="/2023/07/04/git%E4%B8%8A%E4%BC%A0%E6%96%B9%E6%B3%95/%E6%89%A7%E8%A1%8C%E6%8C%87%E4%BB%A42.png" alt="img"></p>
 <h5 id="2-5-5完成"><a href="#2-5-5完成" class="headerlink" title="2.5.5完成"></a>2.5.5完成</h5><p>可以看到我们的本地项目已经上传到了github上了。</p>
-<p><img src="../images/git%E4%B8%8A%E4%BC%A0%E6%96%B9%E6%B3%95/webp17.png" alt="img"></p>
+<p><img src="/2023/07/04/git%E4%B8%8A%E4%BC%A0%E6%96%B9%E6%B3%95/webp17.png" alt="img"></p>
 <blockquote>
 <p>注意：git是不能管理空的文件夹的，文件夹里必须有文件才能上传。</p>
 </blockquote>
@@ -438,12 +480,12 @@
 <h2 id="操作思路"><a href="#操作思路" class="headerlink" title="操作思路"></a>操作思路</h2><h3 id="1-在线访问数据"><a href="#1-在线访问数据" class="headerlink" title="1. 在线访问数据"></a>1. 在线访问数据</h3><p>比如：.flv、.mp4、.jpg等等，我们使用PHP实现网络浏览，这里我们使用_h5ai:</p>
 <p><strong><a href="https://larsjung.de/h5ai/demo/">演示网站</a></strong></p>
 <p><strong><a href="https://larsjung.de/h5ai/">官方文档</a></strong></p>
-<h3 id="2-下载站"><a href="#2-下载站" class="headerlink" title="2. 下载站"></a>2. 下载站</h3><p><img src="../images/%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%8F%98%E6%88%90%E8%87%AA%E5%B7%B1%E7%9A%84NAS%E5%92%8C%E4%B8%8B%E8%BD%BD%E5%99%A8/DownloadToNAS.png" alt="DownloadToNAS"><br>下载站，我们使用Aria2这个多线程下载器实现，难点是挂载到电脑上，也就是目录映射。最好能满足：</p>
+<h3 id="2-下载站"><a href="#2-下载站" class="headerlink" title="2. 下载站"></a>2. 下载站</h3><p><img src="/2023/06/06/%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%8F%98%E6%88%90%E8%87%AA%E5%B7%B1%E7%9A%84NAS%E5%92%8C%E4%B8%8B%E8%BD%BD%E5%99%A8/DownloadToNAS.png" alt="DownloadToNAS"><br>下载站，我们使用Aria2这个多线程下载器实现，难点是挂载到电脑上，也就是目录映射。最好能满足：</p>
 <ul>
 <li>加密传输，保证安全</li>
 <li>支持平台多，速度稳定</li>
 </ul>
-<h3 id="3-挂载到本地磁盘"><a href="#3-挂载到本地磁盘" class="headerlink" title="3. 挂载到本地磁盘"></a>3. 挂载到本地磁盘</h3><p>在Windwos上挂载<img src="../images/%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%8F%98%E6%88%90%E8%87%AA%E5%B7%B1%E7%9A%84NAS%E5%92%8C%E4%B8%8B%E8%BD%BD%E5%99%A8/MountInWindows.png" alt="在Windwos上挂载"></p>
+<h3 id="3-挂载到本地磁盘"><a href="#3-挂载到本地磁盘" class="headerlink" title="3. 挂载到本地磁盘"></a>3. 挂载到本地磁盘</h3><p>在Windwos上挂载<img src="/2023/06/06/%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%8F%98%E6%88%90%E8%87%AA%E5%B7%B1%E7%9A%84NAS%E5%92%8C%E4%B8%8B%E8%BD%BD%E5%99%A8/MountInWindows.png" alt="在Windwos上挂载"></p>
 <p>其实，本地挂载树莓派、服务器磁盘的选择有很多。比如：SMB、FTP等。但是，考虑安全和利用情况下，我还是选择Webdav。</p>
 <p>Windows和macOS都支持挂载Webdav，但是可能会出现无法写的情况。我建议使用第三方免费工具：</p>
 <ul>
@@ -618,7 +660,7 @@
 <blockquote>
 <p>没用过mac，我用windows演示</p>
 </blockquote>
-<p><img src="../images/%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%8F%98%E6%88%90%E8%87%AA%E5%B7%B1%E7%9A%84NAS%E5%92%8C%E4%B8%8B%E8%BD%BD%E5%99%A8/image-20230607013014512.png" alt="image-20230607013014512"></p>
+<p><img src="/2023/06/06/%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%8F%98%E6%88%90%E8%87%AA%E5%B7%B1%E7%9A%84NAS%E5%92%8C%E4%B8%8B%E8%BD%BD%E5%99%A8/image-20230607013014512.png" alt="image-20230607013014512"></p>
 <p>nginx默认80端口，如果80端口要跑其它服务，也可以修改nginx配置文件把80端口改成其它端口，路径要加<code>/webdav</code>，然后一定要取消勾选<strong>地址！！！</strong></p>
 <h1 id="添加系统服务"><a href="#添加系统服务" class="headerlink" title="添加系统服务"></a>添加系统服务</h1><blockquote>
 <p>还是可以参考我这篇文章<a href="https://aienh.github.io/post/debian11%E9%83%A8%E7%BD%B2LNMP%EF%BC%88nginx-mariadb-php%EF%BC%89%E6%95%99%E7%A8%8B">部署LNMP教程</a></p>
@@ -652,27 +694,27 @@
 <blockquote>
 <p>设置的RPC要和在linux上aria2.conf配置文件中的RPC一致（rpc-secret：设置Aria2验证远程码）</p>
 </blockquote>
-<p><img src="../images/%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%8F%98%E6%88%90%E8%87%AA%E5%B7%B1%E7%9A%84NAS%E5%92%8C%E4%B8%8B%E8%BD%BD%E5%99%A8/AriaNG_NativeSetting.png" alt="设置RPC"></p>
-<p>刷新即可连接：<br><img src="../images/%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%8F%98%E6%88%90%E8%87%AA%E5%B7%B1%E7%9A%84NAS%E5%92%8C%E4%B8%8B%E8%BD%BD%E5%99%A8/AriaNG_Native.png" alt="连接成功"></p>
+<p><img src="/2023/06/06/%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%8F%98%E6%88%90%E8%87%AA%E5%B7%B1%E7%9A%84NAS%E5%92%8C%E4%B8%8B%E8%BD%BD%E5%99%A8/AriaNG_NativeSetting.png" alt="设置RPC"></p>
+<p>刷新即可连接：<br><img src="/2023/06/06/%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%8F%98%E6%88%90%E8%87%AA%E5%B7%B1%E7%9A%84NAS%E5%92%8C%E4%B8%8B%E8%BD%BD%E5%99%A8/AriaNG_Native.png" alt="连接成功"></p>
 <h2 id="搭建网页前端——AriaNg"><a href="#搭建网页前端——AriaNg" class="headerlink" title="搭建网页前端——AriaNg"></a>搭建网页前端——AriaNg</h2><p>这个一般是部署在服务器<br>项目地址（GitHub）： <a href="https://github.com/mayswind/AriaNg/releases">https://github.com/mayswind/AriaNg/releases</a>    </p>
 <h2 id="浏览器的扩展程序"><a href="#浏览器的扩展程序" class="headerlink" title="浏览器的扩展程序"></a>浏览器的扩展程序</h2><p>这是Chrome浏览器的扩展程序：</p>
 <p><a href="https://chrome.google.com/webstore/detail/aria2-explorer/mpkodccbngfoacfalldjimigbofkhgjn?utm_source=ext_app_menu">https://chrome.google.com/webstore/detail/aria2-explorer/mpkodccbngfoacfalldjimigbofkhgjn?utm_source=ext_app_menu</a>    </p>
 <blockquote>
 <p>我图方便用的也是这种，用的火狐浏览器</p>
 </blockquote>
-<p><img src="../images/%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%8F%98%E6%88%90%E8%87%AA%E5%B7%B1%E7%9A%84NAS%E5%92%8C%E4%B8%8B%E8%BD%BD%E5%99%A8/image-20230607021439381.png" alt="image-20230607021439381"></p>
+<p><img src="/2023/06/06/%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%8F%98%E6%88%90%E8%87%AA%E5%B7%B1%E7%9A%84NAS%E5%92%8C%E4%B8%8B%E8%BD%BD%E5%99%A8/image-20230607021439381.png" alt="image-20230607021439381"></p>
 <p>我下载的是第一个扩展</p>
 <h3 id="配置-1"><a href="#配置-1" class="headerlink" title="配置"></a>配置</h3><p>打开管理扩展，点击选项</p>
-<p><img src="../images/%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%8F%98%E6%88%90%E8%87%AA%E5%B7%B1%E7%9A%84NAS%E5%92%8C%E4%B8%8B%E8%BD%BD%E5%99%A8/image-20230607021742222.png" alt="image-20230607021742222"></p>
+<p><img src="/2023/06/06/%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%8F%98%E6%88%90%E8%87%AA%E5%B7%B1%E7%9A%84NAS%E5%92%8C%E4%B8%8B%E8%BD%BD%E5%99%A8/image-20230607021742222.png" alt="image-20230607021742222"></p>
 <p>点击RPC服务器后再点击默认服务器</p>
-<p><img src="../images/%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%8F%98%E6%88%90%E8%87%AA%E5%B7%B1%E7%9A%84NAS%E5%92%8C%E4%B8%8B%E8%BD%BD%E5%99%A8/image-20230607021835467.png" alt="image-20230607021835467"></p>
+<p><img src="/2023/06/06/%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%8F%98%E6%88%90%E8%87%AA%E5%B7%B1%E7%9A%84NAS%E5%92%8C%E4%B8%8B%E8%BD%BD%E5%99%A8/image-20230607021835467.png" alt="image-20230607021835467"></p>
 <p>协议选http，填入服务器IP，密钥要和在linux上aria2.conf配置文件中的RPC一致，然后点保存</p>
-<p><img src="../images/%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%8F%98%E6%88%90%E8%87%AA%E5%B7%B1%E7%9A%84NAS%E5%92%8C%E4%B8%8B%E8%BD%BD%E5%99%A8/image-20230607022037734.png" alt="image-20230607022037734"></p>
+<p><img src="/2023/06/06/%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%8F%98%E6%88%90%E8%87%AA%E5%B7%B1%E7%9A%84NAS%E5%92%8C%E4%B8%8B%E8%BD%BD%E5%99%A8/image-20230607022037734.png" alt="image-20230607022037734"></p>
 <h3 id="使用-1"><a href="#使用-1" class="headerlink" title="使用"></a>使用</h3><p>固定到工具栏</p>
-<p><img src="../images/%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%8F%98%E6%88%90%E8%87%AA%E5%B7%B1%E7%9A%84NAS%E5%92%8C%E4%B8%8B%E8%BD%BD%E5%99%A8/image-20230607022319769.png" alt="image-20230607022319769"></p>
+<p><img src="/2023/06/06/%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%8F%98%E6%88%90%E8%87%AA%E5%B7%B1%E7%9A%84NAS%E5%92%8C%E4%B8%8B%E8%BD%BD%E5%99%A8/image-20230607022319769.png" alt="image-20230607022319769"></p>
 <p>点详情就可以使用了</p>
-<p><img src="../images/%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%8F%98%E6%88%90%E8%87%AA%E5%B7%B1%E7%9A%84NAS%E5%92%8C%E4%B8%8B%E8%BD%BD%E5%99%A8/image-20230607022411558.png" alt="image-20230607022411558"></p>
-<p><img src="../images/%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%8F%98%E6%88%90%E8%87%AA%E5%B7%B1%E7%9A%84NAS%E5%92%8C%E4%B8%8B%E8%BD%BD%E5%99%A8/image-20230607022456123.png" alt="image-20230607022456123"></p>
+<p><img src="/2023/06/06/%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%8F%98%E6%88%90%E8%87%AA%E5%B7%B1%E7%9A%84NAS%E5%92%8C%E4%B8%8B%E8%BD%BD%E5%99%A8/image-20230607022411558.png" alt="image-20230607022411558"></p>
+<p><img src="/2023/06/06/%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%8F%98%E6%88%90%E8%87%AA%E5%B7%B1%E7%9A%84NAS%E5%92%8C%E4%B8%8B%E8%BD%BD%E5%99%A8/image-20230607022456123.png" alt="image-20230607022456123"></p>
 <p>连接到Aria2后就可以新建任务，把下载链接复制过去，就能把文件下载到Linux本地上了</p>
 ]]></content>
       <categories>
@@ -1361,9 +1403,9 @@
 <blockquote>
 <p>无账号的可以注册一个</p>
 </blockquote>
-<p><img src="../images/docker%E4%B9%8Bopenwrt/image-20230508004922422.png" alt="image-20230508004922422"></p>
+<p><img src="/2023/05/08/docker%E4%B9%8Bopenwrt/image-20230508004922422.png" alt="image-20230508004922422"></p>
 <p><strong>点击第二个，复制右边的命令，回到操作系统里粘贴</strong></p>
-<p><img src="../images/docker%E4%B9%8Bopenwrt/image-20230509195820116.png" alt="image-20230509195820116"></p>
+<p><img src="/2023/05/08/docker%E4%B9%8Bopenwrt/image-20230509195820116.png" alt="image-20230509195820116"></p>
 <blockquote>
 <p>找到适合自己架构拉取镜像即可，我的是aarch64，所以拉取tag为armv8的</p>
 </blockquote>
@@ -1408,7 +1450,7 @@
 <p><strong>在浏览器中输入<code>option ipaddr </code>项目中的 IP 进入 Luci 控制面板，若<code>option ipaddr </code>的参数为 <code>192.168.1.100</code>，则可以在浏览器输入 <code>http://192.168.1.100</code>进入控制面板。</strong></p>
 <p><strong>用户名：<code>root</code></strong></p>
 <p><strong>密码：<code>password</code></strong></p>
-<p><img src="../images/docker%E4%B9%8Bopenwrt/image-20230509200127717.png" alt="image-20230509200127717"></p>
+<p><img src="/2023/05/08/docker%E4%B9%8Bopenwrt/image-20230509200127717.png" alt="image-20230509200127717"></p>
 <p><strong>登进去后建议修改账号密码，不然别人直接不用密码能ssh连接你这个容器</strong></p>
 ]]></content>
       <categories>
@@ -1442,8 +1484,8 @@
 
 
 
-<h3 id="配置安全组（无SSL证书）"><a href="#配置安全组（无SSL证书）" class="headerlink" title="配置安全组（无SSL证书）"></a>配置安全组（无SSL证书）</h3><p><img src="../images/ztncui%E7%A7%81%E6%9C%89%E5%8C%96zerotier%E6%9D%A5%E5%88%9B%E5%BB%BAmoon/image-20230505000328395.png" alt="image-20230505000328395"></p>
-<h3 id="配置安全组（有SSL证书）"><a href="#配置安全组（有SSL证书）" class="headerlink" title="配置安全组（有SSL证书）"></a>配置安全组（有SSL证书）</h3><p><img src="../images/ztncui%E7%A7%81%E6%9C%89%E5%8C%96zerotier%E6%9D%A5%E5%88%9B%E5%BB%BAmoon/image-20230505000753998.png" alt="image-20230505000753998"></p>
+<h3 id="配置安全组（无SSL证书）"><a href="#配置安全组（无SSL证书）" class="headerlink" title="配置安全组（无SSL证书）"></a>配置安全组（无SSL证书）</h3><p><img src="/2023/05/04/ztncui%E7%A7%81%E6%9C%89%E5%8C%96zerotier%E6%9D%A5%E5%88%9B%E5%BB%BAmoon/image-20230505000328395.png" alt="image-20230505000328395"></p>
+<h3 id="配置安全组（有SSL证书）"><a href="#配置安全组（有SSL证书）" class="headerlink" title="配置安全组（有SSL证书）"></a>配置安全组（有SSL证书）</h3><p><img src="/2023/05/04/ztncui%E7%A7%81%E6%9C%89%E5%8C%96zerotier%E6%9D%A5%E5%88%9B%E5%BB%BAmoon/image-20230505000753998.png" alt="image-20230505000753998"></p>
 <blockquote>
 <p>3000端口和3443端口为ztncui Web控制面板使用的端口</p>
 <p>3000是http的，3443是https的</p>
@@ -1491,10 +1533,10 @@
 <p><strong>登录用户名：<code>admin</code></strong> </p>
 <p><strong>默认密码： <code>password</code></strong></p>
 <p><strong>添加网络</strong></p>
-<p><img src="../images/ztncui%E7%A7%81%E6%9C%89%E5%8C%96zerotier%E6%9D%A5%E5%88%9B%E5%BB%BAmoon/image-20230505011824909.png" alt="image-20230505011824909"></p>
+<p><img src="/2023/05/04/ztncui%E7%A7%81%E6%9C%89%E5%8C%96zerotier%E6%9D%A5%E5%88%9B%E5%BB%BAmoon/image-20230505011824909.png" alt="image-20230505011824909"></p>
 <p><strong>配置网络</strong></p>
-<p><img src="../images/ztncui%E7%A7%81%E6%9C%89%E5%8C%96zerotier%E6%9D%A5%E5%88%9B%E5%BB%BAmoon/image-20230505012139481.png" alt="image-20230505012139481"></p>
-<p><img src="../images/ztncui%E7%A7%81%E6%9C%89%E5%8C%96zerotier%E6%9D%A5%E5%88%9B%E5%BB%BAmoon/image-20230505012503870.png" alt="image-20230505012503870"></p>
+<p><img src="/2023/05/04/ztncui%E7%A7%81%E6%9C%89%E5%8C%96zerotier%E6%9D%A5%E5%88%9B%E5%BB%BAmoon/image-20230505012139481.png" alt="image-20230505012139481"></p>
+<p><img src="/2023/05/04/ztncui%E7%A7%81%E6%9C%89%E5%8C%96zerotier%E6%9D%A5%E5%88%9B%E5%BB%BAmoon/image-20230505012503870.png" alt="image-20230505012503870"></p>
 <h2 id="Client端"><a href="#Client端" class="headerlink" title="Client端"></a>Client端</h2><h3 id="Linux的client端"><a href="#Linux的client端" class="headerlink" title="Linux的client端"></a>Linux的client端</h3><h4 id="同样安装Zerotier"><a href="#同样安装Zerotier" class="headerlink" title="同样安装Zerotier"></a>同样安装Zerotier</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">root@orangepi5:~<span class="comment"># curl -s https://install.zerotier.com | sudo bash</span></span><br></pre></td></tr></table></figure>
 
 
@@ -1511,7 +1553,7 @@
 
 
 
-<h4 id="在ztncui管理界面允许加入"><a href="#在ztncui管理界面允许加入" class="headerlink" title="在ztncui管理界面允许加入"></a>在ztncui管理界面允许加入</h4><p><img src="../images/ztncui%E7%A7%81%E6%9C%89%E5%8C%96zerotier%E6%9D%A5%E5%88%9B%E5%BB%BAmoon/image-20230505015057633.png" alt="image-20230505015057633"></p>
+<h4 id="在ztncui管理界面允许加入"><a href="#在ztncui管理界面允许加入" class="headerlink" title="在ztncui管理界面允许加入"></a>在ztncui管理界面允许加入</h4><p><img src="/2023/05/04/ztncui%E7%A7%81%E6%9C%89%E5%8C%96zerotier%E6%9D%A5%E5%88%9B%E5%BB%BAmoon/image-20230505015057633.png" alt="image-20230505015057633"></p>
 <h4 id="列出网络"><a href="#列出网络" class="headerlink" title="列出网络"></a>列出网络</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">root@orangepi5:~<span class="comment"># zerotier-cli listnetworks</span></span><br></pre></td></tr></table></figure>
 
 <h4 id="查看moon服务器"><a href="#查看moon服务器" class="headerlink" title="查看moon服务器"></a>查看moon服务器</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">root@orangepi5:~<span class="comment"># zerotier-cli listpeers</span></span><br></pre></td></tr></table></figure>
@@ -1521,14 +1563,14 @@
 <p><strong>将服务器上的world.bin和000000XXXXX.moon文件下载到本地，将world.bin更名为palnet。然后上传到手机</strong></p>
 <p><strong>第一步，安装好Zerotier FIX，打开软件——右上角——设置——启动自定义planet——选择从文件导入——选择刚才的palnet文件。提示导入成功既切换planet成功。</strong></p>
 <p><strong>第二步，加入moon服务器，打开软件——右上角——入轨——右下角加号——从文件导入——选择刚才的moon文件。提示成功，会在入轨界面看到moon服务的id。</strong></p>
-<p><img src="../images/ztncui%E7%A7%81%E6%9C%89%E5%8C%96zerotier%E6%9D%A5%E5%88%9B%E5%BB%BAmoon/image-20230505015941496.png" alt="image-20230505015941496"></p>
+<p><img src="/2023/05/04/ztncui%E7%A7%81%E6%9C%89%E5%8C%96zerotier%E6%9D%A5%E5%88%9B%E5%BB%BAmoon/image-20230505015941496.png" alt="image-20230505015941496"></p>
 <p><strong>只有完成上面这两步，才能在ztncui管理的网络界面点刷新看到手机的ID，然后在ztncui上授权加入</strong></p>
 <h3 id="Windows的client端"><a href="#Windows的client端" class="headerlink" title="Windows的client端"></a>Windows的client端</h3><p><a href="https://www.zerotier.com/download/"><strong>ZeroTier官网</strong></a>下载windows的ZeroTier One客户端</p>
 <blockquote>
 <p>下载的zerotier是msi文件，默认会安装到C盘，安装完后会自动运行，在任务栏里会看到zerotier的UI界面，可以把它关掉退出</p>
 </blockquote>
 <p>安装完后在我的电脑打开<code>C盘</code>，点击<code>查看</code>，把<code>隐藏的项目</code>打勾</p>
-<p><img src="../images/ztncui%E7%A7%81%E6%9C%89%E5%8C%96zerotier%E6%9D%A5%E5%88%9B%E5%BB%BAmoon/image-20230520200642469.png" alt="image-20230520200642469"></p>
+<p><img src="/2023/05/04/ztncui%E7%A7%81%E6%9C%89%E5%8C%96zerotier%E6%9D%A5%E5%88%9B%E5%BB%BAmoon/image-20230520200642469.png" alt="image-20230520200642469"></p>
 <p>打开路径<code>C:\ProgramData\ZeroTier\One</code>，直接把之前备份的<code>moons.d</code>整个目录复制一份进去(目录里面有个000000XXXXX.moon文件)</p>
 <p>在任务栏的搜索框输入<code>cmd</code>，会搜索到<code>命令提示符</code>，鼠标右键以管理员身份运行</p>
 <p>弹出的命令框输入下面的命令进入ZeroTier的目录</p>
@@ -1553,7 +1595,7 @@
 <p>ssh连接到公网服务器</p>
 <h3 id="加入网络-2"><a href="#加入网络-2" class="headerlink" title="加入网络"></a>加入网络</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#加入在ztncui上创建网络的ID</span></span><br><span class="line">root@orangepi5:~<span class="comment"># zerotier-cli join  #Network ID</span></span><br></pre></td></tr></table></figure>
 
-<h3 id="授权加入网络"><a href="#授权加入网络" class="headerlink" title="授权加入网络"></a>授权加入网络</h3><p><img src="../images/ztncui%E7%A7%81%E6%9C%89%E5%8C%96zerotier%E6%9D%A5%E5%88%9B%E5%BB%BAmoon/image-20230520204946512.png" alt="image-20230520204946512"></p>
+<h3 id="授权加入网络"><a href="#授权加入网络" class="headerlink" title="授权加入网络"></a>授权加入网络</h3><p><img src="/2023/05/04/ztncui%E7%A7%81%E6%9C%89%E5%8C%96zerotier%E6%9D%A5%E5%88%9B%E5%BB%BAmoon/image-20230520204946512.png" alt="image-20230520204946512"></p>
 <p><strong>授权后点刷新，网络就会给控制器分配IP了</strong></p>
 <p><strong>这样配置完成后我们就可以在其它授权设备上访问<code>http://控制器IP:3000</code>来登录控制面板了，访问成功后就可以去公网服务器的安全组把放行的3000端口关掉了</strong></p>
 ]]></content>
@@ -1601,7 +1643,7 @@
 <p><strong>推荐用脚本安装，方便</strong></p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#自定义路径</span></span><br><span class="line">curl -fsSL <span class="string">&quot;https://alist.nn.ci/v3.sh&quot;</span> | bash -s install /root</span><br></pre></td></tr></table></figure>
 
-<p><img src="../images/%E6%8C%82%E8%BD%BD%E5%A4%9A%E4%B8%AA%E4%BA%91%E7%9B%98/image-20230503223713159.png" alt="image-20230503223713159"></p>
+<p><img src="/2023/05/03/%E6%8C%82%E8%BD%BD%E5%A4%9A%E4%B8%AA%E4%BA%91%E7%9B%98/image-20230503223713159.png" alt="image-20230503223713159"></p>
 <p><strong>启动Alist</strong></p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">systemctl start alist</span><br><span class="line"><span class="comment">#设置自启动</span></span><br><span class="line">systemctl <span class="built_in">enable</span> alist</span><br></pre></td></tr></table></figure>
 
@@ -1631,29 +1673,29 @@
 <blockquote>
 <p>YOUR_IP  你的服务器IP</p>
 </blockquote>
-<p><img src="../images/%E6%8C%82%E8%BD%BD%E5%A4%9A%E4%B8%AA%E4%BA%91%E7%9B%98/image-20230503212014697.png" alt="image-20230503212014697"></p>
+<p><img src="/2023/05/03/%E6%8C%82%E8%BD%BD%E5%A4%9A%E4%B8%AA%E4%BA%91%E7%9B%98/image-20230503212014697.png" alt="image-20230503212014697"></p>
 <blockquote>
 <p>为了方便，登录后建议改账号和密码</p>
 </blockquote>
 <p><strong>添加云盘</strong></p>
-<p><img src="../images/%E6%8C%82%E8%BD%BD%E5%A4%9A%E4%B8%AA%E4%BA%91%E7%9B%98/image-20230503224912663.png" alt="image-20230503224912663"></p>
-<p><img src="../images/%E6%8C%82%E8%BD%BD%E5%A4%9A%E4%B8%AA%E4%BA%91%E7%9B%98/image-20230503225414510.png" alt="image-20230503225414510"></p>
+<p><img src="/2023/05/03/%E6%8C%82%E8%BD%BD%E5%A4%9A%E4%B8%AA%E4%BA%91%E7%9B%98/image-20230503224912663.png" alt="image-20230503224912663"></p>
+<p><img src="/2023/05/03/%E6%8C%82%E8%BD%BD%E5%A4%9A%E4%B8%AA%E4%BA%91%E7%9B%98/image-20230503225414510.png" alt="image-20230503225414510"></p>
 <p>要用app扫二维码来获取刷新令牌——&gt;<strong><a href="https://alist.nn.ci/tool/aliyundrive/request.html">刷新令牌获取</a></strong></p>
 <h3 id="迅雷云盘"><a href="#迅雷云盘" class="headerlink" title="迅雷云盘"></a>迅雷云盘</h3><p><strong>挂载路径：/迅雷云盘</strong></p>
 <p><strong>用户名和密码则是你迅雷的账户密码</strong></p>
 <p><strong>直接点保存，旁边会出现警告，复制href=” “ 双引号里的网址（如果警告里的显示不全，按F5刷新在点保存，直到能看到click here就行，这样就能复制全网址了）</strong></p>
-<p><img src="../images/%E6%8C%82%E8%BD%BD%E5%A4%9A%E4%B8%AA%E4%BA%91%E7%9B%98/image-20230503232035282.png" alt="image-20230503232035282"></p>
+<p><img src="/2023/05/03/%E6%8C%82%E8%BD%BD%E5%A4%9A%E4%B8%AA%E4%BA%91%E7%9B%98/image-20230503232035282.png" alt="image-20230503232035282"></p>
 <p><strong>用edge浏览器打开复制的网址，复制captcha_token里的值，粘贴到验证码里</strong></p>
-<p><img src="../images/%E6%8C%82%E8%BD%BD%E5%A4%9A%E4%B8%AA%E4%BA%91%E7%9B%98/image-20230503233650864.png" alt="image-20230503233650864"></p>
+<p><img src="/2023/05/03/%E6%8C%82%E8%BD%BD%E5%A4%9A%E4%B8%AA%E4%BA%91%E7%9B%98/image-20230503233650864.png" alt="image-20230503233650864"></p>
 <p><strong>在管理页面的左边点主页就能看到你挂载的云盘了，在主页下面的点管理又能回到管理页面</strong></p>
-<p><img src="../images/%E6%8C%82%E8%BD%BD%E5%A4%9A%E4%B8%AA%E4%BA%91%E7%9B%98/image-20230503235226850.png" alt="image-20230503235226850"></p>
+<p><img src="/2023/05/03/%E6%8C%82%E8%BD%BD%E5%A4%9A%E4%B8%AA%E4%BA%91%E7%9B%98/image-20230503235226850.png" alt="image-20230503235226850"></p>
 <h3 id="挂载到本地"><a href="#挂载到本地" class="headerlink" title="挂载到本地"></a>挂载到本地</h3><p><strong>下载RaiDrive</strong></p>
-<p><img src="../images/%E6%8C%82%E8%BD%BD%E5%A4%9A%E4%B8%AA%E4%BA%91%E7%9B%98/196048054-086b91ee-a575-4d3d-9a51-53686a00e85f.png" alt="196048054-086b91ee-a575-4d3d-9a51-53686a00e85f"></p>
+<p><img src="/2023/05/03/%E6%8C%82%E8%BD%BD%E5%A4%9A%E4%B8%AA%E4%BA%91%E7%9B%98/196048054-086b91ee-a575-4d3d-9a51-53686a00e85f.png" alt="196048054-086b91ee-a575-4d3d-9a51-53686a00e85f"></p>
 <p><strong>挂载完后在本地磁盘就能看得到了</strong></p>
-<h3 id="用PotPlayer播放器在线观看"><a href="#用PotPlayer播放器在线观看" class="headerlink" title="用PotPlayer播放器在线观看"></a>用PotPlayer播放器在线观看</h3><p><img src="../images/%E6%8C%82%E8%BD%BD%E5%A4%9A%E4%B8%AA%E4%BA%91%E7%9B%98/image-20230504001622503.png" alt="image-20230504001622503"></p>
-<p><img src="../images/%E6%8C%82%E8%BD%BD%E5%A4%9A%E4%B8%AA%E4%BA%91%E7%9B%98/image-20230504001653256.png" alt="image-20230504001653256"></p>
+<h3 id="用PotPlayer播放器在线观看"><a href="#用PotPlayer播放器在线观看" class="headerlink" title="用PotPlayer播放器在线观看"></a>用PotPlayer播放器在线观看</h3><p><img src="/2023/05/03/%E6%8C%82%E8%BD%BD%E5%A4%9A%E4%B8%AA%E4%BA%91%E7%9B%98/image-20230504001622503.png" alt="image-20230504001622503"></p>
+<p><img src="/2023/05/03/%E6%8C%82%E8%BD%BD%E5%A4%9A%E4%B8%AA%E4%BA%91%E7%9B%98/image-20230504001653256.png" alt="image-20230504001653256"></p>
 <p><strong>效果</strong></p>
-<p><img src="../images/%E6%8C%82%E8%BD%BD%E5%A4%9A%E4%B8%AA%E4%BA%91%E7%9B%98/image-20230504001150591.png" alt="image-20230504001150591"></p>
+<p><img src="/2023/05/03/%E6%8C%82%E8%BD%BD%E5%A4%9A%E4%B8%AA%E4%BA%91%E7%9B%98/image-20230504001150591.png" alt="image-20230504001150591"></p>
 ]]></content>
       <categories>
         <category>orangepi</category>
@@ -1670,7 +1712,7 @@
 <p>我的orangepi5的系统是debian11server版</p>
 </blockquote>
 <h3 id="准备工作："><a href="#准备工作：" class="headerlink" title="准备工作："></a>准备工作：</h3><p>1、<strong>香橙派5开发板一块</strong>，本文基于香橙派5完成开启热点/WIFI操作，但是都是跑的Linux系统，树莓派/香橙派大差不差；<br> 2、<strong>USB网卡一张</strong>，Orangepi5本身没有wifi模块需要自己另外配usb网卡 这里我用的是官方推荐的RTL8821CU网卡；</p>
-<p><img src="../images/orangepi5%E5%BC%80%E5%90%AF%E7%83%AD%E7%82%B9/17486263331_1660295310.jpg" alt="17486263331_1660295310"></p>
+<p><img src="/2023/04/28/orangepi5%E5%BC%80%E5%90%AF%E7%83%AD%E7%82%B9/17486263331_1660295310.jpg" alt="17486263331_1660295310"></p>
 <h3 id="测试网卡："><a href="#测试网卡：" class="headerlink" title="测试网卡："></a>测试网卡：</h3><blockquote>
 <p>我这里直接用的root用户，不是root用户的请在命令前加<code>sudo</code></p>
 </blockquote>
@@ -1870,13 +1912,13 @@
 <h3 id="使用演示"><a href="#使用演示" class="headerlink" title="使用演示"></a>使用演示</h3><p>如果你是通过pip3安装的依赖则使用以下命令运行示例：   </p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">python3 oneforall.py --target example.com run</span><br><span class="line">python3 oneforall.py --targets ./example.txt run</span><br></pre></td></tr></table></figure>
 
-<p><img src="../images/%E5%AD%90%E5%9F%9F%E5%90%8D%E6%94%B6%E9%9B%86%E5%B7%A5%E5%85%B7/usage_example.svg" alt="usage_example"></p>
+<p><img src="/2023/04/24/%E5%AD%90%E5%9F%9F%E6%94%B6%E9%9B%86%E5%B7%A5%E5%85%B7%20/usage_example.svg" alt="usage_example"></p>
 <h3 id="结果说明"><a href="#结果说明" class="headerlink" title="结果说明"></a>结果说明</h3><p>我们以<code>python3 oneforall.py --target example.com run</code>命令为例，OneForAll在默认参数正常执行完毕会在results目录生成相应结果：</p>
-<p><img src="../images/%E5%AD%90%E5%9F%9F%E5%90%8D%E6%94%B6%E9%9B%86%E5%B7%A5%E5%85%B7/Result.png" alt="Result"></p>
+<p><img src="/2023/04/24/%E5%AD%90%E5%9F%9F%E6%94%B6%E9%9B%86%E5%B7%A5%E5%85%B7%20/Result.png" alt="Result"></p>
 <p><code>example.com.csv</code>是每个主域下的子域收集结果。</p>
 <p><code>all_subdomain_result_1583034493.csv</code>是每次运行OneForAll收集到子域的汇总结果，包含<code>example.com.csv</code>，方便在批量收集场景中获取全部结果。</p>
 <p><code>result.sqlite3</code>是存放每次运行OneForAll收集到子域的SQLite3结果数据库，其数据库结构如下图：</p>
-<p><img src="../images/%E5%AD%90%E5%9F%9F%E5%90%8D%E6%94%B6%E9%9B%86%E5%B7%A5%E5%85%B7/Database.png" alt="Database"></p>
+<p><img src="/2023/04/24/%E5%AD%90%E5%9F%9F%E6%94%B6%E9%9B%86%E5%B7%A5%E5%85%B7%20/Database.png" alt="Database"></p>
 <p>其中类似<code>example_com_origin_result</code>表存放每个模块最初子域收集结果。</p>
 <p>其中类似<code>example_com_resolve_result</code>表存放对子域进行解析后的结果。</p>
 <p>其中类似<code>example_com_last_result</code>表存放上一次子域收集结果（需要收集两次以上才会生成）。</p>
@@ -2019,7 +2061,7 @@
 
 <h3 id="2-同时运行所有漏洞平台"><a href="#2-同时运行所有漏洞平台" class="headerlink" title="2.同时运行所有漏洞平台"></a>2.同时运行所有漏洞平台</h3><p>在项目根目录下运行以下命令</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cd vulstudy</span><br><span class="line">docker-compose up -d #启动容器</span><br><span class="line">docker-compose stop #停止容器</span><br></pre></td></tr></table></figure>
-<p><img src="../images/docker%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BA%E5%90%84%E5%A4%A7%E6%BC%8F%E6%B4%9E%E9%9D%B6%E5%9C%BA/vulstudy.png" alt="vulstudy"></p>
+<p><img src="/2023/04/24/docker%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BA%E5%90%84%E5%A4%A7%E6%BC%8F%E6%B4%9E%E9%9D%B6%E5%9C%BA/vulstudy.png" alt="vulstudy"></p>
 <h2 id="FAQ"><a href="#FAQ" class="headerlink" title="FAQ"></a>FAQ</h2><p><strong>1.第一次启动bWAPP容器访问其主页会报错如下：</strong></p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Connection failed: Unknown database &#x27;bWAPP&#x27;</span><br></pre></td></tr></table></figure>
 
@@ -4944,7 +4986,7 @@
 <blockquote>
 <p>仅仅安装 powerlevel10k 是不够的，你还需要一个能够满足它的字体，包括各种特殊字符和图标（如上图）等，网络中使用最多的是 Hack Nerd Font 。<br> 字体官网链接：<a href="https://nerdfonts.com/">https://nerdfonts.com/</a></p>
 </blockquote>
-<p><img src="../images/manjaro%E5%85%A5%E9%97%A8%EF%BC%88archlinux%EF%BC%89/1549943-20211016132138588-1630077845.png" alt="截图"></p>
+<p><img src="/2023/04/23/manjaro%E5%85%A5%E9%97%A8%EF%BC%88archlinux%EF%BC%89/1549943-20211016132138588-1630077845.png" alt="截图"></p>
 <blockquote>
 <p>完成后重启终端或者执行</p>
 </blockquote>
@@ -5019,15 +5061,15 @@
 <blockquote>
 <p>执行后会打开弹出，选中默认wine容器</p>
 </blockquote>
-<p><img src="../images/manjaro%E5%85%A5%E9%97%A8%EF%BC%88archlinux%EF%BC%89/1549943-20211016132327702-2095914890.png" alt="截图"></p>
+<p><img src="/2023/04/23/manjaro%E5%85%A5%E9%97%A8%EF%BC%88archlinux%EF%BC%89/1549943-20211016132327702-2095914890.png" alt="截图"></p>
 <blockquote>
 <p>选择需要的选项，这里选择dll安装</p>
 </blockquote>
-<p><img src="../images/manjaro%E5%85%A5%E9%97%A8%EF%BC%88archlinux%EF%BC%89/1549943-20211016132409407-1420021937.png" alt="截图"></p>
+<p><img src="/2023/04/23/manjaro%E5%85%A5%E9%97%A8%EF%BC%88archlinux%EF%BC%89/1549943-20211016132409407-1420021937.png" alt="截图"></p>
 <h4 id="4-用户文件夹名称为英文"><a href="#4-用户文件夹名称为英文" class="headerlink" title="4)用户文件夹名称为英文"></a>4)用户文件夹名称为英文</h4><blockquote>
 <p>先去手动修改文件夹名称，然后在 设置 -&gt; 应用程序 -&gt; 地点 这修改</p>
 </blockquote>
-<p><img src="../images/manjaro%E5%85%A5%E9%97%A8%EF%BC%88archlinux%EF%BC%89/1549943-20211016132439302-941187267.png" alt="截图"></p>
+<p><img src="/2023/04/23/manjaro%E5%85%A5%E9%97%A8%EF%BC%88archlinux%EF%BC%89/1549943-20211016132439302-941187267.png" alt="截图"></p>
 <h4 id="5-qq、微信打不开"><a href="#5-qq、微信打不开" class="headerlink" title="5)qq、微信打不开"></a>5)qq、微信打不开</h4><blockquote>
 <p>Manjaro-kde桌面安装TIM/QQ的时候经常出现无法启动，其主要原因是deein-wine-tim打包了Gnome桌面部分内容，因此在KDE桌面环境下需要安装相应的Gnome桌面设置环境</p>
 </blockquote>
@@ -5090,9 +5132,9 @@
 </ul>
 <p>juicessh和VNC我放的是官网的链接，下载需要魔法，没魔法的可以去找资源，实在找不到的可以在下面评论给我留言</p>
 <h3 id="3）busybox的设置"><a href="#3）busybox的设置" class="headerlink" title="3）busybox的设置"></a>3）busybox的设置</h3><p><strong>安装路径不改，因为这个路径我们在linux deploy软件的设置中有一个环境变量的选项，就是填入这个，然后更新环境变量，安装组件和替换组件勾选</strong></p>
-<p><img src="../images/Android%E5%88%A9%E7%94%A8%E5%AE%B9%E5%99%A8%E9%83%A8%E7%BD%B2linux/2564615615.jpg" alt="2564615615"></p>
+<p><img src="/2023/04/13/Android%E5%88%A9%E7%94%A8%E5%AE%B9%E5%99%A8%E9%83%A8%E7%BD%B2linux/2564615615.jpg" alt="2564615615"></p>
 <p><strong>回到主页点击安装，安装完成以后查看安装信息，显示下面的就是安装完成，现在手机基本都是aarch64，也就是arm64的</strong></p>
-<p><img src="../images/Android%E5%88%A9%E7%94%A8%E5%AE%B9%E5%99%A8%E9%83%A8%E7%BD%B2linux/9846131.jpg" alt="9846131"></p>
+<p><img src="/2023/04/13/Android%E5%88%A9%E7%94%A8%E5%AE%B9%E5%99%A8%E9%83%A8%E7%BD%B2linux/9846131.jpg" alt="9846131"></p>
 <h4 id="如果安装busybox失败，另一种安装方式"><a href="#如果安装busybox失败，另一种安装方式" class="headerlink" title="如果安装busybox失败，另一种安装方式"></a>如果安装busybox失败，另一种安装方式</h4><blockquote>
 <p>上面直接用apk来安装busybox一般来说没有出现fail都是成功了，但我就是出现fail，安装失败了，然后我就用另一种安装方式了</p>
 </blockquote>
@@ -5109,36 +5151,36 @@
 
 <h3 id="4）linux-deploy的设置"><a href="#4）linux-deploy的设置" class="headerlink" title="4）linux deploy的设置"></a>4）linux deploy的设置</h3><p><strong>在左上角三个横杠打开设置</strong></p>
 <p><strong>打勾三个的都点亮，正式运行的时候屏幕黑掉之后，后天运行会非常卡，建议点亮</strong></p>
-<p><img src="../images/Android%E5%88%A9%E7%94%A8%E5%AE%B9%E5%99%A8%E9%83%A8%E7%BD%B2linux/165161681.jpg" alt="165161681"></p>
+<p><img src="/2023/04/13/Android%E5%88%A9%E7%94%A8%E5%AE%B9%E5%99%A8%E9%83%A8%E7%BD%B2linux/165161681.jpg" alt="165161681"></p>
 <p><strong>开机自动启动根据自己的需求设置，其它的默认就好</strong></p>
-<p><img src="../images/Android%E5%88%A9%E7%94%A8%E5%AE%B9%E5%99%A8%E9%83%A8%E7%BD%B2linux/1587646427613234.jpg" alt="1587646427613234"></p>
+<p><img src="/2023/04/13/Android%E5%88%A9%E7%94%A8%E5%AE%B9%E5%99%A8%E9%83%A8%E7%BD%B2linux/1587646427613234.jpg" alt="1587646427613234"></p>
 <p><strong>PATH变量填入安装BusyBox的路径，这个很重要</strong></p>
-<p><img src="../images/Android%E5%88%A9%E7%94%A8%E5%AE%B9%E5%99%A8%E9%83%A8%E7%BD%B2linux/1587646427613235.jpg" alt="在这里插入图片描述"></p>
+<p><img src="/2023/04/13/Android%E5%88%A9%E7%94%A8%E5%AE%B9%E5%99%A8%E9%83%A8%E7%BD%B2linux/1587646427613235.jpg" alt="在这里插入图片描述"></p>
 <p><strong>telnet这个可以开一下，ssh连不上可以用telnet连接</strong></p>
-<p><img src="../images/Android%E5%88%A9%E7%94%A8%E5%AE%B9%E5%99%A8%E9%83%A8%E7%BD%B2linux/24568164146614.jpg" alt="在这里插入图片描述"></p>
+<p><img src="/2023/04/13/Android%E5%88%A9%E7%94%A8%E5%AE%B9%E5%99%A8%E9%83%A8%E7%BD%B2linux/24568164146614.jpg" alt="在这里插入图片描述"></p>
 <p> <strong>然后在右下角停止旁边的三个横杠打开配置</strong></p>
 <blockquote>
 <p>安装类型默认的是镜像文件，我选择的是目录，安装完成以后能和手机共享磁盘空间</p>
 <p>选择镜像安装的要注意镜像大小要分配2G以上，或者直接10240M</p>
 </blockquote>
 <p><strong>配置源地址方式有两种，一种是在线安装，另一种是tar包安装</strong></p>
-<h4 id="a-在线安装"><a href="#a-在线安装" class="headerlink" title="a.在线安装"></a>a.在线安装</h4><p><img src="../images/Android%E5%88%A9%E7%94%A8%E5%AE%B9%E5%99%A8%E9%83%A8%E7%BD%B2linux/985621469.jpg" alt="img"></p>
+<h4 id="a-在线安装"><a href="#a-在线安装" class="headerlink" title="a.在线安装"></a>a.在线安装</h4><p><img src="/2023/04/13/Android%E5%88%A9%E7%94%A8%E5%AE%B9%E5%99%A8%E9%83%A8%E7%BD%B2linux/985621469.jpg" alt="img"></p>
 <h4 id="b-tar包安装"><a href="#b-tar包安装" class="headerlink" title="b.tar包安装"></a>b.tar包安装</h4><blockquote>
 <p>tar打包linux具体可看我另一篇<a href="https://aienh.github.io/post/%E5%88%B6%E4%BD%9Cdebian%E7%9A%84rootfs">制作rootfs</a>的博客，这里安装类型也建议改为目录</p>
 </blockquote>
-<p><img src="../images/Android%E5%88%A9%E7%94%A8%E5%AE%B9%E5%99%A8%E9%83%A8%E7%BD%B2linux/5862411146.jpg" alt="img"></p>
+<p><img src="/2023/04/13/Android%E5%88%A9%E7%94%A8%E5%AE%B9%E5%99%A8%E9%83%A8%E7%BD%B2linux/5862411146.jpg" alt="img"></p>
 <h4 id="c-其它配置"><a href="#c-其它配置" class="headerlink" title="c.其它配置"></a>c.其它配置</h4><p><strong>本地化选择中文包就可以了</strong></p>
-<p><img src="../images/Android%E5%88%A9%E7%94%A8%E5%AE%B9%E5%99%A8%E9%83%A8%E7%BD%B2linux/98464166.jpg" alt="在这里插入图片描述"></p>
-<p><strong>sdcard挂载到根系统</strong><img src="../images/Android%E5%88%A9%E7%94%A8%E5%AE%B9%E5%99%A8%E9%83%A8%E7%BD%B2linux/173048_ghVz_2846946.png" alt="img"></p>
+<p><img src="/2023/04/13/Android%E5%88%A9%E7%94%A8%E5%AE%B9%E5%99%A8%E9%83%A8%E7%BD%B2linux/98464166.jpg" alt="在这里插入图片描述"></p>
+<p><strong>sdcard挂载到根系统</strong><img src="/2023/04/13/Android%E5%88%A9%E7%94%A8%E5%AE%B9%E5%99%A8%E9%83%A8%E7%BD%B2linux/173048_ghVz_2846946.png" alt="img"></p>
 <p><strong>启用SSH打勾，建议更改SSH的端口，例如7777，8888，22端口可能会在手机上被别的服务占用，SSH可能会连接不上</strong></p>
 <p><strong>图形界面有需求可选择打勾安装</strong></p>
-<p><img src="../images/Android%E5%88%A9%E7%94%A8%E5%AE%B9%E5%99%A8%E9%83%A8%E7%BD%B2linux/7b06f45652578707.jpg" alt="img"></p>
+<p><img src="/2023/04/13/Android%E5%88%A9%E7%94%A8%E5%AE%B9%E5%99%A8%E9%83%A8%E7%BD%B2linux/7b06f45652578707.jpg" alt="img"></p>
 <p>这样就配置完成了</p>
-<h3 id="5）安装"><a href="#5）安装" class="headerlink" title="5）安装"></a>5）安装</h3><p><img src="../images/Android%E5%88%A9%E7%94%A8%E5%AE%B9%E5%99%A8%E9%83%A8%E7%BD%B2linux/245614151.png" alt="245614151"></p>
+<h3 id="5）安装"><a href="#5）安装" class="headerlink" title="5）安装"></a>5）安装</h3><p><img src="/2023/04/13/Android%E5%88%A9%E7%94%A8%E5%AE%B9%E5%99%A8%E9%83%A8%E7%BD%B2linux/245614151.png" alt="245614151"></p>
 <p><strong>configuring extra/ssh 没有fail</strong></p>
 <p><strong>&lt;&lt;&lt;deploy</strong> </p>
 <p><strong>说明安装完成</strong></p>
-<p><img src="../images/Android%E5%88%A9%E7%94%A8%E5%AE%B9%E5%99%A8%E9%83%A8%E7%BD%B2linux/824641148.png" alt="824641148"></p>
+<p><img src="/2023/04/13/Android%E5%88%A9%E7%94%A8%E5%AE%B9%E5%99%A8%E9%83%A8%E7%BD%B2linux/824641148.png" alt="824641148"></p>
 <blockquote>
 <p><strong>安装完成后一定要先点停止后再点启动！！！</strong></p>
 <p><strong>不然直接点启动又会重新安装一遍。</strong></p>
@@ -5146,7 +5188,7 @@
 <h2 id="用JuiceSSH连接"><a href="#用JuiceSSH连接" class="headerlink" title="用JuiceSSH连接"></a>用JuiceSSH连接</h2><blockquote>
 <p>用SSH连接时注意你配置时有没有更改端口</p>
 </blockquote>
-<p> <img src="../images/Android%E5%88%A9%E7%94%A8%E5%AE%B9%E5%99%A8%E9%83%A8%E7%BD%B2linux/562411.png" alt="562411"></p>
+<p> <img src="/2023/04/13/Android%E5%88%A9%E7%94%A8%E5%AE%B9%E5%99%A8%E9%83%A8%E7%BD%B2linux/562411.png" alt="562411"></p>
 ]]></content>
       <categories>
         <category>Android</category>
@@ -5302,9 +5344,9 @@
 <p>例如我放到D盘下，重命名为jvms，路径为D:\jvms</p>
 </blockquote>
 <p>在jvms文件夹里新建两个子文件夹store和download</p>
-<p>![image-20230517175753265](../images/安装和切换多版本java (windows篇)/image-20230517175753265.png)</p>
+<p>![image-20230517175753265](安装和切换多版本java (windows篇)/image-20230517175753265.png)</p>
 <h2 id="运行工具"><a href="#运行工具" class="headerlink" title="运行工具"></a>运行工具</h2><p>然后以管理员身份运行cmd或者powershell</p>
-<p>![image-20230517175644642](../images/安装和切换多版本java (windows篇)/image-20230517175644642.png)</p>
+<p>![image-20230517175644642](安装和切换多版本java (windows篇)/image-20230517175644642.png)</p>
 <h2 id="初始化工具"><a href="#初始化工具" class="headerlink" title="初始化工具"></a>初始化工具</h2><p>输入以下命令来初始化jvms配置文件</p>
 <blockquote>
 <p>用 D:\jvms\jvms.exe init –help 命令 在OPTIONS选项中可以看到设置的默认值</p>
@@ -5421,7 +5463,7 @@
 
 <p><strong>从<a href="https://www.oracle.com/java/technologies/downloads/">oracle官网</a>下载Java压缩包</strong>    </p>
 <p><strong>Java8：</strong><a href="https://www.oracle.com/java/technologies/javase/javase-jdk8-downloads.html">Java SE Development Kit 8 Downloads</a></p>
-<p>![image-20230404181515372](../images/安装和切换多版本java (linux篇)/image-20230404181515372.png)</p>
+<p>![image-20230404181515372](安装和切换多版本java (linux篇)/image-20230404181515372.png)</p>
 <p><strong>注册登录后即可获得下载链接，这里注意自己的系统是arm64还是amd64</strong></p>
 <p><strong>也可使用<a href="https://www.azul.com/downloads/?package=jdk#zulu">ZuluJDK（一个OpenJDK的发行版本）</a></strong></p>
 <blockquote>
@@ -5504,6 +5546,9 @@
 <h2 id="5-切换其它的环境（例如python）"><a href="#5-切换其它的环境（例如python）" class="headerlink" title="5.切换其它的环境（例如python）"></a>5.切换其它的环境（例如python）</h2><p><strong>其实切换其它的依赖环境也是可以的，例如debian内置python2和python3，我的默认使用python2，然后切换成python3</strong></p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">root@orangepi5:~<span class="comment"># whereis python2</span></span><br><span class="line">python2: /usr/bin/python2.7 /usr/bin/python2 /usr/lib/python2.7 /etc/python2.7 /usr/local/lib/python2.7 /usr/share/man/man1/python2.1.gz</span><br><span class="line">root@orangepi5:~<span class="comment"># whereis python3</span></span><br><span class="line">python3: /usr/bin/python3.9-config /usr/bin/python3 /usr/bin/python3.9 /usr/lib/aarch64-linux-gnu/python3.9 /usr/lib/python3 /usr/lib/python3.9 /etc/python3 /etc/python3.9 /usr/local/lib/python3.9 /usr/include/python3.9 /usr/share/python3 /usr/share/man/man1/python3.1.gz</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">root@orangepi5:~<span class="comment"># update-alternatives --install /usr/bin/python python /usr/bin/python2 100</span></span><br><span class="line">root@orangepi5:~<span class="comment"># update-alternatives --install /usr/bin/python python /usr/bin/python3 150</span></span><br><span class="line">root@orangepi5:~<span class="comment"># update-alternatives --config python</span></span><br><span class="line">There are 2 choices <span class="keyword">for</span> the alternative python (providing /usr/bin/python).</span><br><span class="line"></span><br><span class="line">  Selection    Path              Priority   Status</span><br><span class="line">------------------------------------------------------------</span><br><span class="line">* 0            /usr/bin/python3   150       auto mode</span><br><span class="line">  1            /usr/bin/python2   100       manual mode</span><br><span class="line">  2            /usr/bin/python3   150       manual mode</span><br><span class="line"></span><br><span class="line">Press &lt;enter&gt; to keep the current choice[*], or <span class="built_in">type</span> selection number: 2</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">root@orangepi5:~<span class="comment"># python --version</span></span><br></pre></td></tr></table></figure>
 
+
+
+<h2 id="6-centos7中安装python3后使用yum命令报错解决办法"><a href="#6-centos7中安装python3后使用yum命令报错解决办法" class="headerlink" title="6.centos7中安装python3后使用yum命令报错解决办法"></a>6.centos7中安装python3后使用yum命令报错解决办法</h2><p>把第一行<code>#! /usr/bin/python</code>后面的<code>python</code>改成 <code>python2</code>保存退出<br>再输入：<code>vi /usr/libexec/urlgrabber-ext-down</code>同样第一行后面的<code>python</code>改成 <code>python2</code>保存退出</p>
 ]]></content>
       <categories>
         <category>linux</category>
@@ -5570,8 +5615,8 @@
 <li><a href="http://git-scm.com/">Git</a></li>
 </ul>
 <p><strong>随着大前端的快速发展，node版本更新很快，我们在工作中，可以会有老版本的node的项目需要维护，也可能有新版本的node的项目需要开发，如果我们只有一个node版本的话将会很麻烦，<a href="https://github.com/creationix/nvm">nvm</a> 应运而生，nvm 是 Mac 下的 node 管理工具，有点类似管理 Ruby 的 rvm，如果需要管理 Windows 下的 node，官方推荐使用 <a href="https://github.com/hakobera/nvmw">nvmw</a> 或 <a href="https://github.com/coreybutler/nvm-windows">nvm-windows</a>。不过，nvm-windows 并不是 nvm 的简单移植，他们也没有任何关系。但下面介绍的所有命令，都可以在 nvm-windows 中运行，nvm是<a href="https://so.csdn.net/so/search?q=node&spm=1001.2101.3001.7020">node</a>的版本管理器，可以方便地安装&amp;切换不同版本的node</strong></p>
-<h2 id="1-安装NVM"><a href="#1-安装NVM" class="headerlink" title="1.安装NVM"></a>1.安装NVM</h2><p><strong>进入NVM-Windows项目发布地址：</strong> <a href="https://github.com/coreybutler/nvm-windows/releases">https://github.com/coreybutler/nvm-windows/releases</a> <strong>，选择最新发行版本<code>nvm-setup.zip</code>下载：</strong></p>
-<p><img src="../images/%E6%90%AD%E5%BB%BAhexo%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/20210531232213538.png" alt="20210531232213538"></p>
+<h2 id="安装NVM"><a href="#安装NVM" class="headerlink" title="安装NVM"></a>安装NVM</h2><p><strong>进入NVM-Windows项目发布地址：</strong> <a href="https://github.com/coreybutler/nvm-windows/releases">https://github.com/coreybutler/nvm-windows/releases</a> <strong>，选择最新发行版本<code>nvm-setup.zip</code>下载：</strong></p>
+<p><img src="/2023/03/29/%E6%90%AD%E5%BB%BAhexo%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/20210531232213538.png" alt="20210531232213538"></p>
 <p><strong>安装需要注意两点</strong></p>
 <p><strong>1、 把电脑上面的node环境先卸载干净（C:\Users\用户名\AppData\Roaming\node下面的文件也要解决干净）</strong></p>
 <p><strong>2、 安装时，建议选择手动安装版，然后疯狂下一步就行，不要尝试改变安装目录。</strong></p>
@@ -5581,9 +5626,9 @@
 <p>第二步：D:/你想放的文件夹名(最好不要中文名)/nodejs</p>
 </blockquote>
 <p><strong>检查安装是否成功</strong></p>
-<p><strong>在搜索栏查找<code>poweshell</code>,选中<code>x86</code>的<code>powershell</code>鼠标右击选择<code>以管理员身份运行</code>。</strong><img src="../images/%E6%90%AD%E5%BB%BAhexo%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/image-20221127134846193.png" alt="image-20221127134846193"></p>
+<p><strong>在搜索栏查找<code>poweshell</code>,选中<code>x86</code>的<code>powershell</code>鼠标右击选择<code>以管理员身份运行</code>。</strong><img src="/2023/03/29/%E6%90%AD%E5%BB%BAhexo%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/image-20221127134846193.png" alt="image-20221127134846193"></p>
 <p><strong>在<code>Powershell</code>下，输入<code>NVM</code>，即可发现安装完成：</strong></p>
-<h2 id="2-配置国内源"><a href="#2-配置国内源" class="headerlink" title="2.配置国内源"></a>2.配置国内源</h2><p><strong>到你<code>NVM</code>安装路径，*打开<code>setting.txt</code>文件（如果没有，则创建即可），更改为：</strong></p>
+<h2 id="配置国内源"><a href="#配置国内源" class="headerlink" title="配置国内源"></a>配置国内源</h2><p><strong>到你<code>NVM</code>安装路径，*打开<code>setting.txt</code>文件（如果没有，则创建即可），更改为：</strong></p>
 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">root: D:\NVM</span><br><span class="line">path: D:\NVM\nodejs</span><br><span class="line">arch: 64</span><br><span class="line">proxy: none</span><br><span class="line">node_mirror: https://npm.taobao.org/mirrors/node/</span><br><span class="line">npm_mirror: https://npm.taobao.org/mirrors/npm/</span><br></pre></td></tr></table></figure>
 
 <p><strong>解释参数：</strong></p>
@@ -5595,19 +5640,19 @@
 <li><strong>node_mirror：node.js的下载源，这里使用的是淘宝源</strong></li>
 <li><strong>npm_mirror：npm的下载源，这里使用的是淘宝源</strong></li>
 </ul>
-<p><img src="../images/%E6%90%AD%E5%BB%BAhexo%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/image-20230331220734968.png" alt="image-20230331220734968"></p>
-<h2 id="3-使用NVM"><a href="#3-使用NVM" class="headerlink" title="3.使用NVM"></a>3.使用NVM</h2><p><strong>在cmd或pwoershell使用命令</strong></p>
+<p><img src="/2023/03/29/%E6%90%AD%E5%BB%BAhexo%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/image-20230331220734968.png" alt="image-20230331220734968"></p>
+<h2 id="使用NVM"><a href="#使用NVM" class="headerlink" title="使用NVM"></a>使用NVM</h2><p><strong>在cmd或pwoershell使用命令</strong></p>
 <figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line">nvm list available</span><br></pre></td></tr></table></figure>
 
-<p><img src="../images/%E6%90%AD%E5%BB%BAhexo%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/image-20220710002047715.png" alt="image-20220710002047715"></p>
+<p><img src="/2023/03/29/%E6%90%AD%E5%BB%BAhexo%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/image-20220710002047715.png" alt="image-20220710002047715"></p>
 <figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="number">2</span>、安装方式 nvm install 版本号</span><br><span class="line">current：当前最新的版本</span><br><span class="line">LTS：稳定版本</span><br><span class="line"></span><br><span class="line">nvm install <span class="number">19.8</span>.<span class="number">1</span> （当前稳定的最新版）</span><br><span class="line"></span><br><span class="line">我安装了两个</span><br><span class="line">nvm install <span class="number">18.13</span>.<span class="number">0</span></span><br><span class="line">nvm install <span class="number">16.15</span>.<span class="number">1</span></span><br><span class="line">使用nvm <span class="built_in">ls</span> 或者 nvm list可以查看安装的不同node版本，*指向的就是当前版本</span><br></pre></td></tr></table></figure>
 
 <h3 id="激活Node-js版本"><a href="#激活Node-js版本" class="headerlink" title="激活Node.js版本"></a>激活Node.js版本</h3><p><strong>我们安装好Node.js以后，需要激活它</strong></p>
 <figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">nvm use <span class="number">16.15</span>.<span class="number">1</span></span><br></pre></td></tr></table></figure>
 
-<h2 id="4-安装Git"><a href="#4-安装Git" class="headerlink" title="4.安装Git"></a>4.安装Git</h2><p><strong>无脑下一步！！！<a href="https://git-scm.com/">Git的官网地址</a></strong> </p>
-<h2 id="5-安装hexo"><a href="#5-安装hexo" class="headerlink" title="5.安装hexo"></a>5.安装hexo</h2><p><strong>先在NVM安装目录内建立2个目录node_cache和node_global</strong></p>
-<p><img src="../images/%E6%90%AD%E5%BB%BAhexo%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/image-20230331224443212.png" alt="image-20230331224443212"></p>
+<h2 id="安装Git"><a href="#安装Git" class="headerlink" title="安装Git"></a>安装Git</h2><p><strong>无脑下一步！！！<a href="https://git-scm.com/">Git的官网地址</a></strong> </p>
+<h2 id="安装hexo"><a href="#安装hexo" class="headerlink" title="安装hexo"></a>安装hexo</h2><p><strong>先在NVM安装目录内建立2个目录node_cache和node_global</strong></p>
+<p><img src="/2023/03/29/%E6%90%AD%E5%BB%BAhexo%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/image-20230331224443212.png" alt="image-20230331224443212"></p>
 <p><strong>输入下面命令</strong></p>
 <figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line">npm config <span class="built_in">set</span> prefix <span class="string">&quot;D:\NVM\node_global&quot;</span></span><br><span class="line">npm config <span class="built_in">set</span> cache <span class="string">&quot;D:\NVM\node_cache&quot;</span></span><br></pre></td></tr></table></figure>
 
@@ -5623,34 +5668,34 @@
 <p><strong>安装好以后，测试一下：</strong></p>
 <figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line">hexo</span><br></pre></td></tr></table></figure>
 
-<p><img src="../images/%E6%90%AD%E5%BB%BAhexo%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/image-20220710004601578.png"></p>
+<p><img src="/2023/03/29/%E6%90%AD%E5%BB%BAhexo%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/image-20220710004601578.png"></p>
 <p><strong>没有出现未知命令，说明安装成功。可以接下来操作了。</strong></p>
 <p><strong>如果出现hexo : 无法加载文件 C:\Program  Files\nodejs\hexo.ps1，因为在此系统上禁止运行脚本。有关详细信息，请参阅 https:/go.micros  oft.com/fwlink/?LinkID=135170 中的 about_Execution_Policies。 所在位置 行:1 字符:  1。</strong></p>
-<p><strong>那是因为你用的是win11系统，你需要在<code>设置-&gt;隐私和安全性-&gt;开发者选项-&gt;允许本地powershell脚本在为签名的情况下运行</code></strong><img src="../images/%E6%90%AD%E5%BB%BAhexo%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/image-20230308210045396.png" alt="image-20230308210045396"></p>
+<p><strong>那是因为你用的是win11系统，你需要在<code>设置-&gt;隐私和安全性-&gt;开发者选项-&gt;允许本地powershell脚本在为签名的情况下运行</code></strong><img src="/2023/03/29/%E6%90%AD%E5%BB%BAhexo%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/image-20230308210045396.png" alt="image-20230308210045396"></p>
 <p><strong>应用之后，重新打开新的powershell，再次输入hexo即可。</strong></p>
-<p><img src="../images/%E6%90%AD%E5%BB%BAhexo%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/image-20230308210149994.png"></p>
-<h2 id="6-创建hexo"><a href="#6-创建hexo" class="headerlink" title="6.创建hexo"></a>6.创建hexo</h2><p><strong>创建你的博客的空白文件夹，然后打开文件夹,我们已经安装好Git，所以我们直接是由鼠标右键的<code>Git Bash Here</code></strong></p>
-<p><img src="../images/%E6%90%AD%E5%BB%BAhexo%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/image-20220710233249939.png" alt="image-20220710233249939"></p>
+<p><img src="/2023/03/29/%E6%90%AD%E5%BB%BAhexo%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/image-20230308210149994.png"></p>
+<h2 id="创建hexo"><a href="#创建hexo" class="headerlink" title="创建hexo"></a>创建hexo</h2><p><strong>创建你的博客的空白文件夹，然后打开文件夹,我们已经安装好Git，所以我们直接是由鼠标右键的<code>Git Bash Here</code></strong></p>
+<p><img src="/2023/03/29/%E6%90%AD%E5%BB%BAhexo%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/image-20220710233249939.png" alt="image-20220710233249939"></p>
 <h3 id="在博客目录内初始化博客"><a href="#在博客目录内初始化博客" class="headerlink" title="在博客目录内初始化博客"></a>在博客目录内初始化博客</h3><p><strong>初始化目录：</strong></p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 进目录之后，在Git bash里面输入下面目录初始化</span></span><br><span class="line">hexo init</span><br></pre></td></tr></table></figure>
 
 <p><strong>初始化后回生成许多文件</strong></p>
-<p><img src="../images/%E6%90%AD%E5%BB%BAhexo%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/image-20230331230347045.png" alt="image-20230331230347045"></p>
+<p><img src="/2023/03/29/%E6%90%AD%E5%BB%BAhexo%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/image-20230331230347045.png" alt="image-20230331230347045"></p>
 <p><strong>输入命令后，它会自动爬取hexo的初始化目录，在国内网络是非常不好的，如果出错需要删除目录内容重新执行命令直到成功。</strong></p>
-<h2 id="7-构建hexo"><a href="#7-构建hexo" class="headerlink" title="7.构建hexo"></a>7.构建hexo</h2><p><strong>初始化Hexo后，其实Hexo就可以使用了；构建Hexo：</strong></p>
+<h2 id="构建hexo"><a href="#构建hexo" class="headerlink" title="构建hexo"></a>构建hexo</h2><p><strong>初始化Hexo后，其实Hexo就可以使用了；构建Hexo：</strong></p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">hexo g</span><br></pre></td></tr></table></figure>
 
-<h2 id="8-启动Hexo内建服务器"><a href="#8-启动Hexo内建服务器" class="headerlink" title="8.启动Hexo内建服务器"></a>8.启动Hexo内建服务器</h2><p><strong>其实，整个<code>public</code>文件就是一个博客了，但是我们还要部署<code>Nginx</code>等网络环境或者使用<code>HBuilderX</code>等根据，启动Web服务器才能用浏览器本地IP(即：<code>127.0.0.1</code>或<code>localhost</code>)加端口进行访问；为了减少麻烦，可以使用Hexo内建服务器：</strong></p>
+<h2 id="启动Hexo内建服务器"><a href="#启动Hexo内建服务器" class="headerlink" title="启动Hexo内建服务器"></a>启动Hexo内建服务器</h2><p><strong>其实，整个<code>public</code>文件就是一个博客了，但是我们还要部署<code>Nginx</code>等网络环境或者使用<code>HBuilderX</code>等根据，启动Web服务器才能用浏览器本地IP(即：<code>127.0.0.1</code>或<code>localhost</code>)加端口进行访问；为了减少麻烦，可以使用Hexo内建服务器：</strong></p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">hexo s</span><br></pre></td></tr></table></figure>
 
-<p><img src="../images/%E6%90%AD%E5%BB%BAhexo%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/image-20220710234306097.png" alt="image-20220710234306097"></p>
-<p><strong>我们可以去<code>127.0.0.1:4000</code>网址看看初始化页面的样子</strong><img src="../images/%E6%90%AD%E5%BB%BAhexo%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/image-20220710234335015.png" alt="image-20220710234335015"></p>
-<h2 id="9-部署Hexo到github"><a href="#9-部署Hexo到github" class="headerlink" title="9.部署Hexo到github"></a>9.部署Hexo到github</h2><p><strong>上述操作，我们已经把<code>Hexo</code>部署在本地；接下来，我们来看看怎么部署到远程平台，部署到远程平台后，公网用户就可以访问了（也就是可以让你小伙伴通过浏览器访问到你的博客）。</strong></p>
-<h3 id="1-创建github仓库"><a href="#1-创建github仓库" class="headerlink" title="1) 创建github仓库"></a>1) 创建github仓库</h3><p><img src="../images/%E6%90%AD%E5%BB%BAhexo%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/image-20230407151939650.png" alt="image-20230407151939650"></p>
+<p><img src="/2023/03/29/%E6%90%AD%E5%BB%BAhexo%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/image-20220710234306097.png" alt="image-20220710234306097"></p>
+<p><strong>我们可以去<code>127.0.0.1:4000</code>网址看看初始化页面的样子</strong><img src="/2023/03/29/%E6%90%AD%E5%BB%BAhexo%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/image-20220710234335015.png" alt="image-20220710234335015"></p>
+<h2 id="部署Hexo到github"><a href="#部署Hexo到github" class="headerlink" title="部署Hexo到github"></a>部署Hexo到github</h2><p><strong>上述操作，我们已经把<code>Hexo</code>部署在本地；接下来，我们来看看怎么部署到远程平台，部署到远程平台后，公网用户就可以访问了（也就是可以让你小伙伴通过浏览器访问到你的博客）。</strong></p>
+<h3 id="创建github仓库"><a href="#创建github仓库" class="headerlink" title="创建github仓库"></a>创建github仓库</h3><p><img src="/2023/03/29/%E6%90%AD%E5%BB%BAhexo%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/image-20230407151939650.png" alt="image-20230407151939650"></p>
 <blockquote>
 <p>需要注意的是作为网站访问的这个仓库，仓库名称一定是，<strong>拥有者名+github.io</strong></p>
 </blockquote>
-<h3 id="2-生成ssh-keys"><a href="#2-生成ssh-keys" class="headerlink" title="2) 生成ssh keys"></a>2) 生成ssh keys</h3><blockquote>
+<h3 id="生成ssh-keys"><a href="#生成ssh-keys" class="headerlink" title="生成ssh keys"></a>生成ssh keys</h3><blockquote>
 <p>在博客文件夹根目录下，右键，调用<strong>git bash here</strong>功能</p>
 </blockquote>
 <p>输入命令，本地生成<strong>ssh keys</strong>  ，有回车按回车，有（y/n）？就输入y</p>
@@ -5660,7 +5705,7 @@
 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">ssh-keygen -t rsa -b 4096 -C &quot;your_email@example.com&quot;</span><br></pre></td></tr></table></figure>
 
 <p><strong>出现这个则生成成功</strong></p>
-<p><img src="../images/%E6%90%AD%E5%BB%BAhexo%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/image-20230407152653491.png" alt="image-20230407152653491"></p>
+<p><img src="/2023/03/29/%E6%90%AD%E5%BB%BAhexo%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/image-20230407152653491.png" alt="image-20230407152653491"></p>
 <blockquote>
 <p>在电脑打开生成公钥的文件夹</p>
 <p><strong>路径：C:/用户/你的用户名/.ssh</strong></p>
@@ -5668,18 +5713,18 @@
 <p>找到后打开id_rsa.pub（默认记事本打开），复制公钥（ctrl+A全选， ctrl+C复制）</p>
 <p>打开github，头像箭头，下拉选项setting（设置）-SSH与GPG keys -new ssh keys（新建ssh秘钥）</p>
 <p>tilte随便起，然后ctrl+V粘贴到key里面</p>
-<p><img src="../images/%E6%90%AD%E5%BB%BAhexo%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/image-20230416135608274.png" alt="image-20230416135608274"></p>
-<h3 id="3）测试是否绑定成功"><a href="#3）测试是否绑定成功" class="headerlink" title="3）测试是否绑定成功"></a>3）测试是否绑定成功</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ssh -T git@github.com</span><br></pre></td></tr></table></figure>
+<p><img src="/2023/03/29/%E6%90%AD%E5%BB%BAhexo%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/image-20230416135608274.png" alt="image-20230416135608274"></p>
+<h3 id="测试是否绑定成功"><a href="#测试是否绑定成功" class="headerlink" title="测试是否绑定成功"></a>测试是否绑定成功</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ssh -T git@github.com</span><br></pre></td></tr></table></figure>
 
-<p><img src="../images/%E6%90%AD%E5%BB%BAhexo%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/image-20230416134842427.png" alt="image-20230416134842427"></p>
+<p><img src="/2023/03/29/%E6%90%AD%E5%BB%BAhexo%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/image-20230416134842427.png" alt="image-20230416134842427"></p>
 <blockquote>
 <p>yes，然后按回车</p>
 <p>出现successfully字样则绑定成功</p>
 </blockquote>
-<h3 id="4）上传博客到github仓库"><a href="#4）上传博客到github仓库" class="headerlink" title="4）上传博客到github仓库"></a>4）上传博客到github仓库</h3><h5 id="修改配置文件"><a href="#修改配置文件" class="headerlink" title="修改配置文件"></a>修改配置文件</h5><p>在创建博客文件夹的根目录下修改-config.yml文件</p>
-<p><img src="../images/%E6%90%AD%E5%BB%BAhexo%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/image-20230407163241369.png" alt="image-20230407163241369"></p>
+<h3 id="上传博客到github仓库"><a href="#上传博客到github仓库" class="headerlink" title="上传博客到github仓库"></a>上传博客到github仓库</h3><h4 id="修改配置文件"><a href="#修改配置文件" class="headerlink" title="修改配置文件"></a>修改配置文件</h4><p>在创建博客文件夹的根目录下修改-config.yml文件</p>
+<p><img src="/2023/03/29/%E6%90%AD%E5%BB%BAhexo%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/image-20230407163241369.png" alt="image-20230407163241369"></p>
 <p>输入时注意冒号后面有空格，然后保存退出</p>
-<h5 id="安装hexo-deployer-git"><a href="#安装hexo-deployer-git" class="headerlink" title="安装hexo-deployer-git"></a>安装hexo-deployer-git</h5><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#注意这些插件是安装在博客目录内的，所以是跟随博客内容一起走的</span></span><br><span class="line"><span class="comment">#这个插件是提供上传git能力</span></span><br><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
+<h4 id="安装hexo-deployer-git"><a href="#安装hexo-deployer-git" class="headerlink" title="安装hexo-deployer-git"></a>安装hexo-deployer-git</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#注意这些插件是安装在博客目录内的，所以是跟随博客内容一起走的</span></span><br><span class="line"><span class="comment">#这个插件是提供上传git能力</span></span><br><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
 
 
 
@@ -5690,21 +5735,30 @@
 
 
 
-<h5 id="博客推送"><a href="#博客推送" class="headerlink" title="博客推送"></a>博客推送</h5><p><strong>在博客目录下命令窗口/终端输入</strong></p>
+<h4 id="博客推送"><a href="#博客推送" class="headerlink" title="博客推送"></a>博客推送</h4><p><strong>在博客目录下命令窗口/终端输入</strong></p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#配置git push的信息</span></span><br><span class="line">git config --global user.email <span class="string">&quot;your_email&quot;</span></span><br><span class="line">git config --global user.name <span class="string">&quot;your_name&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#查看和检查配置的信息</span></span><br><span class="line">git config --list</span><br><span class="line"></span><br><span class="line"><span class="comment"># hexo d就是推送博客到指定的地方(本博客推送的地方是Github)</span></span><br><span class="line">hexo cl &amp;&amp; hexo g &amp;&amp; hexo d</span><br></pre></td></tr></table></figure>
 
 
 
 
 
-<h2 id="10-博客主题"><a href="#10-博客主题" class="headerlink" title="10.博客主题"></a>10.博客主题</h2><p><strong>打开hexo的<a href="https://hexo.io/themes/">主题网站</a></strong></p>
-<p><img src="../images/%E6%90%AD%E5%BB%BAhexo%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/image-20230508003429447.png" alt="image-20230508003429447"></p>
+<h2 id="博客主题"><a href="#博客主题" class="headerlink" title="博客主题"></a>博客主题</h2><p><strong>打开hexo的<a href="https://hexo.io/themes/">主题网站</a></strong></p>
+<p><img src="/2023/03/29/%E6%90%AD%E5%BB%BAhexo%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/image-20230508003429447.png" alt="image-20230508003429447"></p>
 <p><strong>比如打开Ayer这款主题，打开后能看到主题的效果</strong></p>
-<p><img src="../images/%E6%90%AD%E5%BB%BAhexo%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/image-20230508003515559.png" alt="image-20230508003515559"></p>
+<p><img src="/2023/03/29/%E6%90%AD%E5%BB%BAhexo%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/image-20230508003515559.png" alt="image-20230508003515559"></p>
 <p><strong>一般在博客主题内会有github的项目链接或者安装和使用的指南</strong></p>
-<p><img src="../images/%E6%90%AD%E5%BB%BAhexo%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/image-20230508003741044.png" alt="image-20230508003741044"></p>
+<p><img src="/2023/03/29/%E6%90%AD%E5%BB%BAhexo%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/image-20230508003741044.png" alt="image-20230508003741044"></p>
 <p><strong>打开github项目有下面有个README.md的安装教程，其安装步骤我就不一一展示了，按教程来有手就行[doge]</strong></p>
-<p><img src="../images/%E6%90%AD%E5%BB%BAhexo%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/image-20230508003943456.png" alt="image-20230508003943456"></p>
+<p><img src="/2023/03/29/%E6%90%AD%E5%BB%BAhexo%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/image-20230508003943456.png" alt="image-20230508003943456"></p>
+<h2 id="解决图片不显示问题"><a href="#解决图片不显示问题" class="headerlink" title="解决图片不显示问题"></a>解决图片不显示问题</h2><h3 id="更改hexo配置文件"><a href="#更改hexo配置文件" class="headerlink" title="更改hexo配置文件"></a>更改hexo配置文件</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">vim _config.yml <span class="comment">#配置_config.yml里面的post_asset_folder:false 设置为 true 如图</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="/2023/03/29/%E6%90%AD%E5%BB%BAhexo%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/031161b88a660fd50ecc872d942c43fa.png" alt="031161b88a660fd50ecc872d942c43fa"></p>
+<h3 id="安装npm插件"><a href="#安装npm插件" class="headerlink" title="安装npm插件"></a>安装npm插件</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm install https://github.com/CodeFalling/hexo-asset-image --save</span><br></pre></td></tr></table></figure>
+
+<h3 id="修改Typora设置"><a href="#修改Typora设置" class="headerlink" title="修改Typora设置"></a>修改Typora设置</h3><p><strong>打开文件菜单的偏好设置</strong></p>
+<p><img src="/2023/03/29/%E6%90%AD%E5%BB%BAhexo%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/image-20240514232927394.png" alt="image-20240514232927394"></p>
+<p><strong>打开图像选项，设置如下图</strong></p>
+<p><img src="/2023/03/29/%E6%90%AD%E5%BB%BAhexo%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/image-20240514233130356.png" alt="image-20240514233130356"></p>
 ]]></content>
       <categories>
         <category>windows</category>
