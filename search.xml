@@ -41,6 +41,12 @@
 <figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line">ffmpeg.exe <span class="literal">-i</span> <span class="number">1</span>.m4s <span class="literal">-i</span> <span class="number">2</span>.m4s <span class="literal">-codec</span> <span class="built_in">copy</span> output.mp4</span><br></pre></td></tr></table></figure>
 
 ]]></content>
+      <categories>
+        <category>windows</category>
+      </categories>
+      <tags>
+        <tag>工具</tag>
+      </tags>
   </entry>
   <entry>
     <title>科学上网</title>
