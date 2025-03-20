@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 5.4.2">
+<link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha256-CTSx/A06dm1B063156EVh15m6Y67pAjZZaQc89LLSrU=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.18.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"mac"},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"disqusjs","storage":true,"lazyload":false,"nav":{"disqusjs":{"text":"Disqus","order":-2},"valine":{"order":-1}},"activeClass":"disqusjs"},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":true}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="前言一、JDK是什么？ 1、JDK : Java Development ToolKit(Java开发工具包)。JDK是整个JAVA的核心，包括了Java运行环境（Java Runtime Envirnment），一堆Java工具（javac&#x2F;java&#x2F;jdb等）和Java基础的类库（即Java API 包括rt.jar）。 最主流的JDK是Oracle公司发布的JDK，除了Oracle之外，还有">
+<meta property="og:type" content="article">
+<meta property="og:title" content="安装和切换多版本java (windows篇)">
+<meta property="og:url" content="http://example.com/2023/04/10/java%E5%AE%89%E8%A3%85%E5%92%8C%E5%88%87%E6%8D%A2%E5%A4%9A%E7%89%88%E6%9C%AC-windows/index.html">
+<meta property="og:site_name" content="ienAの博客">
+<meta property="og:description" content="前言一、JDK是什么？ 1、JDK : Java Development ToolKit(Java开发工具包)。JDK是整个JAVA的核心，包括了Java运行环境（Java Runtime Envirnment），一堆Java工具（javac&#x2F;java&#x2F;jdb等）和Java基础的类库（即Java API 包括rt.jar）。 最主流的JDK是Oracle公司发布的JDK，除了Oracle之外，还有">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/2023/04/10/java%E5%AE%89%E8%A3%85%E5%92%8C%E5%88%87%E6%8D%A2%E5%A4%9A%E7%89%88%E6%9C%AC-windows/image-20230517175753265.png">
+<meta property="og:image" content="http://example.com/2023/04/10/java%E5%AE%89%E8%A3%85%E5%92%8C%E5%88%87%E6%8D%A2%E5%A4%9A%E7%89%88%E6%9C%AC-windows/image-20230517175644642.png">
+<meta property="article:published_time" content="2023-04-10T06:00:27.000Z">
+<meta property="article:modified_time" content="2025-03-19T03:01:51.102Z">
+<meta property="article:author" content="ienA">
+<meta property="article:tag" content="工具">
+<meta property="article:tag" content="环境">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2023/04/10/java%E5%AE%89%E8%A3%85%E5%92%8C%E5%88%87%E6%8D%A2%E5%A4%9A%E7%89%88%E6%9C%AC-windows/image-20230517175753265.png">
+
+
+<link rel="canonical" href="http://example.com/2023/04/10/java%E5%AE%89%E8%A3%85%E5%92%8C%E5%88%87%E6%8D%A2%E5%A4%9A%E7%89%88%E6%9C%AC-windows/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2023/04/10/java%E5%AE%89%E8%A3%85%E5%92%8C%E5%88%87%E6%8D%A2%E5%A4%9A%E7%89%88%E6%9C%AC-windows/","path":"2023/04/10/java安装和切换多版本-windows/","title":"安装和切换多版本java (windows篇)"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>安装和切换多版本java (windows篇) | ienAの博客</title>
+  
+
+
+
+
+
+
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/gh/theme-next/theme-next-needmoreshare2@1/needsharebutton.min.css"><style>
+#needsharebutton-postbottom {
+  cursor: pointer;
+  height: 26px;
+  margin-top: 10px;
+  position: relative;
+}
+#needsharebutton-postbottom .btn {
+  border: 1px solid $btn-default-border-color;
+  border-radius: 3px;
+  display: initial;
+  padding: 1px 4px;
+}
+</style><style>
+#needsharebutton-float {
+  bottom: 88px;
+  cursor: pointer;
+  left: -8px;
+  position: fixed;
+  z-index: 9999;
+}
+#needsharebutton-float .btn {
+  border: 1px solid $btn-default-border-color;
+  border-radius: 4px;
+  padding: 0 10px 0 14px;
+}
+</style>
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+    <script src="https://fastly.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://fastly.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css">
+    <script src=" https://cdn.jsdelivr.net/npm/jquery-ui@1.13.2/dist/jquery-ui.min.js "></script>
+    <script rel="preload" src="https://fastly.jsdelivr.net/gh/AienH/blog_plugin@master/APlayer/dist/APlayer.min.js"></script>
+    <script rel="preload" src="https://fastly.jsdelivr.net/gh/AienH/blog_plugin@master/MetingJS/dist/Meting.min.js"></script>
+    <link rel="stylesheet" href="https://fastly.jsdelivr.net/gh/AienH/blog_plugin@master/APlayer/dist/APlayer.min.css">
+    <link rel="stylesheet" type="text/css" href="https://fastly.jsdelivr.net/gh/AienH/blog_plugin/live2d/assets/waifu.css"/>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">ienAの博客</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags /categories/ fa-fw"></i>标签</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Windows"><span class="nav-number">2.</span> <span class="nav-text">Windows</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#jvms%E5%B7%A5%E5%85%B7"><span class="nav-number">2.1.</span> <span class="nav-text">jvms工具</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A7%A3%E5%8E%8B%E5%B7%A5%E5%85%B7"><span class="nav-number">2.2.</span> <span class="nav-text">解压工具</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%90%E8%A1%8C%E5%B7%A5%E5%85%B7"><span class="nav-number">2.3.</span> <span class="nav-text">运行工具</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%9D%E5%A7%8B%E5%8C%96%E5%B7%A5%E5%85%B7"><span class="nav-number">2.4.</span> <span class="nav-text">初始化工具</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%8B%E8%BD%BDJDK"><span class="nav-number">2.5.</span> <span class="nav-text">下载JDK</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%85%8D%E7%BD%AEJAVA"><span class="nav-number">2.6.</span> <span class="nav-text">配置JAVA</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%89%8B%E5%8A%A8%E4%B8%8B%E8%BD%BDJDK%E5%8C%85"><span class="nav-number">2.7.</span> <span class="nav-text">手动下载JDK包</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="ienA"
+      src="/images/20230401000222.jpg">
+  <p class="site-author-name" itemprop="name">ienA</p>
+  <div class="site-description" itemprop="description">致力于分享自己学习过程笔记的萌新博主૮(˶ᵔ ᵕ ᵔ˶)ა</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">28</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">24</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="/GG" title="GitHub → GG" rel="noopener me"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/%E4%B8%8D%E7%BB%99%E4%BD%A0%EF%BC%81%EF%BC%81%EF%BC%81" title="E-Mail → 不给你！！！" rel="noopener me"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+    <div class="sidebar-inner sidebar-blogroll">
+      <div class="links-of-blogroll animated">
+        <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
+          链接
+        </div>
+        <ul class="links-of-blogroll-list">
+            <li class="links-of-blogroll-item">
+              <a href="https://julintongxue.github.io/" title="https:&#x2F;&#x2F;julintongxue.github.io" rel="noopener" target="_blank">orangeの博客</a>
+            </li>
+            <li class="links-of-blogroll-item">
+              <a href="https://luiyang08.github.io/" title="https:&#x2F;&#x2F;luiyang08.github.io" rel="noopener" target="_blank">LuiYang</a>
+            </li>
+            <li class="links-of-blogroll-item">
+              <a href="https://iwanlab.com/" title="https:&#x2F;&#x2F;iwanlab.com&#x2F;" rel="noopener" target="_blank">我不是咕咕鸽</a>
+            </li>
+        </ul>
+      </div>
+    </div>
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/04/10/java%E5%AE%89%E8%A3%85%E5%92%8C%E5%88%87%E6%8D%A2%E5%A4%9A%E7%89%88%E6%9C%AC-windows/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/20230401000222.jpg">
+      <meta itemprop="name" content="ienA">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ienAの博客">
+      <meta itemprop="description" content="致力于分享自己学习过程笔记的萌新博主૮(˶ᵔ ᵕ ᵔ˶)ა">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="安装和切换多版本java (windows篇) | ienAの博客">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          安装和切换多版本java (windows篇)
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-04-10 14:00:27" itemprop="dateCreated datePublished" datetime="2023-04-10T14:00:27+08:00">2023-04-10</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2025-03-19 11:01:51" itemprop="dateModified" datetime="2025-03-19T11:01:51+08:00">2025-03-19</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/windows/" itemprop="url" rel="index"><span itemprop="name">windows</span></a>
+        </span>
+    </span>
+
+  
+  
+  <span class="post-meta-item">
+    
+    <span class="post-meta-item-icon">
+      <i class="far fa-comment"></i>
+    </span>
+    <span class="post-meta-item-text">Valine：</span>
+  
+    <a title="valine" href="/2023/04/10/java%E5%AE%89%E8%A3%85%E5%92%8C%E5%88%87%E6%8D%A2%E5%A4%9A%E7%89%88%E6%9C%AC-windows/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2023/04/10/java%E5%AE%89%E8%A3%85%E5%92%8C%E5%88%87%E6%8D%A2%E5%A4%9A%E7%89%88%E6%9C%AC-windows/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>2.6k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>2 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p><strong>一、JDK是什么？</strong></p>
+<p>1、JDK : Java Development ToolKit(Java开发工具包)。JDK是整个JAVA的核心，包括了Java运行环境（Java Runtime Envirnment），一堆Java工具（javac/java/jdb等）和Java基础的类库（即Java API 包括rt.jar）。</p>
+<p>最主流的JDK是Oracle公司发布的JDK，除了Oracle之外，还有很多公司和组织都开发了属于自己的JDK，例如国外IBM公司开发了属于自己的JDK，国内淘宝也开发了属于自己的JDK，各个组织开发自己的JDK都是为了在某些方面得到一些提高，以适应自己的需求，比如IBM的JDK据说运行效率就比Oralce的JDK高的多。但不管怎么说，我们还是需要先把基础的Oracle JDK掌握好。</p>
+<p>2、JDK是java开发工具包，在其安装目录下面有五个文件夹、一些描述文件、一个src压缩文件。bin、lib、 jre这四个文件夹起作用。可以看出来JDK包含JRE，而JRE包含JVM。</p>
+<p>·bin:最主要的是编译器(javac.exe)</p>
+<p>·lib：类库（开发中需要使用到的一些jdk提供的一些类）</p>
+<p>·jre:java运行环境（注意：这里的bin、lib文件夹和jre里的bin、lib是不同的）</p>
+<p>· <strong>总的来说JDK是用于java程序的开发,而jre则是只能运行class而没有编译的功能</strong>。</p>
+<p>3、JDK是提供给Java开发人员使用的，其中包含了java的开发工具，也包括了JRE。所以安装了JDK，就不用在单独安装JRE了。</p>
+<p><strong>二、jdk和jre的区别？</strong></p>
+<p>JRE顾名思义是java运行时环境，包含了java虚拟机，java基础类库。是使用java语言编写的程序运行所需要的软件环境，是提供给想运行java程序的用户使用的。</p>
+<p>一句话： jre就是Java程序运行的环境。</p>
+<h1 id="Windows"><a href="#Windows" class="headerlink" title="Windows"></a>Windows</h1><h2 id="jvms工具"><a href="#jvms工具" class="headerlink" title="jvms工具"></a>jvms工具</h2><p>需要用到一个工具jvms</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/ystyle/jvms/">jvms项目地址</a></p>
+<p>打开项目，点击右边<a target="_blank" rel="noopener" href="https://github.com/ystyle/jvms/releases">Releases</a>，下载工具，我下载的是<a target="_blank" rel="noopener" href="https://github.com/ystyle/jvms/releases/download/v2.1.3/jvms_v2.1.3_amd64.zip">jvms_v2.1.3_amd64.zip</a></p>
+<h2 id="解压工具"><a href="#解压工具" class="headerlink" title="解压工具"></a>解压工具</h2><p>解压到你想放置的盘里</p>
+<blockquote>
+<p>例如我放到D盘下，重命名为jvms，路径为D:\jvms</p>
+</blockquote>
+<p>在jvms文件夹里新建两个子文件夹store和download</p>
+<p><img src="/2023/04/10/java%E5%AE%89%E8%A3%85%E5%92%8C%E5%88%87%E6%8D%A2%E5%A4%9A%E7%89%88%E6%9C%AC-windows/image-20230517175753265.png" alt="image-20230517175753265"></p>
+<h2 id="运行工具"><a href="#运行工具" class="headerlink" title="运行工具"></a>运行工具</h2><p>然后以管理员身份运行cmd或者powershell</p>
+<p><img src="/2023/04/10/java%E5%AE%89%E8%A3%85%E5%92%8C%E5%88%87%E6%8D%A2%E5%A4%9A%E7%89%88%E6%9C%AC-windows/image-20230517175644642.png" alt="image-20230517175644642"></p>
+<h2 id="初始化工具"><a href="#初始化工具" class="headerlink" title="初始化工具"></a>初始化工具</h2><p>输入以下命令来初始化jvms配置文件</p>
+<blockquote>
+<p>用 D:\jvms\jvms.exe init –help 命令 在OPTIONS选项中可以看到设置的默认值</p>
+<p>OPTIONS:<br>   –java_home value     the JAVA_HOME location (default: “C:\Program Files\jdk”)<br>   –originalpath value  the jdk download index file url. (default: “<a target="_blank" rel="noopener" href="https://raw.githubusercontent.com/ystyle/jvms/new/jdkdlindex.json&quot;">https://raw.githubusercontent.com/ystyle/jvms/new/jdkdlindex.json&quot;</a>)</p>
+</blockquote>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">D:\jvms\jvms.exe init</span><br></pre></td></tr></table></figure>
+
+<h2 id="下载JDK"><a href="#下载JDK" class="headerlink" title="下载JDK"></a>下载JDK</h2><p>因为是国内网，访问raw.githubusercontent.com一般都会连不上，这时候有两种方法解决</p>
+<p>第一种方法：</p>
+<p>raw.github的ip经常更换，所以我们先去查一下该网址IP，打开<a target="_blank" rel="noopener" href="https://www.ipaddress.com/">IP查询</a>然后输入</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">raw.githubusercontent.com</span><br></pre></td></tr></table></figure>
+
+<p>在今天 2023/05/17 查询得有4个ipv4的地址</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">185.199.108.133</span><br><span class="line">185.199.109.133</span><br><span class="line">185.199.110.133</span><br><span class="line">185.199.111.133</span><br></pre></td></tr></table></figure>
+
+<p>修改hosts文件</p>
+<p>位置：<code>C:\Windows\System32\drivers\etc\hosts</code></p>
+<p>直接在最下面添加上面查到的随便一个IP，保存</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">185.199.108.133 raw.githubusercontent.com</span><br></pre></td></tr></table></figure>
+
+<p>我用这个方法偶尔可以偶尔又不行，我放弃了</p>
+<p>第二种方法：</p>
+<p>直接在搜索引擎搜github国内镜像站，找一找应该能找到能用的，我找到的<a target="_blank" rel="noopener" href="https://kkgithub.com/%EF%BC%8C%E5%9C%A8%E4%BB%8A%E5%A4%A92023/05/17">https://kkgithub.com/，在今天2023/05/17</a> 还能用</p>
+<p>直接把原先的地址中的``raw.githubusercontent<code>换成</code>raw.kkgithub`就行</p>
+<p>或者用cdn加速的github镜像仓库</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#我没有用作者的集成的jdk下载链接，我自己写了一个ZuluJDK（一个OpenJDK的发行版本）的下载链接</span></span><br><span class="line">jvms init  <span class="literal">--originalpath</span> https://fastly.jsdelivr.net/gh/AienH/jvms@master/openjdk.json</span><br><span class="line"></span><br><span class="line"><span class="comment">#列出可供下载的可用 jdk 版本</span></span><br><span class="line">jvms rls</span><br><span class="line"><span class="comment">#这个是列出的版本</span></span><br><span class="line">    <span class="number">1</span>) <span class="number">20.0</span>.<span class="number">1</span></span><br><span class="line">    <span class="number">2</span>) <span class="number">19.0</span>.<span class="number">2</span></span><br><span class="line">    <span class="number">3</span>) <span class="number">17.0</span>.<span class="number">7</span></span><br><span class="line">    <span class="number">4</span>) <span class="number">13.0</span>.<span class="number">14</span></span><br><span class="line">    <span class="number">5</span>) <span class="number">11.0</span>.<span class="number">19</span></span><br><span class="line">    <span class="number">6</span>) <span class="number">8.0</span>.<span class="number">372</span></span><br><span class="line">    <span class="number">7</span>) <span class="number">7.0</span>.<span class="number">352</span></span><br><span class="line">    <span class="number">8</span>) <span class="number">6.0</span>.<span class="number">119</span></span><br><span class="line">    <span class="number">9</span>) <span class="number">21.0</span>.<span class="number">0</span><span class="literal">-ea</span></span><br><span class="line">    <span class="number">10</span>) OpenJDK8U<span class="literal">-jdk_x64_windows_hotspot_8u372b07</span></span><br><span class="line"></span><br><span class="line">use <span class="string">&quot;jvm rls -a&quot;</span> show all the versions</span><br><span class="line"></span><br><span class="line"><span class="keyword">For</span> a complete list, visit https://fastly.jsdelivr.net/gh/AienH/jvms@master/openjdk.json</span><br><span class="line"></span><br><span class="line"><span class="comment">#下载JDK17和JDK11</span></span><br><span class="line">jvms install <span class="number">11.0</span>.<span class="number">19</span></span><br><span class="line">jvms install <span class="number">17.0</span>.<span class="number">7</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#查看下载的jdk版本</span></span><br><span class="line">jvms <span class="built_in">ls</span></span><br></pre></td></tr></table></figure>
+
+<p>下载完后在<code>D:\jvms\store</code>目录下能看到下载的几个不同版本的jdk，在<code>D:\jvms\download</code>目录看到jdk的源码包</p>
+<h2 id="配置JAVA"><a href="#配置JAVA" class="headerlink" title="配置JAVA"></a>配置JAVA</h2><p>在<code>C:\Program Files</code>目录下新建文件夹<code>jdk</code></p>
+<p>把<code>D:\jvms\store</code>目录下的所有jdk版本复制到<code>C:\Program Files\jdk</code>目录下</p>
+<p>然后切换想要使用的ava版本</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#使用jdk17</span></span><br><span class="line">jvms <span class="keyword">switch</span> <span class="number">17.0</span>.<span class="number">7</span></span><br></pre></td></tr></table></figure>
+
+<p>测试环境是否成功</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java <span class="literal">--version</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="手动下载JDK包"><a href="#手动下载JDK包" class="headerlink" title="手动下载JDK包"></a>手动下载JDK包</h2><p>不通过<code>jvms install</code>在线下载</p>
+<p>直接把自己下载好的jdk包解压到<code>D:\jvms\store</code>和<code>C:\Program Files\jdk</code>目录下</p>
+<p>例如：添加<code>jdk 17.0.1</code></p>
+<ol>
+<li>将 jdk 主文件夹复制到<code>jvms/store</code></li>
+<li>将文件夹重命名为<code>17.0.1</code></li>
+<li><code>jvms list</code>检查是否显示存在</li>
+</ol>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer"><div class="post-widgets">
+      <div id="needsharebutton-postbottom">
+        <span class="btn">
+          <i class="fa fa-share-alt" aria-hidden="true"></i>
+        </span>
+      </div>
+    </div>
+          <div class="post-tags">
+              <a href="/tags/%E5%B7%A5%E5%85%B7/" rel="tag"><i class="fa fa-tag"></i> 工具</a>
+              <a href="/tags/%E7%8E%AF%E5%A2%83/" rel="tag"><i class="fa fa-tag"></i> 环境</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2023/04/10/java%E5%AE%89%E8%A3%85%E5%92%8C%E5%88%87%E6%8D%A2%E5%A4%9A%E7%89%88%E6%9C%AC-linux/" rel="prev" title="安装和切换多版本java (linux篇)">
+                  <i class="fa fa-angle-left"></i> 安装和切换多版本java (linux篇)
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2023/04/12/%E5%88%B6%E4%BD%9Cdebian%E7%9A%84rootfs/" rel="next" title="制作debian的rootfs">
+                  制作debian的rootfs <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+      <div class="tabs tabs-comment">
+        <ul class="nav-tabs">
+            <li class="tab"><a href="#comment-disqusjs">Disqus</a></li>
+            <li class="tab"><a href="#comment-valine">valine</a></li>
+        </ul>
+        <div class="tab-content">
+            <div class="tab-pane disqusjs" id="comment-disqusjs">
+              
+  <div class="comments disqusjs-container">
+    <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+  </div>
+  
+            </div>
+            <div class="tab-pane valine" id="comment-valine">
+              <div class="comments" id="valine-comments"></div>
+            </div>
+        </div>
+      </div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2025</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">ienA</span>
+  </div>
+
+<!--<script type="text/javascript" src="/js/click_love.js"></script>
+
+-->
+    </div>
+  </footer>
+
+
+
+  
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+  <a href="https://github.com/AienH" class="github-corner" title="在 GitHub 上关注我" aria-label="在 GitHub 上关注我" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script size="300" alpha="0.6" zIndex="-1" src="https://cdnjs.cloudflare.com/ajax/libs/ribbon.js/1.0.2/ribbon.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script><script src="/js/pjax.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+
+
+  
+
+
+
+
+<div id="needsharebutton-float">
+      <span class="btn">
+        <i class="fa fa-share-alt" aria-hidden="true"></i>
+      </span>
+    </div>
+  <script src="//cdn.jsdelivr.net/gh/theme-next/theme-next-needmoreshare2@1/needsharebutton.min.js"></script>
+  <script>
+      pbOptions = {};
+        pbOptions.iconStyle = "default";
+        pbOptions.boxForm = "horizontal";
+        pbOptions.position = "bottomCenter";
+        pbOptions.networks = "Wechat,QQZone,Weibo,Douban,Twitter,Facebook";
+      new needShareButton('#needsharebutton-postbottom', pbOptions);
+      flOptions = {};
+        flOptions.iconStyle = "default";
+        flOptions.boxForm = "horizontal";
+        flOptions.position = "middleRight";
+        flOptions.networks = "Wechat,QQZone,Weibo,Douban,Twitter,Facebook";
+      new needShareButton('#needsharebutton-float', flOptions);
+  </script>
+
+<script class="next-config" data-name="valine" type="application/json">{"enable":true,"appId":"syB10s5rcgF4v3uTLsEzM9Wk-gzGzoHsz","appKey":"q66MkE73mzIDInf5AjqXW0Pt","serverURLs":"https://syb10s5r.api.lncldglobal.com","placeholder":"输入你的评论\n昵称为必填项目，输入QQ号可以直接获取用户名和头像，并且省去了填写邮箱的麻烦！\n虽然email不是必选，但是填写了email可以收到推送通知哦！","avatar":"hide","meta":["nick","mail","link"],"pageSize":10,"lang":null,"visitor":false,"comment_count":true,"recordIP":false,"enableQQ":false,"requiredFields":[],"el":"#valine-comments","path":"/2023/04/10/java%E5%AE%89%E8%A3%85%E5%92%8C%E5%88%87%E6%8D%A2%E5%A4%9A%E7%89%88%E6%9C%AC-windows/"}</script>
+<script>
+document.addEventListener('page:loaded', () => {
+  NexT.utils.loadComments(CONFIG.valine.el)
+    .then(() => NexT.utils.getScript(
+      'https://fastly.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js',
+      { condition: window.Valine }
+    ))
+    .then(() => {
+      new Valine(CONFIG.valine);
+    });
+});
+</script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/disqusjs/3.0.2/styles/disqusjs.css" integrity="sha256-71XarXwNr1Td27HmZI9zjY+rMzRdush6/glo6VFXp7o=" crossorigin="anonymous">
+
+<script class="next-config" data-name="disqusjs" type="application/json">{"enable":true,"api":"https://disqus.skk.moe/disqus/","apikey":"yca1exawujXgiC2JDBZ1WSfENSBXd2J9IdgXcRKROHKskFK1Z2UAcUCDEg7EnTgF","shortname":"aienh","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/disqusjs/3.0.2/disqusjs.es2015.umd.min.js","integrity":"sha256-okP99ZQKVpIy7+NogAMpGlIQzJa9XKXhIJcFgdju5bU="}}</script>
+<script src="/js/third-party/comments/disqusjs.js"></script>
+
+
+    <meting-js
+    server="netease" 
+    type="playlist"
+    id="8269382559"
+    autoplay="true"
+    volume="0.7"
+    fixed="true" 
+    order="list"
+    preload="metadata"
+    lrc-type="0">
+    </meting-js>
+    
+
+    <div class="waifu">
+        <div class="waifu-tips"></div>
+        <canvas id="live2d" class="live2d"></canvas>
+        <div class="waifu-tool">
+            <span class="fui-home"></span>
+            <span class="fui-chat"></span>
+            <span class="fui-eye"></span>
+            <span class="fui-user"></span>
+            <span class="fui-photo"></span>
+            <span class="fui-info-circle"></span>
+            <span class="fui-cross"></span>
+        </div>    
+
+    <script src="https://fastly.jsdelivr.net/gh/AienH/blog_plugin/live2d/assets/waifu-tips.js"></script>
+    <script src="https://fastly.jsdelivr.net/gh/AienH/blog_plugin/live2d/assets/live2d.js"></script>
+
+    <script type="text/javascript">
+        live2d_settings['modelId'] = 1;
+        live2d_settings['modelTexturesId'] = 87;
+        initModel("https://fastly.jsdelivr.net/gh/AienH/blog_plugin/live2d/assets/waifu-tips.json")
+    </script>
+
+
+</body>
+</html>
