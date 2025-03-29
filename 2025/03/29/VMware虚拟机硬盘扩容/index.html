@@ -19,12 +19,12 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.18.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"mac"},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"disqusjs","storage":true,"lazyload":false,"nav":{"disqusjs":{"text":"Disqus","order":-2},"valine":{"order":-1}},"activeClass":"disqusjs"},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":true}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="VMware虚拟机硬盘扩容虚拟机硬盘扩容之前必须先将所有的快照全部都删除干净才可以选择扩容，否则按钮是灰色的无法扩容。快照都删除干净之后关闭虚拟机，点击【编辑此虚拟机设置】  此时可以点击【扩展】  输入要设置的最大磁盘空间大小，这里我扩展到100G，增加了40G的磁盘空间  点击扩展后，即可开机。 查看系统初始磁盘空间开机后查看磁盘空间，**&#x2F;加&#x2F;home一共60G** 1df -h  bash">
+    <meta name="description" content="VMware虚拟机硬盘扩容虚拟机硬盘扩容之前必须先将所有的快照全部都删除干净才可以选择扩容，否则按钮是灰色的无法扩容。快照都删除干净之后关闭虚拟机，点击【编辑此虚拟机设置】  此时可以点击【扩展】  输入要设置的最大磁盘空间大小，这里我扩展到100G，增加了40G的磁盘空间  点击扩展后，即可开机。 查看系统初始磁盘空间开机后查看磁盘空间，&#x2F;加&#x2F;home一共60G 1df -h   查看硬盘信息">
 <meta property="og:type" content="article">
 <meta property="og:title" content="VMware虚拟机硬盘扩容">
 <meta property="og:url" content="http://example.com/2025/03/29/VMware%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%A1%AC%E7%9B%98%E6%89%A9%E5%AE%B9/index.html">
 <meta property="og:site_name" content="ienAの博客">
-<meta property="og:description" content="VMware虚拟机硬盘扩容虚拟机硬盘扩容之前必须先将所有的快照全部都删除干净才可以选择扩容，否则按钮是灰色的无法扩容。快照都删除干净之后关闭虚拟机，点击【编辑此虚拟机设置】  此时可以点击【扩展】  输入要设置的最大磁盘空间大小，这里我扩展到100G，增加了40G的磁盘空间  点击扩展后，即可开机。 查看系统初始磁盘空间开机后查看磁盘空间，**&#x2F;加&#x2F;home一共60G** 1df -h  bash">
+<meta property="og:description" content="VMware虚拟机硬盘扩容虚拟机硬盘扩容之前必须先将所有的快照全部都删除干净才可以选择扩容，否则按钮是灰色的无法扩容。快照都删除干净之后关闭虚拟机，点击【编辑此虚拟机设置】  此时可以点击【扩展】  输入要设置的最大磁盘空间大小，这里我扩展到100G，增加了40G的磁盘空间  点击扩展后，即可开机。 查看系统初始磁盘空间开机后查看磁盘空间，&#x2F;加&#x2F;home一共60G 1df -h   查看硬盘信息">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/2025/03/29/VMware%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%A1%AC%E7%9B%98%E6%89%A9%E5%AE%B9/20250329201158.png">
 <meta property="og:image" content="http://example.com/2025/03/29/VMware%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%A1%AC%E7%9B%98%E6%89%A9%E5%AE%B9/20250329205912.jpg">
@@ -42,7 +42,7 @@
 <meta property="og:image" content="http://example.com/2025/03/29/VMware%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%A1%AC%E7%9B%98%E6%89%A9%E5%AE%B9/20250329203446.png">
 <meta property="og:image" content="http://example.com/2025/03/29/VMware%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%A1%AC%E7%9B%98%E6%89%A9%E5%AE%B9/20250329203517.png">
 <meta property="article:published_time" content="2025-03-29T11:19:30.000Z">
-<meta property="article:modified_time" content="2025-03-29T15:51:11.033Z">
+<meta property="article:modified_time" content="2025-03-29T16:09:07.859Z">
 <meta property="article:author" content="ienA">
 <meta property="article:tag" content="VMware">
 <meta property="article:tag" content="扩容">
@@ -296,9 +296,15 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">发表于</span>
-      
 
-      <time title="创建时间：2025-03-29 19:19:30 / 修改时间：23:51:11" itemprop="dateCreated datePublished" datetime="2025-03-29T19:19:30+08:00">2025-03-29</time>
+      <time title="创建时间：2025-03-29 19:19:30" itemprop="dateCreated datePublished" datetime="2025-03-29T19:19:30+08:00">2025-03-29</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2025-03-30 00:09:07" itemprop="dateModified" datetime="2025-03-30T00:09:07+08:00">2025-03-30</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -331,7 +337,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>897</span>
+      <span>865</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
@@ -355,19 +361,19 @@
 <p>输入要设置的最大磁盘空间大小，这里我扩展到<strong>100G</strong>，增加了<strong>40G</strong>的磁盘空间</p>
 <p><img src="/2025/03/29/VMware%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%A1%AC%E7%9B%98%E6%89%A9%E5%AE%B9/20250329205957.jpg" alt="20250329205957"></p>
 <p>点击扩展后，即可开机。</p>
-<h3 id="查看系统初始磁盘空间"><a href="#查看系统初始磁盘空间" class="headerlink" title="查看系统初始磁盘空间"></a>查看系统初始磁盘空间</h3><p>开机后查看磁盘空间，**<code>/</code><strong>加</strong><code>/home</code><strong>一共</strong>60G**</p>
+<h3 id="查看系统初始磁盘空间"><a href="#查看系统初始磁盘空间" class="headerlink" title="查看系统初始磁盘空间"></a>查看系统初始磁盘空间</h3><p>开机后查看磁盘空间，<code>/</code>加<code>/home</code>一共<strong>60G</strong></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">df</span> -h</span><br></pre></td></tr></table></figure>
 
-<p><img src="/2025/03/29/VMware%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%A1%AC%E7%9B%98%E6%89%A9%E5%AE%B9/20250329201630.png" alt="20250329201630">bash</p>
+<p><img src="/2025/03/29/VMware%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%A1%AC%E7%9B%98%E6%89%A9%E5%AE%B9/20250329201630.png" alt="20250329201630"></p>
 <p>查看硬盘信息</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fdisk -l</span><br></pre></td></tr></table></figure>
 
 <p><img src="/2025/03/29/VMware%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%A1%AC%E7%9B%98%E6%89%A9%E5%AE%B9/20250329201741.png" alt="20250329201741"></p>
 <h3 id="使用管理磁盘工具"><a href="#使用管理磁盘工具" class="headerlink" title="使用管理磁盘工具"></a>使用管理磁盘工具</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fdisk /dev/sda</span><br></pre></td></tr></table></figure>
 
-<p>输入**<code>m</code><strong>，查看帮助<br>输入</strong><code>n</code><strong>，创建新分区<br>输入</strong><code>p</code>** ，查看当前分区表，在原有的1和2分区下添加3分区<br>p之后的东西都选择为默认<strong>【3次回车即可】</strong></p>
+<p>输入<code>m</code>，查看帮助<br>输入<code>n</code>，创建新分区<br>输入<code>p</code> ，查看当前分区表，在原有的<strong>1和2</strong>分区下添加<strong>3</strong>分区<br>p之后的东西都选择为默认<strong>【3次回车即可】</strong></p>
 <p><img src="/2025/03/29/VMware%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%A1%AC%E7%9B%98%E6%89%A9%E5%AE%B9/20250329202405.png" alt="20250329202405"></p>
-<p>再输入**<code>t</code><strong>，<br>分区号根据默认输入</strong>3<strong>，<br>Hex代码输入</strong>8e<strong>，将分区的类型更改为</strong>Linux LVM**<br>输入<strong>w</strong>保存退出<br><img src="/2025/03/29/VMware%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%A1%AC%E7%9B%98%E6%89%A9%E5%AE%B9/20250329202553.png" alt="20250329202553"></p>
+<p>再输入<code>t</code>，<br>分区号根据默认输入<strong>3</strong>，<br>Hex代码输入<strong>8e</strong>，将分区的类型更改为<strong>Linux LVM</strong><br>输入<strong>w</strong>保存退出<br><img src="/2025/03/29/VMware%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%A1%AC%E7%9B%98%E6%89%A9%E5%AE%B9/20250329202553.png" alt="20250329202553"></p>
 <p>然后<strong>reboot重启</strong>，查看是否生效，<strong>不重启的话下一步可能会出错</strong>。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fdisk -l /dev/sda</span><br></pre></td></tr></table></figure>
 
@@ -387,18 +393,18 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pvdisplay</span><br></pre></td></tr></table></figure>
 
 <p><img src="/2025/03/29/VMware%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%A1%AC%E7%9B%98%E6%89%A9%E5%AE%B9/20250329203201.png" alt="20250329203201"></p>
-<p>将**/dev/sda3**添加到centos卷组</p>
+<p> 将<code>/dev/sda3</code>添加到centos卷组</p>
 <blockquote>
-<p>(不知道自己属于什么卷组，输入df -h 查看/dev/mapper/-,例如/dev/mapper/centos-root，则卷组为centos）</p>
+<p>不知道自己属于什么卷组，输入df -h 查看/dev/mapper/，例如/dev/mapper/centos-root，则卷组为centos</p>
 </blockquote>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vgextend centos /dev/sda3</span><br></pre></td></tr></table></figure>
 
 <p><img src="/2025/03/29/VMware%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%A1%AC%E7%9B%98%E6%89%A9%E5%AE%B9/20250329203313.png" alt="20250329203313"></p>
-<p>增加**/dev/mapper/centos-root**大小，增加40GB【根据自己扩展的硬盘大小增加】</p>
+<p>增加<code>/dev/mapper/centos-root</code>大小，增加<strong>40GB</strong>【根据自己扩展的硬盘大小增加】</p>
 <blockquote>
-<p>注意，扩展的硬盘大小，如果报错，说明没有这么大的空间可以扩展，需要减少增加空间，如改成：**<code>lvextend -L +39.9G /dev/mapper/centos-root)</code>**</p>
+<p>注意，扩展的硬盘大小，如果报错，说明没有这么大的空间可以扩展，需要减少增加空间，如改成：<code>lvextend -L +39.9G /dev/mapper/centos-root</code></p>
 </blockquote>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lvextend -L +20G /dev/centos/root</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lvextend -L +40G /dev/centos/root</span><br></pre></td></tr></table></figure>
 
 <p><img src="/2025/03/29/VMware%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%A1%AC%E7%9B%98%E6%89%A9%E5%AE%B9/20250329203419.png" alt="20250329203419"></p>
 <p>最后同步一下系统文件</p>
