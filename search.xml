@@ -4,7 +4,7 @@
     <title>VMware虚拟机硬盘扩容</title>
     <url>/2025/03/29/VMware%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%A1%AC%E7%9B%98%E6%89%A9%E5%AE%B9/</url>
     <content><![CDATA[<h3 id="VMware虚拟机硬盘扩容"><a href="#VMware虚拟机硬盘扩容" class="headerlink" title="VMware虚拟机硬盘扩容"></a>VMware虚拟机硬盘扩容</h3><p>虚拟机硬盘扩容之前必须先将所有的快照全部都删除干净才可以选择扩容，否则按钮是灰色的无法扩容。<br>快照都删除干净之后关闭虚拟机，点击<strong>【编辑此虚拟机设置】</strong></p>
-<p><img src="/2025/03/29/VMware%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%A1%AC%E7%9B%98%E6%89%A9%E5%AE%B9/20250329201158.png" alt="20250329201158"></p>
+<p><img src="/2025/03/29/VMware%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%A1%AC%E7%9B%98%E6%89%A9%E5%AE%B9/20250330002153.jpg" alt="20250330002153"></p>
 <p>此时可以点击<strong>【扩展】</strong></p>
 <p><img src="/2025/03/29/VMware%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%A1%AC%E7%9B%98%E6%89%A9%E5%AE%B9/20250329205912.jpg" alt="20250329205912"></p>
 <p>输入要设置的最大磁盘空间大小，这里我扩展到<strong>100G</strong>，增加了<strong>40G</strong>的磁盘空间</p>
