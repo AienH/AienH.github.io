@@ -183,7 +183,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">28</span>
+          <span class="site-state-item-count">30</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -194,7 +194,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">24</span>
+        <span class="site-state-item-count">26</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -237,6 +237,318 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2025/03/29/VMware%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%A1%AC%E7%9B%98%E6%89%A9%E5%AE%B9/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/20230401000222.jpg">
+      <meta itemprop="name" content="ienA">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ienAの博客">
+      <meta itemprop="description" content="致力于分享自己学习过程笔记的萌新博主૮(˶ᵔ ᵕ ᵔ˶)ა">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | ienAの博客">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2025/03/29/VMware%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%A1%AC%E7%9B%98%E6%89%A9%E5%AE%B9/" class="post-title-link" itemprop="url">VMware虚拟机硬盘扩容</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2025-03-29 19:19:30 / 修改时间：23:33:03" itemprop="dateCreated datePublished" datetime="2025-03-29T19:19:30+08:00">2025-03-29</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/linux/" itemprop="url" rel="index"><span itemprop="name">linux</span></a>
+        </span>
+    </span>
+
+  
+  
+  <span class="post-meta-item">
+    
+    <span class="post-meta-item-icon">
+      <i class="far fa-comment"></i>
+    </span>
+    <span class="post-meta-item-text">Valine：</span>
+  
+    <a title="valine" href="/2025/03/29/VMware%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%A1%AC%E7%9B%98%E6%89%A9%E5%AE%B9/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2025/03/29/VMware%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%A1%AC%E7%9B%98%E6%89%A9%E5%AE%B9/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>897</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>1 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h3 id="VMware虚拟机硬盘扩容"><a href="#VMware虚拟机硬盘扩容" class="headerlink" title="VMware虚拟机硬盘扩容"></a>VMware虚拟机硬盘扩容</h3><p>虚拟机硬盘扩容之前必须先将所有的快照全部都删除干净才可以选择扩容，否则按钮是灰色的无法扩容。<br>快照都删除干净之后关闭虚拟机，点击<strong>【编辑此虚拟机设置】</strong></p>
+<p><img src="/2025/03/29/VMware%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%A1%AC%E7%9B%98%E6%89%A9%E5%AE%B9/20250329201158.png" alt="20250329201158"></p>
+<p>此时可以点击<strong>【扩展】</strong></p>
+<p><img src="/2025/03/29/VMware%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%A1%AC%E7%9B%98%E6%89%A9%E5%AE%B9/20250329205912.jpg" alt="20250329205912"></p>
+<p>输入要设置的最大磁盘空间大小，这里我扩展到<strong>100G</strong>，增加了<strong>40G</strong>的磁盘空间</p>
+<p><img src="/2025/03/29/VMware%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%A1%AC%E7%9B%98%E6%89%A9%E5%AE%B9/20250329205957.jpg" alt="20250329205957"></p>
+<p>点击扩展后，即可开机。</p>
+<h3 id="查看系统初始磁盘空间"><a href="#查看系统初始磁盘空间" class="headerlink" title="查看系统初始磁盘空间"></a>查看系统初始磁盘空间</h3><p>开机后查看磁盘空间，**<code>/</code><strong>加</strong><code>/home</code><strong>一共</strong>60G**</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">df</span> -h</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2025/03/29/VMware%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%A1%AC%E7%9B%98%E6%89%A9%E5%AE%B9/_20250329201630.png" alt="_20250329201630">bash</p>
+<p>查看硬盘信息</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fdisk -l</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2025/03/29/VMware%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%A1%AC%E7%9B%98%E6%89%A9%E5%AE%B9/_20250329201741.png" alt="_20250329201741"></p>
+<h3 id="使用管理磁盘工具"><a href="#使用管理磁盘工具" class="headerlink" title="使用管理磁盘工具"></a>使用管理磁盘工具</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fdisk /dev/sda</span><br></pre></td></tr></table></figure>
+
+<p>输入**<code>m</code><strong>，查看帮助<br>输入</strong><code>n</code><strong>，创建新分区<br>输入</strong><code>p</code>** ，查看当前分区表，在原有的1和2分区下添加3分区<br>p之后的东西都选择为默认<strong>【3次回车即可】</strong></p>
+<p><img src="/2025/03/29/VMware%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%A1%AC%E7%9B%98%E6%89%A9%E5%AE%B9/_20250329202405.png" alt="_20250329202405"></p>
+<p>再输入**<code>t</code><strong>，<br>分区号根据默认输入</strong>3<strong>，<br>Hex代码输入</strong>8e<strong>，将分区的类型更改为</strong>Linux LVM**<br>输入<strong>w</strong>保存退出<br><img src="/2025/03/29/VMware%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%A1%AC%E7%9B%98%E6%89%A9%E5%AE%B9/_20250329202553.png" alt="_20250329202553"></p>
+<p>然后<strong>reboot重启</strong>，查看是否生效，<strong>不重启的话下一步可能会出错</strong>。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fdisk -l /dev/sda</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2025/03/29/VMware%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%A1%AC%E7%9B%98%E6%89%A9%E5%AE%B9/_20250329202859.png" alt="_20250329202859"></p>
+<h3 id="开始扩容"><a href="#开始扩容" class="headerlink" title="开始扩容"></a>开始扩容</h3><p>将创建的磁盘分区格式化</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkfs -t ext3 /dev/sda3</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2025/03/29/VMware%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%A1%AC%E7%9B%98%E6%89%A9%E5%AE%B9/20250329211646.jpg" alt="20250329211646"></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pvcreate /dev/sda3</span><br></pre></td></tr></table></figure>
+
+<p>输入<strong>y</strong></p>
+<blockquote>
+<p>注意，在前面步骤中，将磁盘的类型转化为Linux LVM之后才能使用pvcreate操作</p>
+</blockquote>
+<p><img src="/2025/03/29/VMware%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%A1%AC%E7%9B%98%E6%89%A9%E5%AE%B9/_20250329203124.png" alt="_20250329203124"></p>
+<p>可以查看到新的物理卷</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pvdisplay</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2025/03/29/VMware%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%A1%AC%E7%9B%98%E6%89%A9%E5%AE%B9/_20250329203201.png" alt="_20250329203201"></p>
+<p>将**/dev/sda3**添加到centos卷组</p>
+<blockquote>
+<p>(不知道自己属于什么卷组，输入df -h 查看/dev/mapper/-,例如/dev/mapper/centos-root，则卷组为centos）</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vgextend centos /dev/sda3</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2025/03/29/VMware%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%A1%AC%E7%9B%98%E6%89%A9%E5%AE%B9/_20250329203313.png" alt="_20250329203313"></p>
+<p>增加**/dev/mapper/centos-root**大小，增加40GB【根据自己扩展的硬盘大小增加】</p>
+<blockquote>
+<p>注意，扩展的硬盘大小，如果报错，说明没有这么大的空间可以扩展，需要减少增加空间，如改成：**<code>lvextend -L +39.9G /dev/mapper/centos-root)</code>**</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lvextend -L +20G /dev/centos/root</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2025/03/29/VMware%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%A1%AC%E7%9B%98%E6%89%A9%E5%AE%B9/_20250329203419.png" alt="_20250329203419"></p>
+<p>最后同步一下系统文件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">xfs_growfs /dev/mapper/centos-root</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2025/03/29/VMware%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%A1%AC%E7%9B%98%E6%89%A9%E5%AE%B9/_20250329203446.png" alt="_20250329203446"></p>
+<p>查看扩容结果【每个人扩展的硬盘空间大小不一样那么显示的大小就不一样】</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">df</span> -h</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2025/03/29/VMware%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%A1%AC%E7%9B%98%E6%89%A9%E5%AE%B9/_20250329203517.png" alt="_20250329203517"></p>
+<p>扩展完啦！！！</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2025/03/29/linux%E4%B8%8A%E5%AE%89%E8%A3%85docker/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/20230401000222.jpg">
+      <meta itemprop="name" content="ienA">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ienAの博客">
+      <meta itemprop="description" content="致力于分享自己学习过程笔记的萌新博主૮(˶ᵔ ᵕ ᵔ˶)ა">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | ienAの博客">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2025/03/29/linux%E4%B8%8A%E5%AE%89%E8%A3%85docker/" class="post-title-link" itemprop="url">linux上安装docker</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2025-03-29 19:17:36 / 修改时间：19:55:52" itemprop="dateCreated datePublished" datetime="2025-03-29T19:17:36+08:00">2025-03-29</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/linux/" itemprop="url" rel="index"><span itemprop="name">linux</span></a>
+        </span>
+    </span>
+
+  
+  
+  <span class="post-meta-item">
+    
+    <span class="post-meta-item-icon">
+      <i class="far fa-comment"></i>
+    </span>
+    <span class="post-meta-item-text">Valine：</span>
+  
+    <a title="valine" href="/2025/03/29/linux%E4%B8%8A%E5%AE%89%E8%A3%85docker/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2025/03/29/linux%E4%B8%8A%E5%AE%89%E8%A3%85docker/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>2.5k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>2 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h3 id="centos下安装docker"><a href="#centos下安装docker" class="headerlink" title="centos下安装docker"></a>centos下安装docker</h3><blockquote>
+<p>其他系统参照如下文档</p>
+<p><a target="_blank" rel="noopener" href="https://docs.docker.com/engine/install/centos/">https://docs.docker.com/engine/install/centos/</a></p>
+</blockquote>
+<h4 id="移除以前docker相关包"><a href="#移除以前docker相关包" class="headerlink" title="移除以前docker相关包"></a>移除以前docker相关包</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">sudo yum remove docker \</span><br><span class="line">                  docker-client \</span><br><span class="line">                  docker-client-latest \</span><br><span class="line">                  docker-common \</span><br><span class="line">                  docker-latest \</span><br><span class="line">                  docker-latest-logrotate \</span><br><span class="line">                  docker-logrotate \</span><br><span class="line">                  docker-engine</span><br></pre></td></tr></table></figure>
+
+<h4 id="配置yum源"><a href="#配置yum源" class="headerlink" title="配置yum源"></a>配置yum源</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo yum install -y yum-utils device-mapper-persistent-data lvm2</span><br><span class="line">sudo yum-config-manager \</span><br><span class="line">--add-repo \</span><br><span class="line">http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo</span><br></pre></td></tr></table></figure>
+
+<h4 id="安装docker"><a href="#安装docker" class="headerlink" title="安装docker"></a>安装docker</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo yum install -y docker-ce docker-ce-cli containerd.io</span><br></pre></td></tr></table></figure>
+
+<h4 id="启动"><a href="#启动" class="headerlink" title="启动"></a>启动</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl <span class="built_in">enable</span> docker --now</span><br></pre></td></tr></table></figure>
+
+<h4 id="配置加速"><a href="#配置加速" class="headerlink" title="配置加速"></a>配置加速</h4><blockquote>
+<p>阿里云发公告，调整镜像加速器功能的使用范围，仅限阿里云用户，在支持公网访问的阿里云产品上使用该镜像加速能力。所以现在的镜像的加速基本挂了，下面是我找到目前（2025/3/29）还能使用的镜像加速网址。</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">sudo <span class="built_in">mkdir</span> -p /etc/docker</span><br><span class="line">sudo <span class="built_in">tee</span> /etc/docker/daemon.json &lt;&lt;-<span class="string">&#x27;EOF&#x27;</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="string">&quot;registry-mirrors&quot;</span>: [</span><br><span class="line">	  <span class="string">&quot;https://proxy.1panel.live&quot;</span>,</span><br><span class="line">	  <span class="string">&quot;https://docker.1panel.top&quot;</span>,</span><br><span class="line">	  <span class="string">&quot;https://docker.m.daocloud.io&quot;</span>,</span><br><span class="line">	  <span class="string">&quot;https://docker.1ms.run&quot;</span>,</span><br><span class="line">	  <span class="string">&quot;https://docker.ketches.cn&quot;</span>],</span><br><span class="line">  <span class="string">&quot;exec-opts&quot;</span>: [<span class="string">&quot;native.cgroupdriver=systemd&quot;</span>],</span><br><span class="line">  <span class="string">&quot;log-driver&quot;</span>: <span class="string">&quot;json-file&quot;</span>,</span><br><span class="line">  <span class="string">&quot;log-opts&quot;</span>: &#123;</span><br><span class="line">    <span class="string">&quot;max-size&quot;</span>: <span class="string">&quot;100m&quot;</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="string">&quot;storage-driver&quot;</span>: <span class="string">&quot;overlay2&quot;</span></span><br><span class="line">&#125;</span><br><span class="line">EOF</span><br><span class="line">sudo systemctl daemon-reload</span><br><span class="line">sudo systemctl restart docker</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="ubuntu下安装docker"><a href="#ubuntu下安装docker" class="headerlink" title="ubuntu下安装docker"></a>ubuntu下安装docker</h3><h4 id="配置apt源"><a href="#配置apt源" class="headerlink" title="配置apt源"></a>配置apt源</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#安装必要支持</span></span><br><span class="line">sudo apt install</span><br><span class="line">apt-transport-https ca-certificates curl software-properties-common gnupg lsb-release</span><br><span class="line"></span><br><span class="line"><span class="comment">#添加docker的GPG KEY</span></span><br><span class="line">curl -fsSL https://mirrors.aliyun.com/docker-ce/linux/ubuntu/gpg | sudo gpg</span><br><span class="line">--dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg</span><br><span class="line"></span><br><span class="line"><span class="comment">#添加apt源</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;deb [arch=<span class="subst">$(uname -m)</span> signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://mirrors.aliyun.com/docker-ce/linux/ubuntu <span class="subst">$(lsb_release -cs)</span> stable&quot;</span> | sudo <span class="built_in">tee</span> /etc/apt/sources.list.d/docker.list &gt; /dev/null</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="安装docker-1"><a href="#安装docker-1" class="headerlink" title="安装docker"></a>安装docker</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install -y docker-ce docker-ce-cli containerd.io</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="启动-1"><a href="#启动-1" class="headerlink" title="启动"></a>启动</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl <span class="built_in">enable</span> docker --now</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="配置加速-1"><a href="#配置加速-1" class="headerlink" title="配置加速"></a>配置加速</h4><blockquote>
+<p>阿里云发公告，调整镜像加速器功能的使用范围，仅限阿里云用户，在支持公网访问的阿里云产品上使用该镜像加速能力。所以现在的镜像的加速基本挂了，下面是我找到目前（2025/3/29）还能使用的镜像加速网址。</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">sudo <span class="built_in">mkdir</span> -p /etc/docker</span><br><span class="line">sudo <span class="built_in">tee</span> /etc/docker/daemon.json &lt;&lt;-<span class="string">&#x27;EOF&#x27;</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="string">&quot;registry-mirrors&quot;</span>: [</span><br><span class="line">	  <span class="string">&quot;https://proxy.1panel.live&quot;</span>,</span><br><span class="line">	  <span class="string">&quot;https://docker.1panel.top&quot;</span>,</span><br><span class="line">	  <span class="string">&quot;https://docker.m.daocloud.io&quot;</span>,</span><br><span class="line">	  <span class="string">&quot;https://docker.1ms.run&quot;</span>,</span><br><span class="line">	  <span class="string">&quot;https://docker.ketches.cn&quot;</span>],</span><br><span class="line">  <span class="string">&quot;exec-opts&quot;</span>: [<span class="string">&quot;native.cgroupdriver=systemd&quot;</span>],</span><br><span class="line">  <span class="string">&quot;log-driver&quot;</span>: <span class="string">&quot;json-file&quot;</span>,</span><br><span class="line">  <span class="string">&quot;log-opts&quot;</span>: &#123;</span><br><span class="line">    <span class="string">&quot;max-size&quot;</span>: <span class="string">&quot;100m&quot;</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="string">&quot;storage-driver&quot;</span>: <span class="string">&quot;overlay2&quot;</span></span><br><span class="line">&#125;</span><br><span class="line">EOF</span><br><span class="line">sudo systemctl daemon-reload</span><br><span class="line">sudo systemctl restart docker</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1544,544 +1856,6 @@
 </ul>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--</span></span><br><span class="line"><span class="comment">id=&#x27;外链播放器id&#x27;,必须参数</span></span><br><span class="line"><span class="comment">type=[song=单曲, playlist=歌单, album=专辑, search=搜索结果, artist=艺术家],必须参数</span></span><br><span class="line"><span class="comment">server=[netease=网易云音乐, tencent=QQ音乐, kugou=酷狗音乐, xiami=虾米音乐, baidu=百度音乐],必须参数</span></span><br><span class="line"><span class="comment">fixed=启用固定模式，固定在左下角,默认false</span></span><br><span class="line"><span class="comment">mini=启用迷你模式,默认false</span></span><br><span class="line"><span class="comment">preload=[none,metadata,auto]</span></span><br><span class="line"><span class="comment">mutex=[互斥锁，默认true],默认false</span></span><br><span class="line"><span class="comment">order=[random=随机播放,list=列表播放]</span></span><br><span class="line"><span class="comment">loop=[all=全部循环, one=循环一次 ,none=不循环]</span></span><br><span class="line"><span class="comment">volume=[音量，默认0.7]</span></span><br><span class="line"><span class="comment">lrc-type=[歌词类型，默认0]</span></span><br><span class="line"><span class="comment">list-folded=[列表是否折叠，默认false]</span></span><br><span class="line"><span class="comment">list-max-height=列表最大高度,默认340px</span></span><br><span class="line"><span class="comment">storage-name=本地存储存储密钥，用于存储播放器设置,默认metingjs</span></span><br><span class="line"><span class="comment">--&gt;</span></span><br></pre></td></tr></table></figure>
 
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2023/07/04/git%E4%B8%8A%E4%BC%A0%E6%96%B9%E6%B3%95/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/20230401000222.jpg">
-      <meta itemprop="name" content="ienA">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ienAの博客">
-      <meta itemprop="description" content="致力于分享自己学习过程笔记的萌新博主૮(˶ᵔ ᵕ ᵔ˶)ა">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | ienAの博客">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2023/07/04/git%E4%B8%8A%E4%BC%A0%E6%96%B9%E6%B3%95/" class="post-title-link" itemprop="url">两种方法上传本地文件到github</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2023-07-04 17:57:54" itemprop="dateCreated datePublished" datetime="2023-07-04T17:57:54+08:00">2023-07-04</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2025-03-14 09:55:27" itemprop="dateModified" datetime="2025-03-14T09:55:27+08:00">2025-03-14</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/windows/" itemprop="url" rel="index"><span itemprop="name">windows</span></a>
-        </span>
-    </span>
-
-  
-  
-  <span class="post-meta-item">
-    
-    <span class="post-meta-item-icon">
-      <i class="far fa-comment"></i>
-    </span>
-    <span class="post-meta-item-text">Valine：</span>
-  
-    <a title="valine" href="/2023/07/04/git%E4%B8%8A%E4%BC%A0%E6%96%B9%E6%B3%95/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2023/07/04/git%E4%B8%8A%E4%BC%A0%E6%96%B9%E6%B3%95/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>1.2k</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>1 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>自从使用github以来，一直都是在<a target="_blank" rel="noopener" href="https://github.com/">github网站</a>在线上传文件到仓库中，但是有时因为网络或者电脑的原因上传失败。最重要的原因是我习惯本地编辑，完成以后再一起上传github。看过了几个教程，总结出最适合自己的比较简单的方法。</p>
-<p><img src="/2023/07/04/git%E4%B8%8A%E4%BC%A0%E6%96%B9%E6%B3%95/webp.png" alt="img"></p>
-<h2 id="github在线上传文件夹"><a href="#github在线上传文件夹" class="headerlink" title="github在线上传文件夹"></a>github在线上传文件夹</h2><p>在线上传也可以上传完整的文件夹结构，直接拖拽到上传文件页面的框中即可。</p>
-<h3 id="点击上传文件"><a href="#点击上传文件" class="headerlink" title="点击上传文件"></a>点击上传文件</h3><p><img src="/2023/07/04/git%E4%B8%8A%E4%BC%A0%E6%96%B9%E6%B3%95/webp1.png" alt="img"></p>
-<h3 id="直接拖拽"><a href="#直接拖拽" class="headerlink" title="直接拖拽"></a>直接拖拽</h3><p>直接拖拽即可上传文件夹及文件夹里面的文件。如果点击* choose your files *就只能上传单个文件。</p>
-<p><img src="/2023/07/04/git%E4%B8%8A%E4%BC%A0%E6%96%B9%E6%B3%95/webp2.png" alt="img"></p>
-<h2 id="通过git工具上传本地文件夹（本地项目）"><a href="#通过git工具上传本地文件夹（本地项目）" class="headerlink" title="通过git工具上传本地文件夹（本地项目）"></a>通过git工具上传本地文件夹（本地项目）</h2><h3 id="下载git工具"><a href="#下载git工具" class="headerlink" title="下载git工具"></a>下载<a target="_blank" rel="noopener" href="https://link.jianshu.com/?t=https://git-scm.com/downloads">git工具</a></h3><p><img src="/2023/07/04/git%E4%B8%8A%E4%BC%A0%E6%96%B9%E6%B3%95/webp7.png" alt="img"></p>
-<h3 id="下载完成后安装完成，注意在安装过程中可以选择创建桌面快捷方式"><a href="#下载完成后安装完成，注意在安装过程中可以选择创建桌面快捷方式" class="headerlink" title="下载完成后安装完成，注意在安装过程中可以选择创建桌面快捷方式"></a>下载完成后安装完成，注意在安装过程中可以选择创建桌面快捷方式</h3><p><img src="/2023/07/04/git%E4%B8%8A%E4%BC%A0%E6%96%B9%E6%B3%95/webp8.png" alt="img"></p>
-<h3 id="绑定用户"><a href="#绑定用户" class="headerlink" title="绑定用户"></a>绑定用户</h3><p>打开git-bash.exe（直接在桌面上点击右键，或者点击开始按钮找到Git Bash）</p>
-<p><img src="/2023/07/04/git%E4%B8%8A%E4%BC%A0%E6%96%B9%E6%B3%95/%E8%BF%90%E8%A1%8CgitBash.gif" alt="img"></p>
-<p>在打开的GIt Bash中输入以下命令（用户和邮箱为你github注册的账号和邮箱）</p>
-<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git config --<span class="keyword">global</span> user.name <span class="string">&quot;hanyuntao&quot;</span></span><br><span class="line">$ git config --<span class="keyword">global</span> user.email <span class="string">&quot;hanyuntaocn@163.com&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p><img src="/2023/07/04/git%E4%B8%8A%E4%BC%A0%E6%96%B9%E6%B3%95/webp4.png" alt="img"></p>
-<h3 id="设置SSH-key（git中sshkey有何作用？）"><a href="#设置SSH-key（git中sshkey有何作用？）" class="headerlink" title="设置SSH key（git中sshkey有何作用？）"></a>设置SSH key（<a target="_blank" rel="noopener" href="https://link.jianshu.com/?t=https://segmentfault.com/q/1010000000118744">git中sshkey有何作用？</a>）</h3><h4 id="生成ssh-key"><a href="#生成ssh-key" class="headerlink" title="生成ssh key"></a>生成ssh key</h4><p>首先检查是否已生成密钥<code>cd ~/.ssh</code>，如果返回的<code>ls</code>有3个文件,则密钥已经生成。</p>
-<p><img src="/2023/07/04/git%E4%B8%8A%E4%BC%A0%E6%96%B9%E6%B3%95/webp5.png" alt="img"></p>
-<p>如果没有密钥，则通过</p>
-<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$ </span>ssh-keygen -t rsa -C <span class="string">&quot;hanyuntaocn@163.com&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>生成，生成过程中一路按3次回车键就好了。（默认路径，默认没有密码登录）<br> 生成成功后，去对应目录C:/Users/hyt.ssh里（hyt为电脑用户名，每个人不同）用记事本打开id_rsa.pub，得到ssh key公钥。</p>
-<p><img src="/2023/07/04/git%E4%B8%8A%E4%BC%A0%E6%96%B9%E6%B3%95/ssh-key%E5%85%AC%E9%92%A5.png" alt="img"></p>
-<h4 id="为github账号配置ssh-key"><a href="#为github账号配置ssh-key" class="headerlink" title="为github账号配置ssh key"></a>为github账号配置ssh key</h4><p>切换到github，展开个人头像的小三角，点击settings，然后打开SSH keys菜单， 点击Add SSH key新增密钥，填上标题（最好跟本地仓库保持一致）。</p>
-<p><img src="/2023/07/04/git%E4%B8%8A%E4%BC%A0%E6%96%B9%E6%B3%95/%E8%AE%BE%E7%BD%AEsshkey.gif" alt="img"></p>
-<p>接着将id_rsa.pub文件中key粘贴到此，最后Add key生成密钥.</p>
-<h3 id="上传本地项目到github"><a href="#上传本地项目到github" class="headerlink" title="上传本地项目到github"></a>上传本地项目到github</h3><h4 id="创建一个本地项目"><a href="#创建一个本地项目" class="headerlink" title="创建一个本地项目"></a>创建一个本地项目</h4><p>这是我自己创建的几个文件夹及文件。</p>
-<p><img src="/2023/07/04/git%E4%B8%8A%E4%BC%A0%E6%96%B9%E6%B3%95/%E6%9C%AC%E5%9C%B0%E9%A1%B9%E7%9B%AE.png" alt="img"></p>
-<h4 id="建立本地仓库"><a href="#建立本地仓库" class="headerlink" title="建立本地仓库"></a>建立本地仓库</h4><p>1.首先进入text文件夹</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> d:text</span><br></pre></td></tr></table></figure>
-
-<p><img src="/2023/07/04/git%E4%B8%8A%E4%BC%A0%E6%96%B9%E6%B3%95/webp9.png" alt="img"></p>
-<p>2.执行指令：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git init</span><br></pre></td></tr></table></figure>
-
-<p>![img](git上传方法/执行git init.png)</p>
-<p>初始化成功后你会发现项目里多了一个隐藏文件夹.git</p>
-<p><img src="/2023/07/04/git%E4%B8%8A%E4%BC%A0%E6%96%B9%E6%B3%95/%E9%9A%90%E8%97%8F%E7%9A%84%E6%96%87%E4%BB%B6%E5%A4%B9.png" alt="img"></p>
-<p>3.执行指令：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git add .</span><br></pre></td></tr></table></figure>
-
-
-<p> 将所有文件添加到仓库</p>
-<p><img src="/2023/07/04/git%E4%B8%8A%E4%BC%A0%E6%96%B9%E6%B3%95/webp12.png" alt="img"></p>
-<p>4.执行指令：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit -m <span class="string">&quot;提交文件&quot;</span></span><br></pre></td></tr></table></figure>
-
-
-<p> 双引号内是提交注释。</p>
-<p><img src="/2023/07/04/git%E4%B8%8A%E4%BC%A0%E6%96%B9%E6%B3%95/%E6%8F%90%E4%BA%A4%E6%96%87%E4%BB%B6.png" alt="img"></p>
-<h4 id="关联github仓库"><a href="#关联github仓库" class="headerlink" title="关联github仓库"></a>关联github仓库</h4><p>1.到github text仓库复制仓库地址</p>
-<p><img src="/2023/07/04/git%E4%B8%8A%E4%BC%A0%E6%96%B9%E6%B3%95/%E5%A4%8D%E5%88%B6%E4%BB%93%E5%BA%93%E5%9C%B0%E5%9D%80.png" alt="img"></p>
-<p> 2.执行指令：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote add origin https://github.com/hanyuntao/text.git</span><br></pre></td></tr></table></figure>
-
-
-
-<p><img src="/2023/07/04/git%E4%B8%8A%E4%BC%A0%E6%96%B9%E6%B3%95/%E6%89%A7%E8%A1%8C%E6%8C%87%E4%BB%A41.png" alt="img"></p>
-<h4 id="上传本地代码"><a href="#上传本地代码" class="headerlink" title="上传本地代码"></a>上传本地代码</h4><p>执行指令：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push -u origin master</span><br></pre></td></tr></table></figure>
-
-<p><img src="/2023/07/04/git%E4%B8%8A%E4%BC%A0%E6%96%B9%E6%B3%95/%E6%89%A7%E8%A1%8C%E6%8C%87%E4%BB%A42.png" alt="img"></p>
-<h4 id="完成"><a href="#完成" class="headerlink" title="完成"></a>完成</h4><p>可以看到我们的本地项目已经上传到了github上了。</p>
-<p><img src="/2023/07/04/git%E4%B8%8A%E4%BC%A0%E6%96%B9%E6%B3%95/webp17.png" alt="img"></p>
-<blockquote>
-<p>注意：git是不能管理空的文件夹的，文件夹里必须有文件才能上传。</p>
-</blockquote>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2023/06/06/%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%8F%98%E6%88%90%E8%87%AA%E5%B7%B1%E7%9A%84NAS%E5%92%8C%E4%B8%8B%E8%BD%BD%E5%99%A8/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/20230401000222.jpg">
-      <meta itemprop="name" content="ienA">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ienAの博客">
-      <meta itemprop="description" content="致力于分享自己学习过程笔记的萌新博主૮(˶ᵔ ᵕ ᵔ˶)ა">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | ienAの博客">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2023/06/06/%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%8F%98%E6%88%90%E8%87%AA%E5%B7%B1%E7%9A%84NAS%E5%92%8C%E4%B8%8B%E8%BD%BD%E5%99%A8/" class="post-title-link" itemprop="url">将自己的树莓派/服务器变成自己的NAS、下载器</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2023-06-06 16:19:41" itemprop="dateCreated datePublished" datetime="2023-06-06T16:19:41+08:00">2023-06-06</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-05-14 23:14:46" itemprop="dateModified" datetime="2024-05-14T23:14:46+08:00">2024-05-14</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/orangepi/" itemprop="url" rel="index"><span itemprop="name">orangepi</span></a>
-        </span>
-    </span>
-
-  
-  
-  <span class="post-meta-item">
-    
-    <span class="post-meta-item-icon">
-      <i class="far fa-comment"></i>
-    </span>
-    <span class="post-meta-item-text">Valine：</span>
-  
-    <a title="valine" href="/2023/06/06/%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%8F%98%E6%88%90%E8%87%AA%E5%B7%B1%E7%9A%84NAS%E5%92%8C%E4%B8%8B%E8%BD%BD%E5%99%A8/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2023/06/06/%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%8F%98%E6%88%90%E8%87%AA%E5%B7%B1%E7%9A%84NAS%E5%92%8C%E4%B8%8B%E8%BD%BD%E5%99%A8/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>9.3k</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>8 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>对NAS总是抱有好奇？对NAS的价格望而却步？<br>但是，如果你有<strong>树莓派（或者其它arm64架构的开发板也行）</strong>，或者是Linux服务器，为什么不试试让它们变成自己的小型NAS？</p>
-<h2 id="NAS"><a href="#NAS" class="headerlink" title="NAS"></a>NAS</h2><p>NAS（Network Attached Storage：网络附属存储）按字面简单说就是连接在网络上，具备资料存储功能的装置，因此也称为“网络存储器”。它是一种专用数据存储服务器。</p>
-<p>大型的NAS，比如：群晖。可以有App，对手机照片进行备份，还可以对数据进行灾变处理，但是价格就比较贵了。而本次搭建NAS，主要满足：</p>
-<ul>
-<li>在线访问数据</li>
-<li>下载站</li>
-<li>挂载到电脑上，作为网络U盘</li>
-</ul>
-<h2 id="操作思路"><a href="#操作思路" class="headerlink" title="操作思路"></a>操作思路</h2><h3 id="1-在线访问数据"><a href="#1-在线访问数据" class="headerlink" title="1. 在线访问数据"></a>1. 在线访问数据</h3><p>比如：.flv、.mp4、.jpg等等，我们使用PHP实现网络浏览，这里我们使用_h5ai:</p>
-<p><strong><a target="_blank" rel="noopener" href="https://larsjung.de/h5ai/demo/">演示网站</a></strong></p>
-<p><strong><a target="_blank" rel="noopener" href="https://larsjung.de/h5ai/">官方文档</a></strong></p>
-<h3 id="2-下载站"><a href="#2-下载站" class="headerlink" title="2. 下载站"></a>2. 下载站</h3><p><img src="/2023/06/06/%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%8F%98%E6%88%90%E8%87%AA%E5%B7%B1%E7%9A%84NAS%E5%92%8C%E4%B8%8B%E8%BD%BD%E5%99%A8/DownloadToNAS.png" alt="DownloadToNAS"><br>下载站，我们使用Aria2这个多线程下载器实现，难点是挂载到电脑上，也就是目录映射。最好能满足：</p>
-<ul>
-<li>加密传输，保证安全</li>
-<li>支持平台多，速度稳定</li>
-</ul>
-<h3 id="3-挂载到本地磁盘"><a href="#3-挂载到本地磁盘" class="headerlink" title="3. 挂载到本地磁盘"></a>3. 挂载到本地磁盘</h3><p>在Windwos上挂载<img src="/2023/06/06/%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%8F%98%E6%88%90%E8%87%AA%E5%B7%B1%E7%9A%84NAS%E5%92%8C%E4%B8%8B%E8%BD%BD%E5%99%A8/MountInWindows.png" alt="在Windwos上挂载"></p>
-<p>其实，本地挂载树莓派、服务器磁盘的选择有很多。比如：SMB、FTP等。但是，考虑安全和利用情况下，我还是选择Webdav。</p>
-<p>Windows和macOS都支持挂载Webdav，但是可能会出现无法写的情况。我建议使用第三方免费工具：</p>
-<ul>
-<li><a target="_blank" rel="noopener" href="https://www.raidrive.com/">For Windwos：Raidrive</a></li>
-<li><a target="_blank" rel="noopener" href="https://apps.apple.com/cn/app/fe%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86%E5%99%A8/id1444382558?mt=12">For macOS：FE文件管理器</a></li>
-</ul>
-<p>以上两款软件也都是免费的。</p>
-<p>本文使用Webdav挂载，如果你使用宝塔，或者使用SMB，那么也完全可以选择非Webdav协议挂载磁盘。</p>
-<p>（宝塔不可使用Nginx Webdav插件）</p>
-<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>综上，我们本次需要安装：</p>
-<ul>
-<li>Nginx：用来提供Web目录访问</li>
-<li>PHP：用来映射目录，实现_h5ai</li>
-<li>Nginx模块：Webdav模块和Fancyindex模块，用来实现Webdav</li>
-</ul>
-<h1 id="前排提示"><a href="#前排提示" class="headerlink" title="前排提示"></a>前排提示</h1><p>本次教程，适用所有架构的Linux（arm架构和x86都可以）。PHP、Nginx的配置，使用编译安装的方法。</p>
-<p>不建议用宝塔安装Nginx和PHP，服务管理起来不方便，其它的懂的都懂</p>
-<h1 id="服务器要求"><a href="#服务器要求" class="headerlink" title="服务器要求"></a>服务器要求</h1><p>如果是<strong>树莓派（或者其它arm64架构的开发板也行）</strong>，那么没什么具体要求，有个可以刷写SD卡的软件即可</p>
-<p>但是，如果是服务器，最好选择高带宽的服务器，内存最好需要2G以上，否则编译PHP时，可能需要SWAP的支持。</p>
-<p>我的是香橙派，也是arm64架构的开发板，系统用的Debian11，用其它linux系统的可以根据 命令自行修改一下即可</p>
-<blockquote>
-<p>从下面开始我都是用root用户来进行，不想用root用户的可以在命令前面加上<code>sudo</code></p>
-</blockquote>
-<h1 id="PHP"><a href="#PHP" class="headerlink" title="PHP"></a>PHP</h1><p><strong><a target="_blank" rel="noopener" href="https://www.php.net/downloads.php">PHP官方下载地址</a></strong></p>
-<h2 id="安装依赖"><a href="#安装依赖" class="headerlink" title="安装依赖"></a>安装依赖</h2><blockquote>
-<p>为下面编译参数做准备</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt install build-essential pkg-config openssl libssl-dev libsqlite3-dev zlib1g-dev libcurl4-openssl-dev libpng-dev libjpeg-dev libonig-dev libzip-dev ffmpeg imagemagick -y</span><br></pre></td></tr></table></figure>
-
-<h2 id="下载PHP"><a href="#下载PHP" class="headerlink" title="下载PHP"></a>下载PHP</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">wget https://www.php.net/distributions/php-8.2.6.tar.gz -P /usr/local/src</span><br><span class="line"><span class="built_in">cd</span> /usr/local/src &amp;&amp; tar xf php-8.2.6.tar.gz</span><br><span class="line"><span class="built_in">cd</span> php-8.2.6</span><br></pre></td></tr></table></figure>
-
-<h2 id="配置用户和用户组"><a href="#配置用户和用户组" class="headerlink" title="配置用户和用户组"></a>配置用户和用户组</h2><blockquote>
-<p>orangepi是我开发板自带的用户，不想用自带的用户也可以创建一个别的用户和用户组</p>
-</blockquote>
-<p>如果你在服务器上操作，建议创建一个www用户和www用户组：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 创建一个www用户</span></span><br><span class="line">sudo useradd www</span><br><span class="line"></span><br><span class="line"><span class="comment"># 创建一个www用户组</span></span><br><span class="line">sudo groupadd www</span><br><span class="line"></span><br><span class="line"><span class="comment"># www用户归属于www用户组</span></span><br><span class="line">sudo usermod -a -G www www</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="配置编译参数"><a href="#配置编译参数" class="headerlink" title="配置编译参数"></a>配置编译参数</h2><blockquote>
-<p>这是我配置的编译参数，其他PHP版本可能略微不一样，需要自己判断），也可以参考我这篇文章<a target="_blank" rel="noopener" href="https://aienh.github.io/post/debian11%E9%83%A8%E7%BD%B2LNMP%EF%BC%88nginx-mariadb-php%EF%BC%89%E6%95%99%E7%A8%8B">部署LNMP教程</a></p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">./configure \</span><br><span class="line">--prefix=/usr/local/php \</span><br><span class="line">--with-curl \</span><br><span class="line">--with-mysqli \</span><br><span class="line">--with-openssl \</span><br><span class="line">--with-pdo-mysql \</span><br><span class="line">--with-jpeg \</span><br><span class="line">--enable-gd \</span><br><span class="line">--enable-fpm \</span><br><span class="line">--with-fpm-user=orangepi \</span><br><span class="line">--with-fpm-group=orangepi \</span><br><span class="line">--enable-bcmath \</span><br><span class="line">--enable-xml \</span><br><span class="line">--with-zip \</span><br><span class="line">--enable-mbstring \</span><br><span class="line">--enable-sockets  \</span><br><span class="line">--with-zlib   \</span><br><span class="line">--enable-fileinfo \</span><br><span class="line">--enable-exif</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>–with-fpm-user：fpm进程属于的用户</li>
-<li>–with-fpm-group：fpm进程属于的用户组</li>
-</ul>
-<h2 id="编译安装"><a href="#编译安装" class="headerlink" title="编译安装"></a>编译安装</h2><blockquote>
-<p>上面的<code>configure</code>配置没有问题，接下来就是编译和安装了，我图方便就一条命令来执行，新手可以把两条命令分开执行，先<code>make</code>在<code>make install</code></p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">make -j$(<span class="built_in">nproc</span>) &amp;&amp; make install -j$(<span class="built_in">nproc</span>)</span><br></pre></td></tr></table></figure>
-
-<h2 id="复制配置文件"><a href="#复制配置文件" class="headerlink" title="复制配置文件"></a>复制配置文件</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cp</span> /usr/local/php/etc/php-fpm.conf.default /usr/local/php/etc/php-fpm.conf</span><br><span class="line"><span class="built_in">cp</span> /usr/local/php/etc/php-fpm.d/www.conf.default /usr/local/php/etc/php-fpm.d/www.conf</span><br></pre></td></tr></table></figure>
-
-<h2 id="测试运行"><a href="#测试运行" class="headerlink" title="测试运行"></a>测试运行</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/usr/local/php7/sbin/php-fpm</span><br></pre></td></tr></table></figure>
-
-<h2 id="查看服务进程和端口"><a href="#查看服务进程和端口" class="headerlink" title="查看服务进程和端口"></a>查看服务进程和端口</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ps aux | grep php-fpm</span><br><span class="line">lsof -i:9000</span><br></pre></td></tr></table></figure>
-
-<h1 id="Nginx"><a href="#Nginx" class="headerlink" title="Nginx"></a>Nginx</h1><p><a target="_blank" rel="noopener" href="http://nginx.org/en/download.html">Nginx官方下载地址</a></p>
-<h2 id="安装依赖-1"><a href="#安装依赖-1" class="headerlink" title="安装依赖"></a>安装依赖</h2><blockquote>
-<p>为下面编译参数做准备</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt install build-essential libpcre3 libpcre3-dev zlib1g-dev openssl libssl-dev libxml2-dev libxslt-dev -y</span><br></pre></td></tr></table></figure>
-
-<h2 id="额外模块"><a href="#额外模块" class="headerlink" title="额外模块"></a>额外模块</h2><ul>
-<li><a target="_blank" rel="noopener" href="https://github.com/aperezdc/ngx-fancyindex">Fancyindex模块</a></li>
-</ul>
-<p>如果我们需要进行目录映射，需要更好看的、更实用的目录映射，需要额外的Fancyindex模块支持。</p>
-<ul>
-<li><a target="_blank" rel="noopener" href="https://github.com/arut/nginx-dav-ext-module">WebDav模块</a></li>
-</ul>
-<p>Nginx自带的Webdav支持不完善，需要额外的模块进行支持。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> /usr/local/src/NginxModule/ &amp;&amp; <span class="built_in">cd</span> /usr/local/src/NginxModule</span><br><span class="line">git <span class="built_in">clone</span> https://github.com/arut/nginx-dav-ext-module.git</span><br><span class="line">git <span class="built_in">clone</span> https://github.com/aperezdc/ngx-fancyindex.git</span><br></pre></td></tr></table></figure>
-
-<h2 id="下载Nginx"><a href="#下载Nginx" class="headerlink" title="下载Nginx"></a>下载Nginx</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">wget http://nginx.org/download/nginx-1.24.0.tar.gz -P /usr/local/src</span><br><span class="line"><span class="built_in">cd</span> /usr/local/src &amp;&amp; tar xf nginx-1.24.0.tar.gz</span><br><span class="line"><span class="built_in">cd</span> nginx-1.24.0</span><br></pre></td></tr></table></figure>
-
-<h2 id="配置用户和用户组-1"><a href="#配置用户和用户组-1" class="headerlink" title="配置用户和用户组"></a>配置用户和用户组</h2><blockquote>
-<p>orangepi是我开发板自带的用户，不想用自带的用户也可以创建一个别的用户和用户组</p>
-</blockquote>
-<p>如果你在服务器上操作，建议创建一个www用户和www用户组：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 创建一个www用户</span></span><br><span class="line">sudo useradd www</span><br><span class="line"></span><br><span class="line"><span class="comment"># 创建一个www用户组</span></span><br><span class="line">sudo groupadd www</span><br><span class="line"></span><br><span class="line"><span class="comment"># www用户归属于www用户组</span></span><br><span class="line">sudo usermod -a -G www www</span><br></pre></td></tr></table></figure>
-
-<h2 id="配置编译参数-1"><a href="#配置编译参数-1" class="headerlink" title="配置编译参数"></a>配置编译参数</h2><blockquote>
-<p>这是我配置的编译参数，其他Nginx版本可能略微不一样，需要自己判断），也可以参考我这篇文章<a target="_blank" rel="noopener" href="https://aienh.github.io/post/debian11%E9%83%A8%E7%BD%B2LNMP%EF%BC%88nginx-mariadb-php%EF%BC%89%E6%95%99%E7%A8%8B">部署LNMP教程</a></p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">./configure \</span><br><span class="line">--prefix=/usr/local/nginx \</span><br><span class="line">--user=orangepi \</span><br><span class="line">--group=orangepi \</span><br><span class="line">--sbin-path=/usr/local/nginx/sbin/nginx \</span><br><span class="line">--conf-path=/usr/local/nginx/nginx.conf \</span><br><span class="line">--error-log-path=/var/log/nginx/error.log \</span><br><span class="line">--http-log-path=/var/log/nginx/access.log \</span><br><span class="line">--pid-path=/var/run/nginx.pid \</span><br><span class="line">--lock-path=/var/run/nginx.lock \</span><br><span class="line">--http-client-body-temp-path=/var/cache/nginx/client_temp \</span><br><span class="line">--http-proxy-temp-path=/var/cache/nginx/proxy_temp \</span><br><span class="line">--http-fastcgi-temp-path=/var/cache/nginx/fastcgi_temp \</span><br><span class="line">--http-uwsgi-temp-path=/var/cache/nginx/uwsgi_temp \</span><br><span class="line">--http-scgi-temp-path=/var/cache/nginx/scgi_temp \</span><br><span class="line">--with-file-aio \</span><br><span class="line">--with-threads \</span><br><span class="line">--with-http_addition_module \</span><br><span class="line">--with-http_auth_request_module \</span><br><span class="line">--with-http_dav_module \</span><br><span class="line">--with-http_flv_module \</span><br><span class="line">--with-http_gunzip_module \</span><br><span class="line">--with-http_gzip_static_module \</span><br><span class="line">--with-http_mp4_module \</span><br><span class="line">--with-http_random_index_module \</span><br><span class="line">--with-http_realip_module \</span><br><span class="line">--with-http_secure_link_module \</span><br><span class="line">--with-http_slice_module \</span><br><span class="line">--with-http_ssl_module \</span><br><span class="line">--with-http_stub_status_module \</span><br><span class="line">--with-http_sub_module \</span><br><span class="line">--with-http_v2_module \</span><br><span class="line">--with-mail \</span><br><span class="line">--with-mail_ssl_module \</span><br><span class="line">--with-stream \</span><br><span class="line">--with-stream_realip_module \</span><br><span class="line">--with-stream_ssl_module \</span><br><span class="line">--with-stream_ssl_preread_module \</span><br><span class="line">--add-module=/usr/local/src/NginxModule/nginx-dav-ext-module \</span><br><span class="line">--add-module=/usr/local/src/NginxModule/ngx-fancyindex</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>–user：nginx进程属于的用户</li>
-<li>–group：nginx进程属于的用户组</li>
-</ul>
-<h2 id="编译安装-1"><a href="#编译安装-1" class="headerlink" title="编译安装"></a>编译安装</h2><blockquote>
-<p>上面的<code>configure</code>配置没有问题，接下来就是编译和安装了，我图方便就一条命令来执行，新手可以把两条命令分开执行，先<code>make</code>在<code>make install</code></p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">make -j$(<span class="built_in">nproc</span>) &amp;&amp; make install -j$(<span class="built_in">nproc</span>)</span><br></pre></td></tr></table></figure>
-
-<h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><blockquote>
-<p>因为上面配置参数指定缓存文件在<code>/var/cache/nginx</code>，日志文件在<code>/var/log/nginx</code>，所以需要创建</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> /var/cache/nginx</span><br><span class="line"><span class="built_in">mkdir</span> /var/log/nginx</span><br></pre></td></tr></table></figure>
-
-<h2 id="测试运行-1"><a href="#测试运行-1" class="headerlink" title="测试运行"></a>测试运行</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/usr/local/nginx/sbin/nginx</span><br></pre></td></tr></table></figure>
-
-<h2 id="查看服务进程和端口-1"><a href="#查看服务进程和端口-1" class="headerlink" title="查看服务进程和端口"></a>查看服务进程和端口</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ps aux | grep nginx</span><br><span class="line">lsof -i:80</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h1 id="配置-h5ai"><a href="#配置-h5ai" class="headerlink" title="配置_h5ai"></a>配置_h5ai</h1><p>H5AI，其实全称是：HTML5 Apache Index。最初是用来在Apache Web服务器上，完成资源映射，但是后来适配到Nginx等其他平台。配置很简单：<code>下载_h5ai</code>-<code>修改Nginx配置文件</code>-<code>开始使用</code>。<br>注意_h5ai的映射逻辑：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">网站根目录(需要映射的目录）</span><br><span class="line"> ├─ _h5ai</span><br><span class="line"> ├─ 你的其他文件1</span><br><span class="line"> └─ 你的其他文件1</span><br></pre></td></tr></table></figure>
-
-<h2 id="下载-h5ai"><a href="#下载-h5ai" class="headerlink" title="下载_h5ai"></a>下载_h5ai</h2><p>因为是开源的工具，所以网上有很多修改版本，包含官方的：</p>
-<ul>
-<li><a target="_blank" rel="noopener" href="https://larsjung.de/h5ai/">官方版本</a>：官方的版本，功能全、稳定。</li>
-<li><a target="_blank" rel="noopener" href="https://github.com/Pearlulu/h5ai_dplayer">Dplayer版本</a>：基于官方旧版本开发，支持更多格式的在线视频播放。</li>
-<li><a target="_blank" rel="noopener" href="https://github.com/Mintimate/h5ai_M">Mintimate’s _h5ai</a>：基于Dplayer版本并合并官方最新版本代码。</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /home/orangepi</span><br><span class="line"><span class="built_in">mkdir</span> Downloads</span><br><span class="line"></span><br><span class="line"><span class="built_in">cd</span> Downloads</span><br><span class="line">git <span class="built_in">clone</span> https://github.com/Mintimate/h5ai_M</span><br><span class="line"></span><br><span class="line"><span class="comment">#将h5ai_M项目里的_h5ai移到Downloads目录下</span></span><br><span class="line"><span class="built_in">cd</span> h5ai_M</span><br><span class="line"><span class="built_in">mv</span> _h5ai ..</span><br><span class="line"></span><br><span class="line"><span class="comment">#因为是用root用户创建的，需要修改该文件夹的所属用户和组</span></span><br><span class="line"><span class="built_in">cd</span> /home/orangepi</span><br><span class="line"><span class="built_in">chown</span> -R orangpepi:orangepi Downloads</span><br></pre></td></tr></table></figure>
-
-<h2 id="修改Nginx配置"><a href="#修改Nginx配置" class="headerlink" title="修改Nginx配置"></a>修改Nginx配置</h2><p>备份原先的nginx配置文件</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">mv</span> /usr/local/nginx/nginx.conf /usr/local/nginx/nginx.conf.bak</span><br></pre></td></tr></table></figure>
-
-<p>新建一个配置文件</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /usr/local/nginx/nginx.conf</span><br></pre></td></tr></table></figure>
-
-<p>直接添加配置：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#所属用户</span></span><br><span class="line">user  orangepi;</span><br><span class="line">worker_processes  1;</span><br><span class="line">events &#123;</span><br><span class="line">    worker_connections  1024;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">http &#123;</span><br><span class="line">    include       mime.types;</span><br><span class="line">    default_type  application/octet-stream;</span><br><span class="line"></span><br><span class="line">    sendfile        on;</span><br><span class="line"></span><br><span class="line">    keepalive_timeout  65;</span><br><span class="line"></span><br><span class="line">    gzip  on;</span><br><span class="line"></span><br><span class="line">    server &#123;</span><br><span class="line">        listen       80;</span><br><span class="line">        server_name  localhost;</span><br><span class="line">        <span class="comment">#映射目录</span></span><br><span class="line">        root /home/orangepi/Downloads;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        location / &#123;</span><br><span class="line">            index  index.html index.htm /_h5ai/public/index.php;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        error_page   500 502 503 504  /50x.html;</span><br><span class="line">        location = /50x.html &#123;</span><br><span class="line">            root   html;</span><br><span class="line">        &#125;</span><br><span class="line">		</span><br><span class="line">		<span class="comment">#webdav配置</span></span><br><span class="line">        location ^~/webdav&#123;</span><br><span class="line">            <span class="built_in">set</span> <span class="variable">$dest</span> <span class="variable">$http_destination</span>;</span><br><span class="line">            <span class="keyword">if</span> (-d \<span class="variable">$request_filename</span>) &#123;</span><br><span class="line">                   rewrite ^(.*[^/])$ <span class="variable">$1</span>/;</span><br><span class="line">                   <span class="built_in">set</span> <span class="variable">$dest</span> <span class="variable">$dest</span>/;</span><br><span class="line">             &#125;</span><br><span class="line">            <span class="keyword">if</span> (<span class="variable">$request_method</span> ~ MKCOL) &#123;</span><br><span class="line">                   rewrite ^(.*[^/])$ <span class="variable">$1</span>/ <span class="built_in">break</span>;</span><br><span class="line">             &#125;</span><br><span class="line">             <span class="comment"># 映射目录</span></span><br><span class="line">            <span class="built_in">alias</span> /home/pi/Downloads/;</span><br><span class="line">            autoindex on;</span><br><span class="line">            <span class="comment"># Webdav设置</span></span><br><span class="line">            dav_methods PUT DELETE MKCOL COPY MOVE;</span><br><span class="line">            dav_ext_methods PROPFIND OPTIONS;</span><br><span class="line">            create_full_put_path on;</span><br><span class="line">            <span class="comment"># 最大上传文件</span></span><br><span class="line">            client_max_body_size 3G;</span><br><span class="line">            dav_access user:rw group:rw all:rw;</span><br><span class="line">            auth_basic <span class="string">&quot;Authorized Users Only&quot;</span>;</span><br><span class="line">            <span class="comment"># 验证用户</span></span><br><span class="line">            auth_basic_user_file webdavpasswd;</span><br><span class="line">        &#125;		</span><br><span class="line"></span><br><span class="line">        <span class="comment"># php-fpm配置</span></span><br><span class="line">        location ~ [^/]\.php(/|$)&#123;</span><br><span class="line">            <span class="comment"># try_files $uri =404;</span></span><br><span class="line">            fastcgi_pass  127.0.0.1:9000;</span><br><span class="line">            include fastcgi.conf;</span><br><span class="line">            fastcgi_index  index.php;</span><br><span class="line">            fastcgi_param  SCRIPT_FILENAME  <span class="variable">$document_root</span>/<span class="variable">$fastcgi_script_name</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><blockquote>
-<p>如果装了宝塔的，使用前记得开放对应端口，80端口和9000端口</p>
-</blockquote>
-<p>直接用浏览器访问香橙派的IP，就可以访问<code>_h5ai</code>的映射目录</p>
-<p>默认：</p>
-<ul>
-<li>用户名：<code>admin</code></li>
-<li>密码：<code>admin</code></li>
-</ul>
-<p>然后进入这个地址：http://服务器的IP/_h5ai/public/index.php，这个界面是没有密码的，直接点击login</p>
-<p>看到配置全绿就OK了</p>
-<h1 id="配置下载器"><a href="#配置下载器" class="headerlink" title="配置下载器"></a>配置下载器</h1><p>如果只配置了_h5ai，距离NAS基本算完成一大步了。但是，我认为还需要配置下载器，能把网上资源，直接下载到服务器才算是NAS。<br>这里我们使用Aria2作为下载器。</p>
-<h2 id="配置Aria2"><a href="#配置Aria2" class="headerlink" title="配置Aria2"></a>配置Aria2</h2><p>一键脚本搭建：</p>
-<p><a target="_blank" rel="noopener" href="https://github.com/Mintimate/AutoInstallAria2">AutoInstallAria2</a></p>
-<blockquote>
-<p>因为一键安装脚本会在家目录下创建目录，所以切换到orangepi用户</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">su orangepi</span><br><span class="line">wget <span class="string">&quot;https://cdn.jsdelivr.net/gh/Mintimate/AutoInstallAria2@latest/AutoInstallAria2ForLinux.sh&quot;</span> &amp;&amp; bash AutoInstallAria2ForLinux.sh</span><br></pre></td></tr></table></figure>
-
-<h2 id="测试使用"><a href="#测试使用" class="headerlink" title="测试使用"></a>测试使用</h2><p>这个时候，我们本地就可以使用Aria2的RPC进行下载了，首先Linux服务器上启动Aira2:</p>
-<blockquote>
-<p>如果装了宝塔的，使用前记得开放对应端口，默认6800端口，可在配置中修改</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> ~</span><br><span class="line">sudo ./aria2.sh</span><br></pre></td></tr></table></figure>
-
-<p>上面修改的Nginx配置，已经设置Webdav参数和目录，还设置了<strong>验证用户</strong>，所以还需要创建<strong>webdavpasswd</strong>这个验证文件。如果不需要验证，可以注释这一项，就可以使用本地的Webdav客户端访问了。</p>
-<h2 id="设置验证用户"><a href="#设置验证用户" class="headerlink" title="设置验证用户"></a>设置验证用户</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cat</span> &lt;&lt; <span class="string">EOF &gt; /usr/local/nginx/webdavpasswd</span></span><br><span class="line"><span class="string">#设置登录用户名和密码</span></span><br><span class="line"><span class="string">admin:$(openssl passwd 123)</span></span><br><span class="line"><span class="string">EOF</span></span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><p><code>admin</code>是设置的<strong>用户名</strong></p>
-</li>
-<li><p><code>123</code>是设置的<strong>密码</strong></p>
-</li>
-</ul>
-<p><strong>用户名</strong>和<strong>密码</strong>可自行修改，之后重新加载配置文件和重启服务：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">/usr/local/nginx/sbin/nginx -s reload</span><br><span class="line">killall nginx</span><br><span class="line">/usr/local/nginx/sbin/nginx</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="客户端登陆"><a href="#客户端登陆" class="headerlink" title="客户端登陆"></a>客户端登陆</h2><p>macOS和Windows的文件管理器都可以登录，但是功能不全（无法上传），这里推荐：</p>
-<ul>
-<li><a target="_blank" rel="noopener" href="https://apps.apple.com/cn/app/fe%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86%E5%99%A8/id1444382558?mt=12">macOS：FE文件管理器</a></li>
-<li><a target="_blank" rel="noopener" href="https://www.raidrive.com/">Windwos：Raidrive</a></li>
-</ul>
-<p>以上软件，个人使用免费版本就可以了：</p>
-<blockquote>
-<p>没用过mac，我用windows演示</p>
-</blockquote>
-<p><img src="/2023/06/06/%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%8F%98%E6%88%90%E8%87%AA%E5%B7%B1%E7%9A%84NAS%E5%92%8C%E4%B8%8B%E8%BD%BD%E5%99%A8/image-20230607013014512.png" alt="image-20230607013014512"></p>
-<p>nginx默认80端口，如果80端口要跑其它服务，也可以修改nginx配置文件把80端口改成其它端口，路径要加<code>/webdav</code>，然后一定要取消勾选<strong>地址！！！</strong></p>
-<h1 id="添加系统服务"><a href="#添加系统服务" class="headerlink" title="添加系统服务"></a>添加系统服务</h1><blockquote>
-<p>还是可以参考我这篇文章<a target="_blank" rel="noopener" href="https://aienh.github.io/post/debian11%E9%83%A8%E7%BD%B2LNMP%EF%BC%88nginx-mariadb-php%EF%BC%89%E6%95%99%E7%A8%8B">部署LNMP教程</a></p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /usr/lib/systemd/system/nginx.service</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">[Unit]</span><br><span class="line">Description=nginx</span><br><span class="line">After=network.target</span><br><span class="line">  </span><br><span class="line">[Service]</span><br><span class="line">Type=forking</span><br><span class="line">ExecStart=/usr/local/nginx/sbin/nginx</span><br><span class="line">ExecReload=/usr/local/nginx/sbin/nginx -s reload</span><br><span class="line">ExecStop=/usr/local/nginx/sbin/nginx -s quit</span><br><span class="line">PrivateTmp=<span class="literal">true</span></span><br><span class="line">  </span><br><span class="line">[Install]</span><br><span class="line">WantedBy=multi-user.target</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vim /usr/lib/systemd/system/php-fpm.service</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">[Unit]</span><br><span class="line">Description=php-fpm</span><br><span class="line">After=network.target</span><br><span class="line">  </span><br><span class="line">[Service]</span><br><span class="line">Type=forking</span><br><span class="line">ExecStart=/usr/local/php7/sbin/php-fpm</span><br><span class="line">PrivateTmp=<span class="literal">true</span></span><br><span class="line">  </span><br><span class="line">[Install]</span><br><span class="line">WantedBy=multi-user.target</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vim /usr/lib/systemd/system/aria2.service</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">[Unit]</span><br><span class="line">Description=Aria2</span><br><span class="line">After=network.target</span><br><span class="line"></span><br><span class="line">[Service]</span><br><span class="line">User=pi</span><br><span class="line">Type=simple</span><br><span class="line">ExecStart=/etc/aria2/aria2c --conf-path=/etc/aria2/aria2.conf</span><br><span class="line"></span><br><span class="line">[Install]</span><br><span class="line">WantedBy=multi-user.target</span><br></pre></td></tr></table></figure>
-
-<p>建议还是给予执行权限：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">chmod</span> +x nginx.service</span><br><span class="line"><span class="built_in">chmod</span> +x php-fpm.service</span><br><span class="line"><span class="built_in">chmod</span> +x aria2.service</span><br></pre></td></tr></table></figure>
-
-<p>允许开机启动并激活：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">systemctl <span class="built_in">enable</span> nginx.service</span><br><span class="line">systemctl <span class="built_in">enable</span> php-fpm.service</span><br><span class="line">systemctl <span class="built_in">enable</span> aria2.service</span><br></pre></td></tr></table></figure>
-
-<h1 id="连接Aria2进程"><a href="#连接Aria2进程" class="headerlink" title="连接Aria2进程"></a>连接Aria2进程</h1><ul>
-<li>使用AriaNG连接Aria2进程</li>
-</ul>
-<h2 id="AriaNG-Native"><a href="#AriaNG-Native" class="headerlink" title="AriaNG Native"></a>AriaNG Native</h2><p>个人推荐使用AriaNG Native连接服务器和本地的Aria2进程。</p>
-<ul>
-<li>GitHub地址：<a target="_blank" rel="noopener" href="https://github.com/mayswind/AriaNg-Native/releases">https://github.com/mayswind/AriaNg-Native/releases</a></li>
-</ul>
-<p>我们下载对应自己电脑版本的AriaNG Native：<br>之后，我们设置RPC：</p>
-<blockquote>
-<p>设置的RPC要和在linux上aria2.conf配置文件中的RPC一致（rpc-secret：设置Aria2验证远程码）</p>
-</blockquote>
-<p><img src="/2023/06/06/%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%8F%98%E6%88%90%E8%87%AA%E5%B7%B1%E7%9A%84NAS%E5%92%8C%E4%B8%8B%E8%BD%BD%E5%99%A8/AriaNG_NativeSetting.png" alt="设置RPC"></p>
-<p>刷新即可连接：<br><img src="/2023/06/06/%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%8F%98%E6%88%90%E8%87%AA%E5%B7%B1%E7%9A%84NAS%E5%92%8C%E4%B8%8B%E8%BD%BD%E5%99%A8/AriaNG_Native.png" alt="连接成功"></p>
-<h2 id="搭建网页前端——AriaNg"><a href="#搭建网页前端——AriaNg" class="headerlink" title="搭建网页前端——AriaNg"></a>搭建网页前端——AriaNg</h2><p>这个一般是部署在服务器<br>项目地址（GitHub）： <a target="_blank" rel="noopener" href="https://github.com/mayswind/AriaNg/releases">https://github.com/mayswind/AriaNg/releases</a>    </p>
-<h2 id="浏览器的扩展程序"><a href="#浏览器的扩展程序" class="headerlink" title="浏览器的扩展程序"></a>浏览器的扩展程序</h2><p>这是Chrome浏览器的扩展程序：</p>
-<p><a target="_blank" rel="noopener" href="https://chrome.google.com/webstore/detail/aria2-explorer/mpkodccbngfoacfalldjimigbofkhgjn?utm_source=ext_app_menu">https://chrome.google.com/webstore/detail/aria2-explorer/mpkodccbngfoacfalldjimigbofkhgjn?utm_source=ext_app_menu</a>    </p>
-<blockquote>
-<p>我图方便用的也是这种，用的火狐浏览器</p>
-</blockquote>
-<p><img src="/2023/06/06/%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%8F%98%E6%88%90%E8%87%AA%E5%B7%B1%E7%9A%84NAS%E5%92%8C%E4%B8%8B%E8%BD%BD%E5%99%A8/image-20230607021439381.png" alt="image-20230607021439381"></p>
-<p>我下载的是第一个扩展</p>
-<h3 id="配置-1"><a href="#配置-1" class="headerlink" title="配置"></a>配置</h3><p>打开管理扩展，点击选项</p>
-<p><img src="/2023/06/06/%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%8F%98%E6%88%90%E8%87%AA%E5%B7%B1%E7%9A%84NAS%E5%92%8C%E4%B8%8B%E8%BD%BD%E5%99%A8/image-20230607021742222.png" alt="image-20230607021742222"></p>
-<p>点击RPC服务器后再点击默认服务器</p>
-<p><img src="/2023/06/06/%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%8F%98%E6%88%90%E8%87%AA%E5%B7%B1%E7%9A%84NAS%E5%92%8C%E4%B8%8B%E8%BD%BD%E5%99%A8/image-20230607021835467.png" alt="image-20230607021835467"></p>
-<p>协议选http，填入服务器IP，密钥要和在linux上aria2.conf配置文件中的RPC一致，然后点保存</p>
-<p><img src="/2023/06/06/%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%8F%98%E6%88%90%E8%87%AA%E5%B7%B1%E7%9A%84NAS%E5%92%8C%E4%B8%8B%E8%BD%BD%E5%99%A8/image-20230607022037734.png" alt="image-20230607022037734"></p>
-<h3 id="使用-1"><a href="#使用-1" class="headerlink" title="使用"></a>使用</h3><p>固定到工具栏</p>
-<p><img src="/2023/06/06/%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%8F%98%E6%88%90%E8%87%AA%E5%B7%B1%E7%9A%84NAS%E5%92%8C%E4%B8%8B%E8%BD%BD%E5%99%A8/image-20230607022319769.png" alt="image-20230607022319769"></p>
-<p>点详情就可以使用了</p>
-<p><img src="/2023/06/06/%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%8F%98%E6%88%90%E8%87%AA%E5%B7%B1%E7%9A%84NAS%E5%92%8C%E4%B8%8B%E8%BD%BD%E5%99%A8/image-20230607022411558.png" alt="image-20230607022411558"></p>
-<p><img src="/2023/06/06/%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%8F%98%E6%88%90%E8%87%AA%E5%B7%B1%E7%9A%84NAS%E5%92%8C%E4%B8%8B%E8%BD%BD%E5%99%A8/image-20230607022456123.png" alt="image-20230607022456123"></p>
-<p>连接到Aria2后就可以新建任务，把下载链接复制过去，就能把文件下载到Linux本地上了</p>
 
       
     </div>

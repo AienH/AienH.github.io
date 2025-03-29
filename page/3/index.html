@@ -183,7 +183,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">28</span>
+          <span class="site-state-item-count">30</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -194,7 +194,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">24</span>
+        <span class="site-state-item-count">26</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -237,6 +237,557 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/04/24/docker%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BA%E5%90%84%E5%A4%A7%E6%BC%8F%E6%B4%9E%E9%9D%B6%E5%9C%BA/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/20230401000222.jpg">
+      <meta itemprop="name" content="ienA">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ienAの博客">
+      <meta itemprop="description" content="致力于分享自己学习过程笔记的萌新博主૮(˶ᵔ ᵕ ᵔ˶)ა">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | ienAの博客">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2023/04/24/docker%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BA%E5%90%84%E5%A4%A7%E6%BC%8F%E6%B4%9E%E9%9D%B6%E5%9C%BA/" class="post-title-link" itemprop="url">docker快速搭建各大漏洞靶场</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-04-24 17:18:00" itemprop="dateCreated datePublished" datetime="2023-04-24T17:18:00+08:00">2023-04-24</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-05-14 23:11:41" itemprop="dateModified" datetime="2024-05-14T23:11:41+08:00">2024-05-14</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/" itemprop="url" rel="index"><span itemprop="name">网络安全</span></a>
+        </span>
+    </span>
+
+  
+  
+  <span class="post-meta-item">
+    
+    <span class="post-meta-item-icon">
+      <i class="far fa-comment"></i>
+    </span>
+    <span class="post-meta-item-text">Valine：</span>
+  
+    <a title="valine" href="/2023/04/24/docker%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BA%E5%90%84%E5%A4%A7%E6%BC%8F%E6%B4%9E%E9%9D%B6%E5%9C%BA/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2023/04/24/docker%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BA%E5%90%84%E5%A4%A7%E6%BC%8F%E6%B4%9E%E9%9D%B6%E5%9C%BA/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>1.1k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>1 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <blockquote>
+<p><strong>本人搬运的是github上的一个开源项目</strong></p>
+<p><strong>地址：<a target="_blank" rel="noopener" href="https://github.com/c0ny1/vulstudy">https://github.com/c0ny1/vulstudy</a></strong></p>
+</blockquote>
+<h1 id="vulstudy"><a href="#vulstudy" class="headerlink" title="vulstudy"></a>vulstudy</h1><p>vulstudy是专门收集当下流行的漏洞学习平台，并将其制作成docker镜像，方便大家快速搭建环境，节省搭建时间，专注于的漏洞学习上。目前<code>vulstudy</code>包含以下漏洞学习平台：</p>
+<table>
+<thead>
+<tr>
+<th align="center">序号</th>
+<th align="center">漏洞平台</th>
+<th align="center">包含漏洞</th>
+<th align="center">作者</th>
+<th align="center">语言</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">1</td>
+<td align="center"><a target="_blank" rel="noopener" href="http://www.dvwa.co.uk/">DVWA</a></td>
+<td align="center">综合</td>
+<td align="center">未知</td>
+<td align="center">php</td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://sourceforge.net/projects/bwapp/">bWAPP</a></td>
+<td align="center">综合</td>
+<td align="center">未知</td>
+<td align="center">php</td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://github.com/Audi-1/sqli-labs">sqli-labs</a></td>
+<td align="center">SQL注入</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://github.com/Audi-1">Audi</a></td>
+<td align="center">php</td>
+</tr>
+<tr>
+<td align="center">4</td>
+<td align="center"><a target="_blank" rel="noopener" href="http://sourceforge.net/projects/mutillidae">mutillidae</a></td>
+<td align="center">综合</td>
+<td align="center">OWASP</td>
+<td align="center">php</td>
+</tr>
+<tr>
+<td align="center">5</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://github.com/psiinon/bodgeit">BodgeIt</a></td>
+<td align="center">综合</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://github.com/psiinon/bodgeit">psiinon</a></td>
+<td align="center">java</td>
+</tr>
+<tr>
+<td align="center">6</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://github.com/adamdoupe/WackoPicko">WackoPicko</a></td>
+<td align="center">综合</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://github.com/adamdoupe">adamdoupe</a></td>
+<td align="center">php</td>
+</tr>
+<tr>
+<td align="center">7</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://github.com/WebGoat/WebGoat">WebGoat</a></td>
+<td align="center">综合</td>
+<td align="center">OWASP</td>
+<td align="center">java</td>
+</tr>
+<tr>
+<td align="center">8</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://github.com/Hackademic/hackademic">Hackademic</a></td>
+<td align="center">综合</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://github.com/northdpole">northdpole</a></td>
+<td align="center">php</td>
+</tr>
+<tr>
+<td align="center">9</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://github.com/aj00200/xssed">XSSed</a></td>
+<td align="center">XSS</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://github.com/aj00200">AJ00200</a></td>
+<td align="center">php</td>
+</tr>
+<tr>
+<td align="center">10</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://github.com/stamparm/DSVW">DSVW</a></td>
+<td align="center">综合</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://github.com/stamparm">Miroslav Stampar</a></td>
+<td align="center">python</td>
+</tr>
+<tr>
+<td align="center">11</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://github.com/cr0hn/vulnerable-node">vulnerable-node</a></td>
+<td align="center">综合</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://github.com/cr0hn">cr0hn</a></td>
+<td align="center">NodeJS</td>
+</tr>
+<tr>
+<td align="center">12</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://github.com/SpiderLabs/MCIR">MCIR</a></td>
+<td align="center">综合</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://github.com/SpiderLabs">Spider Labs</a></td>
+<td align="center">php</td>
+</tr>
+<tr>
+<td align="center">13</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://github.com/SpiderLabs/MCIR">XSS挑战之旅</a></td>
+<td align="center">XSS</td>
+<td align="center">未知</td>
+<td align="center">php</td>
+</tr>
+</tbody></table>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># 安装docker</span><br><span class="line">apt-get install docker.io</span><br><span class="line"># 安装docker-compose</span><br><span class="line">pip install docker-compose</span><br><span class="line"># 下载vulstudy项目 </span><br><span class="line">git clone https://github.com/c0ny1/vulstudy.git</span><br></pre></td></tr></table></figure>
+
+<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><p>使用主要分两种：单独运行一个漏洞平台，同时运行多个漏洞平台。</p>
+<h3 id="1-单独运行一个漏洞平台"><a href="#1-单独运行一个漏洞平台" class="headerlink" title="1.单独运行一个漏洞平台"></a>1.单独运行一个漏洞平台</h3><p>cd到要运行的漏洞平台下运行以下命令</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cd vulstudy/DVWA</span><br><span class="line">docker-compose up -d #启动容器</span><br><span class="line">docker-compose stop #停止容器</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-同时运行所有漏洞平台"><a href="#2-同时运行所有漏洞平台" class="headerlink" title="2.同时运行所有漏洞平台"></a>2.同时运行所有漏洞平台</h3><p>在项目根目录下运行以下命令</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cd vulstudy</span><br><span class="line">docker-compose up -d #启动容器</span><br><span class="line">docker-compose stop #停止容器</span><br></pre></td></tr></table></figure>
+<p><img src="/2023/04/24/docker%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BA%E5%90%84%E5%A4%A7%E6%BC%8F%E6%B4%9E%E9%9D%B6%E5%9C%BA/vulstudy.png" alt="vulstudy"></p>
+<h2 id="FAQ"><a href="#FAQ" class="headerlink" title="FAQ"></a>FAQ</h2><p><strong>1.第一次启动bWAPP容器访问其主页会报错如下：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Connection failed: Unknown database &#x27;bWAPP&#x27;</span><br></pre></td></tr></table></figure>
+
+<p><strong>解决：</strong> 第一次创建应事先访问/install.php来创建数据库！</p>
+<p><strong>2.第一次搭建DVWA，在苹果系统下的safari浏览器下无法初始化数据库，并提示如下：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CSRF token is incorrect</span><br></pre></td></tr></table></figure>
+
+<p><strong>解决：</strong> 使用苹果系统下的其他浏览器即可，比如Chrome。</p>
+<h2 id="声明"><a href="#声明" class="headerlink" title="声明"></a>声明</h2><p>该项目只是收集了当下比较流行的漏洞学习平台，若有侵权，请联系我！同时欢迎大家提交更多有意思的漏洞学习平台，让我们一起把它们放到docker上，方便更多人的工作和学习！</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/04/24/%E7%BA%A2%E8%93%9D%E9%98%9F%E7%8E%AF%E5%A2%83%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2%E5%B7%A5%E5%85%B7/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/20230401000222.jpg">
+      <meta itemprop="name" content="ienA">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ienAの博客">
+      <meta itemprop="description" content="致力于分享自己学习过程笔记的萌新博主૮(˶ᵔ ᵕ ᵔ˶)ა">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | ienAの博客">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2023/04/24/%E7%BA%A2%E8%93%9D%E9%98%9F%E7%8E%AF%E5%A2%83%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2%E5%B7%A5%E5%85%B7/" class="post-title-link" itemprop="url">红/蓝队环境自动化部署工具</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-04-24 17:16:00" itemprop="dateCreated datePublished" datetime="2023-04-24T17:16:00+08:00">2023-04-24</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-05-14 22:56:23" itemprop="dateModified" datetime="2024-05-14T22:56:23+08:00">2024-05-14</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/" itemprop="url" rel="index"><span itemprop="name">网络安全</span></a>
+        </span>
+    </span>
+
+  
+  
+  <span class="post-meta-item">
+    
+    <span class="post-meta-item-icon">
+      <i class="far fa-comment"></i>
+    </span>
+    <span class="post-meta-item-text">Valine：</span>
+  
+    <a title="valine" href="/2023/04/24/%E7%BA%A2%E8%93%9D%E9%98%9F%E7%8E%AF%E5%A2%83%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2%E5%B7%A5%E5%85%B7/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2023/04/24/%E7%BA%A2%E8%93%9D%E9%98%9F%E7%8E%AF%E5%A2%83%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2%E5%B7%A5%E5%85%B7/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>4.3k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>4 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <blockquote>
+<p><strong>本人搬运的是github上的一个开源项目</strong></p>
+<p><strong>地址：<a target="_blank" rel="noopener" href="https://github.com/ffffffff0x/f8x">https://github.com/ffffffff0x/f8x</a></strong></p>
+</blockquote>
+<h1 align="center">f8x</h1>
+
+<h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p><strong>一款红/蓝队环境自动化部署工具,支持多种场景,渗透,开发,代理环境,服务可选项等</strong></p>
+<p><strong>大多数场景下，在不同的云购买一些 vps 服务器用于部署红 / 蓝队设施，不能做到开箱即用，使用 f8x 可以快速部署所需要的各类服务。同时兼顾到本地 VM 虚拟机的需求，可以选择走 socket 代理进行安装部署，Proxychains-ng 也会自动安装，只需做好 Proxychains-ng 配置即可。</strong></p>
+<h2 id="开始"><a href="#开始" class="headerlink" title="开始"></a>开始</h2><p><strong>下载</strong></p>
+<ul>
+<li><p>通过 CF Workers 下载 [推荐]</p>
+<ul>
+<li>wget : <code>wget -O f8x https://f8x.io/</code></li>
+<li>curl : <code>curl -o f8x https://f8x.io/</code></li>
+</ul>
+</li>
+<li><p>github 直链</p>
+<ul>
+<li>wget : <code>wget -O f8x https://raw.githubusercontent.com/ffffffff0x/f8x/main/f8x</code></li>
+<li>curl : <code>curl -o f8x https://raw.githubusercontent.com/ffffffff0x/f8x/main/f8x</code></li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>后续不会更新 releases,建议不要下载 releases 的旧版本 f8x</p>
+</blockquote>
+<p><strong>使用</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bash f8x -h</span><br></pre></td></tr></table></figure>
+
+<p>如果你希望方便点使用可以直接加到环境变量中</p>
+<ul>
+<li>wget : <code>wget -O f8x https://f8x.io/ &amp;&amp; mv --force f8x /usr/local/bin/f8x &amp;&amp; chmod +x /usr/local/bin/f8x</code><ul>
+<li><code>f8x -h</code></li>
+</ul>
+</li>
+<li>curl : <code>curl -o f8x https://f8x.io/ &amp;&amp; mv --force f8x /usr/local/bin/f8x &amp;&amp; chmod +x /usr/local/bin/f8x</code><ul>
+<li><code>f8x -h</code></li>
+</ul>
+</li>
+</ul>
+<p><strong>系统依赖</strong></p>
+<p>f8x 基本上不需要任何依赖,或者说它就是为了帮助你安装各种依赖而生的😁</p>
+<p><strong>f8x-ctf</strong></p>
+<p>该脚本用于部署 CTF 环境,支持 (Web、Misc、Crypto、Pwn、Iot) 分类</p>
+<ul>
+<li>wget : <code>wget -O f8x-ctf https://f8x.io/ctf</code><ul>
+<li><code>bash f8x-ctf -help</code></li>
+</ul>
+</li>
+<li>curl : <code>curl -o f8x-ctf https://f8x.io/ctf</code><ul>
+<li><code>bash f8x-ctf -help</code></li>
+</ul>
+</li>
+</ul>
+<p><strong>f8x-dev</strong></p>
+<p>该脚本用于部署中间件和数据库环境,支持 (apache、nginx、tomcat、Database、php) 分类</p>
+<ul>
+<li>wget : <code>wget -O f8x-dev https://f8x.io/dev</code><ul>
+<li><code>bash f8x-dev -help</code></li>
+</ul>
+</li>
+<li>curl : <code>curl -o f8x-dev https://f8x.io/dev</code><ul>
+<li><code>bash f8x-dev -help</code></li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="支持选项"><a href="#支持选项" class="headerlink" title="支持选项"></a>支持选项</h2><p>目前 f8x 支持以下部署选项 (Linux arm64 下大部分都支持)</p>
+<p><strong>1. 批量化安装</strong></p>
+<ul>
+<li>使用 -b 选项安装基本环境 (gcc、make、git、vim、telnet、jq、unzip 等基本工具)</li>
+<li>使用 -p 选项安装代理环境 (警告:国外云服务器上不要用,会降速)</li>
+<li>使用 -d 选项安装开发环境 (python3、pip3、Go、Docker、Docker-Compose、SDKMAN)</li>
+<li>使用 -k 选项安装渗透环境 (hashcat、ffuf、OneForAll、ksubdomain、impacket 等渗透工具)<ul>
+<li>-ka 信息收集、扫描、爆破、抓取</li>
+<li>-kb 漏洞利用</li>
+<li>-kc 后渗透、C2</li>
+<li>-kd 其他</li>
+<li>-ke 功能重叠或长期不维护</li>
+</ul>
+</li>
+<li>使用 -s 选项安装蓝队环境 (Fail2Ban、chkrootkit、rkhunter、河马webshell查杀工具)</li>
+<li>使用 -f 选项安装其他工具 (Bash_Insulter、vlmcsd、AdguardTeam、trash-cli 等辅助工具)</li>
+<li>使用 -cloud 选项安装云应用 (Terraform、Serverless Framework、wrangler)</li>
+<li>使用 -all 选项全自动化部署 (默认不走代理,兼容 CentOS7/8,Debain10/9,Ubuntu20/18,Fedora33)</li>
+</ul>
+<p><strong>2. 开发环境</strong></p>
+<ul>
+<li>使用 -docker 选项安装 docker 环境</li>
+<li>使用 -lua 选项安装 lua 环境</li>
+<li>使用 -nn 选项安装 npm &amp; NodeJs 环境</li>
+<li>使用 -go 选项安装 go 环境</li>
+<li>使用 -oraclejdk(8/11) 选项安装 oraclejdk 环境</li>
+<li>使用 -openjdk 选项安装 openjdk 环境</li>
+<li>使用 -py3(7/8/9/10) 选项安装 python3 环境</li>
+<li>使用 -py2 选项安装 python2 环境</li>
+<li>使用 -pip2-f 选项强制安装 pip2 环境 (建议在 -python2 选项失败的情况下运行)</li>
+<li>使用 -perl 选项安装 perl 环境</li>
+<li>使用 -ruby 选项安装 ruby 环境</li>
+<li>使用 -rust 选项安装 rust 环境</li>
+<li>使用 -code 选项安装 code-server 环境</li>
+<li>使用 -chromium 选项安装 Chromium 环境 (用于配合 -k 选项中的 rad、crawlergo)</li>
+<li>使用 -phantomjs 选项安装 PhantomJS</li>
+</ul>
+<p><strong>3. 蓝队工具</strong></p>
+<ul>
+<li>使用 -binwalk 选项安装 binwalk 环境</li>
+<li>使用 -binwalk-f 选项强制安装 binwalk 环境 (建议在 -binwalk 选项失败的情况下运行)</li>
+<li>使用 -clamav 选项安装 ClamAV 工具</li>
+<li>使用 -lt 选项部署 LogonTracer 环境 (非超高配置机器不要部署,这个应用太吃配置了)</li>
+<li>使用 -suricata 选项部署 Suricata 环境</li>
+<li>使用 -vol 选项安装 volatility 取证工具</li>
+<li>使用 -vol3 选项安装 volatility3 取证工具</li>
+</ul>
+<p><strong>4. 红队工具</strong></p>
+<ul>
+<li>使用 -aircrack 选项部署 aircrack-ng 环境</li>
+<li>使用 -bypass 选项部署 Bypass 环境</li>
+<li>使用 -goby 选项部署 Goby 环境 (需要图形化环境)</li>
+<li>使用 -wpscan 选项安装 wpscan 工具</li>
+<li>使用 -yakit 选项部署 yakit 环境</li>
+</ul>
+<p><strong>5. 红队基础设施</strong></p>
+<ul>
+<li>使用 -awvs14 选项部署 AWVS13 环境(1.04 GB)</li>
+<li>使用 -cs 选项部署 CobaltStrike4.3 环境</li>
+<li>使用 -cs45 选项部署 CobaltStrike4.5 环境</li>
+<li>使用 -frp 选项部署 frp 工具</li>
+<li>使用 -interactsh 选项部署 interactsh 工具 (<a target="_blank" rel="noopener" href="https://github.com/projectdiscovery/interactsh">https://github.com/projectdiscovery/interactsh</a>)</li>
+<li>使用 -merlin 选项部署 merlin 环境 (<a target="_blank" rel="noopener" href="https://github.com/Ne0nd0g/merlin">https://github.com/Ne0nd0g/merlin</a>)</li>
+<li>使用 -msf 选项部署 Metasploit 环境</li>
+<li>使用 -nps 选项部署 nps 工具</li>
+<li>使用 -pupy 选项部署 pupy 环境 (<a target="_blank" rel="noopener" href="https://github.com/n1nj4sec/pupy">https://github.com/n1nj4sec/pupy</a>)</li>
+<li>使用 -rg 选项部署 RedGuard 工具 (<a target="_blank" rel="noopener" href="https://github.com/wikiZ/RedGuard">https://github.com/wikiZ/RedGuard</a>)</li>
+<li>使用 -sliver 选项部署 sliver 环境 (<a target="_blank" rel="noopener" href="https://github.com/BishopFox/sliver">https://github.com/BishopFox/sliver</a>)</li>
+<li>使用 -sliver-client 选项安装 sliver-client 工具</li>
+<li>使用 -sps 选项部署 SharPyShell 工具 (<a target="_blank" rel="noopener" href="https://github.com/antonioCoco/SharPyShell">https://github.com/antonioCoco/SharPyShell</a>)</li>
+<li>使用 -viper 选项部署 Viper 环境(2.1 GB)</li>
+</ul>
+<p><strong>6. 基于 Docker 的环境部署</strong></p>
+<ul>
+<li>使用 -arl 选项部署 ARL 环境(872 MB)</li>
+<li>使用 -mobsf 选项部署 MobSF 环境(1.54 GB)</li>
+<li>使用 -nodejsscan 选项部署 nodejsscan 环境(873 MB)</li>
+<li>使用 -vulhub 选项部署 vulhub 环境(210 MB)</li>
+<li>使用 -vulfocus 选项部署 vulfocus 环境(1.04 GB)</li>
+<li>使用 -TerraformGoat 选项部署 TerraformGoat 环境</li>
+</ul>
+<p><strong>7. 杂项服务</strong></p>
+<ul>
+<li>使用 -asciinema 选项安装 asciinema 截图工具</li>
+<li>使用 -bt 选项部署宝塔服务</li>
+<li>使用 -clash 选项安装 clash 工具 (<a target="_blank" rel="noopener" href="https://github.com/juewuy/ShellClash">https://github.com/juewuy/ShellClash</a>)</li>
+<li>使用 -nginx 选项配置 nginx 服务</li>
+<li>使用 -ssh 选项配置 ssh 环境 (RedHat 系默认可用,无需重复安装)</li>
+<li>使用 -ssr 选项部署 ssr 工具</li>
+<li>使用 -zsh 选项部署 zsh 工具</li>
+</ul>
+<p><strong>8. 其他</strong></p>
+<ul>
+<li>使用 -clear 选项清理系统使用痕迹</li>
+<li>使用 -info 选项查看系统各项信息</li>
+<li>使用 -optimize 选项改善设备选项,优化性能</li>
+<li>使用 -remove 选项卸载国内 vps 云监控</li>
+<li>使用 -rmlock 选项运行除锁模块</li>
+<li>使用 -swap 选项配置 swap 分区</li>
+<li>使用 -update 选项更新 f8x 工具</li>
+<li>使用 -upgrade 选项更新渗透工具</li>
+</ul>
+<hr>
+<h2 id="实际效果"><a href="#实际效果" class="headerlink" title="实际效果"></a>实际效果</h2><p><strong>-h 查看帮助</strong></p>
+<p><img src="../images/%E7%BA%A2%E8%93%9D%E9%98%9F%E7%8E%AF%E5%A2%83%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2%E5%B7%A5%E5%85%B7/1.png" alt="1"></p>
+<p><strong>-all 全自动化部署</strong></p>
+<p><img src="../images/%E7%BA%A2%E8%93%9D%E9%98%9F%E7%8E%AF%E5%A2%83%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2%E5%B7%A5%E5%85%B7/centos7.svg" alt="centos7"></p>
+<p>以 vultr vps 为例,结果分别如下</p>
+<p><strong>CentOS 7</strong></p>
+<p><img src="../images/%E7%BA%A2%E8%93%9D%E9%98%9F%E7%8E%AF%E5%A2%83%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2%E5%B7%A5%E5%85%B7/centos7.svg" alt="centos7"></p>
+<p><strong>Debian 10</strong></p>
+<p><img src="../images/%E7%BA%A2%E8%93%9D%E9%98%9F%E7%8E%AF%E5%A2%83%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2%E5%B7%A5%E5%85%B7/debian10.svg" alt="debian10"></p>
+<p><strong>Fedora 33</strong></p>
+<p><img src="../images/%E7%BA%A2%E8%93%9D%E9%98%9F%E7%8E%AF%E5%A2%83%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2%E5%B7%A5%E5%85%B7/fedora33.svg" alt="Fedora 33"></p>
+<p><strong>Ubuntu 20.10</strong></p>
+<p><img src="../images/%E7%BA%A2%E8%93%9D%E9%98%9F%E7%8E%AF%E5%A2%83%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2%E5%B7%A5%E5%85%B7/Ubuntu20.10.svg" alt="Ubuntu 20.10"></p>
+<hr>
+<h2 id="FAQ"><a href="#FAQ" class="headerlink" title="FAQ"></a>FAQ</h2><p><strong>-p 选项会执行什么</strong></p>
+<ol>
+<li>替换你的 DNS(默认为 223.5.5.5), 如果判断是 debian 系还会帮你安装 resolvconf, 长期修改 DNS</li>
+<li>检查基础的编译环境是否安装, 并通过默认的包管理器安装 gcc,make,unzip 这些基本软件</li>
+<li>可选的从 <a target="_blank" rel="noopener" href="https://github.com/rofl0r/proxychains-ng">https://github.com/rofl0r/proxychains-ng</a> 或 ffffffff0x.com 下载 Proxychains-ng 的源码, 编译安装</li>
+<li>要求你修改 /etc/proxychains.conf 文件</li>
+<li>修改 pip 代理为 <a target="_blank" rel="noopener" href="https://mirrors.aliyun.com/pypi/simple/">https://mirrors.aliyun.com/pypi/simple/</a></li>
+<li>修改 docker 代理为 <a target="_blank" rel="noopener" href="https://docker.mirrors.ustc.edu.cn/">https://docker.mirrors.ustc.edu.cn</a> , 并重启 docker 服务</li>
+</ol>
+<p><strong>我想跑在 CI/CD 里,不想要交互行不行?</strong></p>
+<p>当然没有问题, f8x 的 GitHub action 就是自动运行每个选项部署环境的。只需要在 /tmp 创建一个名为 IS_CI 的空文件即可</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">touch</span> /tmp/IS_CI</span><br><span class="line">wget -O f8x https://f8x.io/ &amp;&amp; <span class="built_in">mv</span> --force f8x /usr/local/bin/f8x &amp;&amp; <span class="built_in">chmod</span> +x /usr/local/bin/f8x</span><br><span class="line">f8x -k</span><br></pre></td></tr></table></figure>
+
+<p><strong>如何自定义版本</strong></p>
+<p>shell脚本在运行时，可以通过 <code>. ./test.sh</code> 这样同等进程运行修改当前shell环境变量，那么f8x对同目录下的 f8x_version.sh 文件做个判断，当有这个文件时，会加载这个文件中的内容，也就是覆盖f8x的变量值，这样只需要在当前目录下对 f8x_version.sh 文件做修改或定制，即可做到安装指定版本</p>
+<hr>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -4306,7 +4857,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2025-03-05 15:09:25" itemprop="dateModified" datetime="2025-03-05T15:09:25+08:00">2025-03-05</time>
+      <time title="修改时间：2025-03-29 19:16:11" itemprop="dateModified" datetime="2025-03-29T19:16:11+08:00">2025-03-29</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -4339,7 +4890,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>4.4k</span>
+      <span>4.6k</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
@@ -4390,7 +4941,7 @@
 <li><strong>node_mirror：node.js的下载源，这里使用的是淘宝源</strong></li>
 <li><strong>npm_mirror：npm的下载源，这里使用的是淘宝源</strong></li>
 </ul>
-<p><img src="/2023/03/29/%E6%90%AD%E5%BB%BAhexo%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/image-20230331220734968.png" alt="image-20230331220734968"></p>
+<p><img src="/2023/03/29/%E6%90%AD%E5%BB%BAhexo%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/20250329191540.jpg" alt="20250329191540"></p>
 <h2 id="使用NVM"><a href="#使用NVM" class="headerlink" title="使用NVM"></a>使用NVM</h2><p><strong>在cmd或pwoershell使用命令</strong></p>
 <figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nvm list available</span><br></pre></td></tr></table></figure>
 
@@ -4407,9 +4958,19 @@
 <figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm config <span class="built_in">set</span> prefix <span class="string">&quot;D:\NVM\node_global&quot;</span></span><br><span class="line">npm config <span class="built_in">set</span> cache <span class="string">&quot;D:\NVM\node_cache&quot;</span></span><br></pre></td></tr></table></figure>
 
 <p><strong>更换源</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm config set registry=http://registry.npm.taobao.org </span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm config set registry=http://mirrors.cloud.tencent.com/npm/ </span><br></pre></td></tr></table></figure>
 
-<p>所有必备的应用程序安装完成后，即可使用 npm 安装 Hexo。</p>
+<p>所有必备的应用程序安装完成后，还需要配置npm的全局变量到系统的变量里面</p>
+<h3 id="配置系统变量"><a href="#配置系统变量" class="headerlink" title="配置系统变量"></a>配置系统变量</h3><p><strong>配置<code>NVM_HOME</code>和<code>NVM_SYMLINK</code></strong></p>
+<p><img src="/2023/03/29/%E6%90%AD%E5%BB%BAhexo%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/20250329190659.jpg" alt="20250329190659"></p>
+<figure class="highlight bat"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">D:\<span class="title">NVM</span></span></span><br><span class="line"><span class="function"><span class="title">D</span>:\<span class="title">NVM</span>\<span class="title">nodejs</span></span></span><br></pre></td></tr></table></figure>
+
+<p><strong>编辑path</strong></p>
+<p><img src="/2023/03/29/%E6%90%AD%E5%BB%BAhexo%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/20250329190753.jpg" alt="20250329190753"></p>
+<figure class="highlight bat"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">%NVM_HOME%</span></span><br><span class="line"><span class="variable">%NVM_SYMLINK%</span></span><br><span class="line"><span class="variable">%NVM_HOME%</span>\node_global\</span><br><span class="line"><span class="variable">%NVM_SYMLINK%</span>\node_modules</span><br></pre></td></tr></table></figure>
+
+
+
 <h3 id="使用Npm安装Hexo"><a href="#使用Npm安装Hexo" class="headerlink" title="使用Npm安装Hexo"></a>使用Npm安装Hexo</h3><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install <span class="literal">-g</span> hexo<span class="literal">-cli</span></span><br></pre></td></tr></table></figure>
 
 <p>如报错，更新一下npm</p>
