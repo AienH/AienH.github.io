@@ -183,7 +183,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">30</span>
+          <span class="site-state-item-count">32</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -194,7 +194,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">26</span>
+        <span class="site-state-item-count">29</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -237,6 +237,447 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/04/28/orangepi5%E5%BC%80%E5%90%AF%E7%83%AD%E7%82%B9/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/20230401000222.jpg">
+      <meta itemprop="name" content="ienA">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ienAの博客">
+      <meta itemprop="description" content="致力于分享自己学习过程笔记的萌新博主૮(˶ᵔ ᵕ ᵔ˶)ა">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | ienAの博客">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2023/04/28/orangepi5%E5%BC%80%E5%90%AF%E7%83%AD%E7%82%B9/" class="post-title-link" itemprop="url">orangepi5开启热点</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-04-28 19:14:53" itemprop="dateCreated datePublished" datetime="2023-04-28T19:14:53+08:00">2023-04-28</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-05-14 23:13:19" itemprop="dateModified" datetime="2024-05-14T23:13:19+08:00">2024-05-14</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/orangepi/" itemprop="url" rel="index"><span itemprop="name">orangepi</span></a>
+        </span>
+    </span>
+
+  
+  
+  <span class="post-meta-item">
+    
+    <span class="post-meta-item-icon">
+      <i class="far fa-comment"></i>
+    </span>
+    <span class="post-meta-item-text">Valine：</span>
+  
+    <a title="valine" href="/2023/04/28/orangepi5%E5%BC%80%E5%90%AF%E7%83%AD%E7%82%B9/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2023/04/28/orangepi5%E5%BC%80%E5%90%AF%E7%83%AD%E7%82%B9/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>4.5k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>4 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <blockquote>
+<p>我的orangepi5的系统是debian11server版</p>
+</blockquote>
+<h3 id="准备工作："><a href="#准备工作：" class="headerlink" title="准备工作："></a>准备工作：</h3><p>1、<strong>香橙派5开发板一块</strong>，本文基于香橙派5完成开启热点/WIFI操作，但是都是跑的Linux系统，树莓派/香橙派大差不差；<br> 2、<strong>USB网卡一张</strong>，Orangepi5本身没有wifi模块需要自己另外配usb网卡 这里我用的是官方推荐的RTL8821CU网卡；</p>
+<p><img src="/2023/04/28/orangepi5%E5%BC%80%E5%90%AF%E7%83%AD%E7%82%B9/17486263331_1660295310.jpg" alt="17486263331_1660295310"></p>
+<h3 id="测试网卡："><a href="#测试网卡：" class="headerlink" title="测试网卡："></a>测试网卡：</h3><blockquote>
+<p>我这里直接用的root用户，不是root用户的请在命令前加<code>sudo</code></p>
+</blockquote>
+<p><strong><code>lsusb</code> 查看usb设备状态</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">root@orangepi5:~<span class="comment"># lsusb | grep &quot;Realtek&quot;</span></span><br><span class="line">Bus 007 Device 002: ID 0bda:c820 Realtek Semiconductor Corp. 802.11ac NIC</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>orangepi5内置rtl8821cu的模块</p>
+</blockquote>
+<p><strong>如果 lsusb 命令看到的 USB WIFI 模块处于 Driver CDROM Mode，请重新拔插 下 USB WIFI 模块。如果还不行，请手动执行下面的命令切换下模式：</strong></p>
+<blockquote>
+<p>-v 0bda和-p 1a2b两参数分别是网卡vender id和product id，即用lsusb查看得到的ID vender id:product id</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">root@orangepi5:~<span class="comment"># usb_modeswitch -KW -v 0bda -p 1a2b</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>通过 <code>lsmod</code> 命令可以看到下面内核模块已自动加载</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">root@orangepi5:~<span class="comment"># lsmod</span></span><br><span class="line">Module                  Size  Used by</span><br><span class="line">...						...	  ...</span><br><span class="line">...						...	  ...</span><br><span class="line">8821cu               1839104  0</span><br><span class="line">rtk_btusb              61440  0</span><br><span class="line">...						...	  ...</span><br><span class="line">...						...	  ...</span><br></pre></td></tr></table></figure>
+
+<p><strong>通过 <code>dmesg</code> 命令可以看到 rtl8821cu 模块的加载信息</strong><br><strong>然后通过 <code>ifconfig -a</code> 命令查看网卡信息，一般网卡id都是wlan0，我这里显示的是wlx90de806d8e55</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">root@orangepi5:~<span class="comment"># ifconfig</span></span><br><span class="line"></span><br><span class="line">eth0: flags=4163&lt;UP,BROADCAST,RUNNING,MULTICAST&gt;  mtu 1500</span><br><span class="line">        inet 10.8.5.208  netmask 255.255.255.0  broadcast 10.8.5.255</span><br><span class="line">        inet6 fe80::642:ca7c:1de6:12df  prefixlen 64  scopeid 0x20&lt;<span class="built_in">link</span>&gt;</span><br><span class="line">        ether f6:07:0e:34:b7:c2  txqueuelen 1000  (Ethernet)</span><br><span class="line">        RX packets 38832  bytes 39316854 (37.4 MiB)</span><br><span class="line">        RX errors 0  dropped 78  overruns 0  frame 0</span><br><span class="line">        TX packets 21791  bytes 12948030 (12.3 MiB)</span><br><span class="line">        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0</span><br><span class="line">        device interrupt 85  </span><br><span class="line"></span><br><span class="line">lo: flags=73&lt;UP,LOOPBACK,RUNNING&gt;  mtu 65536</span><br><span class="line">        inet 127.0.0.1  netmask 255.0.0.0</span><br><span class="line">        inet6 ::1  prefixlen 128  scopeid 0x10&lt;host&gt;</span><br><span class="line">        loop  txqueuelen 1000  (Local Loopback)</span><br><span class="line">        RX packets 0  bytes 0 (0.0 B)</span><br><span class="line">        RX errors 0  dropped 0  overruns 0  frame 0</span><br><span class="line">        TX packets 0  bytes 0 (0.0 B)</span><br><span class="line">        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0</span><br><span class="line"></span><br><span class="line">wlx90de806d8e55: flags=4163&lt;UP,BROADCAST,RUNNING,MULTICAST&gt;  mtu 1500</span><br><span class="line">        inet 192.168.1.1  netmask 255.255.255.0  broadcast 192.168.1.255</span><br><span class="line">        inet6 fe80::92de:80ff:fe6d:8e55  prefixlen 64  scopeid 0x20&lt;<span class="built_in">link</span>&gt;</span><br><span class="line">        ether 90:de:80:6d:8e:55  txqueuelen 1000  (Ethernet)</span><br><span class="line">        RX packets 29000  bytes 14600056 (13.9 MiB)</span><br><span class="line">        RX errors 0  dropped 0  overruns 0  frame 0</span><br><span class="line">        TX packets 30524  bytes 38526285 (36.7 MiB)</span><br><span class="line">        TX errors 0  dropped 78 overruns 0  carrier 0  collisions 0</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><strong>连接WIFI测试（这一步仅仅是为了测试USB是否可以正常工作 可以跳过）</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#直接nmtui</span></span><br><span class="line">root@orangepi5:~<span class="comment"># nmtui</span></span><br></pre></td></tr></table></figure>
+
+<p>选择Activate a connection –&gt; 选择要连的WIFi –&gt; 输入密码 </p>
+<p>看到要连的WIFi名前带个*号说明已经连上了</p>
+<h3 id="开启网卡热点："><a href="#开启网卡热点：" class="headerlink" title="开启网卡热点："></a>开启网卡热点：</h3><p><strong>断开上一步的Wifi网络连接</strong></p>
+<p>因为要开启热点 所以不能让USB网卡工作在连接wifi状态，否则会报错：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Your adapter can not be a station (i.e. be connected) and an AP at the same time</span><br></pre></td></tr></table></figure>
+
+<p>关于linux连接/断开 wifi 方法:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">root@orangepi5:~<span class="comment"># orangepi-config</span></span><br></pre></td></tr></table></figure>
+
+<p>选择Network –&gt; 选择Forget（忘记所有wifi网络）</p>
+<blockquote>
+<p>在orangepi-config的Network中可以安装buletooth（蓝牙）support，然后就可以在里面用BT discover查找蓝牙设备连接了    </p>
+</blockquote>
+<p>除了这种方法，也可以继续用<code>nmtui</code>进入连WIFi的设置中一个一个删除已经连过的WIFi</p>
+<p><strong>使用create_ap脚本（linux一般自带）</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">root@orangepi5:~<span class="comment"># create_ap -m nat wlx90de806d8e55 eth0 orangepi orangepi</span></span><br></pre></td></tr></table></figure>
+
+<p>开启热点，此时可以用手机或者电脑搜索到这个热点，连接即可。<br>热点名称：orangepi<br>热点密码：orangepi</p>
+<blockquote>
+<p><strong>No passphrase (open network):无密码（开放网络）：</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">create_ap wlan0 eth0 MyAccessPoint</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>WPA + WPA2 passphrase:WPA + WPA2密码：</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">create_ap wlan0 eth0 MyAccessPoint MyPassPhrase</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>AP without Internet sharing:无互联网共享的AP：</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">create_ap -n wlan0 MyAccessPoint MyPassPhrase</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>Bridged Internet sharing:桥接Internet共享：</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">create_ap -m bridge wlan0 eth0 MyAccessPoint MyPassPhrase</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>Bridged Internet sharing (pre-configured bridge interface):桥接互联网共享（预配置的桥接接口）：</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">create_ap -m bridge wlan0 br0 MyAccessPoint MyPassPhrase</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>Internet sharing from the same WiFi interface:从同一个WiFi接口共享互联网：</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">create_ap wlan0 wlan0 MyAccessPoint MyPassPhrase</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>Choose a different WiFi adapter driver选择其他WiFi适配器驱动程序</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">create_ap --driver rtl871xdrv wlan0 eth0 MyAccessPoint MyPassPhrase</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>No passphrase (open network) using pipe:使用管道时无密码（开放网络）：</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> -e <span class="string">&quot;MyAccessPoint&quot;</span> | create_ap wlan0 eth0</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>WPA + WPA2 passphrase using pipe:使用管道的WPA + WPA2密码：</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#&#x27;-e&#x27;后面的带上&#x27;/n&#x27;行会在遇到的地方作为新的一行</span></span><br><span class="line"><span class="built_in">echo</span> -e <span class="string">&quot;MyAccessPoint /nMyPassPhrase&quot;</span> | create_ap wlan0 eth0</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>Enable IEEE 802.11n启用IEEE 802。11n</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">create_ap --ieee80211n --ht_capab <span class="string">&#x27;[HT40+]&#x27;</span> wlan0 eth0 MyAccessPoint MyPassPhrase</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>Client Isolation:客户端隔离：</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">create_ap --isolate-clients wlan0 eth0 MyAccessPoint MyPassPhrase</span><br></pre></td></tr></table></figure>
+</blockquote>
+<h3 id="热点服务开机自启动："><a href="#热点服务开机自启动：" class="headerlink" title="热点服务开机自启动："></a><strong>热点服务开机自启动</strong>：</h3><p>Linux自带的create_ap找不到create_ap.conf和相应的service，需要用github提供的指令下载一遍create_ap（项目原地址：<a target="_blank" rel="noopener" href="https://github.com/oblique/create_ap%EF%BC%89">https://github.com/oblique/create_ap）</a></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">root@orangepi5:~<span class="comment"># git clone https://github.com/oblique/create_ap.git</span></span><br><span class="line">root@orangepi5:~<span class="comment"># cd create_ap</span></span><br><span class="line">root@orangepi5:~<span class="comment"># make install</span></span><br></pre></td></tr></table></figure>
+
+<p>安装完后就可以找到create_ap.conf了</p>
+<p><strong>修改热点配置文件</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">root@orangepi5:~<span class="comment"># vim /etc/create_ap.conf</span></span><br><span class="line">CHANNEL=default</span><br><span class="line"><span class="comment">#热点的网关</span></span><br><span class="line">GATEWAY=192.168.1.1</span><br><span class="line">WPA_VERSION=2</span><br><span class="line">ETC_HOSTS=0</span><br><span class="line">DHCP_DNS=gateway</span><br><span class="line">NO_DNS=0</span><br><span class="line">NO_DNSMASQ=0</span><br><span class="line"><span class="comment">#隐藏网络</span></span><br><span class="line">HIDDEN=0</span><br><span class="line">MAC_FILTER=0</span><br><span class="line">MAC_FILTER_ACCEPT=/etc/hostapd/hostapd.accept</span><br><span class="line">ISOLATE_CLIENTS=0</span><br><span class="line"><span class="comment">#共享网络模式为NAT</span></span><br><span class="line">SHARE_METHOD=nat</span><br><span class="line"><span class="comment">#启用WIFi4</span></span><br><span class="line">IEEE80211N=1</span><br><span class="line"><span class="comment">#网卡好的也可以启用WIFi5</span></span><br><span class="line">IEEE80211AC=0</span><br><span class="line">HT_CAPAB=[HT40+]</span><br><span class="line">VHT_CAPAB=</span><br><span class="line">DRIVER=nl80211</span><br><span class="line">NO_VIRT=0</span><br><span class="line">COUNTRY=</span><br><span class="line">FREQ_BAND=2.4</span><br><span class="line">NEW_MACADDR=</span><br><span class="line">DAEMONIZE=0</span><br><span class="line">NO_HAVEGED=0</span><br><span class="line"><span class="comment">#添加修改以下信息</span></span><br><span class="line">WIFI_IFACE=wlx90de806d8e55</span><br><span class="line">INTERNET_IFACE=eth0</span><br><span class="line">SSID=orangepi</span><br><span class="line">PASSPHRASE=orangepi</span><br><span class="line">USE_PSK=0</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><strong>开机自启</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">root@orangepi5:~<span class="comment"># systemctl restart create_ap</span></span><br><span class="line">root@orangepi5:~<span class="comment"># systemctl enable create_ap</span></span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/04/24/%E5%AD%90%E5%9F%9F%E6%94%B6%E9%9B%86%E5%B7%A5%E5%85%B7%20/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/20230401000222.jpg">
+      <meta itemprop="name" content="ienA">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ienAの博客">
+      <meta itemprop="description" content="致力于分享自己学习过程笔记的萌新博主૮(˶ᵔ ᵕ ᵔ˶)ა">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | ienAの博客">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2023/04/24/%E5%AD%90%E5%9F%9F%E6%94%B6%E9%9B%86%E5%B7%A5%E5%85%B7%20/" class="post-title-link" itemprop="url">子域名收集工具</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-04-24 17:20:00" itemprop="dateCreated datePublished" datetime="2023-04-24T17:20:00+08:00">2023-04-24</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-05-14 23:37:45" itemprop="dateModified" datetime="2024-05-14T23:37:45+08:00">2024-05-14</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/" itemprop="url" rel="index"><span itemprop="name">网络安全</span></a>
+        </span>
+    </span>
+
+  
+  
+  <span class="post-meta-item">
+    
+    <span class="post-meta-item-icon">
+      <i class="far fa-comment"></i>
+    </span>
+    <span class="post-meta-item-text">Valine：</span>
+  
+    <a title="valine" href="/2023/04/24/%E5%AD%90%E5%9F%9F%E6%94%B6%E9%9B%86%E5%B7%A5%E5%85%B7%20/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2023/04/24/%E5%AD%90%E5%9F%9F%E6%94%B6%E9%9B%86%E5%B7%A5%E5%85%B7%20/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>6.1k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>6 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <blockquote>
+<p><strong>本人搬运的是github上的一个开源项目</strong></p>
+<p><strong>地址：<a target="_blank" rel="noopener" href="https://github.com/shmilylty/OneForAll">https://github.com/shmilylty/OneForAll</a></strong></p>
+</blockquote>
+<h1 id="OneForAll"><a href="#OneForAll" class="headerlink" title="OneForAll"></a>OneForAll</h1><p>👊<strong>OneForAll是一款功能强大的子域收集工具</strong>  📝<a target="_blank" rel="noopener" href="https://github.com/shmilylty/OneForAll/tree/master/docs/en-us/README.md">English Document</a></p>
+<h2 id="上手指南"><a href="#上手指南" class="headerlink" title="上手指南"></a>上手指南</h2><p>📢 请务必花一点时间阅读此文档，有助于你快速熟悉OneForAll！</p>
+<h2 id="项目介绍"><a href="#项目介绍" class="headerlink" title="项目介绍"></a>项目介绍</h2><p>在渗透测试中信息收集的重要性不言而喻，子域收集是信息收集中必不可少且非常重要的一环，目前网上也开源了许多子域收集的工具，但是总是存在以下部分问题：</p>
+<ul>
+<li><strong>不够强大</strong>，子域收集的接口不够多，不能做到对批量子域自动收集，没有自动子域解析，验证，FUZZ以及信息拓展等功能。</li>
+<li><strong>不够友好</strong>，固然命令行模块比较方便，但是当可选的参数很多，要实现的操作复杂，用命令行模式就有点不够友好，如果有交互良好，高可操作的前端那么使用体验就会好很多。</li>
+<li><strong>缺少维护</strong>，很多工具几年没有更新过一次，issues和PR是啥，不存在的。</li>
+<li><strong>效率问题</strong>，没有利用多进程，多线程以及异步协程技术，速度较慢。</li>
+</ul>
+<p>为了解决以上痛点，此项目应用而生，正如其名，我希望OneForAll是一款集百家之长，功能强大的全面快速子域收集终极神器🔨。</p>
+<p>目前OneForAll还在开发中，肯定有不少问题和需要改进的地方，欢迎大佬们提交<a target="_blank" rel="noopener" href="https://github.com/shmilylty/OneForAll/issues">Issues</a>和<a target="_blank" rel="noopener" href="https://github.com/shmilylty/OneForAll/pulls">PR</a>，用着还行给个小星星✨吧，目前有一个专门用于OneForAll交流和反馈QQ群👨‍👨‍👦‍👦：:<a target="_blank" rel="noopener" href="//shang.qq.com/wpa/qunwpa?idkey=125d3689b60445cdbb11e4ddff38036b7f6f2abbf4f7957df5dddba81aa90771"><strong>824414244</strong></a>（加群验证：信息收集）。</p>
+<h2 id="功能特性"><a href="#功能特性" class="headerlink" title="功能特性"></a>功能特性</h2><ul>
+<li><strong>收集能力强大</strong>，详细模块请阅读<a target="_blank" rel="noopener" href="https://github.com/shmilylty/OneForAll/tree/master/docs/collection_modules.md">收集模块说明</a>。<ol>
+<li>利用证书透明度收集子域（目前有6个模块：<code>censys_api</code>，<code>certspotter</code>，<code>crtsh</code>，<code>entrust</code>，<code>google</code>，<code>spyse_api</code>）</li>
+<li>常规检查收集子域（目前有4个模块：域传送漏洞利用<code>axfr</code>，检查跨域策略文件<code>cdx</code>，检查HTTPS证书<code>cert</code>，检查内容安全策略<code>csp</code>，检查robots文件<code>robots</code>，检查sitemap文件<code>sitemap</code>，利用NSEC记录遍历DNS域<code>dnssec</code>，后续会添加NSEC3记录等模块）</li>
+<li>利用网上爬虫档案收集子域（目前有2个模块：<code>archivecrawl</code>，<code>commoncrawl</code>，此模块还在调试，该模块还有待添加和完善）</li>
+<li>利用DNS数据集收集子域（目前有24个模块：<code>bevigil_api</code>, <code>binaryedge_api</code>, <code>bufferover</code>, <code>cebaidu</code>, <code>chinaz</code>, <code>chinaz_api</code>, <code>circl_api</code>, <code>cloudflare</code>, <code>dnsdb_api</code>, <code>dnsdumpster</code>, <code>hackertarget</code>, <code>ip138</code>, <code>ipv4info_api</code>, <code>netcraft</code>, <code>passivedns_api</code>, <code>ptrarchive</code>, <code>qianxun</code>, <code>rapiddns</code>, <code>riddler</code>, <code>robtex</code>, <code>securitytrails_api</code>, <code>sitedossier</code>, <code>threatcrowd</code>, <code>wzpc</code>, <code>ximcx</code>）</li>
+<li>利用DNS查询收集子域（目前有5个模块：通过枚举常见的SRV记录并做查询来收集子域<code>srv</code>，以及通过查询域名的DNS记录中的MX,NS,SOA,TXT记录来收集子域）</li>
+<li>利用威胁情报平台数据收集子域（目前有6个模块：<code>alienvault</code>, <code>riskiq_api</code>，<code>threatbook_api</code>，<code>threatminer</code>，<code>virustotal</code>，<code>virustotal_api</code>该模块还有待添加和完善）</li>
+<li>利用搜索引擎发现子域（目前有18个模块：<code>ask</code>, <code>baidu</code>, <code>bing</code>, <code>bing_api</code>, <code>duckduckgo</code>, <code>exalead</code>, <code>fofa_api</code>, <code>gitee</code>, <code>github</code>, <code>github_api</code>, <code>google</code>, <code>google_api</code>, <code>shodan_api</code>, <code>so</code>, <code>sogou</code>, <code>yahoo</code>, <code>yandex</code>, <code>zoomeye_api</code>），在搜索模块中除特殊搜索引擎，通用的搜索引擎都支持自动排除搜索，全量搜索，递归搜索。</li>
+</ol>
+</li>
+<li><strong>支持子域爆破</strong>，该模块有常规的字典爆破，也有自定义的fuzz模式，支持批量爆破和递归爆破，自动判断泛解析并处理。</li>
+<li><strong>支持子域验证</strong>，默认开启子域验证，自动解析子域DNS，自动请求子域获取title和banner，并综合判断子域存活情况。</li>
+<li><strong>支持子域爬取</strong>，根据已有的子域，请求子域响应体以及响应体里的JS，从中再次发现新的子域。</li>
+<li><strong>支持子域置换</strong>，根据已有的子域，使用子域替换技术再次发现新的子域。</li>
+<li><strong>支持子域接管</strong>，默认开启子域接管风险检查，支持子域自动接管（目前只有Github，有待完善），支持批量检查。</li>
+<li><strong>处理功能强大</strong>，发现的子域结果支持自动去除，自动DNS解析，HTTP请求探测，自动筛选出有效子域，拓展子域的Banner信息，最终支持的导出格式有<code>txt</code>, <code>csv</code>, <code>json</code>。</li>
+<li><strong>速度极快</strong>，<a target="_blank" rel="noopener" href="https://github.com/shmilylty/OneForAll/tree/master/collect.py">收集模块</a>使用多线程调用，<a target="_blank" rel="noopener" href="https://github.com/shmilylty/OneForAll/tree/master/brute.py">爆破模块</a>使用<a target="_blank" rel="noopener" href="https://github.com/blechschmidt/massdns">massdns</a>，DNS解析速度每秒可解析350000以上个域名，子域验证中DNS解析和HTTP请求使用异步多协程，多线程检查<a target="_blank" rel="noopener" href="https://github.com/shmilylty/OneForAll/tree/master/takeover.py">子域接管</a>风险。</li>
+<li><strong>体验良好</strong>，各模块都有进度条，异步保存各模块结果。</li>
+</ul>
+<h2 id="用到框架"><a href="#用到框架" class="headerlink" title="用到框架"></a>用到框架</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/aio-libs/aiohttp">aiohttp</a> - 异步http客户端/服务器框架</li>
+<li><a target="_blank" rel="noopener" href="https://pypi.org/project/beautifulsoup4/">beautifulsoup4</a> - 可以轻松从HTML或XML文件中提取数据的Python库</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/google/python-fire">fire</a> - Python Fire是一个纯粹根据任何Python对象自动生成命令行界面（CLI）的库</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/Delgan/loguru">loguru</a> - 旨在带来愉快的日志记录Python库</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/blechschmidt/massdns">massdns</a> - 高性能的DNS解析器</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/kennethreitz/records">records</a> - Records是一个非常简单但功能强大的库，用于对大多数关系数据库进行最原始SQL查询。</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/psf/requests">requests</a> - Requests 唯一的一个非转基因的 Python HTTP 库，人类可以安全享用。</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/tqdm/tqdm">tqdm</a> - 适用于Python和CLI的快速，可扩展的进度条库</li>
+</ul>
+<p>感谢这些伟大优秀的Python库！</p>
+<h3 id="安装要求"><a href="#安装要求" class="headerlink" title="安装要求"></a>安装要求</h3><p>OneForAll基于<a target="_blank" rel="noopener" href="https://www.python.org/downloads/release/python-360/">Python 3.6.0</a>开发和测试，OneForAll需要高于Python 3.6.0的版本才能运行。<br>安装Python环境可以参考<a target="_blank" rel="noopener" href="https://pythonguidecn.readthedocs.io/zh/latest/starting/installation.html#python-3">Python 3 安装指南</a>。运行以下命令检查Python和pip3版本：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">python -V</span><br><span class="line">pip3 -V</span><br></pre></td></tr></table></figure>
+<p>如果你看到类似以下的输出便说明Python环境没有问题：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Python 3.6.0</span><br><span class="line">pip 19.2.2 from C:\Users\shmilylty\AppData\Roaming\Python\Python36\site-packages\pip (python 3.6)</span><br></pre></td></tr></table></figure>
+<h3 id="安装步骤（git-版）"><a href="#安装步骤（git-版）" class="headerlink" title="安装步骤（git 版）"></a>安装步骤（git 版）</h3><ol>
+<li><strong>下载</strong></li>
+</ol>
+<p>由于该项目<strong>处于开发中</strong>，会不断进行更新迭代，下载时请使用<code>git clone</code><strong>克隆</strong>最新代码仓库，也方便后续的更新，不推荐从Releases下载，因为Releases里版本更新缓慢，也不方便更新，<br>本项目已经在<a target="_blank" rel="noopener" href="https://gitee.com/shmilylty/OneForAll.git">码云</a>(Gitee)镜像了一份，国内推荐使用码云进行克隆比较快：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://gitee.com/shmilylty/OneForAll.git</span><br></pre></td></tr></table></figure>
+<p>或者：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/shmilylty/OneForAll.git</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li><strong>安装</strong></li>
+</ol>
+<p>你可以通过pip3安装OneForAll的依赖，以下为<strong>Windows系统</strong>下使用<strong>pip3</strong>安装依赖的示例：注意：如果你的Python3安装在系统Program Files目录下，如：<code>C:\Program Files\Python36</code>，那么请以管理员身份运行命令提示符cmd执行以下命令！</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> OneForAll/</span><br><span class="line">python3 -m pip install -U pip setuptools wheel -i https://mirrors.aliyun.com/pypi/simple/</span><br><span class="line">pip3 install -r requirements.txt -i https://mirrors.aliyun.com/pypi/simple/</span><br><span class="line">python3 oneforall.py --<span class="built_in">help</span></span><br></pre></td></tr></table></figure>
+
+<p>其他系统平台的请参考<a target="_blank" rel="noopener" href="https://github.com/shmilylty/OneForAll/tree/master/docs/installation_dependency.md">依赖安装</a>，如果在安装依赖过程中发现编译某个依赖库失败时可以参考<a target="_blank" rel="noopener" href="https://github.com/shmilylty/OneForAll/tree/master/docs/troubleshooting.md">常见问题与回答.md</a>文档中解决方法，如果依然不能解决欢迎加群反馈问题。</p>
+<ol start="3">
+<li><strong>更新</strong></li>
+</ol>
+<p>执行以下命令<strong>更新</strong>项目（可保存对<code>/config/setting.py</code>和<code>/config/api.py</code>的修改）：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">git stash        <span class="comment"># 暂存本地的修改</span></span><br><span class="line">git fetch --all  <span class="comment"># 拉取项目更新</span></span><br><span class="line">git pull         <span class="comment"># 下载覆盖</span></span><br><span class="line">git stash pop    <span class="comment"># 释放本地修改</span></span><br></pre></td></tr></table></figure>
+
+
+<h3 id="安装步骤（docker-版）"><a href="#安装步骤（docker-版）" class="headerlink" title="安装步骤（docker 版）"></a>安装步骤（docker 版）</h3><p>首先下载并编辑配置文件，添加自己的<code>api</code>和个性化设置，并保留原始文件结构</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">config</span><br><span class="line">├── api.py</span><br><span class="line">├── default.py</span><br><span class="line">├── __init__.py</span><br><span class="line">├── log.py</span><br><span class="line">└── setting.py</span><br></pre></td></tr></table></figure>
+
+<p>拉取镜像并执行，其中<code>~/.config</code>替换为你自己配置文件所在文件夹的路径</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker pull shmilylty/oneforall</span><br><span class="line">docker run -it --rm -v ~/results:/OneForAll/results -v ~/.config:/OneForAll/config shmilylty/oneforall --target example.com run</span><br></pre></td></tr></table></figure>
+<p>参数直接加在指令末尾，结果会输出在本地目录<code>~/results</code>，如需保存到其他位置，可以自行修改</p>
+<h3 id="使用演示"><a href="#使用演示" class="headerlink" title="使用演示"></a>使用演示</h3><p>如果你是通过pip3安装的依赖则使用以下命令运行示例：   </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">python3 oneforall.py --target example.com run</span><br><span class="line">python3 oneforall.py --targets ./example.txt run</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2023/04/24/%E5%AD%90%E5%9F%9F%E6%94%B6%E9%9B%86%E5%B7%A5%E5%85%B7%20/usage_example.svg" alt="usage_example"></p>
+<h3 id="结果说明"><a href="#结果说明" class="headerlink" title="结果说明"></a>结果说明</h3><p>我们以<code>python3 oneforall.py --target example.com run</code>命令为例，OneForAll在默认参数正常执行完毕会在results目录生成相应结果：</p>
+<p><img src="/2023/04/24/%E5%AD%90%E5%9F%9F%E6%94%B6%E9%9B%86%E5%B7%A5%E5%85%B7%20/Result.png" alt="Result"></p>
+<p><code>example.com.csv</code>是每个主域下的子域收集结果。</p>
+<p><code>all_subdomain_result_1583034493.csv</code>是每次运行OneForAll收集到子域的汇总结果，包含<code>example.com.csv</code>，方便在批量收集场景中获取全部结果。</p>
+<p><code>result.sqlite3</code>是存放每次运行OneForAll收集到子域的SQLite3结果数据库，其数据库结构如下图：</p>
+<p><img src="/2023/04/24/%E5%AD%90%E5%9F%9F%E6%94%B6%E9%9B%86%E5%B7%A5%E5%85%B7%20/Database.png" alt="Database"></p>
+<p>其中类似<code>example_com_origin_result</code>表存放每个模块最初子域收集结果。</p>
+<p>其中类似<code>example_com_resolve_result</code>表存放对子域进行解析后的结果。</p>
+<p>其中类似<code>example_com_last_result</code>表存放上一次子域收集结果（需要收集两次以上才会生成）。</p>
+<p>其中类似<code>example_com_now_result</code>表存放现在子域收集结果，一般情况关注这张表就可以了。</p>
+<p>更多信息请参阅<a href="./docs/field.md">字段解释说明</a>。</p>
+<h3 id="使用帮助"><a href="#使用帮助" class="headerlink" title="使用帮助"></a>使用帮助</h3><p>命令行参数只提供了一些常用参数，更多详细的参数配置请见<a target="_blank" rel="noopener" href="https://github.com/shmilylty/OneForAll/tree/master/config/setting.py">setting.py</a>，如果你认为有些参数是命令界面经常使用到的或缺少了什么参数等问题非常欢迎反馈。由于众所周知的原因，如果要使用一些被墙的收集接口请先到<a target="_blank" rel="noopener" href="https://github.com/shmilylty/OneForAll/tree/master/config/setting.py">setting.py</a>配置代理，有些收集模块需要提供API（大多都是可以注册账号免费获取），如果需要使用请到<a target="_blank" rel="noopener" href="https://github.com/shmilylty/OneForAll/tree/master/config/api.py">api.py</a>配置API信息，如果不使用请忽略有关报错提示。（详细模块请阅读<a target="_blank" rel="noopener" href="https://github.com/shmilylty/OneForAll/tree/master/docs/collection_modules.md">收集模块说明</a>）</p>
+<p>OneForAll命令行界面基于<a target="_blank" rel="noopener" href="https://github.com/google/python-fire/">Fire</a>实现，有关Fire更高级使用方法请参阅<a target="_blank" rel="noopener" href="https://github.com/google/python-fire/blob/master/docs/using-cli.md">使用Fire CLI</a>。</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/shmilylty/OneForAll/tree/master/oneforall.py">oneforall.py</a>是主程序入口，oneforall.py可以调用<a target="_blank" rel="noopener" href="https://github.com/shmilylty/OneForAll/tree/master/brute.py">brute.py</a>，<a target="_blank" rel="noopener" href="https://github.com/shmilylty/OneForAll/tree/master/takerover.py">takerover.py</a>及<a target="_blank" rel="noopener" href="https://github.com/shmilylty/OneForAll/tree/master/dbexport.py">dbexport.py</a>等模块，为了方便进行子域爆破独立出了brute.py，为了方便进行子域接管风险检查独立出了takerover.py，为了方便数据库导出独立出了dbexport.py，这些模块都可以单独运行，并且所接受参数要更丰富一点，如果要单独使用这些模块请参考<a target="_blank" rel="noopener" href="https://github.com/shmilylty/OneForAll/tree/master/docs/usage_help.md">使用帮助</a></p>
+<p>❗注意：当你在使用过程中遇到一些问题或者疑惑时，请先到<a target="_blank" rel="noopener" href="https://github.com/shmilylty/OneForAll/issues">Issues</a>里使用搜索找找答案，还可以参阅<a target="_blank" rel="noopener" href="https://github.com/shmilylty/OneForAll/tree/master/docs/troubleshooting.md">常见问题与回答</a>。</p>
+<p><strong>oneforall.py使用帮助</strong></p>
+<p>以下帮助信息可能不是最新的，你可以使用<code>python oneforall.py --help</code>获取最新的帮助信息。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python oneforall.py --<span class="built_in">help</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line">NAME</span><br><span class="line">    oneforall.py - OneForAll帮助信息</span><br><span class="line"></span><br><span class="line">SYNOPSIS</span><br><span class="line">    oneforall.py COMMAND | --target=TARGET &lt;flags&gt;</span><br><span class="line"></span><br><span class="line">DESCRIPTION</span><br><span class="line">    OneForAll是一款功能强大的子域收集工具</span><br><span class="line"></span><br><span class="line">    Example:</span><br><span class="line">        python3 oneforall.py version</span><br><span class="line">        python3 oneforall.py --target example.com run</span><br><span class="line">        python3 oneforall.py --targets ./domains.txt run</span><br><span class="line">        python3 oneforall.py --target example.com --valid None run</span><br><span class="line">        python3 oneforall.py --target example.com --brute True run</span><br><span class="line">        python3 oneforall.py --target example.com --port small run</span><br><span class="line">        python3 oneforall.py --target example.com --<span class="built_in">fmt</span> csv run</span><br><span class="line">        python3 oneforall.py --target example.com --dns False run</span><br><span class="line">        python3 oneforall.py --target example.com --req False run</span><br><span class="line">        python3 oneforall.py --target example.com --takeover False run</span><br><span class="line">        python3 oneforall.py --target example.com --show True run</span><br><span class="line"></span><br><span class="line">    Note:</span><br><span class="line">        参数alive可选值True，False分别表示导出存活，全部子域结果</span><br><span class="line">        参数port可选值有<span class="string">&#x27;default&#x27;</span>, <span class="string">&#x27;small&#x27;</span>, <span class="string">&#x27;large&#x27;</span>, 详见config.py配置</span><br><span class="line">        参数<span class="built_in">fmt</span>可选格式有 <span class="string">&#x27;csv&#x27;</span>,<span class="string">&#x27;json&#x27;</span></span><br><span class="line">        参数path默认None使用OneForAll结果目录生成路径</span><br><span class="line"></span><br><span class="line">ARGUMENTS</span><br><span class="line">    TARGET</span><br><span class="line">        单个域名(二选一必需参数)</span><br><span class="line">    TARGETS</span><br><span class="line">        每行一个域名的文件路径(二选一必需参数)</span><br><span class="line"></span><br><span class="line">FLAGS</span><br><span class="line">    --brute=BRUTE</span><br><span class="line">        s</span><br><span class="line">    --dns=DNS</span><br><span class="line">        DNS解析子域(默认True)</span><br><span class="line">    --req=REQ</span><br><span class="line">        HTTP请求子域(默认True)</span><br><span class="line">    --port=PORT</span><br><span class="line">        请求验证子域的端口范围(默认只探测80端口)</span><br><span class="line">    --valid=VALID</span><br><span class="line">        只导出存活的子域结果(默认False)</span><br><span class="line">    --<span class="built_in">fmt</span>=FMT</span><br><span class="line">        结果保存格式(默认csv)</span><br><span class="line">    --path=PATH</span><br><span class="line">        结果保存路径(默认None)</span><br><span class="line">    --takeover=TAKEOVER</span><br><span class="line">        检查子域接管(默认False)</span><br></pre></td></tr></table></figure>
+
+
+
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -3476,7 +3917,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2025-03-19 11:01:55" itemprop="dateModified" datetime="2025-03-19T11:01:55+08:00">2025-03-19</time>
+      <time title="修改时间：2025-04-23 23:31:29" itemprop="dateModified" datetime="2025-04-23T23:31:29+08:00">2025-04-23</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -3527,24 +3968,24 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h3 id="1-安装系统"><a href="#1-安装系统" class="headerlink" title="1. 安装系统"></a>1. 安装系统</h3><ul>
+          <h3 id="安装系统"><a href="#安装系统" class="headerlink" title="安装系统"></a>安装系统</h3><ul>
 <li><p>下载镜像并制作系统启动U盘，推荐使用<a target="_blank" rel="noopener" href="https://www.ventoy.net/cn/download.html"> Ventoy</a>（能够兼容多个系统镜像，能制作多个系统的启动盘）</p>
 <ul>
-<li>用法非常简单，下载Ventoy后打开Ventoy2Disk.exe，选择U盘格式化.</li>
+<li>用法可参考百度或者我这篇文章</li>
 <li><a target="_blank" rel="noopener" href="https://manjaro.org/download/">下载镜像</a>，然后直接把iso拖进去.</li>
 </ul>
 </li>
 <li><p>显卡驱动参考<a target="_blank" rel="noopener" href="https://wiki.manjaro.org/index.php?title=Configure_NVIDIA_(non-free)_settings_and_load_them_on_Startup">Manjaro WiKi</a>的解决方案.</p>
 </li>
 </ul>
-<h3 id="2-pacman-yay-安装删除命令"><a href="#2-pacman-yay-安装删除命令" class="headerlink" title="2.pacman(yay)安装删除命令"></a>2.pacman(yay)安装删除命令</h3><blockquote>
+<h3 id="pacman-yay-安装删除命令"><a href="#pacman-yay-安装删除命令" class="headerlink" title="pacman(yay)安装删除命令"></a>pacman(yay)安装删除命令</h3><blockquote>
 <p>有什么问题或者需要查找安装包可以自行搜索<a target="_blank" rel="noopener" href="https://aur.archlinux.org/">archlinux官网</a></p>
 </blockquote>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">su <span class="comment"># 如果已经在root环境下则不用提权</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 常用安装删除指令一览</span></span><br><span class="line">pacman -S XXXXX</span><br><span class="line"><span class="comment"># 安装XXXXX</span></span><br><span class="line"></span><br><span class="line">pacman -R XXXXX</span><br><span class="line"><span class="comment"># 删除XXXXX（Remove）（保留依赖的包）</span></span><br><span class="line"></span><br><span class="line">pacman -Rs XXXXX</span><br><span class="line"><span class="comment"># 删除XXXXX以及其依赖的包（诛灭九族）</span></span><br><span class="line"></span><br><span class="line">pacman -U XXXXX</span><br><span class="line"><span class="comment"># 安装自己下载的XXXXX包（taz.gz）</span></span><br><span class="line"></span><br><span class="line">pacman -Sc</span><br><span class="line"><span class="comment"># 清理未安装的包文件</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 
 
-<h3 id="3-配置"><a href="#3-配置" class="headerlink" title="3.配置"></a>3.配置</h3><p>给manjaro换上国内源</p>
+<h3 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h3><p>给manjaro换上国内源</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 手动选择源</span></span><br><span class="line">sudo pacman-mirrors -i -c China -m rank</span><br></pre></td></tr></table></figure>
 
 
@@ -3569,7 +4010,7 @@
 
 
 
-<h3 id="4-安装工具"><a href="#4-安装工具" class="headerlink" title="4.安装工具"></a>4.安装工具</h3><p>安装<code>base-devel</code>，一个非常重要的基础库。</p>
+<h3 id="安装工具"><a href="#安装工具" class="headerlink" title="安装工具"></a>安装工具</h3><p>安装<code>base-devel</code>，一个非常重要的基础库。</p>
 <blockquote>
 <p>这个基础包必须安装，否则我们在使用yay安装AUR软件的时候经常会遇到安装不上的问题。</p>
 </blockquote>
@@ -3591,7 +4032,7 @@
 
 
 
-<h3 id="5-双系统时间同步（单系统跳过）"><a href="#5-双系统时间同步（单系统跳过）" class="headerlink" title="5.双系统时间同步（单系统跳过）"></a>5.双系统时间同步（单系统跳过）</h3><blockquote>
+<h3 id="双系统时间同步（单系统跳过）"><a href="#双系统时间同步（单系统跳过）" class="headerlink" title="双系统时间同步（单系统跳过）"></a>双系统时间同步（单系统跳过）</h3><blockquote>
 <p>硬件时间and系统时间<br>这2个时间不是同步的！如果有一天发现系统的时间不对了，可以分别看看这2个时间。硬件时间写在BIOS里，系统时间就是电脑显示的时间了。<br>这个显示的是硬件时间。</p>
 </blockquote>
 <h4 id="方法一"><a href="#方法一" class="headerlink" title="方法一"></a>方法一</h4><p>使用ntpdate同步网络时间后可以将时间写入到BIOS：</p>
@@ -3612,7 +4053,7 @@
 <blockquote>
 <p>同时禁用Windows的自动同步时间功能</p>
 </blockquote>
-<h3 id="6-安装输入法"><a href="#6-安装输入法" class="headerlink" title="6.安装输入法"></a>6.安装输入法</h3><p><a target="_blank" rel="noopener" href="https://wiki.archlinux.org/index.php/Fcitx5_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)">Fcitx5 官方文档</a><br>中文及日文输入法均体验良好。</p>
+<h3 id="安装输入法"><a href="#安装输入法" class="headerlink" title="安装输入法"></a>安装输入法</h3><p><a target="_blank" rel="noopener" href="https://wiki.archlinux.org/index.php/Fcitx5_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)">Fcitx5 官方文档</a><br>中文及日文输入法均体验良好。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman -S fcitx5-im <span class="comment">#基础包组</span></span><br><span class="line">sudo pacman -S fcitx5-chinese-addons <span class="comment">#官方中文输入引擎</span></span><br><span class="line">sudo pacman -S fcitx5-anthy <span class="comment">#日文输入引擎</span></span><br><span class="line">yay -S fcitx5-pinyin-moegirl <span class="comment">#萌娘百科词库 由于中国大陆政府对github封锁，你可能在此卡住。如卡住，可根据后文设置好代理后再安装</span></span><br><span class="line">sudo pacman -S fcitx5-pinyin-zhwiki <span class="comment">#中文维基百科词库</span></span><br><span class="line">sudo pacman -S fcitx5-material-color <span class="comment">#主题</span></span><br></pre></td></tr></table></figure>
 
 
@@ -3622,7 +4063,7 @@
 
 
 
-<h3 id="7-字体"><a href="#7-字体" class="headerlink" title="7.字体"></a>7.字体</h3><blockquote>
+<h3 id="字体"><a href="#字体" class="headerlink" title="字体"></a>字体</h3><blockquote>
 <p><a target="_blank" rel="noopener" href="https://wiki.archlinuxcn.org/wiki/%E5%AD%97%E4%BD%93">windows/Mac字体参考</a></p>
 <p>字体下载地址(推荐安装<a target="_blank" rel="noopener" href="https://www.jetbrains.com/lp/mono/">JetBrainsMono</a>。中心需要显示icon之类的需要<a target="_blank" rel="noopener" href="https://github.com/ryanoasis/nerd-fonts/releases">nerd补丁</a>的字体)</p>
 <p>不用命令行可以进文件管理器里面解压，然后全选字体右键安装</p>
@@ -3631,7 +4072,7 @@
 
 
 
-<h3 id="8-配置ohmyzsh"><a href="#8-配置ohmyzsh" class="headerlink" title="8.配置ohmyzsh"></a>8.配置ohmyzsh</h3><blockquote>
+<h3 id="配置ohmyzsh"><a href="#配置ohmyzsh" class="headerlink" title="配置ohmyzsh"></a>配置ohmyzsh</h3><blockquote>
 <p>项目拉下来进行安装</p>
 </blockquote>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/ohmyzsh/ohmyzsh.git</span><br><span class="line">sh ohmyzsh/tools/install.sh</span><br></pre></td></tr></table></figure>
@@ -3686,7 +4127,7 @@
 
 
 
-<h3 id="9-美化GRUB（自定义开机动画）"><a href="#9-美化GRUB（自定义开机动画）" class="headerlink" title="9.美化GRUB（自定义开机动画）"></a>9.美化GRUB（自定义开机动画）</h3><ul>
+<h3 id="美化GRUB（自定义开机动画）"><a href="#美化GRUB（自定义开机动画）" class="headerlink" title="美化GRUB（自定义开机动画）"></a>美化GRUB（自定义开机动画）</h3><ul>
 <li><p>去<a target="_blank" rel="noopener" href="https://www.gnome-look.org/browse/cat/109/order/latest/"> Gnome-look</a> 找自己喜欢的grub主题，下载</p>
 </li>
 <li><p>解压后进入目录，有一个子目录和两个sh文件，只需要把子目录copy到</p>
@@ -3696,18 +4137,18 @@
 <li><p>重新生成一次grub.cfg</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grub-mkconfig -o /boot/grub/grub.cfg</span><br></pre></td></tr></table></figure></li>
 </ul>
-<h3 id="10-安装dock，类似mac的任务栏"><a href="#10-安装dock，类似mac的任务栏" class="headerlink" title="10.安装dock，类似mac的任务栏"></a>10.安装dock，类似mac的任务栏</h3><p>安装latte-dock</p>
+<h3 id="安装dock，类似mac的任务栏"><a href="#安装dock，类似mac的任务栏" class="headerlink" title="安装dock，类似mac的任务栏"></a>安装dock，类似mac的任务栏</h3><p>安装latte-dock</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yay -S latte-dock</span><br></pre></td></tr></table></figure>
 
 <blockquote>
 <p>启动latte-dock，下方就会出现一个dock栏，具体配置看自己爱好</p>
 <p>移除那个时钟的方法：右键 配置lattedock 然后右键 那个时钟 移除</p>
 </blockquote>
-<h3 id="11-常用软件"><a href="#11-常用软件" class="headerlink" title="11.常用软件"></a>11.常用软件</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#微信</span></span><br><span class="line">yay -S deepin-wine-wechat</span><br><span class="line"></span><br><span class="line"><span class="comment">#QQ</span></span><br><span class="line">yay -S deepin-wine-qq</span><br><span class="line"></span><br><span class="line"><span class="comment">#chrome浏览器</span></span><br><span class="line">yay -S google-chrome</span><br><span class="line"></span><br><span class="line"><span class="comment">#网易云音乐</span></span><br><span class="line">yay -S netease-cloud-music </span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="常用软件"><a href="#常用软件" class="headerlink" title="常用软件"></a>常用软件</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#微信</span></span><br><span class="line">yay -S deepin-wine-wechat</span><br><span class="line"></span><br><span class="line"><span class="comment">#QQ</span></span><br><span class="line">yay -S deepin-wine-qq</span><br><span class="line"></span><br><span class="line"><span class="comment">#chrome浏览器</span></span><br><span class="line">yay -S google-chrome</span><br><span class="line"></span><br><span class="line"><span class="comment">#网易云音乐</span></span><br><span class="line">yay -S netease-cloud-music </span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 
 
-<h3 id="12-下面是wine的安装和一些问题的解决办法"><a href="#12-下面是wine的安装和一些问题的解决办法" class="headerlink" title="12.下面是wine的安装和一些问题的解决办法"></a>12.下面是<code>wine</code>的安装和一些问题的解决办法</h3><h4 id="1-wine安装-有需要则安装"><a href="#1-wine安装-有需要则安装" class="headerlink" title="1)wine安装(有需要则安装)"></a>1)wine安装(有需要则安装)</h4><blockquote>
+<h3 id="下面是wine的安装和一些问题的解决办法"><a href="#下面是wine的安装和一些问题的解决办法" class="headerlink" title="下面是wine的安装和一些问题的解决办法"></a>下面是<code>wine</code>的安装和一些问题的解决办法</h3><h4 id="wine安装-有需要则安装"><a href="#wine安装-有需要则安装" class="headerlink" title="wine安装(有需要则安装)"></a>wine安装(有需要则安装)</h4><blockquote>
 <p>安装wine</p>
 <p>其中wine_gecko和wine-mono分别用于运行依赖于Internet Explorer和.NET的程序</p>
 </blockquote>
@@ -3722,17 +4163,17 @@
 <p>字体设置</p>
 <p>保存以下内容到zh.reg文件</p>
 </blockquote>
-<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">REGEDIT4</span><br><span class="line">[HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\FontSubstitutes]</span><br><span class="line">&quot;Arial&quot;=&quot;simsun&quot;</span><br><span class="line">&quot;Arial CE,238&quot;=&quot;simsun&quot;</span><br><span class="line">&quot;Arial CYR,204&quot;=&quot;simsun&quot;</span><br><span class="line">&quot;Arial Greek,161&quot;=&quot;simsun&quot;</span><br><span class="line">&quot;Arial TUR,162&quot;=&quot;simsun&quot;</span><br><span class="line">&quot;Courier New&quot;=&quot;simsun&quot;</span><br><span class="line">&quot;Courier New CE,238&quot;=&quot;simsun&quot;</span><br><span class="line">&quot;Courier New CYR,204&quot;=&quot;simsun&quot;</span><br><span class="line">&quot;Courier New Greek,161&quot;=&quot;simsun&quot;</span><br><span class="line">&quot;Courier New TUR,162&quot;=&quot;simsun&quot;</span><br><span class="line">&quot;FixedSys&quot;=&quot;simsun&quot;</span><br><span class="line">&quot;Helv&quot;=&quot;simsun&quot;</span><br><span class="line">&quot;Helvetica&quot;=&quot;simsun&quot;</span><br><span class="line">&quot;MS Sans Serif&quot;=&quot;simsun&quot;</span><br><span class="line">&quot;MS Shell Dlg&quot;=&quot;simsun&quot;</span><br><span class="line">&quot;MS Shell Dlg 2&quot;=&quot;simsun&quot;</span><br><span class="line">&quot;System&quot;=&quot;simsun&quot;</span><br><span class="line">&quot;Tahoma&quot;=&quot;simsun&quot;</span><br><span class="line">&quot;Times&quot;=&quot;simsun&quot;</span><br><span class="line">&quot;Times New Roman CE,238&quot;=&quot;simsun&quot;</span><br><span class="line">&quot;Times New Roman CYR,204&quot;=&quot;simsun&quot;</span><br><span class="line">&quot;Times New Roman Greek,161&quot;=&quot;simsun&quot;</span><br><span class="line">&quot;Times New Roman TUR,162&quot;=&quot;simsun&quot;</span><br><span class="line">&quot;Tms Rmn&quot;=&quot;simsun&quot;</span><br></pre></td></tr></table></figure>
+<figure class="highlight bat"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">REGEDIT4</span><br><span class="line">[HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\FontSubstitutes]</span><br><span class="line">&quot;Arial&quot;=&quot;simsun&quot;</span><br><span class="line">&quot;Arial CE,<span class="number">238</span>&quot;=&quot;simsun&quot;</span><br><span class="line">&quot;Arial CYR,<span class="number">204</span>&quot;=&quot;simsun&quot;</span><br><span class="line">&quot;Arial Greek,<span class="number">161</span>&quot;=&quot;simsun&quot;</span><br><span class="line">&quot;Arial TUR,<span class="number">162</span>&quot;=&quot;simsun&quot;</span><br><span class="line">&quot;Courier New&quot;=&quot;simsun&quot;</span><br><span class="line">&quot;Courier New CE,<span class="number">238</span>&quot;=&quot;simsun&quot;</span><br><span class="line">&quot;Courier New CYR,<span class="number">204</span>&quot;=&quot;simsun&quot;</span><br><span class="line">&quot;Courier New Greek,<span class="number">161</span>&quot;=&quot;simsun&quot;</span><br><span class="line">&quot;Courier New TUR,<span class="number">162</span>&quot;=&quot;simsun&quot;</span><br><span class="line">&quot;FixedSys&quot;=&quot;simsun&quot;</span><br><span class="line">&quot;Helv&quot;=&quot;simsun&quot;</span><br><span class="line">&quot;Helvetica&quot;=&quot;simsun&quot;</span><br><span class="line">&quot;MS Sans Serif&quot;=&quot;simsun&quot;</span><br><span class="line">&quot;MS Shell Dlg&quot;=&quot;simsun&quot;</span><br><span class="line">&quot;MS Shell Dlg <span class="number">2</span>&quot;=&quot;simsun&quot;</span><br><span class="line">&quot;System&quot;=&quot;simsun&quot;</span><br><span class="line">&quot;Tahoma&quot;=&quot;simsun&quot;</span><br><span class="line">&quot;Times&quot;=&quot;simsun&quot;</span><br><span class="line">&quot;Times New Roman CE,<span class="number">238</span>&quot;=&quot;simsun&quot;</span><br><span class="line">&quot;Times New Roman CYR,<span class="number">204</span>&quot;=&quot;simsun&quot;</span><br><span class="line">&quot;Times New Roman Greek,<span class="number">161</span>&quot;=&quot;simsun&quot;</span><br><span class="line">&quot;Times New Roman TUR,<span class="number">162</span>&quot;=&quot;simsun&quot;</span><br><span class="line">&quot;Tms Rmn&quot;=&quot;simsun&quot;</span><br></pre></td></tr></table></figure>
 
 <blockquote>
 <p>添加到注册表</p>
 </blockquote>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">regedit zh.reg</span><br></pre></td></tr></table></figure>
+<figure class="highlight bat"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">regedit zh.reg</span><br></pre></td></tr></table></figure>
 
 <blockquote>
 <p>从自己的Windows下 Windows/Fonts 下找到simsun.ttc复制到 /home/user/.wine/drive_c/windows/fonts 里</p>
 </blockquote>
-<h4 id="2-wine软件桌面快捷方式创建"><a href="#2-wine软件桌面快捷方式创建" class="headerlink" title="2)wine软件桌面快捷方式创建"></a>2)wine软件桌面快捷方式创建</h4><blockquote>
+<h4 id="wine软件桌面快捷方式创建"><a href="#wine软件桌面快捷方式创建" class="headerlink" title="wine软件桌面快捷方式创建"></a>wine软件桌面快捷方式创建</h4><blockquote>
 <p>Wine安装应用时一般会添加这个菜单，如果没有的话可以在~/.local/share/applications/wine/下新建目录和.desktop文件，按[Desktop Entry]的格式自行设置</p>
 </blockquote>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[Desktop Entry]</span><br><span class="line">Name=WeChat</span><br><span class="line">Exec=<span class="built_in">env</span> WINEPREFIX=<span class="string">&quot;/home/zbg/.wine&quot;</span> wine C:\\\\windows\\\\<span class="built_in">command</span>\\\\start.exe /Unix /home/zbg/.wine/dosdevices/c:/ProgramData/Microsoft/Windows/Start\\ Menu/Programs/WeChat/WeChat.lnk</span><br><span class="line">Type=Application</span><br><span class="line">StartupNotify=<span class="literal">true</span></span><br><span class="line">Path=/home/zbg/.wine/dosdevices/c:/Program Files (x86)/Tencent/WeChat</span><br><span class="line">Icon=06F2_WeChat.0</span><br><span class="line">StartupWMClass=wechat.exe</span><br></pre></td></tr></table></figure>
@@ -3744,7 +4185,7 @@
 
 
 
-<h4 id="3-wine安装exe"><a href="#3-wine安装exe" class="headerlink" title="3)wine安装exe"></a>3)wine安装exe</h4><blockquote>
+<h4 id="wine安装exe"><a href="#wine安装exe" class="headerlink" title="wine安装exe"></a>wine安装exe</h4><blockquote>
 <p>安装并运行<code>winetricks</code></p>
 <p>wine的辅助工具，比如添加dll等</p>
 </blockquote>
@@ -3758,11 +4199,11 @@
 <p>选择需要的选项，这里选择dll安装</p>
 </blockquote>
 <p><img src="/2023/04/23/manjaro%E5%85%A5%E9%97%A8/1549943-20211016132409407-1420021937.png" alt="截图"></p>
-<h4 id="4-用户文件夹名称为英文"><a href="#4-用户文件夹名称为英文" class="headerlink" title="4)用户文件夹名称为英文"></a>4)用户文件夹名称为英文</h4><blockquote>
+<h4 id="用户文件夹名称为英文"><a href="#用户文件夹名称为英文" class="headerlink" title="用户文件夹名称为英文"></a>用户文件夹名称为英文</h4><blockquote>
 <p>先去手动修改文件夹名称，然后在 设置 -&gt; 应用程序 -&gt; 地点 这修改</p>
 </blockquote>
 <p><img src="/2023/04/23/manjaro%E5%85%A5%E9%97%A8/1549943-20211016132439302-941187267.png" alt="截图"></p>
-<h4 id="5-qq、微信打不开"><a href="#5-qq、微信打不开" class="headerlink" title="5)qq、微信打不开"></a>5)qq、微信打不开</h4><blockquote>
+<h4 id="qq、微信打不开"><a href="#qq、微信打不开" class="headerlink" title="qq、微信打不开"></a>qq、微信打不开</h4><blockquote>
 <p>Manjaro-kde桌面安装TIM/QQ的时候经常出现无法启动，其主要原因是deein-wine-tim打包了Gnome桌面部分内容，因此在KDE桌面环境下需要安装相应的Gnome桌面设置环境</p>
 </blockquote>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman -S gnome-settings-daemon</span><br></pre></td></tr></table></figure>
@@ -4666,430 +5107,8 @@
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2023/03/30/%E8%87%AA%E5%BB%BA%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F%E6%9C%8D%E5%8A%A1%E5%99%A8/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/20230401000222.jpg">
-      <meta itemprop="name" content="ienA">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ienAの博客">
-      <meta itemprop="description" content="致力于分享自己学习过程笔记的萌新博主૮(˶ᵔ ᵕ ᵔ˶)ა">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | ienAの博客">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2023/03/30/%E8%87%AA%E5%BB%BA%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F%E6%9C%8D%E5%8A%A1%E5%99%A8/" class="post-title-link" itemprop="url">自建内网穿透服务器</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2023-03-30 00:00:00" itemprop="dateCreated datePublished" datetime="2023-03-30T00:00:00+08:00">2023-03-30</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-05-14 22:41:49" itemprop="dateModified" datetime="2024-05-14T22:41:49+08:00">2024-05-14</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/linux/" itemprop="url" rel="index"><span itemprop="name">linux</span></a>
-        </span>
-    </span>
-
-  
-  
-  <span class="post-meta-item">
-    
-    <span class="post-meta-item-icon">
-      <i class="far fa-comment"></i>
-    </span>
-    <span class="post-meta-item-text">Valine：</span>
-  
-    <a title="valine" href="/2023/03/30/%E8%87%AA%E5%BB%BA%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F%E6%9C%8D%E5%8A%A1%E5%99%A8/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2023/03/30/%E8%87%AA%E5%BB%BA%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F%E6%9C%8D%E5%8A%A1%E5%99%A8/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>2.9k</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>3 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h3 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h3><p>几种通过自己服务器实现内网穿透的教程</p>
-<h2 id="基于Docker的FRP内网穿透部署"><a href="#基于Docker的FRP内网穿透部署" class="headerlink" title="基于Docker的FRP内网穿透部署"></a>基于Docker的FRP内网穿透部署</h2><h3 id="服务器搭建（FRPS）"><a href="#服务器搭建（FRPS）" class="headerlink" title="服务器搭建（FRPS）"></a>服务器搭建（FRPS）</h3><p>创建配置文件</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 创建存放目录</span></span><br><span class="line">sudo <span class="built_in">mkdir</span> /etc/frp</span><br><span class="line"><span class="comment"># 创建frps.ini文件</span></span><br><span class="line">nano /etc/frp/frps.ini</span><br></pre></td></tr></table></figure>
-<p>frps.ini内容如下：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">[common]</span><br><span class="line"><span class="comment"># 监听端口</span></span><br><span class="line">bind_port = 7000</span><br><span class="line"><span class="comment"># 面板端口</span></span><br><span class="line">dashboard_port = 7500</span><br><span class="line"><span class="comment"># 登录面板账号设置</span></span><br><span class="line">dashboard_user = admin</span><br><span class="line">dashboard_pwd = spoto1234</span><br><span class="line"><span class="comment"># 设置http及https协议下代理端口（非重要）</span></span><br><span class="line">vhost_http_port = 7080</span><br><span class="line">vhost_https_port = 7081</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 身份验证</span></span><br><span class="line">token = 12345678</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#服务器镜像：snowdreamtech/frps</span></span><br><span class="line"><span class="comment">#重启：always</span></span><br><span class="line"><span class="comment">#网络模式：host</span></span><br><span class="line"><span class="comment">#文件映射：/etc/frp/frps.ini:/etc/frp/frps.ini</span></span><br><span class="line"></span><br><span class="line">docker run --restart=always --network host -d -v /etc/frp/frps.ini:/etc/frp/frps.ini --name frps snowdreamtech/frps</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="中转客户端配置（FRPC）"><a href="#中转客户端配置（FRPC）" class="headerlink" title="中转客户端配置（FRPC）"></a>中转客户端配置（FRPC）</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">服务器镜像：snowdreamtech/frpc</span><br><span class="line">重启：always</span><br><span class="line">网络模式：host</span><br><span class="line">文件映射：/路径/frp/:/etc/frp/</span><br><span class="line"></span><br><span class="line">docker run --restart=always --network host -d -v /etc/frp/frpc.ini:/etc/frp/frpc.ini --name frpc snowdreamtech/frpc</span><br></pre></td></tr></table></figure>
-
-<p>配置文件示例：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line">[common]</span><br><span class="line"><span class="comment"># server_addr为FRPS服务器IP地址</span></span><br><span class="line">server_addr = x.x.x.x</span><br><span class="line"><span class="comment"># server_port为服务端监听端口，bind_port</span></span><br><span class="line">server_port = 7000</span><br><span class="line"><span class="comment"># 身份验证</span></span><br><span class="line">token = 12345678</span><br><span class="line"></span><br><span class="line">[ssh]</span><br><span class="line"><span class="built_in">type</span> = tcp</span><br><span class="line">local_ip = 127.0.0.1</span><br><span class="line">local_port = 22</span><br><span class="line">remote_port = 2288</span><br><span class="line"></span><br><span class="line"><span class="comment"># [ssh] 为服务名称，下方此处设置为，访问frp服务段的2288端口时，等同于通过中转服务器访问127.0.0.1的22端口。</span></span><br><span class="line"><span class="comment"># type 为连接的类型，此处为tcp</span></span><br><span class="line"><span class="comment"># local_ip 为中转客户端实际访问的IP </span></span><br><span class="line"><span class="comment"># local_port 为目标端口</span></span><br><span class="line"><span class="comment"># remote_port 为远程端口</span></span><br><span class="line"></span><br><span class="line">[ssh]</span><br><span class="line"><span class="built_in">type</span> = tcp</span><br><span class="line">local_ip = 192.168.1.229</span><br><span class="line">local_port = 80</span><br><span class="line">remote_port = 18022</span><br><span class="line"></span><br><span class="line">[unRAID web]</span><br><span class="line"><span class="built_in">type</span> = tcp</span><br><span class="line">local_ip = 192.168.1.229</span><br><span class="line">local_port = 80</span><br><span class="line">remote_port = 18088</span><br><span class="line"></span><br><span class="line">[Truenas web]</span><br><span class="line"><span class="built_in">type</span> = tcp</span><br><span class="line">local_ip = 192.168.1.235</span><br><span class="line">local_port = 80</span><br><span class="line">remote_port = 18188</span><br><span class="line"></span><br><span class="line">[speedtest]</span><br><span class="line"><span class="built_in">type</span> = tcp</span><br><span class="line">local_ip = 192.168.1.229</span><br><span class="line">local_port = 6580</span><br><span class="line">remote_port = 18190</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">[webdav]</span><br><span class="line"><span class="built_in">type</span> = tcp</span><br><span class="line">local_ip = 192.168.1.235</span><br><span class="line">local_port = 18080</span><br><span class="line">remote_port = 18189</span><br><span class="line"></span><br><span class="line">[RDP PC1]</span><br><span class="line"><span class="built_in">type</span> = tcp</span><br><span class="line">local_ip = 192.168.1.235</span><br><span class="line">local_port = 3389</span><br><span class="line">remote_port = 18389</span><br></pre></td></tr></table></figure>
-<ul>
-<li>如果监听服务可以有IP限制的设置，需要允许的访问IP为中转内网设备的内网IP；</li>
-<li>FRP由于端口会暴露在互联网上，虽然说使用方便但安全性较差；</li>
-</ul>
-<h2 id="基于Zerotier根服务器的内网穿透部署"><a href="#基于Zerotier根服务器的内网穿透部署" class="headerlink" title="基于Zerotier根服务器的内网穿透部署"></a>基于Zerotier根服务器的内网穿透部署</h2><h3 id="创建（伪）根服务器-项目地址：https-github-com-Jonnyan404-zerotier-planet"><a href="#创建（伪）根服务器-项目地址：https-github-com-Jonnyan404-zerotier-planet" class="headerlink" title="创建（伪）根服务器 | 项目地址：https://github.com/Jonnyan404/zerotier-planet"></a>创建（伪）根服务器 | 项目地址：<a target="_blank" rel="noopener" href="https://github.com/Jonnyan404/zerotier-planet">https://github.com/Jonnyan404/zerotier-planet</a></h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run --restart=on-failure:3 -d --name ztncui -e HTTP_PORT=4000 -e HTTP_ALL_INTERFACES=<span class="built_in">yes</span> -e ZTNCUI_PASSWD=mrdoc.fun -p 4000:4000 keynetworks/ztncui</span><br></pre></td></tr></table></figure>
-
-<h3 id="创建-moon-服务器-项目地址：https-github-com-jonnyan404-docker-zerotier-moon"><a href="#创建-moon-服务器-项目地址：https-github-com-jonnyan404-docker-zerotier-moon" class="headerlink" title="创建 moon 服务器 | 项目地址：https://github.com/jonnyan404/docker-zerotier-moon"></a>创建 moon 服务器 | 项目地址：<a target="_blank" rel="noopener" href="https://github.com/jonnyan404/docker-zerotier-moon">https://github.com/jonnyan404/docker-zerotier-moon</a></h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#创建容器</span></span><br><span class="line">docker run --name zerotier-moon -d -p 9993:9993 -p 9993:9993/udp -v /etc/ztconf/:/var/lib/zerotier-one jonnyan404/zerotier-moon -4 [公网ipx.x.x.x]</span><br><span class="line"></span><br><span class="line"><span class="comment">#查看moon ID</span></span><br><span class="line">docker logs zerotier-moon</span><br></pre></td></tr></table></figure>
-
-<h3 id="群晖-DSM-7-x-安装Zerotier客户端"><a href="#群晖-DSM-7-x-安装Zerotier客户端" class="headerlink" title="群晖 DSM 7.x 安装Zerotier客户端"></a>群晖 DSM 7.x 安装Zerotier客户端</h3><h4 id="登录SSH并创建虚拟网络设备TUN"><a href="#登录SSH并创建虚拟网络设备TUN" class="headerlink" title="登录SSH并创建虚拟网络设备TUN"></a>登录SSH并创建虚拟网络设备TUN</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#获取权限</span></span><br><span class="line">sudo -i</span><br><span class="line"></span><br><span class="line"><span class="comment">#创建“创建虚拟网络设备TUN”的脚本，并设为开机自动运行</span></span><br><span class="line"><span class="built_in">echo</span> -e <span class="string">&#x27;#!/bin/sh -e \ninsmod /lib/modules/tun.ko&#x27;</span> &gt; /usr/local/etc/rc.d/tun.sh</span><br><span class="line"></span><br><span class="line"><span class="comment">#给予脚本运行权限</span></span><br><span class="line"><span class="built_in">chmod</span> a+x /usr/local/etc/rc.d/tun.sh</span><br><span class="line"></span><br><span class="line"><span class="comment">#运行脚本创建TUN</span></span><br><span class="line">/usr/local/etc/rc.d/tun.sh</span><br><span class="line"></span><br><span class="line"><span class="comment">#确认TUN是否创建成功</span></span><br><span class="line"><span class="built_in">ls</span> /dev/net/tun</span><br></pre></td></tr></table></figure>
-
-<p>创建存放配置文件的目录</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> /var/lib/zerotier-one</span><br></pre></td></tr></table></figure>
-<p>创建Zerotier应用容器：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">docker run -d           \</span><br><span class="line">  --name zt             \</span><br><span class="line">  --restart=always      \</span><br><span class="line">  --device=/dev/net/tun \</span><br><span class="line">  --net=host            \</span><br><span class="line">  --cap-add=NET_ADMIN   \</span><br><span class="line">  --cap-add=SYS_ADMIN   \</span><br><span class="line">  -v /var/lib/zerotier-one:/var/lib/zerotier-one zerotier/zerotier-synology:latest</span><br></pre></td></tr></table></figure>
-
-<p>常用命令：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#查看zerotier状态</span></span><br><span class="line">docker <span class="built_in">exec</span> -it zt zerotier-cli status</span><br><span class="line"></span><br><span class="line"><span class="comment">#加入网络</span></span><br><span class="line">docker <span class="built_in">exec</span> -it zt zerotier-cli <span class="built_in">join</span> [xxxxxxxxxxxx]</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#加入moon服务器</span></span><br><span class="line">docker <span class="built_in">exec</span> zt zerotier-cli orbit [moon_ID] [moon_ID]</span><br><span class="line"><span class="comment">#确认是否加入</span></span><br><span class="line">docker <span class="built_in">exec</span> zt zerotier-cli listpeers </span><br></pre></td></tr></table></figure>
-
-<h3 id="Windows-客户端加入moon服务器"><a href="#Windows-客户端加入moon服务器" class="headerlink" title="Windows 客户端加入moon服务器"></a>Windows 客户端加入moon服务器</h3><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> C:\ProgramData\ZeroTier\One</span><br><span class="line">zerotier<span class="literal">-cli</span> orbit [<span class="type">moon_id</span>] [<span class="type">moon_id</span>]</span><br></pre></td></tr></table></figure>
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2023/03/29/%E6%90%AD%E5%BB%BAhexo%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/20230401000222.jpg">
-      <meta itemprop="name" content="ienA">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ienAの博客">
-      <meta itemprop="description" content="致力于分享自己学习过程笔记的萌新博主૮(˶ᵔ ᵕ ᵔ˶)ა">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | ienAの博客">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2023/03/29/%E6%90%AD%E5%BB%BAhexo%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/" class="post-title-link" itemprop="url">搭建hexo个人博客</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2023-03-29 00:00:00" itemprop="dateCreated datePublished" datetime="2023-03-29T00:00:00+08:00">2023-03-29</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2025-03-29 19:16:11" itemprop="dateModified" datetime="2025-03-29T19:16:11+08:00">2025-03-29</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/windows/" itemprop="url" rel="index"><span itemprop="name">windows</span></a>
-        </span>
-    </span>
-
-  
-  
-  <span class="post-meta-item">
-    
-    <span class="post-meta-item-icon">
-      <i class="far fa-comment"></i>
-    </span>
-    <span class="post-meta-item-text">Valine：</span>
-  
-    <a title="valine" href="/2023/03/29/%E6%90%AD%E5%BB%BAhexo%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2023/03/29/%E6%90%AD%E5%BB%BAhexo%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>4.6k</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>4 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>Hexo 是一个快速、简洁且高效的博客框架。Hexo 使用 Markdown（或其他渲染引擎）解析文章，在几秒内，即可利用靓丽的主题生成静态网页，这边就教大家怎么搭建Hexo并配置。大家可以参考<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/">Hexo官方文档</a>配合使用。</p>
-<p><strong>安装前提</strong></p>
-<p><strong>安装 Hexo 相当简单，只需要先安装下列应用程序即可：</strong></p>
-<ul>
-<li><a target="_blank" rel="noopener" href="http://nodejs.org/">Node.js</a> <strong>(Node.js 版本需不低于 10.13，建议使用 Node.js 12.0 及以上版本)</strong></li>
-<li><a target="_blank" rel="noopener" href="http://git-scm.com/">Git</a></li>
-</ul>
-<p><strong>随着大前端的快速发展，node版本更新很快，我们在工作中，可以会有老版本的node的项目需要维护，也可能有新版本的node的项目需要开发，如果我们只有一个node版本的话将会很麻烦，<a target="_blank" rel="noopener" href="https://github.com/creationix/nvm">nvm</a> 应运而生，nvm 是 Mac 下的 node 管理工具，有点类似管理 Ruby 的 rvm，如果需要管理 Windows 下的 node，官方推荐使用 <a target="_blank" rel="noopener" href="https://github.com/hakobera/nvmw">nvmw</a> 或 <a target="_blank" rel="noopener" href="https://github.com/coreybutler/nvm-windows">nvm-windows</a>。不过，nvm-windows 并不是 nvm 的简单移植，他们也没有任何关系。但下面介绍的所有命令，都可以在 nvm-windows 中运行，nvm是<a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=node&spm=1001.2101.3001.7020">node</a>的版本管理器，可以方便地安装&amp;切换不同版本的node</strong></p>
-<h2 id="安装NVM"><a href="#安装NVM" class="headerlink" title="安装NVM"></a>安装NVM</h2><p><strong>进入NVM-Windows项目发布地址：</strong> <a target="_blank" rel="noopener" href="https://github.com/coreybutler/nvm-windows/releases">https://github.com/coreybutler/nvm-windows/releases</a> <strong>，选择最新发行版本<code>nvm-setup.zip</code>下载：</strong></p>
-<p><img src="/2023/03/29/%E6%90%AD%E5%BB%BAhexo%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/20210531232213538.png" alt="20210531232213538"></p>
-<p><strong>安装需要注意两点</strong></p>
-<p><strong>1、 把电脑上面的node环境先卸载干净（C:\Users\用户名\AppData\Roaming\node下面的文件也要解决干净）</strong></p>
-<p><strong>2、 安装时，建议选择手动安装版，然后疯狂下一步就行，不要尝试改变安装目录。</strong></p>
-<p><strong>如果不想放在C盘，例如放在D盘，安装路径是这样的：</strong></p>
-<blockquote>
-<p>第一步：D:/你想放的文件夹名 </p>
-<p>第二步：D:/你想放的文件夹名(最好不要中文名)/nodejs</p>
-</blockquote>
-<p><strong>检查安装是否成功</strong></p>
-<p><strong>在搜索栏查找<code>poweshell</code>,选中<code>x86</code>的<code>powershell</code>鼠标右击选择<code>以管理员身份运行</code>。</strong><img src="/2023/03/29/%E6%90%AD%E5%BB%BAhexo%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/image-20221127134846193.png" alt="image-20221127134846193"></p>
-<p><strong>在<code>Powershell</code>下，输入<code>NVM</code>，即可发现安装完成：</strong></p>
-<h2 id="配置国内源"><a href="#配置国内源" class="headerlink" title="配置国内源"></a>配置国内源</h2><p><strong>到你<code>NVM</code>安装路径，*打开<code>setting.txt</code>文件（如果没有，则创建即可），更改为：</strong></p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">root: D:\NVM</span><br><span class="line">path: D:\NVM\nodejs</span><br><span class="line">arch: 64</span><br><span class="line">proxy: none</span><br><span class="line">node_mirror: https://npmmirror.com/mirrors/node/</span><br><span class="line">npm_mirror: https://npmmirror.com/mirrors/npm/</span><br></pre></td></tr></table></figure>
-
-<p><strong>解释参数：</strong></p>
-<ul>
-<li><strong>root：NVM的安装地址。即上文的<code>%NVM_HOME%</code></strong></li>
-<li><strong>path：激活node.js时的存储路径，即上文的<code>%NVM_SYMLINK%</code></strong></li>
-<li><strong>arch：系统架构，如果你的Windwos不是<code>x64</code>，则填<code>32</code></strong></li>
-<li><strong>proxy：是否走代理</strong></li>
-<li><strong>node_mirror：node.js的下载源，这里使用的是淘宝源</strong></li>
-<li><strong>npm_mirror：npm的下载源，这里使用的是淘宝源</strong></li>
-</ul>
-<p><img src="/2023/03/29/%E6%90%AD%E5%BB%BAhexo%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/20250329191540.jpg" alt="20250329191540"></p>
-<h2 id="使用NVM"><a href="#使用NVM" class="headerlink" title="使用NVM"></a>使用NVM</h2><p><strong>在cmd或pwoershell使用命令</strong></p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nvm list available</span><br></pre></td></tr></table></figure>
-
-<p><img src="/2023/03/29/%E6%90%AD%E5%BB%BAhexo%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/image-20220710002047715.png" alt="image-20220710002047715"></p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">2</span>、安装方式 nvm install 版本号</span><br><span class="line">current：当前最新的版本</span><br><span class="line">LTS：稳定版本</span><br><span class="line"></span><br><span class="line">nvm install <span class="number">19.8</span>.<span class="number">1</span> （当前稳定的最新版）</span><br><span class="line"></span><br><span class="line">我安装了两个</span><br><span class="line">nvm install <span class="number">18.13</span>.<span class="number">0</span></span><br><span class="line">nvm install <span class="number">16.15</span>.<span class="number">1</span></span><br><span class="line">使用nvm <span class="built_in">ls</span> 或者 nvm list可以查看安装的不同node版本，*指向的就是当前版本</span><br></pre></td></tr></table></figure>
-
-<h3 id="激活Node-js版本"><a href="#激活Node-js版本" class="headerlink" title="激活Node.js版本"></a>激活Node.js版本</h3><p><strong>我们安装好Node.js以后，需要激活它</strong></p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">nvm use <span class="number">16.15</span>.<span class="number">1</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="安装Git"><a href="#安装Git" class="headerlink" title="安装Git"></a>安装Git</h2><p><strong>无脑下一步！！！<a target="_blank" rel="noopener" href="https://git-scm.com/">Git的官网地址</a></strong> </p>
-<h2 id="安装hexo"><a href="#安装hexo" class="headerlink" title="安装hexo"></a>安装hexo</h2><p><strong>先在NVM安装目录内建立2个目录node_cache和node_global</strong></p>
-<p><img src="/2023/03/29/%E6%90%AD%E5%BB%BAhexo%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/image-20230331224443212.png" alt="image-20230331224443212"></p>
-<p><strong>输入下面命令</strong></p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm config <span class="built_in">set</span> prefix <span class="string">&quot;D:\NVM\node_global&quot;</span></span><br><span class="line">npm config <span class="built_in">set</span> cache <span class="string">&quot;D:\NVM\node_cache&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p><strong>更换源</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm config set registry=http://mirrors.cloud.tencent.com/npm/ </span><br></pre></td></tr></table></figure>
-
-<p>所有必备的应用程序安装完成后，还需要配置npm的全局变量到系统的变量里面</p>
-<h3 id="配置系统变量"><a href="#配置系统变量" class="headerlink" title="配置系统变量"></a>配置系统变量</h3><p><strong>配置<code>NVM_HOME</code>和<code>NVM_SYMLINK</code></strong></p>
-<p><img src="/2023/03/29/%E6%90%AD%E5%BB%BAhexo%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/20250329190659.jpg" alt="20250329190659"></p>
-<figure class="highlight bat"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">D:\<span class="title">NVM</span></span></span><br><span class="line"><span class="function"><span class="title">D</span>:\<span class="title">NVM</span>\<span class="title">nodejs</span></span></span><br></pre></td></tr></table></figure>
-
-<p><strong>编辑path</strong></p>
-<p><img src="/2023/03/29/%E6%90%AD%E5%BB%BAhexo%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/20250329190753.jpg" alt="20250329190753"></p>
-<figure class="highlight bat"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">%NVM_HOME%</span></span><br><span class="line"><span class="variable">%NVM_SYMLINK%</span></span><br><span class="line"><span class="variable">%NVM_HOME%</span>\node_global\</span><br><span class="line"><span class="variable">%NVM_SYMLINK%</span>\node_modules</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="使用Npm安装Hexo"><a href="#使用Npm安装Hexo" class="headerlink" title="使用Npm安装Hexo"></a>使用Npm安装Hexo</h3><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install <span class="literal">-g</span> hexo<span class="literal">-cli</span></span><br></pre></td></tr></table></figure>
-
-<p>如报错，更新一下npm</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">npm install <span class="literal">-g</span> npm<span class="literal">-windows-upgrade</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="built_in">set-ExecutionPolicy</span> RemoteSigned</span><br><span class="line"></span><br><span class="line">执行策略更改</span><br><span class="line">执行策略可帮助你防止执行不信任的脚本。更改执行策略可能会产生安全风险，如 https:/go.microsoft.com/fwlink/?LinkID=<span class="number">135170</span></span><br><span class="line">中的 about_Execution_Policies 帮助主题所述。是否要更改执行策略?</span><br><span class="line">[<span class="type">Y</span>] 是(Y)  [<span class="type">A</span>] 全是(A)  [<span class="type">N</span>] 否(N)  [<span class="type">L</span>] 全否(L)  [<span class="type">S</span>] 暂停(S)  [?] 帮助 (默认值为“N”): y</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">npm<span class="literal">-windows-upgrade</span></span><br><span class="line">npm<span class="literal">-windows-upgrade</span> v6.<span class="number">0.1</span></span><br><span class="line">? Which version <span class="keyword">do</span> you want to install? <span class="number">8.13</span>.<span class="number">2</span></span><br><span class="line">Checked system <span class="keyword">for</span> npm installation:</span><br><span class="line">According to PowerShell: D:\nodejs</span><br><span class="line">According to npm:        D:\nodejs</span><br><span class="line">Decided that npm is installed <span class="keyword">in</span> D:\nodejs</span><br><span class="line">Upgrading npm... |</span><br><span class="line"></span><br><span class="line">Upgrade finished. Your new npm version is <span class="number">8.13</span>.<span class="number">2</span>. Have a nice day!</span><br></pre></td></tr></table></figure>
-
-<p><strong>安装好以后，测试一下：</strong></p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo</span><br></pre></td></tr></table></figure>
-
-<p><img src="/2023/03/29/%E6%90%AD%E5%BB%BAhexo%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/image-20220710004601578.png"></p>
-<p><strong>没有出现未知命令，说明安装成功。可以接下来操作了。</strong></p>
-<p><strong>如果出现hexo : 无法加载文件 C:\Program  Files\nodejs\hexo.ps1，因为在此系统上禁止运行脚本。有关详细信息，请参阅 https:/go.micros  oft.com/fwlink/?LinkID=135170 中的 about_Execution_Policies。 所在位置 行:1 字符:  1。</strong></p>
-<p><strong>那是因为你用的是win11系统，你需要在<code>设置-&gt;隐私和安全性-&gt;开发者选项-&gt;允许本地powershell脚本在为签名的情况下运行</code></strong><img src="/2023/03/29/%E6%90%AD%E5%BB%BAhexo%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/image-20230308210045396.png" alt="image-20230308210045396"></p>
-<p><strong>应用之后，重新打开新的powershell，再次输入hexo即可。</strong></p>
-<p><img src="/2023/03/29/%E6%90%AD%E5%BB%BAhexo%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/image-20230308210149994.png"></p>
-<h2 id="创建hexo"><a href="#创建hexo" class="headerlink" title="创建hexo"></a>创建hexo</h2><p><strong>创建你的博客的空白文件夹，然后打开文件夹,我们已经安装好Git，所以我们直接是由鼠标右键的<code>Git Bash Here</code></strong></p>
-<p><img src="/2023/03/29/%E6%90%AD%E5%BB%BAhexo%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/image-20220710233249939.png" alt="image-20220710233249939"></p>
-<h3 id="在博客目录内初始化博客"><a href="#在博客目录内初始化博客" class="headerlink" title="在博客目录内初始化博客"></a>在博客目录内初始化博客</h3><p><strong>初始化目录：</strong></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 进目录之后，在Git bash里面输入下面目录初始化</span></span><br><span class="line">hexo init</span><br></pre></td></tr></table></figure>
-
-<p><strong>初始化后回生成许多文件</strong></p>
-<p><img src="/2023/03/29/%E6%90%AD%E5%BB%BAhexo%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/image-20230331230347045.png" alt="image-20230331230347045"></p>
-<p><strong>输入命令后，它会自动爬取hexo的初始化目录，在国内网络是非常不好的，如果出错需要删除目录内容重新执行命令直到成功。</strong></p>
-<h2 id="构建hexo"><a href="#构建hexo" class="headerlink" title="构建hexo"></a>构建hexo</h2><p><strong>初始化Hexo后，其实Hexo就可以使用了；构建Hexo：</strong></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">hexo g</span><br></pre></td></tr></table></figure>
-
-<h2 id="启动Hexo内建服务器"><a href="#启动Hexo内建服务器" class="headerlink" title="启动Hexo内建服务器"></a>启动Hexo内建服务器</h2><p><strong>其实，整个<code>public</code>文件就是一个博客了，但是我们还要部署<code>Nginx</code>等网络环境或者使用<code>HBuilderX</code>等根据，启动Web服务器才能用浏览器本地IP(即：<code>127.0.0.1</code>或<code>localhost</code>)加端口进行访问；为了减少麻烦，可以使用Hexo内建服务器：</strong></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">hexo s</span><br></pre></td></tr></table></figure>
-
-<p><img src="/2023/03/29/%E6%90%AD%E5%BB%BAhexo%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/image-20220710234306097.png" alt="image-20220710234306097"></p>
-<p><strong>我们可以去<code>127.0.0.1:4000</code>网址看看初始化页面的样子</strong><img src="/2023/03/29/%E6%90%AD%E5%BB%BAhexo%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/image-20220710234335015.png" alt="image-20220710234335015"></p>
-<h2 id="部署Hexo到github"><a href="#部署Hexo到github" class="headerlink" title="部署Hexo到github"></a>部署Hexo到github</h2><p><strong>上述操作，我们已经把<code>Hexo</code>部署在本地；接下来，我们来看看怎么部署到远程平台，部署到远程平台后，公网用户就可以访问了（也就是可以让你小伙伴通过浏览器访问到你的博客）。</strong></p>
-<h3 id="创建github仓库"><a href="#创建github仓库" class="headerlink" title="创建github仓库"></a>创建github仓库</h3><p><img src="/2023/03/29/%E6%90%AD%E5%BB%BAhexo%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/image-20230407151939650.png" alt="image-20230407151939650"></p>
-<blockquote>
-<p>需要注意的是作为网站访问的这个仓库，仓库名称一定是，<strong>拥有者名+github.io</strong></p>
-</blockquote>
-<h3 id="生成ssh-keys"><a href="#生成ssh-keys" class="headerlink" title="生成ssh keys"></a>生成ssh keys</h3><blockquote>
-<p>在博客文件夹根目录下，右键，调用<strong>git bash here</strong>功能</p>
-</blockquote>
-<p>输入命令，本地生成<strong>ssh keys</strong>  ，有回车按回车，有（y/n）？就输入y</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t ed25519 -C <span class="string">&quot;your_email@example.com&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>注意：如果你使用的是不支持 Ed25519 算法的旧系统，请使用以下命令：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -b 4096 -C &quot;your_email@example.com&quot;</span><br></pre></td></tr></table></figure>
-
-<p><strong>出现这个则生成成功</strong></p>
-<p><img src="/2023/03/29/%E6%90%AD%E5%BB%BAhexo%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/image-20230407152653491.png" alt="image-20230407152653491"></p>
-<blockquote>
-<p>在电脑打开生成公钥的文件夹</p>
-<p><strong>路径：C:/用户/你的用户名/.ssh</strong></p>
-</blockquote>
-<p>找到后打开id_rsa.pub（默认记事本打开），复制公钥（ctrl+A全选， ctrl+C复制）</p>
-<p>打开github，头像箭头，下拉选项setting（设置）-SSH与GPG keys -new ssh keys（新建ssh秘钥）</p>
-<p>tilte随便起，然后ctrl+V粘贴到key里面</p>
-<p><img src="/2023/03/29/%E6%90%AD%E5%BB%BAhexo%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/image-20230416135608274.png" alt="image-20230416135608274"></p>
-<h3 id="测试是否绑定成功"><a href="#测试是否绑定成功" class="headerlink" title="测试是否绑定成功"></a>测试是否绑定成功</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -T git@github.com</span><br></pre></td></tr></table></figure>
-
-<p><img src="/2023/03/29/%E6%90%AD%E5%BB%BAhexo%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/image-20230416134842427.png" alt="image-20230416134842427"></p>
-<blockquote>
-<p>yes，然后按回车</p>
-<p>出现successfully字样则绑定成功</p>
-</blockquote>
-<h3 id="上传博客到github仓库"><a href="#上传博客到github仓库" class="headerlink" title="上传博客到github仓库"></a>上传博客到github仓库</h3><h4 id="修改配置文件"><a href="#修改配置文件" class="headerlink" title="修改配置文件"></a>修改配置文件</h4><p>在创建博客文件夹的根目录下修改-config.yml文件</p>
-<p><img src="/2023/03/29/%E6%90%AD%E5%BB%BAhexo%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/image-20230407163241369.png" alt="image-20230407163241369"></p>
-<p>输入时注意冒号后面有空格，然后保存退出</p>
-<h4 id="安装hexo-deployer-git"><a href="#安装hexo-deployer-git" class="headerlink" title="安装hexo-deployer-git"></a>安装hexo-deployer-git</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#注意这些插件是安装在博客目录内的，所以是跟随博客内容一起走的</span></span><br><span class="line"><span class="comment">#这个插件是提供上传git能力</span></span><br><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
-
-
-
-<blockquote>
-<p><strong>因为github在国外，有些时候推送会出现ssl出错，其实就是网络差，我们在Git Bash里面输入下面这行命令，不验证ssl：</strong></p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --global http.sslVerify <span class="string">&quot;false&quot;</span></span><br></pre></td></tr></table></figure>
-
-
-
-<h4 id="博客推送"><a href="#博客推送" class="headerlink" title="博客推送"></a>博客推送</h4><p><strong>在博客目录下命令窗口/终端输入</strong></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#配置git push的信息</span></span><br><span class="line">git config --global user.email <span class="string">&quot;your_email&quot;</span></span><br><span class="line">git config --global user.name <span class="string">&quot;your_name&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#查看和检查配置的信息</span></span><br><span class="line">git config --list</span><br><span class="line"></span><br><span class="line"><span class="comment"># hexo d就是推送博客到指定的地方(本博客推送的地方是Github)</span></span><br><span class="line">hexo cl &amp;&amp; hexo g &amp;&amp; hexo d</span><br></pre></td></tr></table></figure>
-
-
-
-
-
-<h2 id="博客主题"><a href="#博客主题" class="headerlink" title="博客主题"></a>博客主题</h2><p><strong>打开hexo的<a target="_blank" rel="noopener" href="https://hexo.io/themes/">主题网站</a></strong></p>
-<p><img src="/2023/03/29/%E6%90%AD%E5%BB%BAhexo%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/image-20230508003429447.png" alt="image-20230508003429447"></p>
-<p><strong>比如打开Ayer这款主题，打开后能看到主题的效果</strong></p>
-<p><img src="/2023/03/29/%E6%90%AD%E5%BB%BAhexo%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/image-20230508003515559.png" alt="image-20230508003515559"></p>
-<p><strong>一般在博客主题内会有github的项目链接或者安装和使用的指南</strong></p>
-<p><img src="/2023/03/29/%E6%90%AD%E5%BB%BAhexo%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/image-20230508003741044.png" alt="image-20230508003741044"></p>
-<p><strong>打开github项目有下面有个README.md的安装教程，其安装步骤我就不一一展示了，按教程来有手就行[doge]</strong></p>
-<p><img src="/2023/03/29/%E6%90%AD%E5%BB%BAhexo%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/image-20230508003943456.png" alt="image-20230508003943456"></p>
-<h2 id="解决图片不显示问题"><a href="#解决图片不显示问题" class="headerlink" title="解决图片不显示问题"></a>解决图片不显示问题</h2><h3 id="更改hexo配置文件"><a href="#更改hexo配置文件" class="headerlink" title="更改hexo配置文件"></a>更改hexo配置文件</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim _config.yml <span class="comment">#配置_config.yml里面的post_asset_folder:false 设置为 true 如图</span></span><br></pre></td></tr></table></figure>
-
-<p><img src="/2023/03/29/%E6%90%AD%E5%BB%BAhexo%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/031161b88a660fd50ecc872d942c43fa.png" alt="031161b88a660fd50ecc872d942c43fa"></p>
-<h3 id="安装npm插件"><a href="#安装npm插件" class="headerlink" title="安装npm插件"></a>安装npm插件</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install https://github.com/CodeFalling/hexo-asset-image --save</span><br></pre></td></tr></table></figure>
-
-<h3 id="修改Typora设置"><a href="#修改Typora设置" class="headerlink" title="修改Typora设置"></a>修改Typora设置</h3><p><strong>打开文件菜单的偏好设置</strong></p>
-<p><img src="/2023/03/29/%E6%90%AD%E5%BB%BAhexo%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/image-20240514232927394.png" alt="image-20240514232927394"></p>
-<p><strong>打开图像选项，设置如下图</strong></p>
-<p><img src="/2023/03/29/%E6%90%AD%E5%BB%BAhexo%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/image-20240514233130356.png" alt="image-20240514233130356"></p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
-    <a class="extend prev" rel="prev" title="上一页" aria-label="上一页" href="/page/2/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span>
+    <a class="extend prev" rel="prev" title="上一页" aria-label="上一页" href="/page/2/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" title="下一页" aria-label="下一页" href="/page/4/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 </div>

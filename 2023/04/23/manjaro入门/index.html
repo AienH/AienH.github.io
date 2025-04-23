@@ -19,19 +19,19 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.18.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"mac"},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"disqusjs","storage":true,"lazyload":false,"nav":{"disqusjs":{"text":"Disqus","order":-2},"valine":{"order":-1}},"activeClass":"disqusjs"},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":true}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="1. 安装系统 下载镜像并制作系统启动U盘，推荐使用 Ventoy（能够兼容多个系统镜像，能制作多个系统的启动盘）  用法非常简单，下载Ventoy后打开Ventoy2Disk.exe，选择U盘格式化. 下载镜像，然后直接把iso拖进去.   显卡驱动参考Manjaro WiKi的解决方案.   2.pacman(yay)安装删除命令 有什么问题或者需要查找安装包可以自行搜索archlinux官网">
+    <meta name="description" content="安装系统 下载镜像并制作系统启动U盘，推荐使用 Ventoy（能够兼容多个系统镜像，能制作多个系统的启动盘）  用法可参考百度或者我这篇文章 下载镜像，然后直接把iso拖进去.   显卡驱动参考Manjaro WiKi的解决方案.   pacman(yay)安装删除命令 有什么问题或者需要查找安装包可以自行搜索archlinux官网  123456789101112131415161718su #">
 <meta property="og:type" content="article">
 <meta property="og:title" content="manjaro入门（arch Linux）">
 <meta property="og:url" content="http://example.com/2023/04/23/manjaro%E5%85%A5%E9%97%A8/index.html">
 <meta property="og:site_name" content="ienAの博客">
-<meta property="og:description" content="1. 安装系统 下载镜像并制作系统启动U盘，推荐使用 Ventoy（能够兼容多个系统镜像，能制作多个系统的启动盘）  用法非常简单，下载Ventoy后打开Ventoy2Disk.exe，选择U盘格式化. 下载镜像，然后直接把iso拖进去.   显卡驱动参考Manjaro WiKi的解决方案.   2.pacman(yay)安装删除命令 有什么问题或者需要查找安装包可以自行搜索archlinux官网">
+<meta property="og:description" content="安装系统 下载镜像并制作系统启动U盘，推荐使用 Ventoy（能够兼容多个系统镜像，能制作多个系统的启动盘）  用法可参考百度或者我这篇文章 下载镜像，然后直接把iso拖进去.   显卡驱动参考Manjaro WiKi的解决方案.   pacman(yay)安装删除命令 有什么问题或者需要查找安装包可以自行搜索archlinux官网  123456789101112131415161718su #">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/2023/04/23/manjaro%E5%85%A5%E9%97%A8/1549943-20211016132138588-1630077845.png">
 <meta property="og:image" content="http://example.com/2023/04/23/manjaro%E5%85%A5%E9%97%A8/1549943-20211016132327702-2095914890.png">
 <meta property="og:image" content="http://example.com/2023/04/23/manjaro%E5%85%A5%E9%97%A8/1549943-20211016132409407-1420021937.png">
 <meta property="og:image" content="http://example.com/2023/04/23/manjaro%E5%85%A5%E9%97%A8/1549943-20211016132439302-941187267.png">
 <meta property="article:published_time" content="2023-04-22T16:27:17.000Z">
-<meta property="article:modified_time" content="2025-03-19T03:01:55.217Z">
+<meta property="article:modified_time" content="2025-04-23T15:31:29.413Z">
 <meta property="article:author" content="ienA">
 <meta property="article:tag" content="manjaro">
 <meta name="twitter:card" content="summary">
@@ -177,7 +177,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E5%AE%89%E8%A3%85%E7%B3%BB%E7%BB%9F"><span class="nav-number">1.</span> <span class="nav-text">1. 安装系统</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-pacman-yay-%E5%AE%89%E8%A3%85%E5%88%A0%E9%99%A4%E5%91%BD%E4%BB%A4"><span class="nav-number">2.</span> <span class="nav-text">2.pacman(yay)安装删除命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E9%85%8D%E7%BD%AE"><span class="nav-number">3.</span> <span class="nav-text">3.配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-%E5%AE%89%E8%A3%85%E5%B7%A5%E5%85%B7"><span class="nav-number">4.</span> <span class="nav-text">4.安装工具</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-%E5%8F%8C%E7%B3%BB%E7%BB%9F%E6%97%B6%E9%97%B4%E5%90%8C%E6%AD%A5%EF%BC%88%E5%8D%95%E7%B3%BB%E7%BB%9F%E8%B7%B3%E8%BF%87%EF%BC%89"><span class="nav-number">5.</span> <span class="nav-text">5.双系统时间同步（单系统跳过）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%96%B9%E6%B3%95%E4%B8%80"><span class="nav-number">5.1.</span> <span class="nav-text">方法一</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%96%B9%E6%B3%95%E4%BA%8C"><span class="nav-number">5.2.</span> <span class="nav-text">方法二</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%96%B9%E6%B3%95%E4%B8%89"><span class="nav-number">5.3.</span> <span class="nav-text">方法三</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-%E5%AE%89%E8%A3%85%E8%BE%93%E5%85%A5%E6%B3%95"><span class="nav-number">6.</span> <span class="nav-text">6.安装输入法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-%E5%AD%97%E4%BD%93"><span class="nav-number">7.</span> <span class="nav-text">7.字体</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-%E9%85%8D%E7%BD%AEohmyzsh"><span class="nav-number">8.</span> <span class="nav-text">8.配置ohmyzsh</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9-%E7%BE%8E%E5%8C%96GRUB%EF%BC%88%E8%87%AA%E5%AE%9A%E4%B9%89%E5%BC%80%E6%9C%BA%E5%8A%A8%E7%94%BB%EF%BC%89"><span class="nav-number">9.</span> <span class="nav-text">9.美化GRUB（自定义开机动画）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#10-%E5%AE%89%E8%A3%85dock%EF%BC%8C%E7%B1%BB%E4%BC%BCmac%E7%9A%84%E4%BB%BB%E5%8A%A1%E6%A0%8F"><span class="nav-number">10.</span> <span class="nav-text">10.安装dock，类似mac的任务栏</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#11-%E5%B8%B8%E7%94%A8%E8%BD%AF%E4%BB%B6"><span class="nav-number">11.</span> <span class="nav-text">11.常用软件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#12-%E4%B8%8B%E9%9D%A2%E6%98%AFwine%E7%9A%84%E5%AE%89%E8%A3%85%E5%92%8C%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98%E7%9A%84%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95"><span class="nav-number">12.</span> <span class="nav-text">12.下面是wine的安装和一些问题的解决办法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-wine%E5%AE%89%E8%A3%85-%E6%9C%89%E9%9C%80%E8%A6%81%E5%88%99%E5%AE%89%E8%A3%85"><span class="nav-number">12.1.</span> <span class="nav-text">1)wine安装(有需要则安装)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-wine%E8%BD%AF%E4%BB%B6%E6%A1%8C%E9%9D%A2%E5%BF%AB%E6%8D%B7%E6%96%B9%E5%BC%8F%E5%88%9B%E5%BB%BA"><span class="nav-number">12.2.</span> <span class="nav-text">2)wine软件桌面快捷方式创建</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-wine%E5%AE%89%E8%A3%85exe"><span class="nav-number">12.3.</span> <span class="nav-text">3)wine安装exe</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-%E7%94%A8%E6%88%B7%E6%96%87%E4%BB%B6%E5%A4%B9%E5%90%8D%E7%A7%B0%E4%B8%BA%E8%8B%B1%E6%96%87"><span class="nav-number">12.4.</span> <span class="nav-text">4)用户文件夹名称为英文</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-qq%E3%80%81%E5%BE%AE%E4%BF%A1%E6%89%93%E4%B8%8D%E5%BC%80"><span class="nav-number">12.5.</span> <span class="nav-text">5)qq、微信打不开</span></a></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85%E7%B3%BB%E7%BB%9F"><span class="nav-number">1.</span> <span class="nav-text">安装系统</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#pacman-yay-%E5%AE%89%E8%A3%85%E5%88%A0%E9%99%A4%E5%91%BD%E4%BB%A4"><span class="nav-number">2.</span> <span class="nav-text">pacman(yay)安装删除命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE"><span class="nav-number">3.</span> <span class="nav-text">配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85%E5%B7%A5%E5%85%B7"><span class="nav-number">4.</span> <span class="nav-text">安装工具</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%8C%E7%B3%BB%E7%BB%9F%E6%97%B6%E9%97%B4%E5%90%8C%E6%AD%A5%EF%BC%88%E5%8D%95%E7%B3%BB%E7%BB%9F%E8%B7%B3%E8%BF%87%EF%BC%89"><span class="nav-number">5.</span> <span class="nav-text">双系统时间同步（单系统跳过）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%96%B9%E6%B3%95%E4%B8%80"><span class="nav-number">5.1.</span> <span class="nav-text">方法一</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%96%B9%E6%B3%95%E4%BA%8C"><span class="nav-number">5.2.</span> <span class="nav-text">方法二</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%96%B9%E6%B3%95%E4%B8%89"><span class="nav-number">5.3.</span> <span class="nav-text">方法三</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85%E8%BE%93%E5%85%A5%E6%B3%95"><span class="nav-number">6.</span> <span class="nav-text">安装输入法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AD%97%E4%BD%93"><span class="nav-number">7.</span> <span class="nav-text">字体</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%85%8D%E7%BD%AEohmyzsh"><span class="nav-number">8.</span> <span class="nav-text">配置ohmyzsh</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BE%8E%E5%8C%96GRUB%EF%BC%88%E8%87%AA%E5%AE%9A%E4%B9%89%E5%BC%80%E6%9C%BA%E5%8A%A8%E7%94%BB%EF%BC%89"><span class="nav-number">9.</span> <span class="nav-text">美化GRUB（自定义开机动画）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85dock%EF%BC%8C%E7%B1%BB%E4%BC%BCmac%E7%9A%84%E4%BB%BB%E5%8A%A1%E6%A0%8F"><span class="nav-number">10.</span> <span class="nav-text">安装dock，类似mac的任务栏</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B8%B8%E7%94%A8%E8%BD%AF%E4%BB%B6"><span class="nav-number">11.</span> <span class="nav-text">常用软件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%8B%E9%9D%A2%E6%98%AFwine%E7%9A%84%E5%AE%89%E8%A3%85%E5%92%8C%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98%E7%9A%84%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95"><span class="nav-number">12.</span> <span class="nav-text">下面是wine的安装和一些问题的解决办法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#wine%E5%AE%89%E8%A3%85-%E6%9C%89%E9%9C%80%E8%A6%81%E5%88%99%E5%AE%89%E8%A3%85"><span class="nav-number">12.1.</span> <span class="nav-text">wine安装(有需要则安装)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#wine%E8%BD%AF%E4%BB%B6%E6%A1%8C%E9%9D%A2%E5%BF%AB%E6%8D%B7%E6%96%B9%E5%BC%8F%E5%88%9B%E5%BB%BA"><span class="nav-number">12.2.</span> <span class="nav-text">wine软件桌面快捷方式创建</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#wine%E5%AE%89%E8%A3%85exe"><span class="nav-number">12.3.</span> <span class="nav-text">wine安装exe</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%94%A8%E6%88%B7%E6%96%87%E4%BB%B6%E5%A4%B9%E5%90%8D%E7%A7%B0%E4%B8%BA%E8%8B%B1%E6%96%87"><span class="nav-number">12.4.</span> <span class="nav-text">用户文件夹名称为英文</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#qq%E3%80%81%E5%BE%AE%E4%BF%A1%E6%89%93%E4%B8%8D%E5%BC%80"><span class="nav-number">12.5.</span> <span class="nav-text">qq、微信打不开</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -192,7 +192,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">30</span>
+          <span class="site-state-item-count">32</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -203,7 +203,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">26</span>
+        <span class="site-state-item-count">29</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -292,7 +292,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2025-03-19 11:01:55" itemprop="dateModified" datetime="2025-03-19T11:01:55+08:00">2025-03-19</time>
+      <time title="修改时间：2025-04-23 23:31:29" itemprop="dateModified" datetime="2025-04-23T23:31:29+08:00">2025-04-23</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -342,24 +342,24 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><h3 id="1-安装系统"><a href="#1-安装系统" class="headerlink" title="1. 安装系统"></a>1. 安装系统</h3><ul>
+    <div class="post-body" itemprop="articleBody"><h3 id="安装系统"><a href="#安装系统" class="headerlink" title="安装系统"></a>安装系统</h3><ul>
 <li><p>下载镜像并制作系统启动U盘，推荐使用<a target="_blank" rel="noopener" href="https://www.ventoy.net/cn/download.html"> Ventoy</a>（能够兼容多个系统镜像，能制作多个系统的启动盘）</p>
 <ul>
-<li>用法非常简单，下载Ventoy后打开Ventoy2Disk.exe，选择U盘格式化.</li>
+<li>用法可参考百度或者我这篇文章</li>
 <li><a target="_blank" rel="noopener" href="https://manjaro.org/download/">下载镜像</a>，然后直接把iso拖进去.</li>
 </ul>
 </li>
 <li><p>显卡驱动参考<a target="_blank" rel="noopener" href="https://wiki.manjaro.org/index.php?title=Configure_NVIDIA_(non-free)_settings_and_load_them_on_Startup">Manjaro WiKi</a>的解决方案.</p>
 </li>
 </ul>
-<h3 id="2-pacman-yay-安装删除命令"><a href="#2-pacman-yay-安装删除命令" class="headerlink" title="2.pacman(yay)安装删除命令"></a>2.pacman(yay)安装删除命令</h3><blockquote>
+<h3 id="pacman-yay-安装删除命令"><a href="#pacman-yay-安装删除命令" class="headerlink" title="pacman(yay)安装删除命令"></a>pacman(yay)安装删除命令</h3><blockquote>
 <p>有什么问题或者需要查找安装包可以自行搜索<a target="_blank" rel="noopener" href="https://aur.archlinux.org/">archlinux官网</a></p>
 </blockquote>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">su <span class="comment"># 如果已经在root环境下则不用提权</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 常用安装删除指令一览</span></span><br><span class="line">pacman -S XXXXX</span><br><span class="line"><span class="comment"># 安装XXXXX</span></span><br><span class="line"></span><br><span class="line">pacman -R XXXXX</span><br><span class="line"><span class="comment"># 删除XXXXX（Remove）（保留依赖的包）</span></span><br><span class="line"></span><br><span class="line">pacman -Rs XXXXX</span><br><span class="line"><span class="comment"># 删除XXXXX以及其依赖的包（诛灭九族）</span></span><br><span class="line"></span><br><span class="line">pacman -U XXXXX</span><br><span class="line"><span class="comment"># 安装自己下载的XXXXX包（taz.gz）</span></span><br><span class="line"></span><br><span class="line">pacman -Sc</span><br><span class="line"><span class="comment"># 清理未安装的包文件</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 
 
-<h3 id="3-配置"><a href="#3-配置" class="headerlink" title="3.配置"></a>3.配置</h3><p>给manjaro换上国内源</p>
+<h3 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h3><p>给manjaro换上国内源</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 手动选择源</span></span><br><span class="line">sudo pacman-mirrors -i -c China -m rank</span><br></pre></td></tr></table></figure>
 
 
@@ -384,7 +384,7 @@
 
 
 
-<h3 id="4-安装工具"><a href="#4-安装工具" class="headerlink" title="4.安装工具"></a>4.安装工具</h3><p>安装<code>base-devel</code>，一个非常重要的基础库。</p>
+<h3 id="安装工具"><a href="#安装工具" class="headerlink" title="安装工具"></a>安装工具</h3><p>安装<code>base-devel</code>，一个非常重要的基础库。</p>
 <blockquote>
 <p>这个基础包必须安装，否则我们在使用yay安装AUR软件的时候经常会遇到安装不上的问题。</p>
 </blockquote>
@@ -406,7 +406,7 @@
 
 
 
-<h3 id="5-双系统时间同步（单系统跳过）"><a href="#5-双系统时间同步（单系统跳过）" class="headerlink" title="5.双系统时间同步（单系统跳过）"></a>5.双系统时间同步（单系统跳过）</h3><blockquote>
+<h3 id="双系统时间同步（单系统跳过）"><a href="#双系统时间同步（单系统跳过）" class="headerlink" title="双系统时间同步（单系统跳过）"></a>双系统时间同步（单系统跳过）</h3><blockquote>
 <p>硬件时间and系统时间<br>这2个时间不是同步的！如果有一天发现系统的时间不对了，可以分别看看这2个时间。硬件时间写在BIOS里，系统时间就是电脑显示的时间了。<br>这个显示的是硬件时间。</p>
 </blockquote>
 <h4 id="方法一"><a href="#方法一" class="headerlink" title="方法一"></a>方法一</h4><p>使用ntpdate同步网络时间后可以将时间写入到BIOS：</p>
@@ -427,7 +427,7 @@
 <blockquote>
 <p>同时禁用Windows的自动同步时间功能</p>
 </blockquote>
-<h3 id="6-安装输入法"><a href="#6-安装输入法" class="headerlink" title="6.安装输入法"></a>6.安装输入法</h3><p><a target="_blank" rel="noopener" href="https://wiki.archlinux.org/index.php/Fcitx5_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)">Fcitx5 官方文档</a><br>中文及日文输入法均体验良好。</p>
+<h3 id="安装输入法"><a href="#安装输入法" class="headerlink" title="安装输入法"></a>安装输入法</h3><p><a target="_blank" rel="noopener" href="https://wiki.archlinux.org/index.php/Fcitx5_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)">Fcitx5 官方文档</a><br>中文及日文输入法均体验良好。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman -S fcitx5-im <span class="comment">#基础包组</span></span><br><span class="line">sudo pacman -S fcitx5-chinese-addons <span class="comment">#官方中文输入引擎</span></span><br><span class="line">sudo pacman -S fcitx5-anthy <span class="comment">#日文输入引擎</span></span><br><span class="line">yay -S fcitx5-pinyin-moegirl <span class="comment">#萌娘百科词库 由于中国大陆政府对github封锁，你可能在此卡住。如卡住，可根据后文设置好代理后再安装</span></span><br><span class="line">sudo pacman -S fcitx5-pinyin-zhwiki <span class="comment">#中文维基百科词库</span></span><br><span class="line">sudo pacman -S fcitx5-material-color <span class="comment">#主题</span></span><br></pre></td></tr></table></figure>
 
 
@@ -437,7 +437,7 @@
 
 
 
-<h3 id="7-字体"><a href="#7-字体" class="headerlink" title="7.字体"></a>7.字体</h3><blockquote>
+<h3 id="字体"><a href="#字体" class="headerlink" title="字体"></a>字体</h3><blockquote>
 <p><a target="_blank" rel="noopener" href="https://wiki.archlinuxcn.org/wiki/%E5%AD%97%E4%BD%93">windows/Mac字体参考</a></p>
 <p>字体下载地址(推荐安装<a target="_blank" rel="noopener" href="https://www.jetbrains.com/lp/mono/">JetBrainsMono</a>。中心需要显示icon之类的需要<a target="_blank" rel="noopener" href="https://github.com/ryanoasis/nerd-fonts/releases">nerd补丁</a>的字体)</p>
 <p>不用命令行可以进文件管理器里面解压，然后全选字体右键安装</p>
@@ -446,7 +446,7 @@
 
 
 
-<h3 id="8-配置ohmyzsh"><a href="#8-配置ohmyzsh" class="headerlink" title="8.配置ohmyzsh"></a>8.配置ohmyzsh</h3><blockquote>
+<h3 id="配置ohmyzsh"><a href="#配置ohmyzsh" class="headerlink" title="配置ohmyzsh"></a>配置ohmyzsh</h3><blockquote>
 <p>项目拉下来进行安装</p>
 </blockquote>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/ohmyzsh/ohmyzsh.git</span><br><span class="line">sh ohmyzsh/tools/install.sh</span><br></pre></td></tr></table></figure>
@@ -501,7 +501,7 @@
 
 
 
-<h3 id="9-美化GRUB（自定义开机动画）"><a href="#9-美化GRUB（自定义开机动画）" class="headerlink" title="9.美化GRUB（自定义开机动画）"></a>9.美化GRUB（自定义开机动画）</h3><ul>
+<h3 id="美化GRUB（自定义开机动画）"><a href="#美化GRUB（自定义开机动画）" class="headerlink" title="美化GRUB（自定义开机动画）"></a>美化GRUB（自定义开机动画）</h3><ul>
 <li><p>去<a target="_blank" rel="noopener" href="https://www.gnome-look.org/browse/cat/109/order/latest/"> Gnome-look</a> 找自己喜欢的grub主题，下载</p>
 </li>
 <li><p>解压后进入目录，有一个子目录和两个sh文件，只需要把子目录copy到</p>
@@ -511,18 +511,18 @@
 <li><p>重新生成一次grub.cfg</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grub-mkconfig -o /boot/grub/grub.cfg</span><br></pre></td></tr></table></figure></li>
 </ul>
-<h3 id="10-安装dock，类似mac的任务栏"><a href="#10-安装dock，类似mac的任务栏" class="headerlink" title="10.安装dock，类似mac的任务栏"></a>10.安装dock，类似mac的任务栏</h3><p>安装latte-dock</p>
+<h3 id="安装dock，类似mac的任务栏"><a href="#安装dock，类似mac的任务栏" class="headerlink" title="安装dock，类似mac的任务栏"></a>安装dock，类似mac的任务栏</h3><p>安装latte-dock</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yay -S latte-dock</span><br></pre></td></tr></table></figure>
 
 <blockquote>
 <p>启动latte-dock，下方就会出现一个dock栏，具体配置看自己爱好</p>
 <p>移除那个时钟的方法：右键 配置lattedock 然后右键 那个时钟 移除</p>
 </blockquote>
-<h3 id="11-常用软件"><a href="#11-常用软件" class="headerlink" title="11.常用软件"></a>11.常用软件</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#微信</span></span><br><span class="line">yay -S deepin-wine-wechat</span><br><span class="line"></span><br><span class="line"><span class="comment">#QQ</span></span><br><span class="line">yay -S deepin-wine-qq</span><br><span class="line"></span><br><span class="line"><span class="comment">#chrome浏览器</span></span><br><span class="line">yay -S google-chrome</span><br><span class="line"></span><br><span class="line"><span class="comment">#网易云音乐</span></span><br><span class="line">yay -S netease-cloud-music </span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="常用软件"><a href="#常用软件" class="headerlink" title="常用软件"></a>常用软件</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#微信</span></span><br><span class="line">yay -S deepin-wine-wechat</span><br><span class="line"></span><br><span class="line"><span class="comment">#QQ</span></span><br><span class="line">yay -S deepin-wine-qq</span><br><span class="line"></span><br><span class="line"><span class="comment">#chrome浏览器</span></span><br><span class="line">yay -S google-chrome</span><br><span class="line"></span><br><span class="line"><span class="comment">#网易云音乐</span></span><br><span class="line">yay -S netease-cloud-music </span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 
 
-<h3 id="12-下面是wine的安装和一些问题的解决办法"><a href="#12-下面是wine的安装和一些问题的解决办法" class="headerlink" title="12.下面是wine的安装和一些问题的解决办法"></a>12.下面是<code>wine</code>的安装和一些问题的解决办法</h3><h4 id="1-wine安装-有需要则安装"><a href="#1-wine安装-有需要则安装" class="headerlink" title="1)wine安装(有需要则安装)"></a>1)wine安装(有需要则安装)</h4><blockquote>
+<h3 id="下面是wine的安装和一些问题的解决办法"><a href="#下面是wine的安装和一些问题的解决办法" class="headerlink" title="下面是wine的安装和一些问题的解决办法"></a>下面是<code>wine</code>的安装和一些问题的解决办法</h3><h4 id="wine安装-有需要则安装"><a href="#wine安装-有需要则安装" class="headerlink" title="wine安装(有需要则安装)"></a>wine安装(有需要则安装)</h4><blockquote>
 <p>安装wine</p>
 <p>其中wine_gecko和wine-mono分别用于运行依赖于Internet Explorer和.NET的程序</p>
 </blockquote>
@@ -537,17 +537,17 @@
 <p>字体设置</p>
 <p>保存以下内容到zh.reg文件</p>
 </blockquote>
-<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">REGEDIT4</span><br><span class="line">[HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\FontSubstitutes]</span><br><span class="line">&quot;Arial&quot;=&quot;simsun&quot;</span><br><span class="line">&quot;Arial CE,238&quot;=&quot;simsun&quot;</span><br><span class="line">&quot;Arial CYR,204&quot;=&quot;simsun&quot;</span><br><span class="line">&quot;Arial Greek,161&quot;=&quot;simsun&quot;</span><br><span class="line">&quot;Arial TUR,162&quot;=&quot;simsun&quot;</span><br><span class="line">&quot;Courier New&quot;=&quot;simsun&quot;</span><br><span class="line">&quot;Courier New CE,238&quot;=&quot;simsun&quot;</span><br><span class="line">&quot;Courier New CYR,204&quot;=&quot;simsun&quot;</span><br><span class="line">&quot;Courier New Greek,161&quot;=&quot;simsun&quot;</span><br><span class="line">&quot;Courier New TUR,162&quot;=&quot;simsun&quot;</span><br><span class="line">&quot;FixedSys&quot;=&quot;simsun&quot;</span><br><span class="line">&quot;Helv&quot;=&quot;simsun&quot;</span><br><span class="line">&quot;Helvetica&quot;=&quot;simsun&quot;</span><br><span class="line">&quot;MS Sans Serif&quot;=&quot;simsun&quot;</span><br><span class="line">&quot;MS Shell Dlg&quot;=&quot;simsun&quot;</span><br><span class="line">&quot;MS Shell Dlg 2&quot;=&quot;simsun&quot;</span><br><span class="line">&quot;System&quot;=&quot;simsun&quot;</span><br><span class="line">&quot;Tahoma&quot;=&quot;simsun&quot;</span><br><span class="line">&quot;Times&quot;=&quot;simsun&quot;</span><br><span class="line">&quot;Times New Roman CE,238&quot;=&quot;simsun&quot;</span><br><span class="line">&quot;Times New Roman CYR,204&quot;=&quot;simsun&quot;</span><br><span class="line">&quot;Times New Roman Greek,161&quot;=&quot;simsun&quot;</span><br><span class="line">&quot;Times New Roman TUR,162&quot;=&quot;simsun&quot;</span><br><span class="line">&quot;Tms Rmn&quot;=&quot;simsun&quot;</span><br></pre></td></tr></table></figure>
+<figure class="highlight bat"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">REGEDIT4</span><br><span class="line">[HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\FontSubstitutes]</span><br><span class="line">&quot;Arial&quot;=&quot;simsun&quot;</span><br><span class="line">&quot;Arial CE,<span class="number">238</span>&quot;=&quot;simsun&quot;</span><br><span class="line">&quot;Arial CYR,<span class="number">204</span>&quot;=&quot;simsun&quot;</span><br><span class="line">&quot;Arial Greek,<span class="number">161</span>&quot;=&quot;simsun&quot;</span><br><span class="line">&quot;Arial TUR,<span class="number">162</span>&quot;=&quot;simsun&quot;</span><br><span class="line">&quot;Courier New&quot;=&quot;simsun&quot;</span><br><span class="line">&quot;Courier New CE,<span class="number">238</span>&quot;=&quot;simsun&quot;</span><br><span class="line">&quot;Courier New CYR,<span class="number">204</span>&quot;=&quot;simsun&quot;</span><br><span class="line">&quot;Courier New Greek,<span class="number">161</span>&quot;=&quot;simsun&quot;</span><br><span class="line">&quot;Courier New TUR,<span class="number">162</span>&quot;=&quot;simsun&quot;</span><br><span class="line">&quot;FixedSys&quot;=&quot;simsun&quot;</span><br><span class="line">&quot;Helv&quot;=&quot;simsun&quot;</span><br><span class="line">&quot;Helvetica&quot;=&quot;simsun&quot;</span><br><span class="line">&quot;MS Sans Serif&quot;=&quot;simsun&quot;</span><br><span class="line">&quot;MS Shell Dlg&quot;=&quot;simsun&quot;</span><br><span class="line">&quot;MS Shell Dlg <span class="number">2</span>&quot;=&quot;simsun&quot;</span><br><span class="line">&quot;System&quot;=&quot;simsun&quot;</span><br><span class="line">&quot;Tahoma&quot;=&quot;simsun&quot;</span><br><span class="line">&quot;Times&quot;=&quot;simsun&quot;</span><br><span class="line">&quot;Times New Roman CE,<span class="number">238</span>&quot;=&quot;simsun&quot;</span><br><span class="line">&quot;Times New Roman CYR,<span class="number">204</span>&quot;=&quot;simsun&quot;</span><br><span class="line">&quot;Times New Roman Greek,<span class="number">161</span>&quot;=&quot;simsun&quot;</span><br><span class="line">&quot;Times New Roman TUR,<span class="number">162</span>&quot;=&quot;simsun&quot;</span><br><span class="line">&quot;Tms Rmn&quot;=&quot;simsun&quot;</span><br></pre></td></tr></table></figure>
 
 <blockquote>
 <p>添加到注册表</p>
 </blockquote>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">regedit zh.reg</span><br></pre></td></tr></table></figure>
+<figure class="highlight bat"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">regedit zh.reg</span><br></pre></td></tr></table></figure>
 
 <blockquote>
 <p>从自己的Windows下 Windows/Fonts 下找到simsun.ttc复制到 /home/user/.wine/drive_c/windows/fonts 里</p>
 </blockquote>
-<h4 id="2-wine软件桌面快捷方式创建"><a href="#2-wine软件桌面快捷方式创建" class="headerlink" title="2)wine软件桌面快捷方式创建"></a>2)wine软件桌面快捷方式创建</h4><blockquote>
+<h4 id="wine软件桌面快捷方式创建"><a href="#wine软件桌面快捷方式创建" class="headerlink" title="wine软件桌面快捷方式创建"></a>wine软件桌面快捷方式创建</h4><blockquote>
 <p>Wine安装应用时一般会添加这个菜单，如果没有的话可以在~/.local/share/applications/wine/下新建目录和.desktop文件，按[Desktop Entry]的格式自行设置</p>
 </blockquote>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[Desktop Entry]</span><br><span class="line">Name=WeChat</span><br><span class="line">Exec=<span class="built_in">env</span> WINEPREFIX=<span class="string">&quot;/home/zbg/.wine&quot;</span> wine C:\\\\windows\\\\<span class="built_in">command</span>\\\\start.exe /Unix /home/zbg/.wine/dosdevices/c:/ProgramData/Microsoft/Windows/Start\\ Menu/Programs/WeChat/WeChat.lnk</span><br><span class="line">Type=Application</span><br><span class="line">StartupNotify=<span class="literal">true</span></span><br><span class="line">Path=/home/zbg/.wine/dosdevices/c:/Program Files (x86)/Tencent/WeChat</span><br><span class="line">Icon=06F2_WeChat.0</span><br><span class="line">StartupWMClass=wechat.exe</span><br></pre></td></tr></table></figure>
@@ -559,7 +559,7 @@
 
 
 
-<h4 id="3-wine安装exe"><a href="#3-wine安装exe" class="headerlink" title="3)wine安装exe"></a>3)wine安装exe</h4><blockquote>
+<h4 id="wine安装exe"><a href="#wine安装exe" class="headerlink" title="wine安装exe"></a>wine安装exe</h4><blockquote>
 <p>安装并运行<code>winetricks</code></p>
 <p>wine的辅助工具，比如添加dll等</p>
 </blockquote>
@@ -573,11 +573,11 @@
 <p>选择需要的选项，这里选择dll安装</p>
 </blockquote>
 <p><img src="/2023/04/23/manjaro%E5%85%A5%E9%97%A8/1549943-20211016132409407-1420021937.png" alt="截图"></p>
-<h4 id="4-用户文件夹名称为英文"><a href="#4-用户文件夹名称为英文" class="headerlink" title="4)用户文件夹名称为英文"></a>4)用户文件夹名称为英文</h4><blockquote>
+<h4 id="用户文件夹名称为英文"><a href="#用户文件夹名称为英文" class="headerlink" title="用户文件夹名称为英文"></a>用户文件夹名称为英文</h4><blockquote>
 <p>先去手动修改文件夹名称，然后在 设置 -&gt; 应用程序 -&gt; 地点 这修改</p>
 </blockquote>
 <p><img src="/2023/04/23/manjaro%E5%85%A5%E9%97%A8/1549943-20211016132439302-941187267.png" alt="截图"></p>
-<h4 id="5-qq、微信打不开"><a href="#5-qq、微信打不开" class="headerlink" title="5)qq、微信打不开"></a>5)qq、微信打不开</h4><blockquote>
+<h4 id="qq、微信打不开"><a href="#qq、微信打不开" class="headerlink" title="qq、微信打不开"></a>qq、微信打不开</h4><blockquote>
 <p>Manjaro-kde桌面安装TIM/QQ的时候经常出现无法启动，其主要原因是deein-wine-tim打包了Gnome桌面部分内容，因此在KDE桌面环境下需要安装相应的Gnome桌面设置环境</p>
 </blockquote>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman -S gnome-settings-daemon</span><br></pre></td></tr></table></figure>
