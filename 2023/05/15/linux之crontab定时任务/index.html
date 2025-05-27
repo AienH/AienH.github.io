@@ -465,7 +465,7 @@
 <h3 id="使crontab任务生效"><a href="#使crontab任务生效" class="headerlink" title="使crontab任务生效"></a>使crontab任务生效</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#查看crontab任务</span></span><br><span class="line">crontab -l</span><br><span class="line"></span><br><span class="line"><span class="comment">#加载配置文件</span></span><br><span class="line">/etc/init.d/cron reload</span><br></pre></td></tr></table></figure>
 
 <blockquote>
-<p>centos的定时任务service是crond</p>
+<p>centos的加载配置文件的命令是service crond reload或者systemctl reload crond</p>
 </blockquote>
 <h3 id="脚本无法执行问题"><a href="#脚本无法执行问题" class="headerlink" title="脚本无法执行问题"></a>脚本无法执行问题</h3><p>如果我们使用 crontab 来定时执行脚本，无法执行，但是如果直接通过命令（如：./test.sh)又可以正常执行，这主要是因为无法读取环境变量的原因。</p>
 <p><strong>解决方法：</strong></p>
